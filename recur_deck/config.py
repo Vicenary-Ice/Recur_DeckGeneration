@@ -20,6 +20,18 @@ def _int(name: str, default: int) -> int:
         return default
 
 
+def _float(name: str, default: float | None) -> float | None:
+    v = os.environ.get(name, "").strip().lower()
+    if not v:
+        return default
+    if v in ("none", "off", "0", "no"):
+        return None if default is not None else 0.0
+    try:
+        return float(v)
+    except ValueError:
+        return default
+
+
 def _bool(name: str, default: bool) -> bool:
     v = os.environ.get(name, "").strip().lower()
     return default if not v else v in ("1", "true", "yes", "on")
@@ -42,6 +54,8 @@ class Settings:
     offline: bool = False                   # replay / --offline: serve from cache only, never touch the network
     vision_qa: bool = True                  # False (--no-vision): skip render + vision QA, layer A checks only
     server_fallback: bool = True            # Anthropic server-side refusal fallback ("fallbacks": "default")
+    max_cost_usd: float | None = 2.00       # RECUR_MAX_COST_USD: hard ceiling per run (None / 0 = no cap)
+    firecrawl_usd_per_credit: float = 0.0   # FIRECRAWL_USD_PER_CREDIT: counts Firecrawl credits toward the cap
 
     @property
     def cache_dir(self) -> Path:
@@ -69,6 +83,8 @@ class Settings:
             use_cache=_bool("RECUR_USE_CACHE", True),
             offline=_bool("RECUR_OFFLINE", False),
             server_fallback=_bool("RECUR_SERVER_FALLBACK", True),
+            max_cost_usd=_float("RECUR_MAX_COST_USD", cls.max_cost_usd),
+            firecrawl_usd_per_credit=_float("FIRECRAWL_USD_PER_CREDIT", 0.0) or 0.0,
         )
         return replace(s, **overrides) if overrides else s
 
@@ -82,7 +98,8 @@ class Settings:
                            "vision": self.model_vision},
                 "max_qa_rounds": self.max_qa_rounds, "firecrawl_rpm": self.firecrawl_rpm,
                 "fetch_mode": self.fetch_mode, "offline": self.offline, "use_cache": self.use_cache,
-                "vision_qa": self.vision_qa}
+                "vision_qa": self.vision_qa, "max_cost_usd": self.max_cost_usd,
+                "firecrawl_usd_per_credit": self.firecrawl_usd_per_credit}
 
     def secrets(self) -> list[str]:
         return [v for v in (self.anthropic_api_key, self.firecrawl_api_key) if v]

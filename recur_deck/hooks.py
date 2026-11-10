@@ -8,9 +8,11 @@
 Hooks and their keyword arguments (pipeline.py fires them):
   after_profile(ctx, entity, profile)                -> None
   after_competitors(ctx, entity, comps_out)          -> None
-  after_write(ctx, content)                          -> list[str]   problems found in the draft
-  after_vision(ctx, content, pngs, manifest)         -> list[dict]  finding-like dicts
-  after_run(ctx, report)                             -> None        report is the final qa_report
+  after_write(ctx, content)                          -> list[str]   problems found in the draft (logged)
+  after_vision(ctx, content, pngs, manifest)         -> list[dict]  fix dicts {fix, field, severity, reason, ...};
+                                                                     the QA loop routes the major ones (the critic)
+  after_run(ctx, report)                             -> None        report is the final qa_report (market graph,
+                                                                     thesis history)
 
 `fire(name, **kw)` calls every handler in registration order and returns their results flattened into one list
 (None counts as nothing). A handler that raises is logged and skipped: a hook never breaks a run.

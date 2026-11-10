@@ -1,4 +1,4 @@
-"""Disk cache for every external response + a cost ledger.
+"""Disk cache for every external response + a cost ledger with a hard ceiling (RECUR_MAX_COST_USD).
 
 Cache entries live under runs/_cache/<namespace>/<k[:2]>/<k>.json (or .bin for downloads), keyed by
 sha256(method + url + body). Secrets are never part of the key material or the stored entry: callers pass
@@ -67,6 +67,10 @@ class DiskCache:
         m.write_text(json.dumps(meta), "utf-8")
 
 
+class BudgetExceeded(Exception):
+    """An external call would take the run past its cost cap; it was not sent."""
+
+
 @dataclass
 class CostEntry:
     service: str
@@ -83,9 +87,29 @@ class CostEntry:
 class CostLedger:
     """Thread-safe record of every external call (cached ones too, at zero cost)."""
 
-    def __init__(self):
+    def __init__(self, cap_usd: float | None = None, usd_per_credit: float = 0.0):
         self.entries: list[CostEntry] = []
         self._lock = threading.Lock()
+        self.cap_usd = cap_usd                # None: no ceiling
+        self.usd_per_credit = usd_per_credit  # Firecrawl credits counted toward the cap at this price
+        self.budget_hits: list[str] = []      # every refused call, in order (callers may swallow the exception)
+
+    def spend_usd(self) -> float:
+        """Claude dollars plus Firecrawl credits at usd_per_credit: what the cap is measured against."""
+        with self._lock:
+            return round(sum(e.cost_usd + e.credits * self.usd_per_credit for e in self.entries), 4)
+
+    def guard(self, service: str, label: str, est_usd: float) -> None:
+        """Raise BudgetExceeded (and remember it) if this call's estimated cost would pass the cap."""
+        if self.cap_usd is None:
+            return
+        spent = self.spend_usd()
+        if spent + est_usd > self.cap_usd:
+            msg = (f"{service} {label}: ${spent:.2f} spent + ~${est_usd:.2f} for this call would pass the "
+                   f"${self.cap_usd:.2f} cap (RECUR_MAX_COST_USD); not sent")
+            with self._lock:
+                self.budget_hits.append(msg)
+            raise BudgetExceeded(msg)
 
     def record(self, service: str, endpoint: str, status: int | str, latency_ms: int, cost_usd: float = 0.0,
                credits: float = 0.0, cached: bool = False, note: str = "") -> None:
@@ -112,7 +136,8 @@ class CostLedger:
     def to_json(self) -> dict:
         with self._lock:
             entries = [asdict(e) for e in self.entries]
-        return {"total_usd": self.total_usd(), "by_service": self.totals(), "calls": entries,
+        return {"total_usd": self.total_usd(), "spend_usd_for_cap": self.spend_usd(), "cap_usd": self.cap_usd,
+                "budget_hits": list(self.budget_hits), "by_service": self.totals(), "calls": entries,
                 "note": "Claude cost is computed from token usage; Firecrawl is in credits (creditsUsed when "
                         "the API reports it); direct page fetches are free."}
 

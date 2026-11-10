@@ -113,7 +113,31 @@ def writer_system_prompt() -> str:
                   STYLE_EXAMPLES=style_examples(), STYLE_RULES=qa.STYLE_RULES_FOR_PROMPT)
 
 
-def write_deck(ctx: Ctx, entity: dict, profile: dict, comps_out: dict, problems: list[str] | None = None) -> DeckContent:
+THESIS_KEYS = ("thesis", "lever", "lever_gap_evidence_ids")
+
+
+def merge_section(current: DeckContent, new_data: dict, section: str) -> dict:
+    """The current deck with only `section` taken from the new draft: "thesis" (the three points, the lever and
+    its gap ids) or "market" (slide 3). The frozen section stays byte-identical."""
+    data = current.model_dump()
+    if section == "thesis":
+        for k in THESIS_KEYS:
+            data[k] = new_data.get(k, data[k])
+    elif section == "market":
+        data["market"] = new_data["market"]
+    else:
+        raise ValueError(f"unknown section {section!r}")
+    return data
+
+
+def write_deck(ctx: Ctx, entity: dict, profile: dict, comps_out: dict, problems: list[str] | None = None,
+               section: str = "all", current: DeckContent | None = None) -> DeckContent:
+    """Write the deck (section="all"), or rewrite one section of `current` ("thesis" or "market") and merge it in,
+    keeping the other section exactly as it is. `problems` are what the QA loop found; they go to the writer."""
+    if section not in ("all", "thesis", "market"):
+        raise ValueError(f"unknown section {section!r}")
+    if section != "all" and current is None:
+        raise ValueError("a section rewrite needs the current deck")
     comps = comps_out["competitors"]
     mc = min_competitors(len(comps), comps_out.get("thin_market", False))
     system = writer_system_prompt()
@@ -121,22 +145,31 @@ def write_deck(ctx: Ctx, entity: dict, profile: dict, comps_out: dict, problems:
     if mc < 5:
         blocks.append(("note", f"This is a thin market: place all {len(comps)} competitors you were given "
                                f"(at least {mc}); still use at least 3 of the 4 cells counting the target's."))
+    if section != "all":
+        other = "market map (slide 3)" if section == "thesis" else "thesis (slide 2), lever and gap ids"
+        blocks += [("current_deck", current.model_dump()),
+                   ("rewrite_only", f"Rewrite only the {'thesis (slide 2), lever and gap ids' if section == 'thesis' else 'market map (slide 3)'} "
+                                    f"to fix the problems below. Return the whole deck; the {other} is kept exactly as "
+                                    f"it is in current_deck whatever you return.")]
     valid = {e.id for e in ctx.evidence.items()}
+    label = "write_deck" if section == "all" else f"write_deck:{section}"
     best: DeckContent | None = None
     for attempt in range(2):
         b = blocks + ([("problems_with_previous_draft", problems)] if problems else [])
         raw = ctx.claude.ask(ctx.settings.model_writer, system, b, DeckContent, effort="high", max_tokens=32000,
-                             context={"min_competitors": min(mc, 2)}, label="write_deck")
+                             context={"min_competitors": min(mc, 2)}, label=label)
         data, notes = enforce(raw.model_dump(), entity, comps, valid)
         for n in notes:
             ctx.warn(n)
+        if section != "all":
+            data = merge_section(current, data, section)
         try:
-            content = DeckContent.model_validate(data, context={"min_competitors": mc})
+            content = DeckContent.model_validate(data, context={"min_competitors": mc if section != "thesis" else 0})
         except ValidationError as e:
             problems = [str(err.get("msg")) for err in e.errors()] + notes
             log.info("writer draft invalid after enforcement (%s); asking again", problems)
             continue
-        thesis = copy_checks.thesis_problems(content, ctx.evidence)
+        thesis = copy_checks.thesis_problems(content, ctx.evidence) if section != "market" else []
         if thesis and attempt == 0:
             best, problems = content, thesis
             log.info("writer draft breaks the thesis rules (%s); asking again", thesis)

@@ -1,5 +1,6 @@
 """Known defects D1-D12 of the three live decks (table in docs/agents/README.md), as tests on the frozen runs in
-tests/fixtures_live/. Each starts as xfail(strict=True); the owning agent removes the marker when the fix lands.
+tests/fixtures_live/. Each started as xfail(strict=True); every marker was removed when its fix landed, so all of
+them now pass as ordinary tests.
 
 Functions under test are imported inside each test, so collection works before they exist.
 """

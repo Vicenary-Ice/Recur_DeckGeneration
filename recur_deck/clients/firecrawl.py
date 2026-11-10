@@ -81,6 +81,13 @@ class Firecrawl:
     def _post(self, path: str, body: dict, credits) -> dict:
         if not self.key and not self.http.settings.offline:
             raise ServiceUnavailable("firecrawl", "no-key", "FIRECRAWL_API_KEY not set")
+        ledger = self.http.ledger
+        if ledger.cap_usd is not None and not self.http.settings.offline:  # cached calls are free: guard real ones
+            from ..cache import cache_key
+            if self.http.cache.get("firecrawl", cache_key("POST", f"{BASE}{path}", body)) is None:
+                limit = int(body.get("limit") or 10)
+                est = (2 * math.ceil(limit / 10) + (limit if body.get("scrapeOptions") else 0)) if path == "/search" else 1
+                ledger.guard("firecrawl", path, est * ledger.usd_per_credit)
         r = self.http.request_json("firecrawl", "POST", f"{BASE}{path}", json_body=body,
                                    headers={"Authorization": f"Bearer {self.key}"} if self.key else None,
                                    cost_fn=lambda d: (0.0, float(credits(d))), endpoint=path)

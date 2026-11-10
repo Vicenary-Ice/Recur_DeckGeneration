@@ -19,6 +19,7 @@ from typing import Callable
 
 from . import build as builder
 from . import hooks, market_graph, qa
+from .cache import BudgetExceeded
 from .clients.http import OfflineMiss
 from .config import Settings
 from .evidence import EvidenceStore
@@ -29,6 +30,7 @@ from .spec import (CELLS, MAP_LOGO, MAP_TYPESET_MAX_H, MAX_PER_CELL, MIN_LOGO_H,
 from .stages import competitors as s_comp
 from .stages import entity as s_entity
 from .stages import logo_sources as s_logos
+from .stages import placement as s_placement
 from .stages import profile as s_profile
 from .stages import vision_qa as s_vision
 from .stages import write as s_write
@@ -54,9 +56,25 @@ class OfflineCacheMiss(Exception):
         self.stage, self.call, self.total = stage, call, total
 
 
-def offline_gate(ctx: Ctx, stage: str) -> None:
+def offline_gate(ctx: Ctx, stage: str, budget: bool = True) -> None:
     if ctx.strict_offline and ctx.cache.misses:
         raise OfflineCacheMiss(stage, ctx.cache.misses[0], len(ctx.cache.misses))
+    if budget:  # research stages stop on the cost cap; the QA stage delivers the best deck instead
+        budget_gate(ctx, stage)
+
+
+class BudgetStop(Exception):
+    """A research stage needed a call the cost cap refused: the run stops (exit 2) before a deck is built."""
+
+    def __init__(self, stage: str, hit: str):
+        super().__init__(f"cost cap reached in stage '{stage}': {hit}. Raise RECUR_MAX_COST_USD to finish this deck.")
+        self.stage = stage
+
+
+def budget_gate(ctx: Ctx, stage: str) -> None:
+    """Research stages: a refused call (even one a fallback swallowed) stops the run."""
+    if ctx.ledger.budget_hits:
+        raise BudgetStop(stage, ctx.ledger.budget_hits[0])
 
 
 # ------------------------------------------------------------------ logging
@@ -111,6 +129,9 @@ class QAState:
     review_notes: list[str] = field(default_factory=list)
     seen_hashes: set[str] = field(default_factory=set)
     graph: object | None = None  # market_graph.MarketGraph shared across runs (checks read it through extra)
+    regens: dict[str, int] = field(default_factory=lambda: {"thesis": 0, "market": 0})
+    added_competitor: bool = False
+    budget_stop: str | None = None  # set when the cost cap stopped the QA loop
 
     @property
     def name(self) -> str:
@@ -201,7 +222,7 @@ def fix_relayout(st: QAState, names: list[str]) -> dict:
     return {"fix": "relayout", "applied": False, "why": "no valid cell and minimum competitor count reached"}
 
 
-def fix_swap_logo(st: QAState, name: str) -> dict:
+def fix_swap_logo(st: QAState, name: str, sharper: bool = False) -> dict:
     lg = st.logos.get(name)
     if lg is None:
         return {"fix": "swap_logo", "applied": False, "why": f"unknown logo {name}"}
@@ -210,13 +231,89 @@ def fix_swap_logo(st: QAState, name: str) -> dict:
         return {"fix": "swap_logo", "applied": False, "why": "already typeset"}
     alts = lg.get("alternatives") or []
     old = lg.get("source")
+    if sharper:  # logo_low_res: only an alternative with more source pixels (or a vector) helps
+        have = lg.get("native_w") or 0
+        alts[:] = sorted((a for a in alts if a.get("native_w") is None or (a.get("native_w") or 0) > have),
+                         key=lambda a: -(a.get("native_w") or 10 ** 9))
     if alts:
         nxt = alts.pop(0)
-        lg.update({"png": nxt["path"], "source": nxt["source"], "aspect": nxt["aspect"], "ok": True, "problems": []})
+        lg.pop("cropped_tagline", None)
+        lg.update({"png": nxt["path"], "source": nxt["source"], "aspect": nxt["aspect"], "ok": True, "problems": [],
+                   "native_w": nxt.get("native_w"), "native_h": nxt.get("native_h"),
+                   **({"cropped_tagline": True} if nxt.get("cropped_tagline") else {})})
     else:
-        lg.update(s_logos.typeset(name, st.ctx.run_dir / "logos" / "_typeset"))
+        lg.pop("cropped_tagline", None)
+        lg.update(s_logos.typeset(name, st.ctx.run_dir / "logos" / "_typeset", st.entity.get("aliases", [])
+                                  if name == st.name else []))
         st.ctx.flag("typeset_logos", sorted({*st.ctx.report["flags"].get("typeset_logos", []), name}))
     return {"fix": "swap_logo", "applied": True, "company": name, "from": old, "to": lg["source"]}
+
+
+def fix_crop_tagline(st: QAState, name: str) -> dict:
+    """logo_tagline_microtext: crop the tagline (one cached vision check of the crop), else swap the logo."""
+    lg = st.logos.get(name)
+    if lg is None:
+        return {"fix": "crop_tagline", "applied": False, "why": f"unknown logo {name}"}
+    res = s_logos.crop_logo(st.ctx, name, lg, st.ctx.run_dir / "logos",
+                            st.entity.get("aliases", []) if name == st.name else [])
+    return res if res["applied"] else {**fix_swap_logo(st, name), "after": res.get("why")}
+
+
+def fix_regenerate(st: QAState, section: str, problems: list[str]) -> dict:
+    """Re-ask the writer for one section (thesis or market) with every problem found, keeping the other section
+    byte-identical. At most 2 per section per deck."""
+    fix = "regenerate_market" if section == "market" else "regenerate_thesis"
+    if st.regens[section] >= 2:
+        st.review_notes.append(f"{section}: still failing after 2 rewrites ({'; '.join(problems)[:300]})")
+        return {"fix": fix, "applied": False, "why": "2 rewrites used"}
+    st.regens[section] += 1
+    before = st.content
+    try:
+        new = s_write.write_deck(st.ctx, st.entity, st.profile, st.comps, problems=list(dict.fromkeys(problems)),
+                                 section=section, current=st.content)
+    except BudgetExceeded:
+        raise
+    except Exception as e:  # noqa: BLE001 - the old content stays; the issues stay open
+        return {"fix": fix, "applied": False, "why": f"{type(e).__name__}: {str(e)[:200]}"}
+    st.content = new
+    changed = new.model_dump_json() != before.model_dump_json()
+    return {"fix": fix, "applied": changed, "problems": len(problems), **({} if changed else {"why": "same content"})}
+
+
+def fix_add_competitor(st: QAState, f: dict) -> tuple[dict, str | None]:
+    """Critic says an obvious competitor is missing. If a company the reason names is a candidate this run found
+    (verified or not), verify it (cached if done before) and, if it passes, put it on the map via the market
+    rewrite. Never adds a company from the critic's memory. Once per deck. Returns (log entry, market problem)."""
+    if st.added_competitor:
+        return {"fix": "add_competitor", "applied": False, "why": "already used once"}, None
+    st.added_competitor = True
+    reason = f.get("reason", "")
+    p = st.ctx.run_dir / "candidates.json"
+    cands = json.loads(p.read_text("utf-8")) if p.exists() else []
+    placed = {c.domain for c in st.content.market.competitors}
+    hit = next((c for c in cands if c["domain"] not in placed and (
+        re.search(rf"(?<![A-Za-z0-9]){re.escape(c['name'])}(?![A-Za-z0-9])", reason, re.I) or c["domain"] in reason)), None)
+    if hit is None:
+        st.ctx.warn(f"critic: missing competitor not among this run's candidates ({reason[:160]})")
+        return {"fix": "add_competitor", "applied": False, "why": "not a candidate this run found"}, None
+    known = next((v for v in st.comps["competitors"] if v["domain"] == hit["domain"]), None)
+    if known is None:
+        c = s_comp.Cand(hit["domain"], names=dict(hit.get("names") or {hit["name"]: 1}), channels=set(hit.get("channels", [])),
+                        head_to_head=hit.get("head_to_head", False), mentions=hit.get("mentions", []))
+        try:
+            v = s_comp._verify(st.ctx, st.entity, st.profile, c)
+        except BudgetExceeded:
+            raise
+        except Exception as e:  # noqa: BLE001
+            return {"fix": "add_competitor", "applied": False, "why": f"verification failed: {type(e).__name__}"}, None
+        if not v or not (v["is_software_vendor"] and v["same_vertical"] and v["operating"] and v["relevance"] >= 0.45):
+            return {"fix": "add_competitor", "applied": False, "company": hit["name"], "why": "did not pass verification"}, None
+        known = s_comp.record_evidence(st.ctx, v)
+        st.comps["competitors"].append(known)
+        st.logos[known["name"]] = s_logos.resolve_company(st.ctx, known["name"], known["domain"], [], known.get("homepage"),
+                                                          st.ctx.run_dir / "logos")
+    return ({"fix": "add_competitor", "applied": True, "company": known["name"]},
+            f"market.competitors: add {known['name']} ({known['domain']}) to the map: {reason}")
 
 
 def fix_resize_typeset(st: QAState, name: str, defect: str) -> dict:
@@ -293,23 +390,45 @@ def _subfield(st: QAState, element: str, description: str) -> str:
     return element
 
 
-def apply_fixes(st: QAState, issues: list[qa.Issue], defects: list) -> list[dict]:
-    """Route Layer-A errors and major vision defects through the fix menu (§9)."""
+THESIS_REGEN_CODES = {"lever_unsupported", "durability_missing", "why_now_unsupported"}
+
+
+def apply_fixes(st: QAState, issues: list[qa.Issue], defects: list, critic_fixes: list[dict] | tuple = ()) -> list[dict]:
+    """Route Layer-A errors, major vision defects and major critic findings through the fix menu (§9).
+
+    rewrite_copy / rewrite_shorter   one field rewritten (2 per field); lever, durability and why-now problems
+                                     re-ask the writer for the thesis only (2 per deck)
+    regenerate_market                re-ask the writer for the market section only, the thesis frozen (2 per deck)
+    add_competitor                   a candidate the critic named is verified and added via the market rewrite (1)
+    swap_logo                        tagline micro-text: crop, then the next logo, then typeset; low resolution:
+                                     a sharper alternative, then typeset; others: the next logo, then typeset
+    relayout, shorten_display_name, rebuild  as before
+    """
     fixes: list[dict] = []
     rewrites: dict[str, list[str]] = {}
     swaps: list[str] = []
+    crops: list[str] = []
+    sharper: list[str] = []
     resizes: dict[str, str] = {}
     relayouts: list[list[str]] = []
+    market: list[str] = []
+    thesis: list[str] = []
+    add: list[dict] = []
     shorten = rebuild = False
     target_ids = {"cover_logo", "target_logo", f"logo:{st.name}"}
 
     for i in issues:
         if i.severity != "error":
             continue
-        if i.fix in ("rewrite_shorter", "rewrite_copy"):
+        if i.fix == "regenerate_market":
+            market.append(f"{i.field}: {i.message}")
+        elif i.fix == "rewrite_copy" and i.code in THESIS_REGEN_CODES:
+            thesis.append(f"{i.field}: {i.message}")
+        elif i.fix in ("rewrite_shorter", "rewrite_copy"):
             rewrites.setdefault(i.field, []).append(i.message)
         elif i.fix == "swap_logo":
-            swaps.append(i.field.removeprefix("logo:"))
+            name = i.field.removeprefix("logo:")
+            (crops if i.code == "logo_tagline_microtext" else sharper if i.code == "logo_low_res" else swaps).append(name)
         elif i.fix == "relayout":
             relayouts.append([p.removeprefix("logo:") for p in i.field.split("|")])
         elif i.fix == "shorten_display_name":
@@ -338,6 +457,25 @@ def apply_fixes(st: QAState, issues: list[qa.Issue], defects: list) -> list[dict
             rewrites.setdefault(_subfield(st, el, d.description), []).append(reason)
         else:
             st.review_notes.append(f"slide {d.slide}: {d.description}")
+    for f in critic_fixes:
+        if f.get("severity") != "major":
+            continue
+        field, reason = f["field"], f["reason"]
+        if f["fix"] == "regenerate_market":
+            market.append(f"{field}: {reason}")
+        elif f["fix"] == "rewrite_copy" and (f.get("category") == "generic_thesis" or not re.fullmatch(
+                r"thesis\[\d\]\.(headline|subline)|market\.(subtitle|our_take\.headline|our_take\.points\[\d\])", field)):
+            (thesis if field.startswith("thesis") or f.get("category") == "generic_thesis" else market).append(f"{field}: {reason}")
+        elif f["fix"] in ("rewrite_copy", "rewrite_shorter"):
+            rewrites.setdefault(field, []).append(reason)
+        elif f["fix"] == "swap_logo":
+            swaps.append(field.removeprefix("logo:"))
+        elif f["fix"] == "relayout":
+            relayouts.append([field.removeprefix("logo:")])
+        elif f["fix"] == "add_competitor":
+            add.append(f)
+        else:
+            st.review_notes.append(f"slide {f.get('slide')}: {reason}")
 
     if rebuild:
         if st.rebuilt:
@@ -347,12 +485,34 @@ def apply_fixes(st: QAState, issues: list[qa.Issue], defects: list) -> list[dict
         fixes.append({"fix": "rebuild", "applied": True})
     if shorten:
         fixes.append(fix_shorten_name(st))
+    for f in add[:1]:
+        entry, problem = fix_add_competitor(st, f)
+        fixes.append(entry)
+        if problem:
+            market.append(problem)
+    regenerated: set[str] = set()
+    if thesis:
+        r = fix_regenerate(st, "thesis", thesis)
+        fixes.append(r)
+        if r["applied"]:
+            regenerated.add("thesis")
+    if market:
+        r = fix_regenerate(st, "market", market)
+        fixes.append(r)
+        if r["applied"]:
+            regenerated.add("market")
     for path, reasons in rewrites.items():
-        if path in ("thesis.title", "market.title"):
-            continue
+        if path in ("thesis.title", "market.title") or path.split("[")[0].split(".")[0] in regenerated:
+            continue  # the section was rewritten as a whole; its old field problems no longer apply
         fixes.append(fix_rewrite(st, path, reasons))
+    for name in dict.fromkeys(crops):
+        if name in st.logos:
+            fixes.append(fix_crop_tagline(st, name))
+    for name in dict.fromkeys(sharper):
+        if name in st.logos and name not in crops:
+            fixes.append(fix_swap_logo(st, name, sharper=True))
     for name in dict.fromkeys(swaps):
-        if name in st.logos and name not in resizes:
+        if name in st.logos and name not in resizes and name not in crops and name not in sharper:
             fixes.append(fix_swap_logo(st, name))
     for name, defect in resizes.items():
         fixes.append(fix_resize_typeset(st, name, defect))
@@ -366,92 +526,189 @@ def apply_fixes(st: QAState, issues: list[qa.Issue], defects: list) -> list[dict
     return fixes
 
 
+def run_audit(st: QAState) -> list[qa.Issue]:
+    """The Haiku placement audit (one call per distinct deck; cached). A failure leaves the rules' verdict."""
+    try:
+        return s_placement.audit(st.ctx, st.content, st.ctx.evidence)
+    except BudgetExceeded:
+        raise
+    except Exception as e:  # noqa: BLE001 - e.g. an offline replay without the cached audit
+        st.ctx.warn(f"placement audit unavailable ({type(e).__name__}); placements were checked by the rules only")
+        return []
+
+
+def run_critic(st: QAState, pngs: list, manifest: dict, h: str, critic: dict) -> list[dict]:
+    """Fire after_vision (the founder-eyes critic, capped at 2 calls a deck); keep the newest verdict with the
+    state it judged. Returns the critic's fix dicts."""
+    before = len((st.ctx.report.get("critic") or {}).get("verdicts", []))
+    out = hooks.fire("after_vision", ctx=st.ctx, content=st.content, pngs=pngs, manifest=manifest)
+    verdicts = (st.ctx.report.get("critic") or {}).get("verdicts", [])
+    if len(verdicts) > before:
+        critic.update(verdict=verdicts[-1], hash=h)
+    return [f for f in out if isinstance(f, dict) and "fix" in f]
+
+
+def _critic_summary(v: dict | None) -> dict | None:
+    if not v:
+        return None
+    return {"grades": v["slide_grades"], "mail_ready": v["mail_ready"],
+            "major": [f"{f['target']}: {f['explanation']}" for f in v["findings"] if f["severity"] == "major"],
+            "minor": len([f for f in v["findings"] if f["severity"] == "minor"])}
+
+
 def qa_loop(st: QAState, progress: Progress, deadline: float) -> dict:
+    """Each round: 1. Layer A (built-in + registered checks) and its fixes; 2. the placement audit (one Haiku call)
+    and its market rewrite; 3. render + vision; 4. the critic, only after vision passes, and its fixes. A round
+    that changes the deck is checked again in the next one; after the last round, one more render + vision (+ the
+    critic, within its cap) verifies the final deck. The cost cap stops the fixing, never the delivery."""
     ctx, max_rounds = st.ctx, ctx_rounds(st.ctx)
     vision = ctx.settings.vision_qa
     rounds: list[dict] = []
-    pptx, manifest, issues = build_and_check(st, 0)
+    state = {"pptx": None, "manifest": None, "issues": []}
+
+    def rebuild(k: int) -> None:
+        state["pptx"], state["manifest"], state["issues"] = build_and_check(st, k)
+
+    def errs() -> list[qa.Issue]:
+        return [i for i in state["issues"] if i.severity == "error"]
+
+    def budget() -> bool:
+        if ctx.ledger.budget_hits and not st.budget_stop:
+            st.budget_stop = ctx.ledger.budget_hits[0]
+            st.review_notes.append(f"budget reached: {st.budget_stop}")
+            ctx.warn("cost cap reached during QA: stopped fixing and delivered the best deck so far")
+        return bool(st.budget_stop)
+
+    def applied(rec: dict, key: str) -> bool:
+        return any(f.get("applied") for f in rec.get(key, []))
+
+    rebuild(0)
     can_render = vision  # --no-vision: no render, no PDF, layer A only
     if not vision:
         ctx.warn("visual QA skipped (--no-vision): layer A checks only, no PDF rendered")
-    verdict, pdf, rendered_hash = None, None, None
-    for rnd in range(1, max_rounds + 1):
-        rec: dict = {"round": rnd, "layer_a_before": [i.as_dict() for i in issues if i.severity == "error"]}
-        errors = [i for i in issues if i.severity == "error"]
-        if errors:
-            progress(f"QA round {rnd}: fixing {len(errors)} layout/copy issue(s)")
-            rec["fixes_layer_a"] = apply_fixes(st, errors, [])
-            pptx, manifest, issues = build_and_check(st, rnd)
-            errors = [i for i in issues if i.severity == "error"]
-            rec["layer_a_after"] = [i.as_dict() for i in errors]
-        if errors or not can_render:
-            rec.setdefault("vision", "skipped (--no-vision)" if not vision else None)
-            rounds.append(rec)
-            if not any(f.get("applied") for f in rec.get("fixes_layer_a", [])):
+    verdict, pdf, pngs, rendered_hash = None, None, None, None
+    critic: dict = {"verdict": None, "hash": None}
+    try:
+        for rnd in range(1, max_rounds + 1):
+            if budget():
                 break
-            continue
-        if time.time() > deadline:
-            ctx.warn("time budget reached: skipped further visual QA rounds")
-            rounds.append(rec)
-            break
-        h = st.state_hash()
-        if h in st.seen_hashes:
-            rec["stopped"] = "same content and logos as an earlier round (no progress)"
-            rounds.append(rec)
-            break
-        st.seen_hashes.add(h)
-        try:
-            progress(f"QA round {rnd}: rendering and visual check")
-            pdf, pngs, annotated = s_vision.render_slides(pptx, ctx.run_dir, manifest)
-            rendered_hash = h
-            verdict = s_vision.check(ctx, pngs, annotated, manifest, st.content.model_dump(), f"vision_qa:r{rnd}")
-        except OfflineMiss:
-            ctx.warn("replay: visual check not in cache, skipped")
-            rounds.append(rec)
-            break
-        except (RuntimeError, FileNotFoundError, OSError) as e:
-            if "LibreOffice" in str(e) or isinstance(e, FileNotFoundError):
-                can_render = False
-                ctx.warn(f"rendering unavailable ({e}); delivered the .pptx without PDF or visual QA. "
-                         "Install LibreOffice: macOS `brew install --cask libreoffice`, Linux `apt install libreoffice-impress`")
+            rec: dict = {"round": rnd, "layer_a_before": [i.as_dict() for i in errs()]}
+            if errs():
+                progress(f"QA round {rnd}: fixing {len(errs())} layout/copy issue(s)")
+                rec["fixes_layer_a"] = apply_fixes(st, errs(), [])
+                rebuild(rnd)
+                rec["layer_a_after"] = [i.as_dict() for i in errs()]
+            if errs():
+                rec.setdefault("vision", "skipped (--no-vision)" if not vision else None)
+                rounds.append(rec)
+                if budget() or not applied(rec, "fixes_layer_a"):
+                    break
+                continue
+            audit = run_audit(st)
+            if audit:
+                rec["placement_audit"] = [i.as_dict() for i in audit]
+                if not budget():
+                    progress(f"QA round {rnd}: rewriting the market map ({len(audit)} placement issue(s))")
+                    rec["fixes_audit"] = apply_fixes(st, audit, [])
+                    if applied(rec, "fixes_audit"):
+                        rebuild(rnd)
+                        rounds.append(rec)
+                        continue
+            if not can_render:
+                rec.setdefault("vision", "skipped (--no-vision)" if not vision else None)
                 rounds.append(rec)
                 break
-            raise
-        rec["vision"] = verdict.model_dump()
-        if verdict.passed:
-            hooks.fire("after_vision", ctx=ctx, content=st.content, pngs=pngs, manifest=manifest)
+            if time.time() > deadline:
+                ctx.warn("time budget reached: skipped further visual QA rounds")
+                rounds.append(rec)
+                break
+            h = st.state_hash()
+            if h in st.seen_hashes:
+                rec["stopped"] = "same content and logos as an earlier round (no progress)"
+                rounds.append(rec)
+                break
+            st.seen_hashes.add(h)
+            try:
+                progress(f"QA round {rnd}: rendering and visual check")
+                pdf, pngs, annotated = s_vision.render_slides(state["pptx"], ctx.run_dir, state["manifest"])
+                rendered_hash = h
+                verdict = s_vision.check(ctx, pngs, annotated, state["manifest"], st.content.model_dump(), f"vision_qa:r{rnd}")
+            except OfflineMiss:
+                ctx.warn("replay: visual check not in cache, skipped")
+                rounds.append(rec)
+                break
+            except (RuntimeError, FileNotFoundError, OSError) as e:
+                if "LibreOffice" in str(e) or isinstance(e, FileNotFoundError):
+                    can_render = False
+                    ctx.warn(f"rendering unavailable ({e}); delivered the .pptx without PDF or visual QA. "
+                             "Install LibreOffice: macOS `brew install --cask libreoffice`, Linux `apt install libreoffice-impress`")
+                    rounds.append(rec)
+                    break
+                raise
+            rec["vision"] = verdict.model_dump()
+            if verdict.passed:
+                progress(f"QA round {rnd}: founder-eyes review")
+                cfix = run_critic(st, pngs, state["manifest"], h, critic)
+                if critic["hash"] == h:
+                    rec["critic"] = _critic_summary(critic["verdict"])
+                majors = [f for f in cfix if f.get("severity") == "major"]
+                if majors and not budget():
+                    progress(f"QA round {rnd}: fixing {len(majors)} finding(s) from the review")
+                    rec["fixes_critic"] = apply_fixes(st, [], [], critic_fixes=majors)
+                    rounds.append(rec)
+                    if not applied(rec, "fixes_critic"):
+                        break
+                    rebuild(rnd)
+                    continue
+                rounds.append(rec)
+                break
+            majors = [d for d in verdict.defects if d.severity == "major"]
+            progress(f"QA round {rnd}: fixing {len(majors)} visual defect(s)")
+            rec["fixes_vision"] = apply_fixes(st, [], majors)
             rounds.append(rec)
-            break
-        majors = [d for d in verdict.defects if d.severity == "major"]
-        progress(f"QA round {rnd}: fixing {len(majors)} visual defect(s)")
-        rec["fixes_vision"] = apply_fixes(st, [], majors)
-        rounds.append(rec)
-        if not any(f.get("applied") for f in rec["fixes_vision"]):
-            break
-        pptx, manifest, issues = build_and_check(st, rnd)
-        if rnd == max_rounds and not [i for i in issues if i.severity == "error"] and time.time() < deadline:
-            h = st.state_hash()  # verify the last round's fixes (verification, not another fix round)
-            if h not in st.seen_hashes:
-                st.seen_hashes.add(h)
-                try:
-                    pdf, pngs, annotated = s_vision.render_slides(pptx, ctx.run_dir, manifest)
-                    rendered_hash = h
-                    verdict = s_vision.check(ctx, pngs, annotated, manifest, st.content.model_dump(), "vision_qa:final")
-                    rounds.append({"round": "final-check", "vision": verdict.model_dump()})
-                except OfflineMiss:
-                    verdict = None
+            if not applied(rec, "fixes_vision"):
+                break
+            rebuild(rnd)
+        # verify the last round's fixes (verification, not another fix round)
+        h = st.state_hash()
+        if (can_render and rendered_hash is not None and h not in st.seen_hashes and not errs() and not budget()
+                and time.time() < deadline):
+            st.seen_hashes.add(h)
+            try:
+                final: dict = {"round": "final-check"}
+                audit = run_audit(st)
+                if audit:
+                    final["placement_audit"] = [i.as_dict() for i in audit]
+                pdf, pngs, annotated = s_vision.render_slides(state["pptx"], ctx.run_dir, state["manifest"])
+                rendered_hash = h
+                verdict = s_vision.check(ctx, pngs, annotated, state["manifest"], st.content.model_dump(), "vision_qa:final")
+                final["vision"] = verdict.model_dump()
+                if verdict.passed:
+                    run_critic(st, pngs, state["manifest"], h, critic)
+                    if critic["hash"] == h:
+                        final["critic"] = _critic_summary(critic["verdict"])
+                rounds.append(final)
+            except OfflineMiss:
+                verdict = None
+    except BudgetExceeded:
+        budget()
+        if st.state_hash() != (rendered_hash or "") and state["pptx"] is not None:
+            rebuild(len(rounds) + 1)  # the deck the fixes left behind, not a stale build
+    audit_final = [] if st.budget_stop else run_audit(st)  # cached when this deck was audited already
     # the delivered PDF must be the delivered PPTX
     if can_render and rendered_hash != st.state_hash():
         try:
-            pdf, _, _ = s_vision.render_slides(pptx, ctx.run_dir, manifest)
+            pdf, _, _ = s_vision.render_slides(state["pptx"], ctx.run_dir, state["manifest"])
             if verdict is not None and rendered_hash is not None:
                 ctx.warn("final deck changed after the last visual check")
                 verdict = None
         except (RuntimeError, FileNotFoundError, OSError) as e:
             can_render, pdf = False, None
             ctx.warn(f"rendering unavailable ({e}); delivered the .pptx only")
-    return {"pptx": pptx, "pdf": pdf, "manifest": manifest, "issues": issues, "verdict": verdict, "rounds": rounds,
-            "can_render": can_render, "vision": vision}
+    return {"pptx": state["pptx"], "pdf": pdf, "manifest": state["manifest"], "issues": state["issues"],
+            "verdict": verdict, "rounds": rounds, "can_render": can_render, "vision": vision, "audit": audit_final,
+            "critic": {**critic, "current": critic["hash"] is not None and critic["hash"] == st.state_hash(),
+                       "calls": (ctx.report.get("critic") or {}).get("calls", 0)}}
 
 
 def ctx_rounds(ctx: Ctx) -> int:
@@ -508,17 +765,33 @@ def write_sources(ctx: Ctx, entity: dict, content: DeckContent, comps: dict, log
 
 
 # ------------------------------------------------------------------ report + delivery
+def critic_findings(qa_out: dict, severity: str) -> list[dict]:
+    """The critic's findings of one severity in its latest verdict. If the deck changed after that verdict (a fix
+    was tried and the 2-call cap left no review of the result), its major findings still count as unresolved."""
+    c = qa_out.get("critic") or {}
+    if not c.get("verdict"):
+        return []
+    note = "" if c.get("current") else " (a fix was tried; the critic did not see the result)"
+    return [{**f, "explanation": f["explanation"] + note} for f in c["verdict"]["findings"] if f["severity"] == severity]
+
+
 def final_status(st: QAState | None, qa_out: dict | None, ctx: Ctx) -> str:
+    """pass: no Layer-A error, the placement audit clean, vision passed and the critic found the final deck
+    mail-ready. pass_with_warnings: only minor findings, warnings, thin market, typeset logos, or a check that could
+    not run (e.g. --no-vision). needs_review: any unresolved error or major finding, or the cost cap was reached."""
     if st is None or qa_out is None:
         return "error"
     errors = [i for i in qa_out["issues"] if i.severity == "error"]
     v = qa_out["verdict"]
     vision = qa_out.get("vision", True)
-    if errors or st.review_notes or (vision and (not qa_out["can_render"] or v is None or not v.passed)):
+    if (errors or st.review_notes or st.budget_stop or qa_out.get("audit") or critic_findings(qa_out, "major")
+            or (vision and (not qa_out["can_render"] or v is None or not v.passed))):
         return "needs_review"
     warns = [i for i in qa_out["issues"] if i.severity == "warn"]
     minor = [d for d in v.defects if d.severity == "minor"] if v else []
-    if warns or minor or ctx.report["fallbacks"] or ctx.report["flags"] or ctx.report["warnings"]:
+    unreviewed = vision and not (qa_out.get("critic") or {}).get("current")
+    if (warns or minor or critic_findings(qa_out, "minor") or unreviewed or ctx.report["fallbacks"]
+            or ctx.report["flags"] or ctx.report["warnings"]):
         return "pass_with_warnings"
     return "pass"
 
@@ -563,12 +836,17 @@ def _qa_and_deliver(ctx: Ctx, st: QAState, report: dict, out_dir: Path | None, p
                     t0: float, timings: dict) -> Result:
     ts = time.time()
     qa_out = qa_loop(st, progress, t0 + HARD_TIMEOUT_S - 60)
-    offline_gate(ctx, "qa")
+    offline_gate(ctx, "qa", budget=False)
     timings["qa"] = round(time.time() - ts, 1)
     sources = write_sources(ctx, st.entity, st.content, st.comps, st.logos)
     status = final_status(st, qa_out, ctx)
     v = qa_out["verdict"]
     errors = [i.as_dict() for i in qa_out["issues"] if i.severity == "error"]
+    cq = qa_out.get("critic") or {}
+    review = list(st.review_notes)
+    review += [f"placement audit: {i.field}: {i.message}" for i in qa_out.get("audit") or []]
+    review += [f"critic ({f['persona']}, slide {f['slide']}) {f['target']}: {f['explanation']}"
+               for f in critic_findings(qa_out, "major")]
     report.update(
         status=status, company=st.name, domain=st.entity["domain"], timings=timings,
         deliverables={"pptx": str(qa_out["pptx"]), "pdf": str(qa_out["pdf"]) if qa_out["pdf"] else None,
@@ -583,7 +861,12 @@ def _qa_and_deliver(ctx: Ctx, st: QAState, report: dict, out_dir: Path | None, p
                if n == st.name or n in {c.name for c in st.content.market.competitors}},
         rounds=qa_out["rounds"], final_layer_a_errors=errors,
         final_layer_a_warnings=[i.as_dict() for i in qa_out["issues"] if i.severity == "warn"],
-        final_vision=v.model_dump() if v else None, needs_review=st.review_notes,
+        final_vision=v.model_dump() if v else None, needs_review=review,
+        placement_audit=[i.as_dict() for i in qa_out.get("audit") or []],
+        critic={"calls": cq.get("calls", 0), "judged_final_deck": bool(cq.get("current")),
+                **(_critic_summary(cq.get("verdict")) or {}),
+                "findings": (cq.get("verdict") or {}).get("findings", [])},
+        cost_cap_usd=ctx.settings.max_cost_usd, budget_reached=st.budget_stop,
     )
     stem = file_stem(st.name)
     extra = []
@@ -682,6 +965,13 @@ def run(name: str, *, domain: str | None = None, hint: str | None = None, non_in
                      graph=market_graph.for_run(settings))
         return _qa_and_deliver(ctx, st, report, out_dir, progress, t0, timings)
     except Exception as e:  # noqa: BLE001 - any stage failure: report it, exit 2
+        if isinstance(e, (BudgetStop, BudgetExceeded)) or (ctx.ledger.budget_hits and not isinstance(e, OfflineCacheMiss)):
+            msg = str(e) if isinstance(e, BudgetStop) else str(BudgetStop(stage, ctx.ledger.budget_hits[0] if ctx.ledger.budget_hits else str(e)))
+            log.error("%s", msg)
+            report.update(status="budget_exceeded", failed_stage=stage, error=msg, budget_hits=ctx.ledger.budget_hits[:20],
+                          timings=timings, cost_cap_usd=ctx.settings.max_cost_usd)
+            _finish(ctx, report, t0)
+            return Result(2, run_dir, report)
         if ctx.strict_offline and ctx.cache.misses:  # the real cause, even if a fallback hid the miss
             miss = e if isinstance(e, OfflineCacheMiss) else OfflineCacheMiss(stage, ctx.cache.misses[0], len(ctx.cache.misses))
             log.error("%s", miss)

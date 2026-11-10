@@ -99,7 +99,7 @@ class Ctx:
     def create(cls, settings: Settings, run_dir: Path, transport=None, claude_client=None) -> "Ctx":
         run_dir.mkdir(parents=True, exist_ok=True)
         cache = DiskCache(settings.cache_dir, read=settings.use_cache or settings.offline)
-        ledger = CostLedger()
+        ledger = CostLedger(settings.max_cost_usd, settings.firecrawl_usd_per_credit)
         http = Http(settings, cache, ledger, transport=transport)
         claude = Claude(settings, cache, ledger, client=claude_client)
         fc = Firecrawl(http, settings.firecrawl_api_key)

@@ -25,6 +25,7 @@ TYPESET_MIN_H = 0.12                                         # in: typeset text 
 TYPESET_MAX_ASPECT = round(MAP_LOGO["max_w"] / TYPESET_MIN_H, 2)  # one line wider than this goes onto 2 lines
 TAGLINE_MAX_SHARE = 0.22                                     # a lower ink band under 22% of the height is a tagline
 BAND_GAP = 0.015                                             # gaps under 1.5% of the height are not band breaks
+SPECK_COVER = 0.02                                           # a band inking under 2% of every row is specks
 
 
 @dataclass
@@ -179,6 +180,7 @@ def ink_bands(img: Image.Image, alpha_min: int = 40) -> list[tuple[int, int]]:
     Gaps under BAND_GAP of the height (anti-aliasing, a dot over an i) do not split a band."""
     a = np.asarray(img.convert("RGBA").getchannel("A")) > alpha_min
     rows = a.any(axis=1)
+    cover = a.mean(axis=1)
     bands: list[list[int]] = []
     for y, ink in enumerate(rows):
         if ink and (not bands or bands[-1][1] != y):
@@ -188,7 +190,8 @@ def ink_bands(img: Image.Image, alpha_min: int = 40) -> list[tuple[int, int]]:
             bands.append([y, y + 1])
         elif ink:
             bands[-1][1] = y + 1
-    return [(a0, a1) for a0, a1 in bands]
+    # Specks (rounded-corner remnants of a removed background box, stray pixels) ink under 2% of any row: not a line
+    return [(a0, a1) for a0, a1 in bands if cover[a0:a1].max() >= SPECK_COVER]
 
 
 def tagline_band(img: Image.Image) -> dict | None:
