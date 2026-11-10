@@ -16,7 +16,7 @@ AXIS_KINDS: dict[str, dict] = {
         "low": "small / single-site", "high": "large / multi-entity / enterprise", "derive": True,
         "titles": [r"customer size", r"company size", r"business size", r"brand size", r"client size", r"firm size",
                    r"customer scale", r"\bsize\b", r"\bscale\b"],
-        "high_cues": [r"\benterprise", r"\blarge\b", r"\bglobal\b", r"\bmulti[- ]?entity", r"\bmultinational",
+        "high_cues": [r"\benterprise(?!\s+resource)", r"\blarge\b", r"\bglobal\b", r"\bmulti[- ]?entity", r"\bmultinational",
                       r"\bbig (brands|companies|firms|programs|retailers)", r"\bfashion houses?\b", r"\bupmarket\b",
                       r"\bmulti[- ]?(site|location|brand)s?\b", r"\b(group|groups)\b"],
         "low_cues": [r"\bsmall\b", r"\bsmb\b", r"\bstart[- ]?ups?\b", r"\bemerging\b", r"\bboutique",

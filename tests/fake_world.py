@@ -359,6 +359,10 @@ class FakeClaude:
             t["evidence_ids"] = ids[:2]
         for c in d["market"]["competitors"]:
             c["evidence_ids"] = [e["id"] for e in ev if e["about"] == c["domain"]][:2]
+            own = [e["id"] for e in ev if e["about"] == c["domain"] and c["domain"] in e["url"]]
+            c["x_evidence_ids"] = c["y_evidence_ids"] = own[:1] or c["evidence_ids"][:1]
+        target = [e["id"] for e in ev if e["about"] == "target"]
+        d["market"]["our_take"]["point_evidence_ids"] = [target[:1], target[1:2] or target[:1]]
         d["market"]["competitors"].append({"name": "Imaginary ERP", "domain": "imaginary-erp.com", "x": "left", "y": "top",
                                            "rationale": "from memory", "evidence_ids": []})  # must be dropped
         return d
@@ -369,6 +373,10 @@ class FakeClaude:
     def a_short_name(self, user):
         opts = _block(user, "options")
         return {"short_name": opts[0]}
+
+    def a_placement_audit(self, user):
+        return {"verdicts": [{"item_id": it["item_id"], "verdict": "supports", "quote": it["quotes"][0]["quote"],
+                              "note": "the quote states it"} for it in _block(user, "items") or []]}
 
     def a_vision_qa(self, user):
         return {"passed": True, "defects": [], "summary": "looks right"}

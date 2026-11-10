@@ -10,11 +10,26 @@ Thin markets: validate with `DeckContent.model_validate(data, context={"min_comp
 from __future__ import annotations
 
 import re
-from typing import Literal
+from typing import Any, Literal
 
 from pydantic import BaseModel, Field, ValidationInfo, field_validator, model_validator
 
+from .axes import AXIS_KINDS, infer_kind
 from .spec import MAX_COMPETITORS, MAX_PER_CELL, MIN_COMPETITORS, TARGET_CELL
+
+AxisKind = Literal["customer_size", "customer_complexity", "product_scope", "industry_depth", "deployment_modernity",
+                   "segment_focus"]
+assert set(AxisKind.__args__) == set(AXIS_KINDS)  # axes.py is the single source of the kinds and their directions
+
+
+def _fill(data: Any, **defaults: Any) -> Any:
+    """Content saved before a field existed: fill it, so old content.json files (fixtures, replays) still load.
+    The fields stay required in the JSON schema, so the writer must always answer them."""
+    if isinstance(data, dict):
+        missing = {k: v() if callable(v) else v for k, v in defaults.items() if k not in data}
+        if missing:
+            return {**data, **missing}
+    return data
 
 
 def _no_newline(v: str) -> str:
@@ -51,9 +66,18 @@ class ThesisPoint(BaseModel):
 
 
 class Axis(BaseModel):
+    kind: AxisKind | None = Field(description="Which ordinal scale this axis is, from the fixed list; low_label is its "
+                                              "low end (left / bottom), high_label its high end (right / top)")
     title: str = Field(description="Axis name, 1-3 words, sentence case, e.g. 'Customer size'")
     low_label: str = Field(description="Left (x) or bottom (y) half. Only y labels may use '\\n' (max 2 lines)")
     high_label: str = Field(description="Right (x) or top (y) half. The target sits in high/high")
+
+    @model_validator(mode="before")
+    @classmethod
+    def _legacy(cls, data: Any) -> Any:
+        if isinstance(data, dict) and "kind" not in data:  # written before axes had a kind: read it from the title
+            return {**data, "kind": infer_kind(data.get("title", ""), data.get("low_label", ""), data.get("high_label", ""))}
+        return data
 
     @field_validator("title")
     @classmethod
@@ -66,8 +90,18 @@ class Competitor(BaseModel):
     domain: str
     x: Literal["left", "right"]
     y: Literal["bottom", "top"]
-    rationale: str = Field(description="One sentence: why it sits in this quadrant, citing evidence")
+    rationale: str = Field(description="One sentence: why it sits in this quadrant, from what the evidence states "
+                                       "(never from what a page does not mention)")
     evidence_ids: list[str] = Field(default_factory=list)
+    x_evidence_ids: list[str] = Field(description="Ids of the quotes that place it on this side of the x axis (>= 1); "
+                                                  "prefer its own site or a neutral directory")
+    y_evidence_ids: list[str] = Field(description="Ids of the quotes that place it on this side of the y axis (>= 1); "
+                                                  "prefer its own site or a neutral directory")
+
+    @model_validator(mode="before")
+    @classmethod
+    def _legacy(cls, data: Any) -> Any:
+        return _fill(data, x_evidence_ids=list, y_evidence_ids=list)
 
     @field_validator("name", "domain")
     @classmethod
@@ -80,6 +114,13 @@ class OurTake(BaseModel):
     points: list[str] = Field(min_length=2, max_length=2,
                               description="Two short reasons competitor GROUPS fall short, <= 10 words each")
     evidence_ids: list[str] = Field(default_factory=list)
+    point_evidence_ids: list[list[str]] = Field(description="One list per point (same order), each with >= 1 id of a "
+                                                            "quote showing that group really lacks what the point says")
+
+    @model_validator(mode="before")
+    @classmethod
+    def _legacy(cls, data: Any) -> Any:
+        return _fill(data, point_evidence_ids=list)
 
     @field_validator("headline")
     @classmethod

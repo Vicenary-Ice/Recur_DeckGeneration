@@ -167,8 +167,10 @@ def _relevance(st: QAState, name: str) -> float:
 
 
 def fix_relayout(st: QAState, names: list[str]) -> dict:
-    """Move the lowest-relevance competitor of the crowded cell to the adjacent valid cell with the most room,
-    else drop it if more than the minimum remain."""
+    """Move the lowest-relevance competitor of the crowded cell to the adjacent valid cell with the most room that
+    its own quotes don't read against (checks.market.cell_conflicts), else drop it if more than the minimum
+    remain."""
+    from .checks.market import cell_conflicts
     if st.relayouts >= 2:
         return {"fix": "relayout", "applied": False, "why": "relayout limit reached"}
     c = st.content
@@ -181,7 +183,8 @@ def fix_relayout(st: QAState, names: list[str]) -> dict:
     victim = min(in_cell, key=lambda x: _relevance(st, x.name))
     counts = _cell_counts(c)
     adjacent = [(("left" if cell[0] == "right" else "right"), cell[1]), (cell[0], ("top" if cell[1] == "bottom" else "bottom"))]
-    options = sorted((a for a in adjacent if counts[a] < MAX_PER_CELL), key=lambda a: counts[a])
+    options = sorted((a for a in adjacent if counts[a] < MAX_PER_CELL
+                      and not cell_conflicts(c, victim, a, st.ctx.evidence)), key=lambda a: counts[a])
     data = c.model_dump()
     st.relayouts += 1
     for comp in data["market"]["competitors"]:

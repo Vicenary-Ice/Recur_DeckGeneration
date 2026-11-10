@@ -205,7 +205,8 @@ def segment_terms(ctx: Ctx, entity: dict, profile: dict | None) -> list[str]:
     return out[:MAX_SEGMENTS]
 
 
-def _collect(ctx: Ctx, entity: dict, profile: dict | None = None) -> tuple[list[Doc], list[Vendor], dict[str, int]]:
+def _collect(ctx: Ctx, entity: dict, profile: dict | None = None,
+             segments: list[str] | None = None) -> tuple[list[Doc], list[Vendor], dict[str, int]]:
     """Documents to read for mentions, vendor homepages from the similar and segment channels, and the number
     of searches per channel."""
     names = list(dict.fromkeys([entity["display_name"], *entity.get("aliases", [])]))[:2]
@@ -222,7 +223,7 @@ def _collect(ctx: Ctx, entity: dict, profile: dict | None = None) -> tuple[list[
     jobs += [("roundup", f"{category_phrase(vertical)} software", {"include_domains": CATEGORY_DIRECTORIES, "limit": 3,
                                                                    "with_markdown": True})]
     noun = "ERP" if re.search(r"\berp\b", vertical, re.I) else "management software"
-    for seg in segment_terms(ctx, entity, profile):
+    for seg in segment_terms(ctx, entity, profile) if segments is None else segments:
         jobs += [("segment", f"{seg} software", {"exclude_domains": [tdom], "limit": 2, "with_markdown": True, "segment": seg}),
                  ("segment", f"{seg} {noun}", {"exclude_domains": [tdom], "limit": 8, "segment": seg})]
     counts: dict[str, int] = {}
@@ -616,7 +617,8 @@ def _dedupe(vs: list[dict]) -> list[dict]:
 
 def discover(ctx: Ctx, entity: dict, profile: dict) -> dict:
     graph = market_graph.for_run(ctx.settings)
-    docs, vendors, searches = _collect(ctx, entity, profile)
+    segments = segment_terms(ctx, entity, profile)
+    docs, vendors, searches = _collect(ctx, entity, profile, segments)
     own = _self_compare_docs(ctx, entity, profile, len(docs) + 1)
     mentions = _extract_mentions(ctx, entity, docs + own)
     cands = _resolve(ctx, entity, mentions, docs + own, vendors)
@@ -662,7 +664,8 @@ def discover(ctx: Ctx, entity: dict, profile: dict) -> dict:
     for v in chosen:  # earlier decks' placements of this company, for the map's consistency check
         v["graph_placements"] = [p for p in graph.placements(v["domain"]) if p.get("axis_kind") in AXIS_KINDS]
     out = {"competitors": chosen, "thin_market": thin, "verified_count": len(verified), "candidates": len(cands),
-           "searches": searches, "self_compare_chunks": len(own), "graph_seeds": [s.domain for s in seeds],
+           "searches": searches, "segments_searched": segments, "self_compare_chunks": len(own),
+           "graph_seeds": [s.domain for s in seeds],
            "rejected": [{"name": v["name"], "domain": v["domain"], "relevance": v["relevance"], "same_vertical": v["same_vertical"],
                          "operating": v["operating"], "channels": v["channels"]} for v in verified if v not in chosen]}
     ctx.save_json("competitors.json", out)

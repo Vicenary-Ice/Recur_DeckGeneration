@@ -41,6 +41,16 @@ def min_competitors(n_verified: int, thin: bool) -> int:
     return max(2, min(5, n_verified)) if thin or n_verified < 5 else 5
 
 
+def earlier_placements(comp: dict, limit: int = 6) -> list[dict]:
+    """Where earlier decks put this competitor (market graph), trimmed for the writer: kind, side, label, one quote."""
+    out = []
+    for p in comp.get("graph_placements", [])[:limit]:
+        out.append({"run": p.get("run"), "axis_kind": p.get("axis_kind"), "side": p.get("side"),
+                    **({"label": p["label"]} if p.get("label") else {"read_from": "its quotes"}),
+                    **({"quote": p["quotes"][0][:200]} if p.get("quotes") else {})})
+    return out
+
+
 def _inputs(ctx: Ctx, entity: dict, profile: dict, comps: list[dict]) -> list[tuple[str, object]]:
     facts = {k: v for k, v in profile.items() if isinstance(v, list) and v and isinstance(v[0], dict)}
     ids = list(entity.get("evidence_ids", []))
@@ -48,8 +58,10 @@ def _inputs(ctx: Ctx, entity: dict, profile: dict, comps: list[dict]) -> list[tu
         ids += [f["evidence_id"] for f in v]
     for c in comps:
         ids += c["evidence_ids"]
-    comp_view = [{k: c[k] for k in ("name", "domain", "segment", "scope", "channels", "head_to_head", "relevance",
-                                    "evidence_ids")} for c in comps]
+    comp_view = [{**{k: c[k] for k in ("name", "domain", "segment", "scope", "channels", "head_to_head", "relevance",
+                                       "evidence_ids")},
+                  **({"segments": c["segments"]} if c.get("segments") else {}),
+                  **({"earlier_placements": earlier_placements(c)} if c.get("graph_placements") else {})} for c in comps]
     ent = {k: entity.get(k) for k in ("display_name", "legal_name", "domain", "aliases", "vertical", "one_liner", "evidence_ids")}
     return [("entity", ent), ("profile", facts), ("competitors", comp_view),
             ("evidence", ctx.evidence.subset(ids)), ("recur_levers", RECUR_LEVERS)]
