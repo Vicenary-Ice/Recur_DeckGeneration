@@ -137,6 +137,8 @@ class World:
         m = re.match(r"/assets/logo-(.+)\.png", path)
         if m:
             d = m.group(1)
+            if d != TARGET["domain"] and d not in self.comps:
+                return httpx.Response(404, text="not found")  # e.g. an @2x sibling the site does not have
             if d == TARGET["domain"]:
                 src = FIX / ("ai2000/logos/apparelmagic/1_photo.jpg" if self.bad_target_logo else "ai2000/logos/ai2000/1_brandfetch.png")
             else:

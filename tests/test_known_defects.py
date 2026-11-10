@@ -103,20 +103,17 @@ def test_d8_fdm4_discovery_seeds_from_the_graph():
 
 
 # ---------------------------------------------------------------- Agent 4: logos
-@pytest.mark.xfail(strict=True, reason="D9 — owner Agent 4")
 def test_d9_typeset_name_has_no_brackets():
     from recur_deck.names import brand_short_name
     assert brand_short_name("Sync (iSync Solutions)") == "Sync"
 
 
-@pytest.mark.xfail(strict=True, reason="D10 — owner Agent 4")
 def test_d10_uphance_cover_logo_under_300_dpi():
     from recur_deck.checks.logo_print import print_dpi_issues
     issues = print_dpi_issues(manifest(UPHANCE), jload(UPHANCE, "logo_metrics.json"))
     assert any(i.code == "logo_low_res" and i.field == "logo:Uphance" and i.slide == 1 for i in issues)
 
 
-@pytest.mark.xfail(strict=True, reason="D11 — owner Agent 4")
 def test_d11_aims360_tagline_prints_under_5pt():
     from recur_deck.stages.logo_sources import tagline_issue
     el = next(e for e in manifest(UPHANCE)["elements"] if e["id"] == "logo:AIMS360")

@@ -3,8 +3,16 @@
 Source order: the company's own site (JSON-LD logo, header/nav inline SVG, header <img> 'logo', SVG icon,
 og:image) -> typeset wordmark. Each candidate is whitened by logos.process_logo; a logo with white parts is
 whitened both ways (white = knockout, white = ink) because a site header logo may be made for a dark or a light
-background. All candidates of one company are checked in a single vision call. The first candidate (in source order) that passes wins; the other passing candidates are kept
-for the QA loop's swap_logo fix.
+background. All candidates of one company are checked in a single vision call. Among the candidates that pass,
+the winner is (Agent 4, print grade): one whose tagline would not print as micro-text on the map, then a vector
+(SVG) source, then the highest native resolution, then source order. The other passing candidates are kept for the
+QA loop's swap_logo fix.
+
+Taglines: a lockup whose lower line (e.g. "FASHION TECHNOLOGY") would print under 5pt on the map also goes to the
+vision check cropped (id suffix "t"); the cropped mark wins if the check still reads it as the company's logo.
+Low-resolution rasters: the chosen raster's @2x / -2x / _2x siblings are tried (direct GETs) when it would print
+under 300 dpi on the cover (target) or 200 dpi on the map.
+Typeset fallbacks use the short brand name (names.brand_short_name), never a bracketed full name.
 """
 from __future__ import annotations
 
@@ -23,13 +31,19 @@ from bs4 import BeautifulSoup
 from PIL import Image, ImageDraw
 from pydantic import BaseModel
 
+from .. import layout
 from .. import logos as L
 from ..clients.http import ServiceError
+from ..names import brand_short_name
+from ..spec import MAP_LOGO
 from .base import Ctx, prompt
 
 log = logging.getLogger("recur_deck.logo_sources")
 NAVY = (0x0B, 0x16, 0x30)
 MAX_CANDS = 6
+MIN_TAGLINE_PT = 5.0
+COVER_MIN_DPI, MAP_MIN_DPI = 300, 200
+HIRES_SUFFIXES = ("@2x", "-2x", "_2x")
 
 
 class LogoVerdict(BaseModel):
@@ -40,6 +54,7 @@ class LogoVerdict(BaseModel):
     kind: Literal["wordmark", "lockup", "symbol_only", "banner_or_photo", "generic_icon", "other"]
     legible_on_navy: bool
     confidence: float
+    tagline_present: bool = False  # a hint only; ink_bands decides whether a tagline is cropped
 
 
 class LogoVerdicts(BaseModel):
@@ -298,7 +313,61 @@ def _gather(ctx: Ctx, name: str, domain: str, aliases: list[str], homepage: str 
     return cands
 
 
-def resolve_company(ctx: Ctx, name: str, domain: str, aliases: list[str], homepage: str | None, out_dir: Path) -> dict:
+def map_height(aspect: float) -> float:
+    """How tall a (non-typeset) logo of this aspect prints on the market map, in inches."""
+    return layout.size_for_area(aspect, MAP_LOGO["target_area"], MAP_LOGO["max_w"], MAP_LOGO["max_h"], MAP_LOGO["min_h"])[1]
+
+
+def tagline_issue(logo_png, printed_height_in: float):
+    """qa.Issue `logo_tagline_microtext` when the logo's tagline line prints under 5pt at this height, else None.
+    `logo_png` is a path or a PIL image (white logo on transparency)."""
+    from ..qa import Issue
+    img = logo_png if isinstance(logo_png, Image.Image) else Image.open(logo_png)
+    pt = L.tagline_pt(img, printed_height_in)
+    if pt is None or pt >= MIN_TAGLINE_PT:
+        return None
+    tb = L.tagline_band(img)
+    how = "crop it" if tb and tb["croppable"] else "use another logo (the bands touch or there are more than 2)"
+    return Issue("logo_tagline_microtext", "error", 3, "", f"tagline line prints {pt:.1f}pt tall (min {MIN_TAGLINE_PT:g}pt); "
+                 f"{how}", "swap_logo", pt, MIN_TAGLINE_PT)
+
+
+def _hires_sibling(ctx: Ctx, url: str | None, white: Image.Image, designed_for_dark: bool):
+    """A sharper copy of the same raster at an @2x / -2x / _2x sibling URL: (bytes, white, metrics) or None."""
+    if not url:
+        return None
+    m = re.match(r"^(.*?)(\.(?:png|jpe?g|webp|gif))(\?.*)?$", url, re.I)
+    if not m:
+        return None
+    for suf in HIRES_SUFFIXES:
+        try:
+            data, _ = _download(ctx, f"{m.group(1)}{suf}{m.group(2)}")
+        except Exception:  # noqa: BLE001 - a missing sibling is the normal case
+            continue
+        img, met = L.process_logo(data, designed_for_dark=designed_for_dark)
+        if met.ok and met.native_w and abs(met.aspect - white.width / white.height) / max(met.aspect, 1e-6) < 0.05:
+            return data, img, met
+    return None
+
+
+def _needed_px(aspect: float, is_target: bool) -> float:
+    """Native width the logo needs: 300 dpi on the cover (target), 200 dpi on the map."""
+    map_w = map_height(aspect) * aspect
+    need = map_w * MAP_MIN_DPI
+    if is_target:
+        need = max(need, layout.cover_logo_box(aspect).w * COVER_MIN_DPI)
+    return need
+
+
+def _rank_key(c: "Cand", order: int) -> tuple:
+    met = c.metrics
+    micro = met.get("tagline_pt_map") is not None and met["tagline_pt_map"] < MIN_TAGLINE_PT
+    svg = met.get("source_kind") == "svg"
+    return (micro, not svg, -(met.get("native_w") or 0) if not svg else 0, order)
+
+
+def resolve_company(ctx: Ctx, name: str, domain: str, aliases: list[str], homepage: str | None, out_dir: Path,
+                    is_target: bool = False) -> dict:
     slug = L.slug(name)
     raw_dir = out_dir / "_raw" / slug
     cands = _gather(ctx, name, domain, aliases, homepage)
@@ -313,17 +382,30 @@ def resolve_company(ctx: Ctx, name: str, domain: str, aliases: list[str], homepa
             variants.append((alt, L.process_logo(c.data, designed_for_dark=True)))
         for v, (img, met) in variants:
             v.white, v.metrics = img, met.as_dict()
+            pt = L.tagline_pt(img, map_height(met.aspect)) if met.ok else None
+            if pt is not None:
+                v.metrics["tagline_pt_map"] = pt
             tried.append({"id": v.id, "source": v.source, "url": v.url, "raw": str(raw_path.relative_to(out_dir.parent)),
                           "white_as_ink": v.designed_for_dark, **v.metrics})
             if met.ok:
                 usable.append(v)
-    usable = usable[:MAX_CANDS]
+            cropped = L.crop_tagline(img) if met.ok and pt is not None and pt < MIN_TAGLINE_PT else None
+            if cropped is not None:  # the same mark without its micro-text tagline, checked in the same vision call
+                scale = met.height_px / met.native_h if met.native_h else 1.0
+                cm = L.measure(cropped, met.source_kind, met.knocked_out_white, (met.native_w or 1, met.native_h or 600), scale)
+                ct = Cand(v.id + "t", v.source, v.url, v.data, v.ext, designed_for_dark=v.designed_for_dark)
+                ct.white, ct.metrics = cropped, {**cm.as_dict(), "cropped_tagline": True}
+                tried.append({"id": ct.id, "source": ct.source, "url": ct.url, "raw": str(raw_path.relative_to(out_dir.parent)),
+                              "white_as_ink": ct.designed_for_dark, **ct.metrics})
+                if cm.ok:
+                    usable.append(ct)
+    usable = usable[:MAX_CANDS + 2]
     passed: list[Cand] = []
     if usable:
         images = []
         for c in usable:
             try:
-                orig, _ = L.load_rgba(c.data)
+                orig = c.white if c.metrics.get("cropped_tagline") else L.load_rgba(c.data)[0]
             except Exception:  # noqa: BLE001 - process_logo already decoded it once
                 orig = c.white
             images.append((f"candidate_id: {c.id} (source: {c.source})", composite(orig, c.white)))
@@ -346,34 +428,41 @@ def resolve_company(ctx: Ctx, name: str, domain: str, aliases: list[str], homepa
                         t["verdict"] = c.verdict
                 if accept(v, [name, *aliases]):
                     passed.append(c)
+    order = {id(c): i for i, c in enumerate(usable)}
+    passed.sort(key=lambda c: _rank_key(c, order[id(c)]))
+    if passed and passed[0].metrics.get("source_kind") != "svg":
+        best = passed[0]
+        if (best.metrics.get("native_w") or 0) < _needed_px(best.metrics["aspect"], is_target):
+            hi = _hires_sibling(ctx, best.url, best.white, best.designed_for_dark)
+            if hi is not None and (hi[2].native_w or 0) > (best.metrics.get("native_w") or 0):
+                best.white, best.metrics = hi[1], {**hi[2].as_dict(), "hires_sibling": True}
+                log.info("logo %s: sharper @2x sibling used (%s px wide)", name, hi[2].native_w)
+    keys = ("aspect", "ink_coverage", "ok", "problems", "native_w", "native_h")
     alts = []
     for i, c in enumerate(passed):
         p = L.save(c.white, out_dir / ("" if i == 0 else "_alt") / (f"{slug}.png" if i == 0 else f"{slug}_{i}.png"))
-        alts.append({"path": str(p), "source": c.source, "id": c.id, **{k: c.metrics[k] for k in ("aspect", "ink_coverage", "ok", "problems")}})
+        alts.append({"path": str(p), "source": c.source, "id": c.id, **{k: c.metrics.get(k) for k in keys},
+                     **({"cropped_tagline": True} if c.metrics.get("cropped_tagline") else {})})
     if passed:
         chosen = alts[0]
         return {"name": name, "domain": domain, "png": chosen["path"], "source": chosen["source"], "typeset": False,
                 "ok": True, "problems": [], "aspect": chosen["aspect"], "ink_coverage": chosen["ink_coverage"],
+                "native_w": chosen["native_w"], "native_h": chosen["native_h"], "chosen_id": chosen["id"],
+                **({"cropped_tagline": True} if chosen.get("cropped_tagline") else {}),
                 "alternatives": alts[1:], "tried": tried}
-    img, met = L.typeset_wordmark(name)
-    p = L.save(img, out_dir / f"{slug}.png")
-    return {"name": name, "domain": domain, "png": str(p), "source": "typeset", "typeset": True, "ok": True,
-            "problems": [], "aspect": met.aspect, "ink_coverage": met.ink_coverage, "alternatives": [], "tried": tried}
+    return {"name": name, "domain": domain, **typeset(name, out_dir, aliases), "alternatives": [], "tried": tried}
 
 
 def resolve_all(ctx: Ctx, entity: dict, competitors: list[dict]) -> dict[str, dict]:
     out_dir = ctx.run_dir / "logos"
-    jobs = [(entity["display_name"], entity["domain"], entity.get("aliases", []), entity.get("homepage"))]
-    jobs += [(c["name"], c["domain"], [], c.get("homepage")) for c in competitors]
-    results = ctx.pmap(lambda j: resolve_company(ctx, *j, out_dir), jobs)
+    jobs = [(entity["display_name"], entity["domain"], entity.get("aliases", []), entity.get("homepage"), True)]
+    jobs += [(c["name"], c["domain"], [], c.get("homepage"), False) for c in competitors]
+    results = ctx.pmap(lambda j: resolve_company(ctx, *j[:4], out_dir, is_target=j[4]), jobs)
     logos: dict[str, dict] = {}
     for (name, domain, *_), r in zip(jobs, results):
         if isinstance(r, Exception):
             ctx.warn(f"logo sourcing failed for {name}: {type(r).__name__}: {r}; using typeset wordmark")
-            img, met = L.typeset_wordmark(name)
-            p = L.save(img, out_dir / f"{L.slug(name)}.png")
-            r = {"name": name, "domain": domain, "png": str(p), "source": "typeset", "typeset": True, "ok": True,
-                 "problems": [], "aspect": met.aspect, "ink_coverage": met.ink_coverage, "alternatives": [], "tried": []}
+            r = {"name": name, "domain": domain, **typeset(name, out_dir), "alternatives": [], "tried": []}
         logos[name] = r
     typeset = [n for n, r in logos.items() if r["typeset"]]
     if typeset:
@@ -382,9 +471,44 @@ def resolve_all(ctx: Ctx, entity: dict, competitors: list[dict]) -> dict[str, di
     return logos
 
 
-def typeset(name: str, out_dir: Path) -> dict:
-    """Typeset fallback used by the QA loop when a logo is swapped out and no alternative is left."""
-    img, met = L.typeset_wordmark(name)
+def typeset(name: str, out_dir: Path, aliases: list[str] | tuple[str, ...] = ()) -> dict:
+    """Typeset wordmark of the short brand name ("Sync", not "Sync (iSync Solutions)"). A name that needs 2 lines
+    gets a map text height that keeps each line >= 0.12in (typeset_h)."""
+    short = brand_short_name(name, aliases)
+    img, met = L.typeset_wordmark(short)
     p = L.save(img, out_dir / f"{L.slug(name)}.png")
-    return {"png": str(p), "source": "typeset", "typeset": True, "ok": True, "problems": [], "aspect": met.aspect,
-            "ink_coverage": met.ink_coverage}
+    out = {"png": str(p), "source": "typeset", "typeset": True, "ok": True, "problems": [], "aspect": met.aspect,
+           "ink_coverage": met.ink_coverage, "typeset_name": short, "lines": met.lines, "native_w": None, "native_h": None}
+    if met.lines == 2:
+        out["typeset_h"] = round(2 * L.TYPESET_MIN_H + 0.02, 3)
+    return out
+
+
+def crop_logo(ctx: Ctx, name: str, lg: dict, out_dir: Path, aliases: list[str] | tuple[str, ...] = ()) -> dict:
+    """QA-loop fix for `logo_tagline_microtext`: crop the tagline band off the placed logo, then check with one
+    vision call (cached) that the cropped mark still reads as the company's logo. Updates `lg` in place on success.
+    Returns {"fix": "crop_tagline", "applied": bool, ...}."""
+    if lg.get("typeset") or lg.get("cropped_tagline"):
+        return {"fix": "crop_tagline", "applied": False, "company": name, "why": "typeset or already cropped"}
+    img = Image.open(lg["png"]).convert("RGBA")
+    cropped = L.crop_tagline(img)
+    if cropped is None:
+        return {"fix": "crop_tagline", "applied": False, "company": name, "why": "no separate tagline band to crop"}
+    try:
+        v = ctx.claude.ask(ctx.settings.model_vision, prompt("logo_check"),
+                           [("company", {"name": name, "aliases": list(aliases)}),
+                            ("candidates", [{"candidate_id": "crop", "source": lg.get("source"), "url": None}])],
+                           LogoVerdicts, images=[("candidate_id: crop (tagline cropped)", composite(cropped, cropped))],
+                           effort="medium", label=f"logo_check:crop:{L.slug(name)}", fallbacks=ctx.judge_fallbacks())
+        verdict = next((x for x in v.verdicts if x.candidate_id == "crop"), None)
+    except Exception as e:  # noqa: BLE001 - unverified crops are never used
+        return {"fix": "crop_tagline", "applied": False, "company": name, "why": f"vision check failed: {type(e).__name__}"}
+    if verdict is None or not accept(verdict, [name, *aliases]):
+        return {"fix": "crop_tagline", "applied": False, "company": name,
+                "why": f"cropped mark not read as the logo ({verdict.text_read if verdict else 'no verdict'!r})"}
+    p = L.save(cropped, out_dir / "_cropped" / f"{L.slug(name)}.png")
+    scale = img.height / lg["native_h"] if lg.get("native_h") else 1.0
+    lg.update(png=str(p), aspect=round(cropped.width / cropped.height, 3), cropped_tagline=True,
+              native_w=round(cropped.width / scale) if lg.get("native_w") else None,
+              native_h=round(cropped.height / scale) if lg.get("native_h") else None)
+    return {"fix": "crop_tagline", "applied": True, "company": name, "text_read": verdict.text_read}

@@ -7,6 +7,22 @@ The seven briefs in `docs/agents/` were carried out one after another by a singl
 own branch merged into `main` before the next (order 0, 2, 3, 1, 4, 5, 6). Where a brief did not match the
 code, the brief's intent was followed and the adaptation is listed here, per phase.
 
+### Phase 4: print-grade logos
+- **The target's own cover logo between 200 and 300 dpi is kept, with a warning.** With true native resolution
+  Ai2000's cover logo is about 256 dpi (the briefs estimated 343 by dividing the upscaled width). Following the
+  brief literally, the letter to Ai2000's founder would carry their name in typeset type instead of their logo
+  unless the site has a sharper file. Keeping the real logo changes the deck less, so `logo_low_res` on the target's
+  cover is a warning between `RECUR_TARGET_COVER_MIN_DPI` (default 200) and 300 dpi, and an error below it
+  (Uphance, 106 dpi). Competitors follow the brief exactly (map >= 200 dpi). Set the variable to 300 for the
+  brief's strict rule.
+- Native size is the trimmed ink size in source pixels (processed size / upscale factor), not the file canvas.
+- Taglines are judged at the logo's smallest placement; crops are offered to the existing vision call during
+  sourcing (no extra call) and, in the QA loop, checked by one cached vision call (`logo_sources.crop_logo`).
+- Typeset wordmarks wrap to 2 lines above 8.33:1 (1.0in / 0.12in, was 8.5:1) and a 2-line wordmark gets
+  `typeset_h` 0.26in so each line stays >= 0.12in.
+- `tests/fake_world.py`: an image request for an unknown logo returns 404 (it raised a KeyError), so `@2x`
+  sibling probes behave as on a real site and are cached as recorded failures.
+
 ### Phase 1: thesis quality
 - **Recur's own Ai2000 deck is no longer in the writer prompt**; three placeholder examples from other verticals
   (funeral homes, breweries, nurse staffing) replace it. Recur's lines are kept in `assets/reference_text.json`
