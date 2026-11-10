@@ -169,3 +169,4 @@ own domain and its CDN, for pages and logo files). Rendering needs no network.
   `tests/fixtures_live/`). Deterministic checks live in `recur_deck/checks/` (auto-registered), pipeline
   extension points in `recur_deck/hooks.py`.
 - Fonts in `assets/fonts` are SIL Open Font License (licences included).
+# Recur_DeckGeneration
