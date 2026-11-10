@@ -189,12 +189,23 @@ class Market(BaseModel):
         return self
 
 
+Lever = Literal["ai_native_gtm", "ai_rebuild", "ai_modernization", "built_the_bench"]
+
+
 class DeckContent(BaseModel):
     company: Company
     thesis: list[ThesisPoint] = Field(min_length=3, max_length=3,
-                                      description="[0]=WHY WE'RE HERE (market shift), [1]=WHY WE'RE EXCITED "
-                                                  "(why this company wins), [2]=HOW WE CAN HELP (Recur's levers)")
+                                      description="[0]=WHY WE'RE HERE (what changed in the customers' world), "
+                                                  "[1]=WHY WE'RE EXCITED (why this business is durable), "
+                                                  "[2]=HOW WE CAN HELP (the Recur lever that fits an evidenced gap)")
+    lever: Lever | None = Field(description="The Recur lever point 03 offers; one of the allowed_levers")
+    lever_gap_evidence_ids: list[str] = Field(description="Ids of the quotes that show the gap this lever fixes (>= 1)")
     market: Market
+
+    @model_validator(mode="before")
+    @classmethod
+    def _legacy(cls, data: Any) -> Any:
+        return _fill(data, lever=None, lever_gap_evidence_ids=list)
 
     @model_validator(mode="after")
     def _target_not_competitor(self) -> "DeckContent":

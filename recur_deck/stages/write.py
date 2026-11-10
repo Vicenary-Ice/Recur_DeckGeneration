@@ -3,7 +3,10 @@
 The writer chooses words, axes and placements; code enforces identity and evidence afterwards:
 - company identity comes from entity.json, never from the model;
 - a competitor that is not in the verified list is dropped (no companies from model memory);
-- evidence ids that do not exist are removed.
+- evidence ids that do not exist are removed;
+- the thesis must make an investment case (checks/copy.py): a why-now quote for point 01, a durability quote for
+  point 02, a lever the gap signals allow with its gap quote for point 03, and no copied or stock language. A
+  first draft that breaks those rules is sent back once with the problems; what is left goes to the QA loop.
 """
 from __future__ import annotations
 
@@ -13,6 +16,7 @@ import re
 from pydantic import BaseModel, ValidationError
 
 from .. import fonts, qa
+from ..checks import copy as copy_checks
 from ..models import DeckContent, _norm_domain
 from ..spec import LINE_BUDGETS
 from .base import PROMPTS, Ctx, StageError, prompt, registrable
@@ -20,10 +24,10 @@ from .base import PROMPTS, Ctx, StageError, prompt, registrable
 log = logging.getLogger("recur_deck.write")
 
 RECUR_LEVERS = [
-    {"lever": "AI-native GTM", "proof": "Recur OS -> 40% of August new logos and +50% demos YoY (statii)"},
-    {"lever": "AI rebuild", "proof": "Recur FDE rebuilt the product in less than three months (cognidox)"},
-    {"lever": "AI modernization", "proof": "Rebuilt legacy form layer in C#, >10x faster and cheaper (Keystone)"},
-    {"lever": "Built the bench", "proof": "Recur brought in a new CEO, Head of Sales, VP Eng (collect!)"},
+    {"lever": "ai_native_gtm", "name": "AI-native GTM", "proof": "Recur OS -> 40% of August new logos and +50% demos YoY (statii)"},
+    {"lever": "ai_rebuild", "name": "AI rebuild", "proof": "Recur FDE rebuilt the product in less than three months (cognidox)"},
+    {"lever": "ai_modernization", "name": "AI modernization", "proof": "Rebuilt legacy form layer in C#, >10x faster and cheaper (Keystone)"},
+    {"lever": "built_the_bench", "name": "Built the bench", "proof": "Recur brought in a new CEO, Head of Sales, VP Eng (collect!)"},
     {"values": ["Stewardship", "Growth", "Partnership", "Ambition", "Speed"],
      "model": "Recur buys and holds vertical software forever, with no fund clock and no exit plan"},
 ]
@@ -63,8 +67,11 @@ def _inputs(ctx: Ctx, entity: dict, profile: dict, comps: list[dict]) -> list[tu
                   **({"segments": c["segments"]} if c.get("segments") else {}),
                   **({"earlier_placements": earlier_placements(c)} if c.get("graph_placements") else {})} for c in comps]
     ent = {k: entity.get(k) for k in ("display_name", "legal_name", "domain", "aliases", "vertical", "one_liner", "evidence_ids")}
+    levers = copy_checks.allowed_levers(ctx.evidence)
+    for v in levers.values():
+        ids += v["evidence_ids"]
     return [("entity", ent), ("profile", facts), ("competitors", comp_view),
-            ("evidence", ctx.evidence.subset(ids)), ("recur_levers", RECUR_LEVERS)]
+            ("evidence", ctx.evidence.subset(ids)), ("recur_levers", RECUR_LEVERS), ("allowed_levers", levers)]
 
 
 def enforce(data: dict, entity: dict, comps: list[dict], valid_ids: set[str]) -> tuple[dict, list[str]]:
@@ -86,6 +93,7 @@ def enforce(data: dict, entity: dict, comps: list[dict], valid_ids: set[str]) ->
     data["market"]["competitors"] = kept
     for t in data.get("thesis", []):
         t["evidence_ids"] = [i for i in t.get("evidence_ids", []) if i in valid_ids]
+    data["lever_gap_evidence_ids"] = [i for i in data.get("lever_gap_evidence_ids") or [] if i in valid_ids]
     m = data.get("market", {})
     m["subtitle_evidence_ids"] = [i for i in m.get("subtitle_evidence_ids", []) if i in valid_ids]
     if "our_take" in m:
@@ -114,6 +122,7 @@ def write_deck(ctx: Ctx, entity: dict, profile: dict, comps_out: dict, problems:
         blocks.append(("note", f"This is a thin market: place all {len(comps)} competitors you were given "
                                f"(at least {mc}); still use at least 3 of the 4 cells counting the target's."))
     valid = {e.id for e in ctx.evidence.items()}
+    best: DeckContent | None = None
     for attempt in range(2):
         b = blocks + ([("problems_with_previous_draft", problems)] if problems else [])
         raw = ctx.claude.ask(ctx.settings.model_writer, system, b, DeckContent, effort="high", max_tokens=32000,
@@ -123,11 +132,22 @@ def write_deck(ctx: Ctx, entity: dict, profile: dict, comps_out: dict, problems:
             ctx.warn(n)
         try:
             content = DeckContent.model_validate(data, context={"min_competitors": mc})
-            ctx.save_json("content.json", content.model_dump())
-            return content
         except ValidationError as e:
             problems = [str(err.get("msg")) for err in e.errors()] + notes
             log.info("writer draft invalid after enforcement (%s); asking again", problems)
+            continue
+        thesis = copy_checks.thesis_problems(content, ctx.evidence)
+        if thesis and attempt == 0:
+            best, problems = content, thesis
+            log.info("writer draft breaks the thesis rules (%s); asking again", thesis)
+            continue
+        if thesis:
+            ctx.warn(f"writer draft still breaks {len(thesis)} thesis rule(s); the QA loop takes over")
+        ctx.save_json("content.json", content.model_dump())
+        return content
+    if best is not None:  # the second answer did not validate: keep the first valid draft
+        ctx.save_json("content.json", best.model_dump())
+        return best
     raise StageError(f"writer could not produce a valid deck: {problems}")
 
 

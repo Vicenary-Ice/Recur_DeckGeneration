@@ -4,13 +4,35 @@ the long term. The founder has never heard from us. The slides must show that we
 and their company, in plain words, and make them want to talk.
 
 THE THREE SLIDES
-1) Thesis — "What we see in <Company>": exactly three points, each a headline + one subline.
-   [0] WHY WE'RE HERE — the shift happening in their customers' market (not about Recur, not about the company).
-   [1] WHY WE'RE EXCITED — why THIS company is positioned to win that shift; the subline gives the concrete
-       mechanism (a product fact from the evidence), ideally with a "so…" consequence.
-   [2] HOW WE CAN HELP — start with "Help <Company> …". Choose the one or two Recur levers that fit a real
-       gap in the evidence: outbound/AI-native sales (Recur OS), AI built into the product, modernising a
-       legacy stack, building the leadership bench. Phrase as adding to what already works.
+1) Thesis — "What we see in <Company>": exactly three points, each a headline + one subline. Together they
+   make an investment case (why now, why this business lasts, what Recur adds), not a product description.
+   [0] WHY WE'RE HERE — what changed in the customers' world: their rules, buyers, channels or tools. Not
+       what vendors are doing, not about Recur, not about the company. Cite at least one evidence id of kind
+       news, segment or comparison that shows the change.
+   [1] WHY WE'RE EXCITED — why this business is durable: what it holds that customers would lose by leaving
+       (records, integrations, compliance), how long it has served the niche, or which customers rely on it.
+       Cite at least one evidence id of kind tenure, customers or switching; the subline gives that concrete
+       fact.
+   [2] HOW WE CAN HELP — set lever to one of allowed_levers (each comes with the gap signal behind it) and
+       cite that gap in lever_gap_evidence_ids (at least one id). The headline names the gap or the
+       opportunity in plain words and never starts with "Help". The subline names the gap and what Recur adds.
+         ai_native_gtm     outbound and AI-native selling (Recur OS): no outbound motion found, or sales only
+                           through partners. With no clear gap it is the default; write it as adding to what
+                           the company already does, and say what that is
+         ai_modernization  rebuilding a desktop, on-prem or legacy layer in modern code
+         ai_rebuild        rebuilding the product with AI at its core
+         built_the_bench   hiring the leaders a founder-led company is missing
+   **Match the register of the style examples, never their sentences.** Each deck must read as written for this
+   one company: no sentence shape from the examples or from other decks, and no stock phrases such as
+   "set to win", "switching is hard" or "what already works".
+   Don't / do (from real drafts):
+   - Don't make point 02 a slogan about riding a trend. Do say what the company holds, from the evidence
+     ("12 years of retailer compliance rules live in it").
+   - Don't give every company the same outbound-plus-AI promise in point 03. Do name the gap first ("Sales
+     come only through 4 resellers") and the lever that fits it.
+   - Don't write a why-now about vendors ("ERP vendors are adding AI"). Do say what changed for the buyers
+     ("Retailers now charge back late shipments within 48 hours").
+   - Don't say it is hard to leave. Do name what a customer would lose by leaving.
 2) Market map — "The opportunity for <Company>":
    - subtitle: the customer need that defines this market, as one plain sentence.
    - axes: two real buying criteria in this vertical, each a SCALE from a fixed list. Set each axis's kind to
@@ -64,20 +86,63 @@ LENGTH BUDGETS (hard limits are measured in the real font after you answer; aim 
 - our_take headline: ≤ 14 words (wraps to ≤ 4 lines in a 1.86 in column); each point ≤ 10 words
 The code measures every line after you answer and will send back anything that does not fit.
 
-GOLD EXAMPLE (Recur's own deck for Ai2000 — match its register, not its words)
+STYLE EXAMPLES (three other verticals; <Company> and <Rival group> are placeholders). Match their register,
+never their sentences.
+
+EXAMPLE A: funeral-home software (records-heavy, sticky)
 Thesis
-[0] Apparel brands are trading legacy ERPs for systems with AI
-    Many run generic ERPs or ops tools that keep financials in another system
-[1] Ai2000 is set to win as apparel brands replace legacy ERPs
-    Brands run retailer orders and their books on Ai2000, so switching is hard
-[2] Help Ai2000 grow with outbound sales and AI
-    We add outbound sales to what already works and build AI into the product
+[0] Families now plan funerals online before they call a home
+    Pre-need plans, obituaries and livestreams moved onto the web after 2020
+[1] Homes stay on <Company> because their case history lives there
+    Contracts, permits and death certificates for every family sit in one record
+[2] New homes find <Company> only through referrals today
+    An outbound team and AI intake can reach the homes still on paper ledgers
+    (lever ai_native_gtm; gap quote: new customers come only through referrals)
 Market map
-subtitle: Apparel and home goods brands need one system for product, orders, retailers and books
-y axis "Customer size": high "Large brands", low "Small &\nmid brands"
-x axis "Product scope": low "Ops only", high "Ops + financials"
-top-left BlueCherry | top-right Aptean, Ai2000 | bottom-left AIMS360, ApparelMagic, Uphance |
-bottom-right NetSuite, FDM4
-our_take: "Ai2000 runs product, retailer orders and financials for big brands in one system"
-  - "Small-brand tools lack the depth big retailer programs need"
-  - "Ops-only suites push the books into a second system"
+subtitle: Funeral homes need one record for cases, contracts and pre-need plans
+x axis product_scope "Product scope": low "Case notes", high "Cases to books"
+y axis customer_size "Locations": low "Single\nhomes", high "Multi-home\ngroups"
+our_take: "<Company> runs cases, contracts and pre-need plans for multi-home groups"
+  - "<Rival group> stop at the arrangement and leave the books"
+  - "General CRMs know nothing about permits or certificates"
+Why it works: [0] is a change in the families' world, dated by a news quote. [1] says why homes stay with a
+"because" clause about records they would lose. [2] names the gap (referrals only) before the lever, so the
+help reads as earned.
+
+EXAMPLE B: brewery ERP (compliance and inventory)
+Thesis
+[0] State excise rules changed in 6 of the 10 largest beer states
+    Taprooms, distributors and self-distribution each file their own report
+[1] 1,200 breweries file their excise returns from <Company>
+    Batch records, kegs and tax filings share the ledger brewers already trust
+[2] The desktop client keeps <Company> out of new taprooms
+    We rebuild it for the browser and add AI that drafts each monthly return
+    (lever ai_modernization; gap quote: the product installs on a Windows PC)
+Market map
+subtitle: Craft breweries need batches, kegs and excise filings in one place
+x axis industry_depth "Industry fit": low "Generic ERP", high "Built for beer"
+y axis customer_size "Brewery size": low "Brewpubs", high "Regional\nbrewers"
+our_take: "<Company> keeps batches, kegs and excise returns on one ledger"
+  - "Generic ERPs need consultants to track a keg"
+  - "<Rival group> skip excise and leave it to spreadsheets"
+Why it works: [0] counts the change with a number from evidence. [1] opens with the customer count the site
+states, which is the durability. [2] puts the legacy gap in the headline and the fix in the subline.
+
+EXAMPLE C: staffing ATS (placements and the candidate database)
+Thesis
+[0] Travel nurse agencies now fill hospital shifts the same day
+    Hospitals post openings to vendor portals and book the first agency to reply
+[1] Nurse staffing firms trust <Company> with every license
+    Licenses, timesheets and bill rates live in it, so a move restarts every check
+[2] The founder still runs product, sales and support at <Company>
+    We bring in a sales leader and a head of engineering to share the load
+    (lever built_the_bench; gap quote: the leadership page lists only the founder)
+Market map
+subtitle: Nurse staffing agencies need credentials, shifts and billing in one system
+x axis deployment_modernity "Deployment": low "On-premise", high "Cloud-native"
+y axis customer_complexity "Program mix": low "Per diem\nonly", high "MSP and\nVMS programs"
+our_take: "<Company> tracks credentials, shifts and billing for nurse agencies"
+  - "Office staffing tools ignore license expiry dates"
+  - "<Rival group> still install on a server in the back office"
+Why it works: [0] names the customer type and what changed for it. [1] makes the durability concrete: what a
+firm would redo if it left. [2] states a team gap plainly and offers people, not software.

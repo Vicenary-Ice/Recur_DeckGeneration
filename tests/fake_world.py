@@ -311,7 +311,11 @@ class FakeClaude:
                 "differentiators": [F("Books on Ai2000", "Financials and general ledger are built in, so brands keep their books on Ai2000", erp),
                                     F("Retailer programs", "Brands such as large department-store suppliers run their retailer programs on Ai2000", h)],
                 "recent_news": [F("Renamed to Ai2000", "GCS Software has renamed its A2000 apparel ERP to Ai2000", "https://news.example.com/ai2000")],
-                "gaps_or_opportunities": [F("Since 1985", "GCS Software has built apparel software since 1985", about)]}
+                "gaps_or_opportunities": [F("Since 1985", "GCS Software has built apparel software since 1985", about)],
+                "tenure": [F("Apparel software since 1985", "GCS Software has built apparel software since 1985", about)],
+                "customers": [F("Department-store suppliers", "Brands such as large department-store suppliers run their retailer programs on Ai2000", h)],
+                "switching": [F("The books live in Ai2000", "Financials and general ledger are built in, so brands keep their books on Ai2000", erp)],
+                "gtm_signals": [], "tech_signals": [], "team_signals": []}
 
     def a_competitor_extract(self, user):
         docs = _block(user, "documents") or []
@@ -355,8 +359,13 @@ class FakeClaude:
         d = json.loads((FIX / "ai2000/content.json").read_text())
         ev = _block(user, "evidence") or []
         ids = [e["id"] for e in ev]
-        for t in d["thesis"]:
-            t["evidence_ids"] = ids[:2]
+        of = lambda *kinds: [e["id"] for e in ev if e["about"] == "target" and e["kind"] in kinds]  # noqa: E731
+        d["thesis"][0]["evidence_ids"] = of("news", "segment")[:2] or ids[:2]
+        d["thesis"][1]["evidence_ids"] = of("tenure", "customers", "switching")[:2] or ids[:2]
+        d["thesis"][2]["evidence_ids"] = of("customers", "gtm")[:2] or ids[:2]
+        levers = _block(user, "allowed_levers") or {}
+        d["lever"] = next(iter(levers), "ai_native_gtm")
+        d["lever_gap_evidence_ids"] = (levers.get(d["lever"]) or {}).get("evidence_ids", [])[:2]
         for c in d["market"]["competitors"]:
             c["evidence_ids"] = [e["id"] for e in ev if e["about"] == c["domain"]][:2]
             own = [e["id"] for e in ev if e["about"] == c["domain"] and c["domain"] in e["url"]]

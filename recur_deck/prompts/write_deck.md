@@ -25,4 +25,7 @@ LENGTH BUDGETS (hard limits are measured in the real font after you answer; aim 
 - our_take headline: ≤ 14 words (wraps to ≤ 4 lines in a 1.86 in column); each point ≤ 10 words
 The code measures every line after you answer and will send back anything that does not fit.
 
+STYLE EXAMPLES (three other verticals; <Company> and <Rival group> are placeholders). Match their register,
+never their sentences.
+
 {STYLE_EXAMPLES}

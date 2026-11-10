@@ -10,18 +10,28 @@
     {
       "headline": "Staffing firms want fewer tools and more placements",
       "subline": "Agencies juggle an ATS, a CRM and sourcing tools that don't share data",
-      "evidence_ids": []
+      "evidence_ids": [
+        "e9"
+      ]
     },
     {
       "headline": "PCRecruiter keeps agencies in one system for years",
       "subline": "Candidates, clients and placements live together, so firms rarely leave",
-      "evidence_ids": []
+      "evidence_ids": [
+        "e10"
+      ]
     },
     {
-      "headline": "Help PCRecruiter win new agencies with AI",
-      "subline": "We add outbound sales and build AI sourcing into the product",
-      "evidence_ids": []
+      "headline": "Agencies find PCRecruiter by word of mouth today",
+      "subline": "We add outbound calls and AI sourcing next to the referrals that bring them",
+      "evidence_ids": [
+        "e11"
+      ]
     }
+  ],
+  "lever": "ai_native_gtm",
+  "lever_gap_evidence_ids": [
+    "e11"
   ],
   "market": {
     "subtitle": "Recruiting agencies need one system for candidates, clients and placements",

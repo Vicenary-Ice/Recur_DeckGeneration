@@ -1,0 +1,19 @@
+{
+  "_note": "Recur's own Ai2000 letter-deck (assets/reference_Ai2000.pdf), slides 2-3, word for word. For the copy checker (recur_deck/checks/copy.py) and the critic only: never render this text into a writer prompt.",
+  "company": "Ai2000",
+  "slide2": [
+    "Apparel brands are trading legacy ERPs for systems with AI",
+    "Many run generic ERPs or ops tools that keep financials in another system",
+    "Ai2000 is set to win as apparel brands replace legacy ERPs",
+    "Brands run retailer orders and their books on Ai2000, so switching is hard",
+    "Help Ai2000 grow with outbound sales and AI",
+    "We add outbound sales to what already works and build AI into the product"
+  ],
+  "slide3": [
+    "Apparel and home goods brands need one system for product, orders, retailers and books",
+    "Ai2000 runs product, retailer orders and financials for big brands in one system",
+    "Small-brand tools lack the depth big retailer programs need",
+    "Ops-only suites push the books into a second system"
+  ],
+  "axis_labels": ["Customer size", "Large brands", "Small & mid brands", "Product scope", "Ops only", "Ops + financials"]
+}

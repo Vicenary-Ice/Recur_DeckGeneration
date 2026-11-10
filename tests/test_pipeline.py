@@ -175,6 +175,11 @@ def qa_state(tmp_path, claude, content_patch=None, logo_overrides=None) -> pipel
     for dom in ("uphance.com", "aims360.com"):
         q = COMPS[dom][1]
         ctx.evidence.add(f"https://www.capterra.com/p/{dom}", q, dom, "comparison", "firecrawl", text=q)
+    # e10-e12: the thesis quotes (a segment shift, a tenure fact, the customers the lever's outbound would reach)
+    for kind, q in (("segment", "Apparel, footwear, accessories and home goods brands."),
+                    ("tenure", "GCS Software has built apparel software since 1985."),
+                    ("customers", "Brands such as large department-store suppliers run their retailer programs on Ai2000.")):
+        ctx.evidence.add("https://a2000software.com/about", q, "target", kind, "web", text=q)
     from recur_deck import logos as L
     logos = {}
     for name in [content.company.display_name, *(c.name for c in content.market.competitors)]:
