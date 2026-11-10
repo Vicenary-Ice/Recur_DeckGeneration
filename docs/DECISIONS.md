@@ -7,6 +7,43 @@ The seven briefs in `docs/agents/` were carried out one after another by a singl
 own branch merged into `main` before the next (order 0, 2, 3, 1, 4, 5, 6). Where a brief did not match the
 code, the brief's intent was followed and the adaptation is listed here, per phase.
 
+### Phase 3: market-map plausibility
+- **New fields are required in the writer's schema but old content still loads.** `Axis.kind`,
+  `Competitor.x_evidence_ids` / `y_evidence_ids` and `OurTake.point_evidence_ids` have no default, so the
+  structured-output schema makes the writer answer them. A `mode="before"` validator fills them only when the
+  key is absent (content.json written before this phase: fixtures, replays): kind is read from the axis title
+  (`axes.infer_kind`; "Core buyer" -> None), id lists are empty. `kind` is nullable for that reason; a null kind
+  is flagged `axis_not_ordinal`. The ">= 1 id" rule is enforced by `placement_issues`, not the schema.
+- **D7 passes in this phase** (the user's order merges Agent 2 first, so the real graph is used, not a stub).
+  A contradiction counts only against history that is itself consistent: an earlier explicit placement whose
+  own quotes read the other way (Uphance put Aptean at "Orders and stock" while quoting its warehousing and
+  financials) is ignored. "New evidence" means a cited quote that no other run stored *and* that reads the
+  current side (for kinds with reliable cues); for product scope, customer complexity and segment focus, any
+  new quote counts, as the brief says.
+- **One more deterministic rule:** a placement whose own cited quote reads the other way on an axis with
+  reliable cues (industry depth, customer size, deployment). FDM4 placed Aptean at "General ERP" while citing
+  "an ERP built for the fashion industry". Product scope is left to the Haiku audit (what "scope" means differs
+  per deck: financials on one, warehouse on another).
+- **`empty_cells`** counts cells without a *competitor*: the model already requires 3 of 4 cells in use counting
+  the target, so "cells with no logo" could never exceed 1.
+- **`target_alone` with no evidence store is an error**; with evidence it is dropped only if every competitor's
+  own quotes put it low on one of the two axes.
+- **Segments**: the sub-segments competitor discovery searched (`segments_searched`, now written to
+  `competitors.json`) or, for older runs, distinctive customer nouns in the profile's segment facts
+  ("decorators"). A segment word the vertical already contains, or that most map competitors use anyway
+  ("apparel"), does not count.
+- **The source-diversity rule does not fire on the three decks.** The briefs say most of Ai2000's slide-3
+  evidence came from aims360.com; measured, it is 4 of 19 quotes (21%; the largest share is the target's own
+  site, 5). The per-competitor rule ("placed only from other sites") is what catches the problem: NetSuite and
+  Acumatica (FDM4), ApparelMagic (Uphance).
+- **Relayout respects evidence** (`pipeline.fix_relayout`, Agent 6's file): moving a logo for space never puts it
+  on a side its own quotes read against. The existing relayout test moved Uphance ("for small fashion brands")
+  into "Large brands"; it now moves to the other adjacent cell.
+- **The writer sees each competitor's `segments` and `earlier_placements`** (trimmed graph placements) in its
+  input (`write._inputs`, Agent 1's file): the new market rules refer to them.
+- Fixture decks `fixtures/ai2000` and `fixtures/pcrecruiter` gained the new fields; `tests/test_pipeline.qa_state`
+  now stores the quotes those ids cite. The fake writer cites each competitor's own homepage quote per axis.
+
 ### Phase 2: market memory and competitor recall
 - **Same-market links, not only edges (D8).** FDM4 is not a node in the Ai2000 or Uphance runs (not even a
   candidate), so "neighbours within depth 2" of fdm4.com is empty. `graph.related_targets(entity)` links a new

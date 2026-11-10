@@ -67,7 +67,6 @@ def test_d3_point_02_has_no_durability_evidence(run):
 
 
 # ---------------------------------------------------------------- Agent 3: market map
-@pytest.mark.xfail(strict=True, reason="D4 — owner Agent 3")
 def test_d4_placement_from_missing_evidence():
     from recur_deck.checks.market import placement_issues
     c = content(AI2000)
@@ -77,20 +76,17 @@ def test_d4_placement_from_missing_evidence():
     assert "market.our_take.points[1]" in fields                                    # "lack financials"
 
 
-@pytest.mark.xfail(strict=True, reason="D5 — owner Agent 3")
 def test_d5_target_alone_in_its_cell():
     from recur_deck.checks.market import plausibility_issues
     assert any(i.code == "target_alone" for i in plausibility_issues(content(FDM4), extra={}))
 
 
-@pytest.mark.xfail(strict=True, reason="D6 — owner Agent 3")
 def test_d6_core_buyer_axis_is_not_ordinal():
     from recur_deck.checks.market import axis_issues
     issues = axis_issues(content(UPHANCE))
     assert any(i.code == "axis_not_ordinal" and i.field.startswith("market.y_axis") for i in issues)
 
 
-@pytest.mark.xfail(strict=True, reason="D7 — owner Agent 3 (uses Agent 2's graph)")
 def test_d7_aptean_contradicts_earlier_run():
     from recur_deck import market_graph
     from recur_deck.checks.market import consistency_issues

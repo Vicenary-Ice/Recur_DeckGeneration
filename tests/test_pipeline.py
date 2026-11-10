@@ -165,6 +165,16 @@ def qa_state(tmp_path, claude, content_patch=None, logo_overrides=None) -> pipel
             node = node[int(kk)] if kk.isdigit() else node[kk]
         node[int(keys[-1]) if keys[-1].isdigit() else keys[-1]] = v
     content = DeckContent.model_validate(d)
+    # the quotes fixtures/ai2000/content.json cites (e1-e7 one per competitor from its own site, e8-e9 the
+    # our-take points), as competitor verification and the profile stage would have stored them
+    from tests.fake_world import COMPS
+    for comp in content.market.competitors:
+        if comp.domain in COMPS:
+            q = COMPS[comp.domain][1]
+            ctx.evidence.add(f"https://{comp.domain}/", q, comp.domain, "scope", "web", text=q)
+    for dom in ("uphance.com", "aims360.com"):
+        q = COMPS[dom][1]
+        ctx.evidence.add(f"https://www.capterra.com/p/{dom}", q, dom, "comparison", "firecrawl", text=q)
     from recur_deck import logos as L
     logos = {}
     for name in [content.company.display_name, *(c.name for c in content.market.competitors)]:
