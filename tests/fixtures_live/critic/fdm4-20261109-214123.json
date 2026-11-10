@@ -1,0 +1,54 @@
+{
+  "findings": [
+    {
+      "persona": "founder",
+      "slide": 2,
+      "target": "thesis[1].headline",
+      "category": "copied_language",
+      "severity": "major",
+      "explanation": "'FDM4 is set to win as decorators move to one system' is the reference deck's sentence with the names swapped.",
+      "suggested_fix": "rewrite_copy"
+    },
+    {
+      "persona": "founder",
+      "slide": 3,
+      "target": "market.competitors",
+      "category": "target_isolated",
+      "severity": "major",
+      "explanation": "FDM4 sits alone in the top-right cell, as if it had no competition; I compete with Ai2000 and ApparelMagic every week.",
+      "suggested_fix": "regenerate_market"
+    },
+    {
+      "persona": "founder",
+      "slide": 3,
+      "target": "market.competitors[0]",
+      "category": "disputed_placement",
+      "severity": "major",
+      "explanation": "Aptean is placed 'General ERP' but its own cited quote (e84) calls it an ERP built for the fashion industry.",
+      "suggested_fix": "regenerate_market"
+    },
+    {
+      "persona": "founder",
+      "slide": 3,
+      "target": "market.competitors",
+      "category": "missing_competitor",
+      "severity": "major",
+      "explanation": "The thesis leads with decorators, yet no decorator software is on the map; Ai2000 and ApparelMagic, found as candidates, are missing too.",
+      "suggested_fix": "add_competitor"
+    },
+    {
+      "persona": "partner",
+      "slide": 2,
+      "target": "thesis[2].headline",
+      "category": "generic_thesis",
+      "severity": "major",
+      "explanation": "'Help FDM4 grow with outbound sales and AI' is the same help every deck offers, with no gap behind it.",
+      "suggested_fix": "rewrite_copy"
+    }
+  ],
+  "slide_grades": {
+    "slide2": "C",
+    "slide3": "D+"
+  },
+  "mail_ready": false
+}

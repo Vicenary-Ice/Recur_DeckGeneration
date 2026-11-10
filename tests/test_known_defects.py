@@ -130,7 +130,6 @@ CRITIC_ROUTES = {  # deck -> (fix, field) pairs the scripted verdict's findings 
 }
 
 
-@pytest.mark.xfail(strict=True, reason="D12 — owner Agent 5")
 @pytest.mark.parametrize("run", DECKS, ids=lambda p: p.name)
 def test_d12_critic_findings_route_to_fixes(run, tmp_path):
     from recur_deck import market_graph

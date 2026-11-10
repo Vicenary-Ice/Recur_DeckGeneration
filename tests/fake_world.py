@@ -389,5 +389,8 @@ class FakeClaude:
         return {"verdicts": [{"item_id": it["item_id"], "verdict": "supports", "quote": it["quotes"][0]["quote"],
                               "note": "the quote states it"} for it in _block(user, "items") or []]}
 
+    def a_critic(self, user):
+        return {"findings": [], "slide_grades": {"slide2": "A-", "slide3": "B+"}, "mail_ready": True}
+
     def a_vision_qa(self, user):
         return {"passed": True, "defects": [], "summary": "looks right"}

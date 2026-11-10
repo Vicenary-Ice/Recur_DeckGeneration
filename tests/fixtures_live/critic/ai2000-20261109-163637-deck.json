@@ -1,0 +1,63 @@
+{
+  "findings": [
+    {
+      "persona": "founder",
+      "slide": 2,
+      "target": "thesis[1].headline",
+      "category": "copied_language",
+      "severity": "major",
+      "explanation": "'Ai2000 is set to win as brands bring AI into the ERP' reuses the reference deck's 'is set to win as' line almost word for word.",
+      "suggested_fix": "rewrite_copy"
+    },
+    {
+      "persona": "partner",
+      "slide": 2,
+      "target": "thesis[0].subline",
+      "category": "generic_thesis",
+      "severity": "major",
+      "explanation": "Point 01 is about ERP vendors adding AI (e67), not about what changed for apparel brands.",
+      "suggested_fix": "rewrite_copy"
+    },
+    {
+      "persona": "partner",
+      "slide": 2,
+      "target": "thesis[2]",
+      "category": "generic_thesis",
+      "severity": "major",
+      "explanation": "Point 03 offers outbound and AI with no gap behind it; nothing cited shows Ai2000 lacks a sales motion.",
+      "suggested_fix": "rewrite_copy"
+    },
+    {
+      "persona": "founder",
+      "slide": 3,
+      "target": "market.competitors[1]",
+      "category": "unsupported_claim",
+      "severity": "major",
+      "explanation": "BlueCherry is placed 'Ops only' because no financials were cited (e61, e62, e64); a page that doesn't mention financials doesn't show they are missing.",
+      "suggested_fix": "regenerate_market"
+    },
+    {
+      "persona": "founder",
+      "slide": 3,
+      "target": "market.our_take.points[1]",
+      "category": "unsupported_claim",
+      "severity": "major",
+      "explanation": "'Large-brand suites lack financials or stay generic': no cited quote says BlueCherry or Aptean lack financials.",
+      "suggested_fix": "regenerate_market"
+    },
+    {
+      "persona": "partner",
+      "slide": 3,
+      "target": "logo:AIMS360",
+      "category": "illegible_logo",
+      "severity": "minor",
+      "explanation": "AIMS360 appears as a typeset name next to real logos.",
+      "suggested_fix": "swap_logo"
+    }
+  ],
+  "slide_grades": {
+    "slide2": "B",
+    "slide3": "C+"
+  },
+  "mail_ready": true
+}

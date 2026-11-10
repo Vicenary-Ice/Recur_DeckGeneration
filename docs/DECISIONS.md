@@ -7,6 +7,16 @@ The seven briefs in `docs/agents/` were carried out one after another by a singl
 own branch merged into `main` before the next (order 0, 2, 3, 1, 4, 5, 6). Where a brief did not match the
 code, the brief's intent was followed and the adaptation is listed here, per phase.
 
+### Phase 5: founder-eyes critic
+- **`slide_grades` is an object with fixed keys (`slide2`, `slide3`)**, not the brief's `dict[str, grade]`: the
+  SDK's `transform_schema` turns a free-form dict into an object with no allowed keys
+  (`"properties": {}, "additionalProperties": false`), so a live critic could never return grades.
+- Grades allow + and - (A+ ... F); the brief's calibration table itself grades C+, D+ and B-.
+- `review()` also takes the verified competitors (read from the run folder when not given) and the logos' print
+  sizes, both on the brief's input list but missing from its signature.
+- The critic runs from `hooks.after_vision` (only after the vision check passes), at most twice per deck; its
+  verdicts are kept in `ctx.report["critic"]`.
+
 ### Phase 4: print-grade logos
 - **The target's own cover logo between 200 and 300 dpi is kept, with a warning.** With true native resolution
   Ai2000's cover logo is about 256 dpi (the briefs estimated 343 by dividing the upscaled width). Following the
