@@ -15,7 +15,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 MAX_QUOTE = 300
-KINDS = ("identity", "product", "segment", "scope", "news", "comparison")
+KINDS = ("identity", "product", "segment", "scope", "news", "comparison",
+         "tenure", "customers", "switching", "gtm", "tech", "team")  # the last six: durability and gap signals
 
 _MD_LINK = re.compile(r"!?\[([^\]]*)\]\([^)]*\)")
 _TRANSLATE = str.maketrans({"‘": "'", "’": "'", "‚": "'", "‛": "'", "′": "'",
@@ -73,7 +74,7 @@ class Evidence:
     source: str        # firecrawl | web (direct fetch) | claude_web_search
     quote: str
     about: str         # "target" or a competitor domain
-    kind: str          # identity | product | segment | scope | news | comparison
+    kind: str          # one of KINDS
 
 
 class EvidenceStore:

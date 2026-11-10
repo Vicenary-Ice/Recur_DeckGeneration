@@ -21,12 +21,17 @@ KEYWORDS = [  # (pattern in URL path, weight)
     ("product", 5), ("feature", 5), ("solution", 5), ("platform", 4), ("module", 4), ("about", 4),
     ("customer", 4), ("case-stud", 3), ("pricing", 3), ("industr", 4), ("who-we-serve", 4), ("integrat", 3),
     ("erp", 2), ("software", 2), ("why", 2), ("overview", 2), ("services", 1), ("company", 2), ("news", 1),
-    ("press", 1), ("partners", 1),
+    ("press", 1), ("partners", 1), ("leadership", 3), ("team", 3), ("management-team", 3), ("history", 3),
+    ("demo", 2), ("contact", 1),
 ]
 SKIP = re.compile(r"(blog/.+/.+|/tag/|/category/|/author/|/page/\d|privacy|terms|cookie|legal|login|signin|sign-in|"
                   r"careers|jobs|/cart|checkout|\.pdf$|\.jpg$|\.png$|/feed|wp-json|/search)", re.I)
 
 FIELDS = {  # profile field -> evidence kind
+    # Durability (thesis point 02) and gap signals (point 03's lever) first: a quote extracted under two fields
+    # keeps the kind of the first one stored, and these kinds say more than "product".
+    "tenure": "tenure", "customers": "customers", "switching": "switching",
+    "gtm_signals": "gtm", "tech_signals": "tech", "team_signals": "team",
     "modules": "product", "customer_segments": "segment", "customer_size_signals": "segment",
     "deployment": "product", "integrations": "product", "differentiators": "product",
     "recent_news": "news", "gaps_or_opportunities": "product",
@@ -48,6 +53,12 @@ class Profile(BaseModel):
     differentiators: list[Fact]
     recent_news: list[Fact]
     gaps_or_opportunities: list[Fact]
+    tenure: list[Fact]
+    customers: list[Fact]
+    switching: list[Fact]
+    gtm_signals: list[Fact]
+    tech_signals: list[Fact]
+    team_signals: list[Fact]
 
 
 def rank_urls(urls: list[str], domain: str, limit: int) -> list[str]:
@@ -117,7 +128,8 @@ def build(ctx: Ctx, entity: dict) -> dict:
 
     urls_all = [b["url"] for b in page_blocks]
     titles = {b["url"]: b["title"] for b in page_blocks}
-    out: dict = {"pages": urls_all, "facts_total": 0, "facts_kept": 0}
+    out: dict = {"pages": urls_all, "facts_total": 0, "facts_kept": 0,
+                 "site_urls": list(dict.fromkeys(urls))[:200]}  # for the competitors stage's self-compare pages
     for f, kind in FIELDS.items():
         kept = []
         for fact in getattr(prof, f):

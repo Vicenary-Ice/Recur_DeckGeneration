@@ -42,7 +42,6 @@ def comp_index(c: DeckContent, name: str) -> int:
 
 
 # ---------------------------------------------------------------- Agent 1: thesis
-@pytest.mark.xfail(strict=True, reason="D1 — owner Agent 1")
 @pytest.mark.parametrize("run", DECKS, ids=lambda p: p.name)
 def test_d1_copied_recur_phrases(run):
     from recur_deck.checks.copy import copied_spans
@@ -50,7 +49,6 @@ def test_d1_copied_recur_phrases(run):
     assert issues and all(i.code == "copied_language" for i in issues)
 
 
-@pytest.mark.xfail(strict=True, reason="D2 — owner Agent 1")
 @pytest.mark.parametrize("run", DECKS, ids=lambda p: p.name)
 def test_d2_point_03_cites_no_gap(run):
     from recur_deck.checks.copy import lever_issues
@@ -58,7 +56,6 @@ def test_d2_point_03_cites_no_gap(run):
     assert any(i.code == "lever_unsupported" and i.field.startswith("thesis[2]") for i in issues)
 
 
-@pytest.mark.xfail(strict=True, reason="D3 — owner Agent 1")
 @pytest.mark.parametrize("run", DECKS, ids=lambda p: p.name)
 def test_d3_point_02_has_no_durability_evidence(run):
     from recur_deck.checks.copy import durability_issues

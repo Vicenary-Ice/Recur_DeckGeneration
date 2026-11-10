@@ -11,21 +11,31 @@
     {
       "headline": "Apparel brands are moving off legacy ERPs",
       "subline": "Many still run product, orders and books in separate systems",
-      "evidence_ids": []
+      "evidence_ids": [
+        "e10"
+      ]
     },
     {
       "headline": "Ai2000 has the depth larger brands need",
       "subline": "Retail EDI, warehouse and financials sit in one platform, so it sticks",
-      "evidence_ids": []
+      "evidence_ids": [
+        "e11"
+      ]
     },
     {
-      "headline": "Help Ai2000 grow with outbound sales and AI",
-      "subline": "We add an outbound engine and build AI into daily workflows",
-      "evidence_ids": []
+      "headline": "An outbound team can reach brands Ai2000 already fits",
+      "subline": "Ai2000 grows through referrals, and we add outbound calls and AI follow-up",
+      "evidence_ids": [
+        "e12"
+      ]
     }
   ],
+  "lever": "ai_native_gtm",
+  "lever_gap_evidence_ids": [
+    "e12"
+  ],
   "market": {
-    "subtitle": "Apparel and home goods brands want one system for product, retail orders and books",
+    "subtitle": "Brands selling to big retailers need product, retail orders and the books together",
     "x_axis": {
       "kind": "product_scope",
       "title": "Product scope",
@@ -139,10 +149,10 @@
       }
     ],
     "our_take": {
-      "headline": "Ai2000 runs product, retail orders and financials for large brands in one system",
+      "headline": "Ai2000 runs product, retail EDI and the books for large brands together",
       "points": [
-        "Small-brand tools lack the depth big retail programs need",
-        "Ops-only suites push the books into a second system"
+        "Tools for small labels stop short of big retail programs",
+        "Generic ERPs need partners to fit apparel"
       ],
       "point_evidence_ids": [
         [

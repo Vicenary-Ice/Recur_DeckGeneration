@@ -26,7 +26,8 @@ from typing import Any, Callable
 
 log = logging.getLogger("recur_deck.hooks")
 NAMES = ("after_profile", "after_competitors", "after_write", "after_vision", "after_run")
-PLUGIN_MODULES = ("recur_deck.market_graph", "recur_deck.stages.placement", "recur_deck.stages.critic")
+PLUGIN_MODULES = ("recur_deck.market_graph", "recur_deck.stages.placement", "recur_deck.stages.critic",
+                  "recur_deck.checks.copy")
 _handlers: dict[str, list[Callable[..., Any]]] = {n: [] for n in NAMES}
 _plugins_loaded = False
 

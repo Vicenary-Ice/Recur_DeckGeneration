@@ -7,6 +7,30 @@ The seven briefs in `docs/agents/` were carried out one after another by a singl
 own branch merged into `main` before the next (order 0, 2, 3, 1, 4, 5, 6). Where a brief did not match the
 code, the brief's intent was followed and the adaptation is listed here, per phase.
 
+### Phase 1: thesis quality
+- **Recur's own Ai2000 deck is no longer in the writer prompt**; three placeholder examples from other verticals
+  (funeral homes, breweries, nurse staffing) replace it. Recur's lines are kept in `assets/reference_text.json`
+  for the copy checker and the critic only, and a test proves the rendered prompt shares no 5-word sequence with
+  them. Stock phrases are named in the prompt only in fragments of at most 4 words for the same reason.
+- **Lever table, "only tech signals".** The brief's test says a profile with only tech signals allows only
+  modernization or rebuild, while its table says a profile with no outbound or sales signals allows
+  ai_native_gtm. Read together: tech gap + a recorded sales motion -> {ai_modernization, ai_rebuild}; no gtm
+  signal at all -> ai_native_gtm is allowed as well; nothing at all -> ai_native_gtm as the default ("adding
+  to"). Gap evidence for ai_native_gtm may be a customers or segment quote (the absence of a sales team cannot be
+  quoted).
+- **Evidence kinds.** `evidence.KINDS` gained tenure, customers, switching, gtm, tech, team (`evidence.py`,
+  shared). Because the evidence store keeps one kind per quote, the profile stage processes these six fields
+  first; otherwise a quote also listed as a differentiator stayed "product" and point 02 could never cite it
+  (found on the simulated run).
+- **Writer re-ask.** `write_deck` sends a first draft that breaks the thesis rules back once with the problem
+  strings; a second failure is left to the QA loop (never a stage error), and if the second answer does not
+  validate, the first valid draft is used.
+- **Cross-deck history** reads `runs/_thesis_history.jsonl` (appended by an `after_run` hook for delivered live
+  runs) plus sibling run folders' `content.json`, so decks made before the file existed count. A company's own
+  earlier decks are skipped. `hooks.PLUGIN_MODULES` gained `recur_deck.checks.copy`.
+- The fixture decks under `fixtures/` were reworded where they repeated Recur's lines (they are the fake
+  writer's output), and `test_pipeline.qa_state` stores the thesis quotes they cite.
+
 ### Phase 3: market-map plausibility
 - **New fields are required in the writer's schema but old content still loads.** `Axis.kind`,
   `Competitor.x_evidence_ids` / `y_evidence_ids` and `OurTake.point_evidence_ids` have no default, so the
