@@ -1,0 +1,530 @@
+{
+  "input": {
+    "name": "Uphance",
+    "domain": null,
+    "hint": null
+  },
+  "run_dir": "/Users/rishi_r/Recur_CaseProject/runs/uphance-20261109-215758",
+  "settings": {
+    "keys": {
+      "anthropic": true,
+      "firecrawl": true
+    },
+    "models": {
+      "writer": "claude-opus-5-5",
+      "judge": "claude-sonnet-5-5",
+      "fast": "claude-haiku-5-5",
+      "vision": "claude-sonnet-5-5"
+    },
+    "max_qa_rounds": 3,
+    "firecrawl_rpm": 10,
+    "fetch_mode": "direct-first",
+    "offline": false,
+    "use_cache": true,
+    "vision_qa": true
+  },
+  "started": "2026-11-09T21:57:58",
+  "status": "needs_review",
+  "company": "Uphance",
+  "domain": "uphance.com",
+  "timings": {
+    "entity": 12.4,
+    "profile": 25.4,
+    "competitors": 135.6,
+    "logos": 11.7,
+    "write": 56.5,
+    "qa": 51.6
+  },
+  "deliverables": {
+    "pptx": "/Users/rishi_r/Recur_CaseProject/runs/uphance-20261109-215758/Recur_x_Uphance.pptx",
+    "pdf": "/Users/rishi_r/Recur_CaseProject/runs/uphance-20261109-215758/Recur_x_Uphance.pdf",
+    "sources": "/Users/rishi_r/Recur_CaseProject/runs/uphance-20261109-215758/sources.md"
+  },
+  "identity": {
+    "display_name": "Uphance",
+    "domain": "uphance.com",
+    "aliases": [
+      "Stitchex",
+      "Uphance LLC",
+      "Uphance Apparel ERP"
+    ],
+    "confidence": 0.99,
+    "margin": 0.97,
+    "domain_supplied": false,
+    "low_confidence_identity": false,
+    "rebrand_detected": true
+  },
+  "competitors": [
+    {
+      "name": "AIMS360",
+      "domain": "aims360.com",
+      "cell": "top-right",
+      "independent_sources": 8,
+      "channels": [
+        "directory",
+        "roundup",
+        "vs_page"
+      ]
+    },
+    {
+      "name": "Sync (iSync Solutions)",
+      "domain": "isyncsolutions.com",
+      "cell": "top-left",
+      "independent_sources": 5,
+      "channels": [
+        "directory",
+        "roundup"
+      ]
+    },
+    {
+      "name": "ApparelMagic",
+      "domain": "apparelmagic.com",
+      "cell": "top-left",
+      "independent_sources": 8,
+      "channels": [
+        "directory",
+        "roundup",
+        "vs_page"
+      ]
+    },
+    {
+      "name": "BlueCherry",
+      "domain": "bluecherry.com",
+      "cell": "bottom-right",
+      "independent_sources": 6,
+      "channels": [
+        "directory",
+        "roundup",
+        "vs_page"
+      ]
+    },
+    {
+      "name": "Aptean Apparel ERP",
+      "domain": "aptean.com",
+      "cell": "bottom-left",
+      "independent_sources": 6,
+      "channels": [
+        "directory",
+        "roundup",
+        "vs_page"
+      ]
+    },
+    {
+      "name": "Ai2000",
+      "domain": "a2000software.com",
+      "cell": "bottom-right",
+      "independent_sources": 3,
+      "channels": [
+        "directory",
+        "roundup"
+      ]
+    },
+    {
+      "name": "WFX",
+      "domain": "worldfashionexchange.com",
+      "cell": "bottom-left",
+      "independent_sources": 3,
+      "channels": [
+        "directory",
+        "roundup",
+        "vs_page"
+      ]
+    }
+  ],
+  "logos": {
+    "Uphance": {
+      "source": "jsonld",
+      "typeset": false,
+      "aspect": 5.342
+    },
+    "AIMS360": {
+      "source": "header_img",
+      "typeset": false,
+      "aspect": 4.601
+    },
+    "ApparelMagic": {
+      "source": "header_img",
+      "typeset": false,
+      "aspect": 5.907
+    },
+    "Sync (iSync Solutions)": {
+      "source": "typeset",
+      "typeset": true,
+      "aspect": 2.501
+    },
+    "Ai2000": {
+      "source": "jsonld",
+      "typeset": false,
+      "aspect": 2.199
+    },
+    "BlueCherry": {
+      "source": "jsonld",
+      "typeset": false,
+      "aspect": 3.0
+    },
+    "Aptean Apparel ERP": {
+      "source": "jsonld",
+      "typeset": false,
+      "aspect": 3.2
+    },
+    "WFX": {
+      "source": "jsonld",
+      "typeset": false,
+      "aspect": 3.692
+    }
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "layer_a_before": [],
+      "vision": {
+        "passed": false,
+        "defects": [
+          {
+            "slide": 3,
+            "element_id": "market.our_take",
+            "type": "text_overlap",
+            "severity": "major",
+            "description": "The 'Lighter brand tools...' paragraph is touched by the Aptean logo's label region; the Aptean logo sits close to the vertical divider and the our_take text block, and the logo area crowds the divider line and text at x~1250-1530.",
+            "suggested_fix": "relayout"
+          },
+          {
+            "slide": 3,
+            "element_id": "logo:Sync (iSync Solutions)",
+            "type": "logo_illegible",
+            "severity": "major",
+            "description": "The Sync (iSync Solutions) logo is rendered as tiny plain text ('Sync (iSync Solutions)') instead of a real logo. It is far smaller than neighbouring logos and nearly unreadable, a text fallback rather than a logo.",
+            "suggested_fix": "swap_logo"
+          },
+          {
+            "slide": 3,
+            "element_id": "logo:AIMS360",
+            "type": "logo_overlap",
+            "severity": "major",
+            "description": "The AIMS360 logo butts directly against the Uphance target logo with essentially no gap. The AIMS360 wordmark is also faint and low contrast.",
+            "suggested_fix": "relayout"
+          },
+          {
+            "slide": 3,
+            "element_id": "logo:ApparelMagic",
+            "type": "logo_misaligned",
+            "severity": "minor",
+            "description": "The ApparelMagic logo sits alone in the top-left cell, far from the quadrant's visual centre, which leaves the left half of the chart feeling sparse.",
+            "suggested_fix": "relayout"
+          },
+          {
+            "slide": 3,
+            "element_id": "logo:Aptean Apparel ERP",
+            "type": "logo_too_large",
+            "severity": "minor",
+            "description": "The Aptean logo looks noticeably larger and heavier than the BlueCherry logo next to it.",
+            "suggested_fix": "relayout"
+          },
+          {
+            "slide": 3,
+            "element_id": null,
+            "type": "visual_imbalance",
+            "severity": "minor",
+            "description": "Four of the seven competitor logos sit in the right half, while the left half has only two logos. The chart looks uneven.",
+            "suggested_fix": "relayout"
+          },
+          {
+            "slide": 1,
+            "element_id": "cover_logo",
+            "type": "logo_too_large",
+            "severity": "minor",
+            "description": "The Uphance cover logo is wider than the baseline logo and its edges look slightly soft or pixelated. It still reads clearly beside RECUR.",
+            "suggested_fix": "none"
+          }
+        ],
+        "summary": "Slide 1 and slide 2 are fine. Slide 3 has major problems. The Sync logo is tiny text, the AIMS360 and Uphance logos touch, and the right-hand logos crowd the divider line and the 'our take' text. Fix the logo layout before printing."
+      },
+      "fixes_vision": [
+        {
+          "fix": "rewrite",
+          "applied": true,
+          "field": "market.our_take.headline",
+          "from": "Uphance puts B2B orders, Shopify and the warehouse on one stock pool",
+          "to": "Uphance runs B2B orders, Shopify and the warehouse from one stock pool",
+          "calls": 1,
+          "tried": [
+            {
+              "text": "Uphance runs B2B orders, Shopify and the warehouse from one stock pool",
+              "errors": []
+            }
+          ]
+        },
+        {
+          "fix": "swap_logo",
+          "applied": false,
+          "why": "already typeset"
+        },
+        {
+          "fix": "relayout",
+          "applied": true,
+          "moved": "Sync (iSync Solutions)",
+          "from": [
+            "right",
+            "top"
+          ],
+          "to": [
+            "left",
+            "top"
+          ]
+        }
+      ]
+    },
+    {
+      "round": 2,
+      "layer_a_before": [],
+      "vision": {
+        "passed": false,
+        "defects": [
+          {
+            "slide": 3,
+            "element_id": "logo:Sync (iSync Solutions)",
+            "type": "logo_illegible",
+            "severity": "major",
+            "description": "The Sync (iSync Solutions) logo is tiny, with text only a few pixels high. It is far smaller than neighbouring logos and nearly unreadable in print.",
+            "suggested_fix": "swap_logo"
+          },
+          {
+            "slide": 3,
+            "element_id": "logo:AIMS360",
+            "type": "logo_illegible",
+            "severity": "major",
+            "description": "The AIMS360 logo is thin, low-contrast and dim. Its tagline is illegible and it sits tight against the Uphance glow.",
+            "suggested_fix": "swap_logo"
+          },
+          {
+            "slide": 3,
+            "element_id": "logo:Aptean Apparel ERP",
+            "type": "logo_overlap",
+            "severity": "major",
+            "description": "The Aptean logo is crowded right up against the vertical divider line of the Our Take panel. It is also much larger than the neighbouring BlueCherry logo.",
+            "suggested_fix": "relayout"
+          },
+          {
+            "slide": 3,
+            "element_id": "logo:BlueCherry",
+            "type": "visual_imbalance",
+            "severity": "minor",
+            "description": "BlueCherry is much smaller than Aptean beside it, and the logo sizes across the chart are inconsistent (Sync tiny, WFX and Aptean large).",
+            "suggested_fix": "relayout"
+          },
+          {
+            "slide": 3,
+            "element_id": "logo:ApparelMagic",
+            "type": "visual_imbalance",
+            "severity": "minor",
+            "description": "Four logos are bunched in the top row, while the top-left and lower-left quadrants are largely empty. The chart looks unbalanced.",
+            "suggested_fix": "relayout"
+          },
+          {
+            "slide": 3,
+            "element_id": "market.title",
+            "type": "other",
+            "severity": "minor",
+            "description": "The title box overlaps the subtitle box, although the text itself does not collide.",
+            "suggested_fix": "none"
+          },
+          {
+            "slide": 1,
+            "element_id": "cover_logo",
+            "type": "logo_too_large",
+            "severity": "minor",
+            "description": "The Uphance cover logo is wider than the baseline logo and looks slightly soft, but it is legible.",
+            "suggested_fix": "none"
+          }
+        ],
+        "summary": "Slide 3 has major logo problems. The Sync logo is tiny and unreadable, AIMS360 is faint, and the Aptean logo is cramped against the Our Take divider with sizes inconsistent across the chart. Slides 1 and 2 look fine, with only minor polish issues."
+      },
+      "fixes_vision": [
+        {
+          "fix": "swap_logo",
+          "applied": false,
+          "why": "already typeset"
+        },
+        {
+          "fix": "swap_logo",
+          "applied": true,
+          "company": "AIMS360",
+          "from": "jsonld",
+          "to": "header_img"
+        },
+        {
+          "fix": "relayout",
+          "applied": true,
+          "moved": "Aptean Apparel ERP",
+          "from": [
+            "right",
+            "bottom"
+          ],
+          "to": [
+            "left",
+            "bottom"
+          ]
+        }
+      ]
+    },
+    {
+      "round": 3,
+      "layer_a_before": [],
+      "vision": {
+        "passed": false,
+        "defects": [
+          {
+            "slide": 3,
+            "element_id": "logo:Sync (iSync Solutions)",
+            "type": "logo_illegible",
+            "severity": "major",
+            "description": "The Sync (iSync Solutions) logo is rendered as tiny text, far smaller than the other logos in the chart, and is barely readable.",
+            "suggested_fix": "swap_logo"
+          },
+          {
+            "slide": 3,
+            "element_id": "logo:Aptean Apparel ERP",
+            "type": "logo_too_large",
+            "severity": "minor",
+            "description": "The aptean logo looks noticeably larger and heavier than the neighbouring logos in the bottom row.",
+            "suggested_fix": "relayout"
+          },
+          {
+            "slide": 3,
+            "element_id": "logo:AIMS360",
+            "type": "logo_too_small",
+            "severity": "minor",
+            "description": "The AIMS360 logo is thin and faint, so it looks weaker than the other logos.",
+            "suggested_fix": "relayout"
+          },
+          {
+            "slide": 3,
+            "element_id": "target_logo",
+            "type": "visual_imbalance",
+            "severity": "minor",
+            "description": "The uphance target logo sits at the right edge of the top-right cell next to AIMS360, which makes the top row feel crowded. The empty space on the left of the chart is uneven by comparison.",
+            "suggested_fix": "relayout"
+          },
+          {
+            "slide": 1,
+            "element_id": "cover_logo",
+            "type": "logo_misaligned",
+            "severity": "minor",
+            "description": "The uphance logo is a little lower than the centre of the divider and the RECUR wordmark. It is also wider than the baseline Ai2000 logo.",
+            "suggested_fix": "relayout"
+          }
+        ],
+        "summary": "Slides 1 and 2 are clean. On slide 3 the Sync (iSync Solutions) logo is tiny and almost illegible next to the other logos, so a person would notice it on paper. There are also minor logo size and balance issues in the chart."
+      },
+      "fixes_vision": [
+        {
+          "fix": "swap_logo",
+          "applied": false,
+          "why": "already typeset"
+        }
+      ]
+    }
+  ],
+  "final_layer_a_errors": [],
+  "final_layer_a_warnings": [
+    {
+      "code": "text_long",
+      "severity": "warn",
+      "slide": 2,
+      "field": "thesis[0].headline",
+      "message": "'Apparel brands that sell wholesale and DTC want one system' is 5.75in; reference style sits under 5.70in",
+      "fix": "rewrite_shorter",
+      "measured": 5.747,
+      "allowed": 5.7
+    }
+  ],
+  "final_vision": {
+    "passed": false,
+    "defects": [
+      {
+        "slide": 3,
+        "element_id": "logo:Sync (iSync Solutions)",
+        "type": "logo_illegible",
+        "severity": "major",
+        "description": "The Sync (iSync Solutions) logo is rendered as tiny text, far smaller than the other logos in the chart, and is barely readable.",
+        "suggested_fix": "swap_logo"
+      },
+      {
+        "slide": 3,
+        "element_id": "logo:Aptean Apparel ERP",
+        "type": "logo_too_large",
+        "severity": "minor",
+        "description": "The aptean logo looks noticeably larger and heavier than the neighbouring logos in the bottom row.",
+        "suggested_fix": "relayout"
+      },
+      {
+        "slide": 3,
+        "element_id": "logo:AIMS360",
+        "type": "logo_too_small",
+        "severity": "minor",
+        "description": "The AIMS360 logo is thin and faint, so it looks weaker than the other logos.",
+        "suggested_fix": "relayout"
+      },
+      {
+        "slide": 3,
+        "element_id": "target_logo",
+        "type": "visual_imbalance",
+        "severity": "minor",
+        "description": "The uphance target logo sits at the right edge of the top-right cell next to AIMS360, which makes the top row feel crowded. The empty space on the left of the chart is uneven by comparison.",
+        "suggested_fix": "relayout"
+      },
+      {
+        "slide": 1,
+        "element_id": "cover_logo",
+        "type": "logo_misaligned",
+        "severity": "minor",
+        "description": "The uphance logo is a little lower than the centre of the divider and the RECUR wordmark. It is also wider than the baseline Ai2000 logo.",
+        "suggested_fix": "relayout"
+      }
+    ],
+    "summary": "Slides 1 and 2 are clean. On slide 3 the Sync (iSync Solutions) logo is tiny and almost illegible next to the other logos, so a person would notice it on paper. There are also minor logo size and balance issues in the chart."
+  },
+  "needs_review": [
+    "logo for Sync (iSync Solutions) is already the typeset fallback",
+    "logo for Sync (iSync Solutions) is already the typeset fallback",
+    "logo for Sync (iSync Solutions) is already the typeset fallback"
+  ],
+  "seconds_total": 293.1,
+  "cost_usd": 0.8314,
+  "cost_by_service": {
+    "firecrawl": {
+      "calls": 25,
+      "cached": 0,
+      "errors": 2,
+      "cost_usd": 0.0,
+      "credits": 55.0
+    },
+    "download": {
+      "calls": 65,
+      "cached": 27,
+      "errors": 0,
+      "cost_usd": 0.0,
+      "credits": 0.0
+    },
+    "anthropic": {
+      "calls": 41,
+      "cached": 3,
+      "errors": 0,
+      "cost_usd": 0.831442,
+      "credits": 0.0
+    }
+  },
+  "fallbacks": [],
+  "flags": {
+    "typeset_logos": [
+      "Sync (iSync Solutions)"
+    ]
+  },
+  "warnings": [],
+  "delivered_to": [
+    "output/Recur_x_Uphance.pptx",
+    "output/Recur_x_Uphance.pdf",
+    "output/Recur_x_Uphance_sources.md",
+    "output/Recur_x_Uphance_qa_report.json"
+  ]
+}

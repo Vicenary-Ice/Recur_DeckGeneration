@@ -1,0 +1,223 @@
+{
+  "company": "FDM4",
+  "elements": [
+    {
+      "slide": 1,
+      "id": "cover_logo",
+      "kind": "logo",
+      "label": "FDM4",
+      "x": 5.318,
+      "y": 2.5626113157577093,
+      "w": 1.6007127382053141,
+      "h": 0.4997773684845811
+    },
+    {
+      "slide": 2,
+      "id": "thesis.title",
+      "kind": "text",
+      "field": "thesis.title",
+      "x": 0.44027777777777777,
+      "y": 0.5472222222222223,
+      "w": 2.711666666666667,
+      "h": 0.6819444444444445
+    },
+    {
+      "slide": 2,
+      "id": "thesis[0]",
+      "kind": "text",
+      "field": "thesis[0]",
+      "x": 1.3,
+      "y": 1.7342290026246718,
+      "w": 5.867708333333333,
+      "h": 0.47805555555555557
+    },
+    {
+      "slide": 2,
+      "id": "thesis[1]",
+      "kind": "text",
+      "field": "thesis[1]",
+      "x": 1.3,
+      "y": 2.892076771653543,
+      "w": 5.7514722222222225,
+      "h": 0.47805555555555557
+    },
+    {
+      "slide": 2,
+      "id": "thesis[2]",
+      "kind": "text",
+      "field": "thesis[2]",
+      "x": 1.3,
+      "y": 4.0499234470691166,
+      "w": 5.618555555555556,
+      "h": 0.47805555555555557
+    },
+    {
+      "slide": 3,
+      "id": "market.title",
+      "kind": "text",
+      "field": "market.title",
+      "x": 0.44027777777777777,
+      "y": 0.5472222222222223,
+      "w": 3.2661111111111105,
+      "h": 0.6819444444444445
+    },
+    {
+      "slide": 3,
+      "id": "market.subtitle",
+      "kind": "text",
+      "field": "market.subtitle",
+      "x": 0.44027777777777777,
+      "y": 1.1,
+      "w": 6.386666666666667,
+      "h": 0.3923611111111111
+    },
+    {
+      "slide": 3,
+      "id": "market.y_axis.high_label",
+      "kind": "text",
+      "field": "market.y_axis.high_label",
+      "x": 0.8773333333333331,
+      "y": 2.3979647856517934,
+      "w": 0.9926666666666668,
+      "h": 0.5351049868766404
+    },
+    {
+      "slide": 3,
+      "id": "market.y_axis.low_label",
+      "kind": "text",
+      "field": "market.y_axis.low_label",
+      "x": 1.290333333333333,
+      "y": 3.8173031496062992,
+      "w": 0.5796666666666668,
+      "h": 0.5351049868766404
+    },
+    {
+      "slide": 3,
+      "id": "market.x_axis.low_label",
+      "kind": "text",
+      "field": "market.x_axis.low_label",
+      "x": 3.086513779527559,
+      "y": 4.69,
+      "w": 1.0056666666666667,
+      "h": 0.44
+    },
+    {
+      "slide": 3,
+      "id": "market.x_axis.high_label",
+      "kind": "text",
+      "field": "market.x_axis.high_label",
+      "x": 5.658,
+      "y": 4.69,
+      "w": 1.084,
+      "h": 0.44
+    },
+    {
+      "slide": 3,
+      "id": "market.our_take",
+      "kind": "text",
+      "field": "market.our_take",
+      "x": 7.64,
+      "y": 2.0,
+      "w": 1.86,
+      "h": 1.912222222222222
+    },
+    {
+      "slide": 3,
+      "id": "logo:Aptean",
+      "kind": "logo",
+      "label": "Aptean",
+      "cell": [
+        "left",
+        "top"
+      ],
+      "x": 2.521218221708285,
+      "y": 2.504755694283839,
+      "w": 0.7375635565834311,
+      "h": 0.2304886114323222
+    },
+    {
+      "slide": 3,
+      "id": "logo:NetSuite",
+      "kind": "logo",
+      "label": "NetSuite",
+      "cell": [
+        "left",
+        "top"
+      ],
+      "x": 3.654931238344802,
+      "y": 2.5003048744646508,
+      "w": 0.7101375233103958,
+      "h": 0.23939025107069903
+    },
+    {
+      "slide": 3,
+      "id": "logo:Acumatica",
+      "kind": "logo",
+      "label": "Acumatica",
+      "cell": [
+        "left",
+        "bottom"
+      ],
+      "x": 3.027918546832074,
+      "y": 3.9193085346891765,
+      "w": 0.8441629063358521,
+      "h": 0.20138293062164608
+    },
+    {
+      "slide": 3,
+      "id": "logo:AIMS360",
+      "kind": "logo",
+      "label": "AIMS360",
+      "cell": [
+        "right",
+        "bottom"
+      ],
+      "x": 5.682027777777778,
+      "y": 3.9549999999999996,
+      "w": 0.7359444444444445,
+      "h": 0.13
+    },
+    {
+      "slide": 3,
+      "id": "target_logo",
+      "kind": "logo",
+      "label": "FDM4",
+      "cell": [
+        "right",
+        "top"
+      ],
+      "x": 5.681053943669027,
+      "y": 2.5048070083126888,
+      "w": 0.7378921126619463,
+      "h": 0.23038598337462224
+    },
+    {
+      "slide": 3,
+      "id": "glow",
+      "kind": "glow",
+      "label": "glow",
+      "x": 5.4265,
+      "y": 2.2125000000000004,
+      "w": 1.247,
+      "h": 0.815
+    }
+  ],
+  "dropped_media": [
+    "../media/image4.png",
+    "../media/image5.png",
+    "../media/image6.png",
+    "../media/image7.png",
+    "../media/image8.png",
+    "../media/image9.png",
+    "../media/image10.png",
+    "../media/image11.png",
+    "../media/image39.png",
+    "../media/image40.png",
+    "../media/image3.png",
+    "../media/image41.png",
+    "../media/image42.png",
+    "../media/image43.png",
+    "../media/image44.png",
+    "../media/image45.png"
+  ]
+}

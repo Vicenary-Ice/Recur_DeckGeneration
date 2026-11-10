@@ -2,6 +2,33 @@
 
 Every place the implementation adapts the build prompt, and why. Newest first.
 
+## Judgment-layer fixes (docs/agents briefs, 2026-11-10)
+The seven briefs in `docs/agents/` were carried out one after another by a single agent, each phase on its
+own branch merged into `main` before the next (order 0, 2, 3, 1, 4, 5, 6). Where a brief did not match the
+code, the brief's intent was followed and the adaptation is listed here, per phase.
+
+### Phase 0: baseline and scaffolding
+- **The reviewed Ai2000 deck is `runs/ai2000-20261109-163637`, not `-212951`.** The briefs name
+  `runs/ai2000-20261109-212951` as "the deck the user reviewed", but that folder is an `--offline` replay that
+  stopped at the competitors stage (cache miss): no `content.json`, `competitors.json`, logos or manifest. The
+  deck in `output/` with every defect the briefs quote ("set to win as brands bring AI into the ERP",
+  BlueCherry "with no financials cited", "Large-brand suites lack financials") is `-163637`. It is frozen as
+  `tests/fixtures_live/ai2000-20261109-163637-deck/`. The existing `tests/fixtures_live/ai2000-20261109-163637/`
+  (re-shaped logo verdicts for `test_live_fixes.py`) is untouched, which is why the new folder has a suffix.
+- **Native logo sizes in the fixtures are trimmed source pixels.** The briefs estimate Ai2000's cover logo at
+  "about 343 dpi"; that divides the *upscaled* width (453 px) by the printed width (1.32 in). The source PNG is
+  600 x 448 px and `process_logo` enlarges it x1.339 before trimming, so the logo itself is 338 x 154 source
+  pixels: about **256 dpi** on the cover. `native_w`/`native_h` in each fixture's `logo_metrics.json` are
+  processed size / upscale factor (`None` for vector and typeset logos). Uphance's cover logo is 219 x 41 source
+  pixels (about 106 dpi).
+- **20 xfailed items, 12 defects.** D1-D3 and D12 are parametrised over the three decks.
+- **Prompt snapshot.** `tests/snapshots/write_deck_system.txt` pins the rendered writer prompt. The split was
+  proven byte-identical against it; a phase that changes the prompt on purpose regenerates it in the same commit.
+- **Hook plugins.** `hooks.PLUGIN_MODULES` lists the modules that register handlers (market graph, placement
+  audit, critic); `hooks.fire` imports them on first use, so no stage module edits `pipeline.py` to register.
+- `pyproject.toml` package data now includes `prompts/style_examples/*.md`; `tests/conftest.py` also unsets
+  `RECUR_MARKET_GRAPH`, so no test can read or write the real graph.
+
 ## Services: Anthropic + Firecrawl only (decided by Recur, 2026-11-07)
 The build prompt specifies five keys (Anthropic, Exa, Firecrawl, Brandfetch API + client ID). The pipeline
 uses only **Anthropic and Firecrawl**. The Exa and Brandfetch clients were removed rather than kept as unused

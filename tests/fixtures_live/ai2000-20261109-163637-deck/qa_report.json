@@ -1,0 +1,373 @@
+{
+  "input": {
+    "name": "Ai2000",
+    "domain": null,
+    "hint": null
+  },
+  "run_dir": "/Users/rishi_r/Recur_CaseProject/runs/ai2000-20261109-163637",
+  "settings": {
+    "keys": {
+      "anthropic": true,
+      "firecrawl": true
+    },
+    "models": {
+      "writer": "claude-opus-5-5",
+      "judge": "claude-sonnet-5-5",
+      "fast": "claude-haiku-5-5",
+      "vision": "claude-sonnet-5-5"
+    },
+    "max_qa_rounds": 3,
+    "firecrawl_rpm": 10,
+    "fetch_mode": "direct-first",
+    "offline": false,
+    "use_cache": true
+  },
+  "started": "2026-11-09T16:36:37",
+  "status": "needs_review",
+  "company": "Ai2000",
+  "domain": "a2000software.com",
+  "timings": {
+    "entity": 14.3,
+    "profile": 30.2,
+    "competitors": 87.8,
+    "logos": 6.9,
+    "write": 48.8,
+    "qa": 20.2
+  },
+  "deliverables": {
+    "pptx": "/Users/rishi_r/Recur_CaseProject/runs/ai2000-20261109-163637/Recur_x_Ai2000.pptx",
+    "pdf": "/Users/rishi_r/Recur_CaseProject/runs/ai2000-20261109-163637/Recur_x_Ai2000.pdf",
+    "sources": "/Users/rishi_r/Recur_CaseProject/runs/ai2000-20261109-163637/sources.md"
+  },
+  "identity": {
+    "display_name": "Ai2000",
+    "domain": "a2000software.com",
+    "aliases": [
+      "A2000 Software",
+      "A2000",
+      "Ai2000 LLC",
+      "GCS Software",
+      "A2K"
+    ],
+    "confidence": 0.98,
+    "margin": 0.93,
+    "domain_supplied": false,
+    "low_confidence_identity": false,
+    "rebrand_detected": true
+  },
+  "competitors": [
+    {
+      "name": "Aptean",
+      "domain": "aptean.com",
+      "cell": "top-right",
+      "independent_sources": 2,
+      "channels": [
+        "roundup"
+      ]
+    },
+    {
+      "name": "BlueCherry",
+      "domain": "bluecherry.com",
+      "cell": "top-left",
+      "independent_sources": 2,
+      "channels": [
+        "roundup",
+        "vs_page"
+      ]
+    },
+    {
+      "name": "AIMS360",
+      "domain": "aims360.com",
+      "cell": "bottom-right",
+      "independent_sources": 4,
+      "channels": [
+        "directory",
+        "roundup",
+        "vs_page"
+      ]
+    },
+    {
+      "name": "ApparelMagic",
+      "domain": "apparelmagic.com",
+      "cell": "bottom-right",
+      "independent_sources": 4,
+      "channels": [
+        "directory",
+        "roundup",
+        "vs_page"
+      ]
+    },
+    {
+      "name": "InStyle Apparel Software",
+      "domain": "instylesoft.com",
+      "cell": "bottom-left",
+      "independent_sources": 1,
+      "channels": [
+        "similar"
+      ]
+    }
+  ],
+  "logos": {
+    "Ai2000": {
+      "source": "jsonld",
+      "typeset": false,
+      "aspect": 2.199
+    },
+    "AIMS360": {
+      "source": "typeset",
+      "typeset": true,
+      "aspect": 5.661
+    },
+    "BlueCherry": {
+      "source": "jsonld",
+      "typeset": false,
+      "aspect": 3.0
+    },
+    "ApparelMagic": {
+      "source": "header_img",
+      "typeset": false,
+      "aspect": 5.907
+    },
+    "Aptean": {
+      "source": "jsonld",
+      "typeset": false,
+      "aspect": 3.2
+    },
+    "InStyle Apparel Software": {
+      "source": "header_img",
+      "typeset": false,
+      "aspect": 5.648
+    }
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "layer_a_before": [
+        {
+          "code": "our_take_lines",
+          "severity": "error",
+          "slide": 3,
+          "field": "market.our_take.points[1]",
+          "message": "point wraps to 3 lines (max 2)",
+          "fix": "rewrite_shorter",
+          "measured": 3,
+          "allowed": 2
+        },
+        {
+          "code": "our_take_height",
+          "severity": "error",
+          "slide": 3,
+          "field": "market.our_take.headline",
+          "message": "'our take' block is 2.08in tall; limit 1.95in",
+          "fix": "rewrite_shorter",
+          "measured": 2.085,
+          "allowed": 1.95
+        }
+      ],
+      "fixes_layer_a": [
+        {
+          "fix": "rewrite",
+          "applied": true,
+          "field": "market.our_take.points[1]",
+          "from": "Large-brand suites lack financials or spread across many industries",
+          "to": "Large-brand suites lack financials or stay generic",
+          "calls": 1,
+          "tried": [
+            {
+              "text": "Large-brand suites lack financials or serve many industries",
+              "errors": [
+                "point wraps to 3 lines (max 2)"
+              ]
+            },
+            {
+              "text": "Large-brand suites lack financials or stay generic",
+              "errors": []
+            }
+          ]
+        },
+        {
+          "fix": "rewrite",
+          "applied": true,
+          "field": "market.our_take.headline",
+          "from": "Ai2000 runs PLM, EDI, warehouse and the books natively for global fashion houses",
+          "to": "Ai2000 runs PLM, EDI, warehouse and the books natively for global fashion",
+          "calls": 1,
+          "tried": [
+            {
+              "text": "Ai2000 runs PLM, EDI, warehouse and the books natively for global fashion",
+              "errors": []
+            }
+          ]
+        }
+      ],
+      "layer_a_after": [],
+      "vision": {
+        "passed": false,
+        "defects": [
+          {
+            "slide": 3,
+            "element_id": "logo:AIMS360",
+            "type": "logo_too_large",
+            "severity": "major",
+            "description": "The AIMS360 wordmark is much larger and heavier than the neighbouring logos (ApparelMagic, InStyle, BlueCherry). The baseline shows it at a similar scale to ApparelMagic with a light weight, so here it dominates its cell and looks like a different treatment.",
+            "suggested_fix": "swap_logo"
+          },
+          {
+            "slide": 3,
+            "element_id": "logo:InStyle Apparel Software",
+            "type": "logo_illegible",
+            "severity": "minor",
+            "description": "The 'In-Style Software' sub-caption beside the InStyle! logo is tiny and hard to read on paper. The logo is also small relative to AIMS360.",
+            "suggested_fix": "swap_logo"
+          },
+          {
+            "slide": 3,
+            "element_id": "logo:BlueCherry",
+            "type": "logo_too_small",
+            "severity": "minor",
+            "description": "The BlueCherry logo and its 'by CGS' tag are small compared with the Aptean and AIMS360 logos. This makes the top-left quadrant feel sparse and the logo sizes uneven.",
+            "suggested_fix": "relayout"
+          },
+          {
+            "slide": 3,
+            "element_id": "logo:ApparelMagic",
+            "type": "logo_misaligned",
+            "severity": "minor",
+            "description": "ApparelMagic sits very close to the AIMS360 logo, and its gap to AIMS360 is tighter than the spacing in the baseline. The pair also sits lower than the baseline's bottom-right quadrant placement.",
+            "suggested_fix": "relayout"
+          },
+          {
+            "slide": 3,
+            "element_id": "market.our_take",
+            "type": "visual_imbalance",
+            "severity": "minor",
+            "description": "The 'Our take' block runs to the right edge with tight wrapping. The bottom-left quadrant holds only one logo while the bottom-right holds two, so the chart looks unbalanced.",
+            "suggested_fix": "relayout"
+          }
+        ],
+        "summary": "Slides 1 and 2 match the baseline with no visible defects. Slide 3 has one major defect: the AIMS360 logo is far larger and heavier than the other competitor logos. The remaining slide 3 issues are minor logo sizing and spacing problems."
+      },
+      "fixes_vision": [
+        {
+          "fix": "swap_logo",
+          "applied": false,
+          "why": "already typeset"
+        }
+      ]
+    }
+  ],
+  "final_layer_a_errors": [],
+  "final_layer_a_warnings": [
+    {
+      "code": "text_long",
+      "severity": "warn",
+      "slide": 2,
+      "field": "thesis[0].headline",
+      "message": "'Apparel and footwear brands want AI inside the ERP they run' is 5.77in; reference style sits under 5.70in",
+      "fix": "rewrite_shorter",
+      "measured": 5.765,
+      "allowed": 5.7
+    },
+    {
+      "code": "text_long",
+      "severity": "warn",
+      "slide": 2,
+      "field": "thesis[2].headline",
+      "message": "'Help Ai2000 reach more brands with AI-native outbound sales' is 5.86in; reference style sits under 5.70in",
+      "fix": "rewrite_shorter",
+      "measured": 5.86,
+      "allowed": 5.7
+    }
+  ],
+  "final_vision": {
+    "passed": false,
+    "defects": [
+      {
+        "slide": 3,
+        "element_id": "logo:AIMS360",
+        "type": "logo_too_large",
+        "severity": "major",
+        "description": "The AIMS360 wordmark is much larger and heavier than the neighbouring logos (ApparelMagic, InStyle, BlueCherry). The baseline shows it at a similar scale to ApparelMagic with a light weight, so here it dominates its cell and looks like a different treatment.",
+        "suggested_fix": "swap_logo"
+      },
+      {
+        "slide": 3,
+        "element_id": "logo:InStyle Apparel Software",
+        "type": "logo_illegible",
+        "severity": "minor",
+        "description": "The 'In-Style Software' sub-caption beside the InStyle! logo is tiny and hard to read on paper. The logo is also small relative to AIMS360.",
+        "suggested_fix": "swap_logo"
+      },
+      {
+        "slide": 3,
+        "element_id": "logo:BlueCherry",
+        "type": "logo_too_small",
+        "severity": "minor",
+        "description": "The BlueCherry logo and its 'by CGS' tag are small compared with the Aptean and AIMS360 logos. This makes the top-left quadrant feel sparse and the logo sizes uneven.",
+        "suggested_fix": "relayout"
+      },
+      {
+        "slide": 3,
+        "element_id": "logo:ApparelMagic",
+        "type": "logo_misaligned",
+        "severity": "minor",
+        "description": "ApparelMagic sits very close to the AIMS360 logo, and its gap to AIMS360 is tighter than the spacing in the baseline. The pair also sits lower than the baseline's bottom-right quadrant placement.",
+        "suggested_fix": "relayout"
+      },
+      {
+        "slide": 3,
+        "element_id": "market.our_take",
+        "type": "visual_imbalance",
+        "severity": "minor",
+        "description": "The 'Our take' block runs to the right edge with tight wrapping. The bottom-left quadrant holds only one logo while the bottom-right holds two, so the chart looks unbalanced.",
+        "suggested_fix": "relayout"
+      }
+    ],
+    "summary": "Slides 1 and 2 match the baseline with no visible defects. Slide 3 has one major defect: the AIMS360 logo is far larger and heavier than the other competitor logos. The remaining slide 3 issues are minor logo sizing and spacing problems."
+  },
+  "needs_review": [
+    "logo for AIMS360 is already the typeset fallback"
+  ],
+  "seconds_total": 208.3,
+  "cost_usd": 0.5416,
+  "cost_by_service": {
+    "firecrawl": {
+      "calls": 22,
+      "cached": 0,
+      "errors": 4,
+      "cost_usd": 0.0,
+      "credits": 36.0
+    },
+    "download": {
+      "calls": 42,
+      "cached": 1,
+      "errors": 0,
+      "cost_usd": 0.0,
+      "credits": 0.0
+    },
+    "anthropic": {
+      "calls": 27,
+      "cached": 0,
+      "errors": 0,
+      "cost_usd": 0.541572,
+      "credits": 0.0
+    }
+  },
+  "fallbacks": [],
+  "flags": {
+    "thin_market": true,
+    "typeset_logos": [
+      "AIMS360"
+    ]
+  },
+  "warnings": [
+    "thin market: only 5 competitors passed the relaxed rule (strict rule needs >= 5 with 2+ channels or a head-to-head page, and 2+ independent sources)",
+    "competitors with fewer than 2 independent sources: ['InStyle Apparel Software']"
+  ],
+  "delivered_to": [
+    "output/Recur_x_Ai2000.pptx",
+    "output/Recur_x_Ai2000.pdf",
+    "output/Recur_x_Ai2000_sources.md",
+    "output/Recur_x_Ai2000_qa_report.json"
+  ]
+}

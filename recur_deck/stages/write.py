@@ -15,7 +15,7 @@ from pydantic import BaseModel, ValidationError
 from .. import fonts, qa
 from ..models import DeckContent, _norm_domain
 from ..spec import LINE_BUDGETS
-from .base import Ctx, StageError, prompt, registrable
+from .base import PROMPTS, Ctx, StageError, prompt, registrable
 
 log = logging.getLogger("recur_deck.write")
 
@@ -81,10 +81,22 @@ def enforce(data: dict, entity: dict, comps: list[dict], valid_ids: set[str]) ->
     return data, notes
 
 
+def style_examples() -> str:
+    """Every prompts/style_examples/*.md, in file-name order."""
+    return "\n".join(p.read_text("utf-8") for p in sorted((PROMPTS / "style_examples").glob("*.md")))
+
+
+def writer_system_prompt() -> str:
+    """The writer's rendered system prompt: the write_deck.md skeleton with the thesis rules, the market rules,
+    the style examples and the style rules filled in."""
+    return prompt("write_deck", THESIS_RULES=prompt("write_thesis_rules"), MARKET_RULES=prompt("write_market_rules"),
+                  STYLE_EXAMPLES=style_examples(), STYLE_RULES=qa.STYLE_RULES_FOR_PROMPT)
+
+
 def write_deck(ctx: Ctx, entity: dict, profile: dict, comps_out: dict, problems: list[str] | None = None) -> DeckContent:
     comps = comps_out["competitors"]
     mc = min_competitors(len(comps), comps_out.get("thin_market", False))
-    system = prompt("write_deck", STYLE_RULES=qa.STYLE_RULES_FOR_PROMPT)
+    system = writer_system_prompt()
     blocks = _inputs(ctx, entity, profile, comps)
     if mc < 5:
         blocks.append(("note", f"This is a thin market: place all {len(comps)} competitors you were given "

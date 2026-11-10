@@ -1,0 +1,152 @@
+{
+  "company": {
+    "display_name": "Uphance",
+    "domain": "uphance.com",
+    "aliases": [
+      "Stitchex",
+      "Uphance LLC",
+      "Uphance Apparel ERP"
+    ]
+  },
+  "thesis": [
+    {
+      "headline": "Apparel brands that sell wholesale and DTC want one system",
+      "subline": "Many juggle middleware, a separate B2B portal and a standalone WMS",
+      "evidence_ids": [
+        "e14",
+        "e26"
+      ]
+    },
+    {
+      "headline": "Uphance is set to win as brands drop disconnected tools",
+      "subline": "B2B orders cut live stock in one system, so brands add retailers, not staff",
+      "evidence_ids": [
+        "e27",
+        "e17",
+        "e24"
+      ]
+    },
+    {
+      "headline": "Help Uphance grow with outbound sales and AI",
+      "subline": "We add outbound to the sales-led model and build AI into the product",
+      "evidence_ids": [
+        "e19",
+        "e32",
+        "e33"
+      ]
+    }
+  ],
+  "market": {
+    "subtitle": "Wholesale and DTC apparel brands need one system for B2B orders, stock and the warehouse",
+    "subtitle_evidence_ids": [
+      "e2",
+      "e14"
+    ],
+    "x_axis": {
+      "title": "Warehouse scope",
+      "low_label": "Orders and stock",
+      "high_label": "Built-in WMS"
+    },
+    "y_axis": {
+      "title": "Core buyer",
+      "low_label": "Enterprise\nand makers",
+      "high_label": "Wholesale\n+ DTC brands"
+    },
+    "competitors": [
+      {
+        "name": "AIMS360",
+        "domain": "aims360.com",
+        "x": "right",
+        "y": "top",
+        "rationale": "Sells to wholesale, DTC and retail brands and runs warehousing, EDI and accounting in one ERP",
+        "evidence_ids": [
+          "e33",
+          "e34",
+          "e43"
+        ]
+      },
+      {
+        "name": "Sync (iSync Solutions)",
+        "domain": "isyncsolutions.com",
+        "x": "left",
+        "y": "top",
+        "rationale": "Built only for apparel and footwear brands, with B2B, warehousing and accounting in one cloud platform",
+        "evidence_ids": [
+          "e118",
+          "e120"
+        ]
+      },
+      {
+        "name": "ApparelMagic",
+        "domain": "apparelmagic.com",
+        "x": "left",
+        "y": "top",
+        "rationale": "Picked for DTC and wholesale brands, but its scope lists sales, inventory, purchasing and production without a warehouse module",
+        "evidence_ids": [
+          "e65",
+          "e71",
+          "e72"
+        ]
+      },
+      {
+        "name": "BlueCherry",
+        "domain": "bluecherry.com",
+        "x": "right",
+        "y": "bottom",
+        "rationale": "Serves manufacturers through retailers and is chosen when warehouse and manufacturing depth matters",
+        "evidence_ids": [
+          "e84",
+          "e86"
+        ]
+      },
+      {
+        "name": "Aptean Apparel ERP",
+        "domain": "aptean.com",
+        "x": "right",
+        "y": "bottom",
+        "rationale": "Often serves larger, process-heavy firms and covers warehousing and financials",
+        "evidence_ids": [
+          "e54",
+          "e60"
+        ]
+      },
+      {
+        "name": "Ai2000",
+        "domain": "a2000software.com",
+        "x": "right",
+        "y": "bottom",
+        "rationale": "Serves wholesalers, manufacturers and retailers with warehouse and financials on an Oracle platform",
+        "evidence_ids": [
+          "e124",
+          "e126",
+          "e127"
+        ]
+      },
+      {
+        "name": "WFX",
+        "domain": "worldfashionexchange.com",
+        "x": "left",
+        "y": "bottom",
+        "rationale": "Aimed at brands and manufacturers with PLM, MES and traceability ahead of warehouse tools",
+        "evidence_ids": [
+          "e95",
+          "e98"
+        ]
+      }
+    ],
+    "our_take": {
+      "headline": "Uphance runs B2B orders, Shopify and the warehouse from one stock pool",
+      "points": [
+        "Enterprise suites are built for makers and big programs",
+        "Lighter brand tools leave the warehouse to add-ons"
+      ],
+      "evidence_ids": [
+        "e24",
+        "e27",
+        "e26",
+        "e54",
+        "e72"
+      ]
+    }
+  }
+}

@@ -1,0 +1,237 @@
+{
+  "company": "Ai2000",
+  "elements": [
+    {
+      "slide": 1,
+      "id": "cover_logo",
+      "kind": "logo",
+      "label": "Ai2000",
+      "x": 5.318,
+      "y": 2.5125,
+      "w": 1.3194174757281554,
+      "h": 0.6
+    },
+    {
+      "slide": 2,
+      "id": "thesis.title",
+      "kind": "text",
+      "field": "thesis.title",
+      "x": 0.44027777777777777,
+      "y": 0.5472222222222223,
+      "w": 2.8408333333333338,
+      "h": 0.6819444444444445
+    },
+    {
+      "slide": 2,
+      "id": "thesis[0]",
+      "kind": "text",
+      "field": "thesis[0]",
+      "x": 1.3,
+      "y": 1.7342290026246718,
+      "w": 5.765416666666667,
+      "h": 0.47805555555555557
+    },
+    {
+      "slide": 2,
+      "id": "thesis[1]",
+      "kind": "text",
+      "field": "thesis[1]",
+      "x": 1.3,
+      "y": 2.892076771653543,
+      "w": 5.355472222222223,
+      "h": 0.47805555555555557
+    },
+    {
+      "slide": 2,
+      "id": "thesis[2]",
+      "kind": "text",
+      "field": "thesis[2]",
+      "x": 1.3,
+      "y": 4.0499234470691166,
+      "w": 5.859791666666666,
+      "h": 0.47805555555555557
+    },
+    {
+      "slide": 3,
+      "id": "market.title",
+      "kind": "text",
+      "field": "market.title",
+      "x": 0.44027777777777777,
+      "y": 0.5472222222222223,
+      "w": 3.395277777777778,
+      "h": 0.6819444444444445
+    },
+    {
+      "slide": 3,
+      "id": "market.subtitle",
+      "kind": "text",
+      "field": "market.subtitle",
+      "x": 0.44027777777777777,
+      "y": 1.1,
+      "w": 7.166333333333333,
+      "h": 0.3923611111111111
+    },
+    {
+      "slide": 3,
+      "id": "market.y_axis.high_label",
+      "kind": "text",
+      "field": "market.y_axis.high_label",
+      "x": 0.7725,
+      "y": 2.3979647856517934,
+      "w": 1.0975,
+      "h": 0.5351049868766404
+    },
+    {
+      "slide": 3,
+      "id": "market.y_axis.low_label",
+      "kind": "text",
+      "field": "market.y_axis.low_label",
+      "x": 0.9269999999999998,
+      "y": 3.8173031496062992,
+      "w": 0.9430000000000001,
+      "h": 0.5351049868766404
+    },
+    {
+      "slide": 3,
+      "id": "market.x_axis.low_label",
+      "kind": "text",
+      "field": "market.x_axis.low_label",
+      "x": 3.2280137795275587,
+      "y": 4.69,
+      "w": 0.7226666666666667,
+      "h": 0.44
+    },
+    {
+      "slide": 3,
+      "id": "market.x_axis.high_label",
+      "kind": "text",
+      "field": "market.x_axis.high_label",
+      "x": 5.488,
+      "y": 4.69,
+      "w": 1.4240000000000002,
+      "h": 0.44
+    },
+    {
+      "slide": 3,
+      "id": "market.our_take",
+      "kind": "text",
+      "field": "market.our_take",
+      "x": 7.64,
+      "y": 2.0,
+      "w": 1.86,
+      "h": 1.912222222222222
+    },
+    {
+      "slide": 3,
+      "id": "logo:Aptean",
+      "kind": "logo",
+      "label": "Aptean",
+      "cell": [
+        "right",
+        "top"
+      ],
+      "x": 5.1212182217082844,
+      "y": 2.504755694283839,
+      "w": 0.7375635565834311,
+      "h": 0.2304886114323222
+    },
+    {
+      "slide": 3,
+      "id": "logo:BlueCherry",
+      "kind": "logo",
+      "label": "BlueCherry",
+      "cell": [
+        "left",
+        "top"
+      ],
+      "x": 3.0929285785728577,
+      "y": 2.5009761928576193,
+      "w": 0.7141428428542851,
+      "h": 0.23804761428476168
+    },
+    {
+      "slide": 3,
+      "id": "logo:AIMS360",
+      "kind": "logo",
+      "label": "AIMS360",
+      "cell": [
+        "right",
+        "bottom"
+      ],
+      "x": 5.008805555555556,
+      "y": 3.9349999999999996,
+      "w": 0.962388888888889,
+      "h": 0.17
+    },
+    {
+      "slide": 3,
+      "id": "logo:ApparelMagic",
+      "kind": "logo",
+      "label": "ApparelMagic",
+      "cell": [
+        "right",
+        "bottom"
+      ],
+      "x": 6.109999999999999,
+      "y": 3.9353498871331825,
+      "w": 1.0,
+      "h": 0.16930022573363432
+    },
+    {
+      "slide": 3,
+      "id": "logo:InStyle Apparel Software",
+      "kind": "logo",
+      "label": "InStyle Apparel Software",
+      "cell": [
+        "left",
+        "bottom"
+      ],
+      "x": 2.9600777515525456,
+      "y": 3.9332515411686626,
+      "w": 0.9798444968949095,
+      "h": 0.17349691766267367
+    },
+    {
+      "slide": 3,
+      "id": "target_logo",
+      "kind": "logo",
+      "label": "Ai2000",
+      "cell": [
+        "right",
+        "top"
+      ],
+      "x": 6.304289781223987,
+      "y": 2.4809794590113494,
+      "w": 0.6114204375520259,
+      "h": 0.27804108197730093
+    },
+    {
+      "slide": 3,
+      "id": "glow",
+      "kind": "glow",
+      "label": "glow",
+      "x": 5.9864999999999995,
+      "y": 2.2125000000000004,
+      "w": 1.247,
+      "h": 0.815
+    }
+  ],
+  "dropped_media": [
+    "../media/image4.png",
+    "../media/image5.png",
+    "../media/image6.png",
+    "../media/image7.png",
+    "../media/image8.png",
+    "../media/image9.png",
+    "../media/image10.png",
+    "../media/image11.png",
+    "../media/image39.png",
+    "../media/image40.png",
+    "../media/image3.png",
+    "../media/image41.png",
+    "../media/image42.png",
+    "../media/image43.png",
+    "../media/image44.png",
+    "../media/image45.png"
+  ]
+}

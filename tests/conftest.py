@@ -5,6 +5,7 @@ Autouse, for every test:
 - Settings.load() can not read the real .env (dotenv loading is a no-op),
 - RECUR_OFFLINE=1, so Settings.load() comes back in offline (cache-only) mode,
 - RECUR_RUNS_DIR points into the test's tmp dir, so the real runs/_cache is never read or written,
+- RECUR_MARKET_GRAPH is unset, so the real runs/_market_graph.json is never read or written,
 - socket connects to anything but a local Unix socket raise LiveNetworkBlocked, and every attempt is recorded.
   The fixture fails the test at teardown if an attempt was made, even when the code under test swallowed the
   exception (Ctx.pmap and the fallback layers catch broad exceptions).
@@ -44,6 +45,7 @@ def net_guard(monkeypatch, tmp_path):
         monkeypatch.delenv(k, raising=False)
     monkeypatch.setenv("RECUR_OFFLINE", "1")
     monkeypatch.setenv("RECUR_RUNS_DIR", str(tmp_path / "guarded-runs"))
+    monkeypatch.delenv("RECUR_MARKET_GRAPH", raising=False)  # the shared market graph lives under the tmp runs dir
     import dotenv
     monkeypatch.setattr(dotenv, "load_dotenv", lambda *a, **kw: False)
 

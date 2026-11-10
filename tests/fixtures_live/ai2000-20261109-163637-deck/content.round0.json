@@ -1,0 +1,138 @@
+{
+  "company": {
+    "display_name": "Ai2000",
+    "domain": "a2000software.com",
+    "aliases": [
+      "A2000 Software",
+      "A2000",
+      "Ai2000 LLC",
+      "GCS Software",
+      "A2K"
+    ]
+  },
+  "thesis": [
+    {
+      "headline": "Apparel and footwear brands want AI inside the ERP they run",
+      "subline": "Fashion ERP vendors are adding AI to daily orders, sourcing and reporting",
+      "evidence_ids": [
+        "e67",
+        "e47",
+        "e32"
+      ]
+    },
+    {
+      "headline": "Ai2000 is set to win as brands bring AI into the ERP",
+      "subline": "PLM, EDI, warehouse and the books share one system, so AI sees every order",
+      "evidence_ids": [
+        "e5",
+        "e27",
+        "e23",
+        "e2"
+      ]
+    },
+    {
+      "headline": "Help Ai2000 reach more brands with AI-native outbound sales",
+      "subline": "Recur OS adds outbound sales to what already works to book more demos",
+      "evidence_ids": [
+        "e2",
+        "e12",
+        "e15"
+      ]
+    }
+  ],
+  "market": {
+    "subtitle": "Apparel, footwear and home goods brands need product, retailer EDI and books in one system",
+    "subtitle_evidence_ids": [
+      "e5",
+      "e12",
+      "e60"
+    ],
+    "x_axis": {
+      "title": "Product scope",
+      "low_label": "Ops only",
+      "high_label": "PLM to financials"
+    },
+    "y_axis": {
+      "title": "Customer size",
+      "low_label": "Small &\nmid brands",
+      "high_label": "Large brands"
+    },
+    "competitors": [
+      {
+        "name": "Aptean",
+        "domain": "aptean.com",
+        "x": "right",
+        "y": "top",
+        "rationale": "Industry-specific ERP with PLM for mid-market and enterprise apparel and footwear firms across many industries",
+        "evidence_ids": [
+          "e65",
+          "e66",
+          "e68"
+        ]
+      },
+      {
+        "name": "BlueCherry",
+        "domain": "bluecherry.com",
+        "x": "left",
+        "y": "top",
+        "rationale": "Fits manufacturers that own production with PLM, EDI and shop floor control, with no financials cited",
+        "evidence_ids": [
+          "e61",
+          "e62",
+          "e64"
+        ]
+      },
+      {
+        "name": "AIMS360",
+        "domain": "aims360.com",
+        "x": "right",
+        "y": "bottom",
+        "rationale": "Apparel ERP with native EDI and accounting that fits brands from about $1 million to $400 million in sales",
+        "evidence_ids": [
+          "e48",
+          "e53",
+          "e60"
+        ]
+      },
+      {
+        "name": "ApparelMagic",
+        "domain": "apparelmagic.com",
+        "x": "right",
+        "y": "bottom",
+        "rationale": "ERP, PLM, CRM and B2B ecommerce in one platform aimed at growth-stage fashion teams",
+        "evidence_ids": [
+          "e39",
+          "e42",
+          "e43"
+        ]
+      },
+      {
+        "name": "InStyle Apparel Software",
+        "domain": "instylesoft.com",
+        "x": "left",
+        "y": "bottom",
+        "rationale": "Apparel ERP for manufacturing and distribution with PDM, MRP and EDI, with no financials cited",
+        "evidence_ids": [
+          "e71",
+          "e72"
+        ]
+      }
+    ],
+    "our_take": {
+      "headline": "Ai2000 runs PLM, EDI, warehouse and the books natively for global fashion houses",
+      "points": [
+        "Small-brand tools stop short of global fashion house programs",
+        "Large-brand suites lack financials or spread across many industries"
+      ],
+      "evidence_ids": [
+        "e5",
+        "e27",
+        "e15",
+        "e16",
+        "e48",
+        "e64",
+        "e68"
+      ]
+    }
+  }
+}

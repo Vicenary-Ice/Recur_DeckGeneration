@@ -1,0 +1,130 @@
+{
+  "company": {
+    "display_name": "FDM4",
+    "domain": "fdm4.com",
+    "aliases": [
+      "FDM4 America",
+      "FDM4 International",
+      "FDM4 America, Inc",
+      "Cutsey Business Systems"
+    ]
+  },
+  "thesis": [
+    {
+      "headline": "Decorators and promo distributors are weighing generic ERPs",
+      "subline": "Generic cloud ERPs need custom work to handle decorated orders and group stores",
+      "evidence_ids": [
+        "e29",
+        "e46",
+        "e50",
+        "e13"
+      ]
+    },
+    {
+      "headline": "FDM4 is set to win as decorators move to one system",
+      "subline": "Decorated orders, the warehouse and the books run on FDM4, so switching is hard",
+      "evidence_ids": [
+        "e7",
+        "e9",
+        "e11",
+        "e24",
+        "e28"
+      ]
+    },
+    {
+      "headline": "Help FDM4 grow with outbound sales and AI",
+      "subline": "We add outbound sales to what already works and build AI into decorated orders",
+      "evidence_ids": [
+        "e23",
+        "e32",
+        "e54"
+      ]
+    }
+  ],
+  "market": {
+    "subtitle": "Decorators and apparel makers need one system for orders, stock, stores and books",
+    "subtitle_evidence_ids": [
+      "e7",
+      "e8",
+      "e10",
+      "e11",
+      "e13"
+    ],
+    "x_axis": {
+      "title": "Industry depth",
+      "low_label": "General ERP",
+      "high_label": "Apparel built"
+    },
+    "y_axis": {
+      "title": "Customer size",
+      "low_label": "Single\nbrands",
+      "high_label": "Multi-entity\ngroups"
+    },
+    "competitors": [
+      {
+        "name": "Aptean",
+        "domain": "aptean.com",
+        "x": "right",
+        "y": "top",
+        "rationale": "Several apparel ERP editions aimed at established wholesalers and makers",
+        "evidence_ids": [
+          "e84",
+          "e86",
+          "e88"
+        ]
+      },
+      {
+        "name": "NetSuite",
+        "domain": "netsuite.com",
+        "x": "left",
+        "y": "top",
+        "rationale": "Broad cloud ERP for mid-market firms, strong at multi-entity consolidation",
+        "evidence_ids": [
+          "e36",
+          "e39",
+          "e43"
+        ]
+      },
+      {
+        "name": "Acumatica",
+        "domain": "acumatica.com",
+        "x": "left",
+        "y": "bottom",
+        "rationale": "General cloud ERP for growing SMB distributors that need customization for promo work",
+        "evidence_ids": [
+          "e46",
+          "e47",
+          "e50"
+        ]
+      },
+      {
+        "name": "AIMS360",
+        "domain": "aims360.com",
+        "x": "right",
+        "y": "bottom",
+        "rationale": "Apparel ERP that runs a single brand in one system for brands from about $1M to $400M+",
+        "evidence_ids": [
+          "e57",
+          "e63",
+          "e64"
+        ]
+      }
+    ],
+    "our_take": {
+      "headline": "FDM4 runs decorated apparel orders, the warehouse, group stores and the books together",
+      "points": [
+        "General ERPs need custom work for decorated orders",
+        "Brand-focused apparel tools skip decorators and promo distributors"
+      ],
+      "evidence_ids": [
+        "e7",
+        "e9",
+        "e10",
+        "e11",
+        "e50",
+        "e61",
+        "e85"
+      ]
+    }
+  }
+}

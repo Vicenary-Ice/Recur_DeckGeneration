@@ -1,0 +1,230 @@
+{
+  "competitors": [
+    {
+      "name": "AIMS360",
+      "domain": "aims360.com",
+      "channels": [
+        "roundup",
+        "vs_page"
+      ],
+      "same_vertical": true,
+      "operating": true,
+      "is_software_vendor": true,
+      "acquired_or_renamed": null,
+      "segment": "Apparel and consumer brands, about $1M to $400M+ in sales",
+      "scope": "Apparel ERP: production, inventory, wholesale, EDI, Shopify ecommerce, WMS, accounting",
+      "head_to_head": true,
+      "relevance": 0.8,
+      "evidence_ids": [
+        "e54",
+        "e55",
+        "e56",
+        "e57",
+        "e58",
+        "e59",
+        "e60",
+        "e61",
+        "e62",
+        "e63",
+        "e64",
+        "e65"
+      ],
+      "independent_sources": 5,
+      "homepage": "https://www.aims360.com/",
+      "resolved_by": "stated",
+      "mentions": 9
+    },
+    {
+      "name": "NetSuite",
+      "domain": "netsuite.com",
+      "channels": [
+        "directory",
+        "roundup",
+        "vs_page"
+      ],
+      "same_vertical": true,
+      "operating": true,
+      "is_software_vendor": true,
+      "acquired_or_renamed": null,
+      "segment": "Growing and mid-market businesses across industries, including apparel and distribution",
+      "scope": "Horizontal cloud ERP: financials, CRM, inventory, order-to-cash, with industry suites",
+      "head_to_head": true,
+      "relevance": 0.72,
+      "evidence_ids": [
+        "e29",
+        "e30",
+        "e31",
+        "e32",
+        "e33",
+        "e34",
+        "e35",
+        "e36",
+        "e37",
+        "e38",
+        "e39",
+        "e40",
+        "e41",
+        "e42",
+        "e43"
+      ],
+      "independent_sources": 8,
+      "homepage": "https://www.netsuite.com/portal/home.shtml",
+      "resolved_by": "stated",
+      "mentions": 17
+    },
+    {
+      "name": "Aptean",
+      "domain": "aptean.com",
+      "channels": [
+        "roundup",
+        "vs_page"
+      ],
+      "same_vertical": true,
+      "operating": true,
+      "is_software_vendor": true,
+      "acquired_or_renamed": null,
+      "segment": "Mid-market apparel, manufacturing, food, logistics and other industry-specific businesses",
+      "scope": "Industry-specific ERP, supply chain, PLM, EAM, with apparel ERP editions",
+      "head_to_head": true,
+      "relevance": 0.72,
+      "evidence_ids": [
+        "e82",
+        "e83",
+        "e84",
+        "e85",
+        "e86",
+        "e87",
+        "e88",
+        "e89"
+      ],
+      "independent_sources": 5,
+      "homepage": "https://www.aptean.com/en-US",
+      "resolved_by": "stated",
+      "mentions": 7
+    },
+    {
+      "name": "Acumatica",
+      "domain": "acumatica.com",
+      "channels": [
+        "directory",
+        "roundup",
+        "vs_page"
+      ],
+      "same_vertical": true,
+      "operating": true,
+      "is_software_vendor": true,
+      "acquired_or_renamed": null,
+      "segment": "Growing SMB manufacturers, distributors, retailers and other industries, including apparel and promo",
+      "scope": "General cloud ERP: financials, distribution, manufacturing, commerce, with industry editions",
+      "head_to_head": true,
+      "relevance": 0.6,
+      "evidence_ids": [
+        "e44",
+        "e45",
+        "e46",
+        "e47",
+        "e48",
+        "e49",
+        "e50",
+        "e51",
+        "e52",
+        "e53"
+      ],
+      "independent_sources": 6,
+      "homepage": "https://www.acumatica.com/",
+      "resolved_by": "own_page",
+      "mentions": 16
+    }
+  ],
+  "thin_market": true,
+  "verified_count": 12,
+  "candidates": 25,
+  "rejected": [
+    {
+      "name": "Ecwid",
+      "domain": "ecwid.com",
+      "relevance": 0.15,
+      "same_vertical": false,
+      "operating": true,
+      "channels": [
+        "directory",
+        "vs_page"
+      ]
+    },
+    {
+      "name": "Upstream Printing",
+      "domain": "upstreamprinting.co.uk",
+      "relevance": 0.03,
+      "same_vertical": false,
+      "operating": true,
+      "channels": [
+        "directory",
+        "vs_page"
+      ]
+    },
+    {
+      "name": "Volusion",
+      "domain": "volusion.com",
+      "relevance": 0.15,
+      "same_vertical": false,
+      "operating": true,
+      "channels": [
+        "directory",
+        "vs_page"
+      ]
+    },
+    {
+      "name": "Cin7 Core",
+      "domain": "cin7.com",
+      "relevance": 0.35,
+      "same_vertical": false,
+      "operating": true,
+      "channels": [
+        "directory",
+        "roundup"
+      ]
+    },
+    {
+      "name": "Odoo",
+      "domain": "odoo.com",
+      "relevance": 0.45,
+      "same_vertical": false,
+      "operating": true,
+      "channels": [
+        "directory",
+        "roundup"
+      ]
+    },
+    {
+      "name": "Microsoft Dynamics 365",
+      "domain": "msdynamicsworld.com",
+      "relevance": 0.4,
+      "same_vertical": false,
+      "operating": true,
+      "channels": [
+        "directory",
+        "roundup"
+      ]
+    },
+    {
+      "name": "Bambuser",
+      "domain": "bambuser.com",
+      "relevance": 0.08,
+      "same_vertical": false,
+      "operating": true,
+      "channels": [
+        "directory"
+      ]
+    },
+    {
+      "name": "Boutir",
+      "domain": "boutir.com",
+      "relevance": 0.1,
+      "same_vertical": false,
+      "operating": true,
+      "channels": [
+        "directory"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,126 @@
+{
+  "pages": [
+    "https://www.fdm4.com/",
+    "https://www.fdm4.com/erp-as-an-industry-specific-solution/",
+    "https://www.fdm4.com/erp-solutions-for-the-clothing-industry/",
+    "https://www.fdm4.com/chapter-1-erp-as-an-industry-specific-solution/",
+    "https://www.fdm4.com/customers/water-safety-products/",
+    "https://www.fdm4.com/solutions/erp/",
+    "https://www.fdm4.com/solutions/software-demo/",
+    "https://www.fdm4.com/apparel-software-solutions/"
+  ],
+  "facts_total": 24,
+  "facts_kept": 24,
+  "modules": [
+    {
+      "text": "FDM4 offers ERP, WMS, ECOM (B2B & B2C ecommerce), CRM, DECO (Decoration) and MFG (Manufacturing) solutions.",
+      "evidence_id": "e5"
+    },
+    {
+      "text": "The fully integrated ERP system has modules including WMS, E-commerce, CRM, Vendor Portal, and Decoration.",
+      "evidence_id": "e6"
+    },
+    {
+      "text": "DECO is integrated with ERP and streamlines orders for Decorated Apparel and Promotional Products, supporting internal stock, third-party vendors, in-house embellishments or outsourcing.",
+      "evidence_id": "e7"
+    },
+    {
+      "text": "The apparel suite includes purchasing, manufacturing, sales order processing, financials and an Apparel Matrix grid for ordering in e-commerce.",
+      "evidence_id": "e8"
+    },
+    {
+      "text": "The WMS is browser-based with touch screen RF scanning, and FDM4 states it ensures 99.99% inventory accuracy; WMS offers robot integration.",
+      "evidence_id": "e9"
+    },
+    {
+      "text": "Ecommerce includes B2B, B2C and personalized Group Stores for teams, restaurants, hospitality and more.",
+      "evidence_id": "e10"
+    },
+    {
+      "text": "FDM4 has a native Accounting system including General Ledger, AP/AR and Consolidations integrated with other ERP modules.",
+      "evidence_id": "e11"
+    }
+  ],
+  "customer_segments": [
+    {
+      "text": "FDM4 serves both apparel and non-apparel manufacturers and distributors.",
+      "evidence_id": "e12"
+    },
+    {
+      "text": "The decoration software targets apparel decorators and promotional products distributors.",
+      "evidence_id": "e13"
+    },
+    {
+      "text": "Customer Water Safety Products is categorized as Decorator, Manufacturer and uses ERP, ECOM, WMS, CRM, DECO.",
+      "evidence_id": "e14"
+    }
+  ],
+  "customer_size_signals": [
+    {
+      "text": "FDM4 says its ERP serves businesses of all sizes across a broad range of industries worldwide.",
+      "evidence_id": "e15"
+    },
+    {
+      "text": "Software supports single operations through multi-company, multi-warehouse, multi-currency needs and is described as fully scalable.",
+      "evidence_id": "e16"
+    }
+  ],
+  "deployment": [
+    {
+      "text": "The ERP is completely web-based and runs on almost any browser.",
+      "evidence_id": "e17"
+    },
+    {
+      "text": "FDM4 provides a turnkey solution including cloud-based infrastructure hosting.",
+      "evidence_id": "e18"
+    },
+    {
+      "text": "The suite is modular so customers can start with needed pieces and add modules later.",
+      "evidence_id": "e19"
+    }
+  ],
+  "integrations": [
+    {
+      "text": "The ERP includes EDI capabilities and supports communication from ASNs to shipping labels.",
+      "evidence_id": "e20"
+    },
+    {
+      "text": "WMS integrates with robots for warehouse automation.",
+      "evidence_id": "e21"
+    },
+    {
+      "text": "Manufacturing modules can interface to external systems.",
+      "evidence_id": "e22"
+    }
+  ],
+  "differentiators": [
+    {
+      "text": "FDM4 has over 40 years of experience developing business software.",
+      "evidence_id": "e23"
+    },
+    {
+      "text": "FDM4 emphasizes a native accounting module rather than integrating to an external accounting solution.",
+      "evidence_id": "e24"
+    },
+    {
+      "text": "The ERP is modular and can be used out of the box with little to no customization.",
+      "evidence_id": "e25"
+    },
+    {
+      "text": "Manufacturing workflows support multiple bills of materials and workflow design by style.",
+      "evidence_id": "e26"
+    }
+  ],
+  "recent_news": [
+    {
+      "text": "Charles River Apparel became a customer in 2019, and Water Safety Products in 2020.",
+      "evidence_id": "e27"
+    }
+  ],
+  "gaps_or_opportunities": [
+    {
+      "text": "Named customers include Bella + Canvas (since 2005), Charles River (2019), and Game One (2005), indicating long-tenured customers in the decorated apparel space.",
+      "evidence_id": "e28"
+    }
+  ]
+}

@@ -1,0 +1,1354 @@
+[
+  {
+    "name": "AIMS360",
+    "domain": "aims360.com",
+    "channels": [
+      "directory",
+      "roundup",
+      "vs_page"
+    ],
+    "head_to_head": true,
+    "names": {
+      "AIMS360": 22,
+      "AIMS 360 Fashion ERP": 3
+    },
+    "resolved_by": "stated",
+    "mentions": [
+      {
+        "url": "https://www.aims360.com/compare/aims360-vs-uphance-apparel-erp",
+        "quote": "AIMS360 vs Uphance: Apparel ERP and AI Comparison",
+        "channel": "vs_page",
+        "head_to_head": true,
+        "title": "AIMS360 vs Uphance: Apparel ERP and AI Comparison",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.capterra.com/p/192104/PriceIt-Software/",
+        "quote": "AIMS360\n\n[4.1 (65)](https://www.capterra.com/p/124789/AIMS-Apparel-Software/reviews/)",
+        "channel": "directory",
+        "head_to_head": false,
+        "title": "Pricelt Software Pricing, Alternatives & More 2026",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.getapp.co.nz/alternatives/116067/stitchex",
+        "quote": "Fashion business management ERP, PLM, CRM, OMS, WMS, EDI.",
+        "channel": "directory",
+        "head_to_head": false,
+        "title": "Uphance Alternatives and Competitors | GetApp NZ 2026",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://a2000software.com/blog/apparel-erp-guide",
+        "quote": "Both Ai2000 and AIMS360 are purpose-built for the fashion industry with native EDI.",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best Apparel ERP Software in 2026: The Complete Guide ...",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://a2000software.com/blog/apparel-erp-guide",
+        "quote": "Both Ai2000 and AIMS360 are purpose-built for the fashion industry with native EDI.",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best Apparel ERP Software in 2026: The Complete Guide ...",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.aims360.com/fashion-business-software-resources",
+        "quote": "AIMS360 Apparel ERP Software, Fashion Software, and Apparel Management Software streamline fashion business operations.",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "AIMS360: The Blog",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.aims360.com/fashion-business-software-resources",
+        "quote": "AIMS360 Apparel ERP Software, Fashion Software, and Apparel Management Software streamline fashion business operations.",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "AIMS360: The Blog",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.aims360.com/fashion-business-software-resources",
+        "quote": "AIMS360 combines technology and consulting expertise to make EDI simple, secure, and scalable.",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "AIMS360: The Blog",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.aims360.com/fashion-business-software-resources",
+        "quote": "AIMS360 Apparel ERP Software, Fashion Software, and Apparel Management Software streamline fashion business operations.",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "AIMS360: The Blog",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://xorosoft.com/best-erp-software-for-apparel-manufacturers/",
+        "quote": "AIMS360 focuses on fashion and apparel operations.",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best ERP Software for Apparel Manufacturers in 2026",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://xorosoft.com/best-erp-software-for-apparel-manufacturers/",
+        "quote": "AIMS360 focuses on fashion and apparel operations.",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best ERP Software for Apparel Manufacturers in 2026",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://xorosoft.com/best-erp-software-for-apparel-manufacturers/",
+        "quote": "AIMS360 focuses on fashion and apparel operations.",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best ERP Software for Apparel Manufacturers in 2026",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://xorosoft.com/best-erp-software-for-apparel-manufacturers/",
+        "quote": "AIMS360 focuses on fashion and apparel operations.",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best ERP Software for Apparel Manufacturers in 2026",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.doss.com/resources/trends/top-7-apparel-inventory-management-software-platforms-in-2026",
+        "quote": "AIMS360 is a fashion-focused ERP system that covers PLM, production, warehousing, inventory management, and omnichannel sales.",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Top 7 Apparel Inventory Management Software Platforms in ...",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.doss.com/resources/trends/top-7-apparel-inventory-management-software-platforms-in-2026",
+        "quote": "AIMS360 is a fashion-focused ERP system that covers PLM, production, warehousing, inventory management, and omnichannel sales.",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Top 7 Apparel Inventory Management Software Platforms in ...",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.doss.com/resources/trends/top-7-apparel-inventory-management-software-platforms-in-2026",
+        "quote": "AIMS360 is a fashion-focused ERP system that covers PLM, production, warehousing, inventory management, and omnichannel sales.",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Top 7 Apparel Inventory Management Software Platforms in ...",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.doss.com/resources/trends/top-7-apparel-inventory-management-software-platforms-in-2026",
+        "quote": "AIMS360 is a fashion-focused ERP system that covers PLM, production, warehousing, inventory management, and omnichannel sales.",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Top 7 Apparel Inventory Management Software Platforms in ...",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.getapp.com/retail-consumer-services-software/apparel-management/org/large-enterprises/",
+        "quote": "AIMS360 runs an apparel brand in one system: styles in a native color and size grid",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Top Rated Apparel Management Software with Large ...",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.capterra.com/p/124789/AIMS-Apparel-Software/",
+        "quote": "AIMS360 is apparel management software and ERP for brands that design, source, make and sell apparel, footwear and accessories.",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "AIMS360 Software Pricing, Alternatives & More 2026",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.capterra.com/p/124789/AIMS-Apparel-Software/",
+        "quote": "AIMS360 is designed for importers, wholesalers, distributors, and manufacturers in the apparel, footwear, handbags, accessories, jewelry, home furnishings, and other fashion goods sectors.",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "AIMS360 Software Pricing, Alternatives & More 2026",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.capterra.com/p/124789/AIMS-Apparel-Software/",
+        "quote": "AIMS360 Software Review 2026: Features, Integrations, Pros & Cons",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "AIMS360 Software Pricing, Alternatives & More 2026",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.capterra.com/p/124789/AIMS-Apparel-Software/",
+        "quote": "AIMS360 Software Pricing, Alternatives & More 2026",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "AIMS360 Software Pricing, Alternatives & More 2026",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.g2.com/products/uphance/competitors/alternatives",
+        "quote": "The best Uphance alternatives are Aptean Fashion & Apparel, ApparelMagic, and AIMS 360 Fashion ERP.",
+        "channel": "vs_page",
+        "head_to_head": true,
+        "title": "Top 10 Uphance Alternatives & Competitors in 2026",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.g2.com/products/uphance/competitors/alternatives",
+        "quote": "- [AIMS 360 Fashion ERP](https://www.g2.com/products/aims-360-fashion-erp/reviews) – highly rated for integrations and scalability",
+        "channel": "directory",
+        "head_to_head": false,
+        "title": "Top 10 Uphance Alternatives & Competitors in 2026",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.g2.com/products/uphance/competitors/alternatives",
+        "quote": "- [AIMS 360 Fashion ERP](https://www.g2.com/products/aims-360-fashion-erp/reviews) – highly rated for integrations and scalability",
+        "channel": "directory",
+        "head_to_head": false,
+        "title": "Top 10 Uphance Alternatives & Competitors in 2026",
+        "source": "firecrawl"
+      }
+    ]
+  },
+  {
+    "name": "Aptean Apparel ERP",
+    "domain": "aptean.com",
+    "channels": [
+      "directory",
+      "roundup",
+      "vs_page"
+    ],
+    "head_to_head": true,
+    "names": {
+      "Aptean": 3,
+      "Aptean Apparel ERP": 4,
+      "Aptean Fashion & Apparel": 4,
+      "Aptean Distribution ERP": 1,
+      "Aptean Apparel ERP Exenta Edition": 2
+    },
+    "resolved_by": "stated",
+    "mentions": [
+      {
+        "url": "https://www.onbrandplm.com/blog/uphance-alternatives",
+        "quote": "Top 7 Uphance Alternatives and Competitors in 2026: 1. Onbrand 2. Oracle NetSuite 3. Aptean 4. WFX 5. Backbone PLM 6. Centric PLM 7.",
+        "channel": "vs_page",
+        "head_to_head": true,
+        "title": "Top 7 Uphance Alternatives and Competitors in 2026 - Onbrand Blog",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.onbrandplm.com/blog/uphance-alternatives",
+        "quote": "Aptean provides industry-specific ERP solutions for manufacturing, distribution, and select apparel segments.",
+        "channel": "directory",
+        "head_to_head": true,
+        "title": "Top 7 Uphance Alternatives and Competitors in 2026",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.onbrandplm.com/blog/uphance-alternatives",
+        "quote": "Compared to Uphance, Aptean often serves larger or more process-heavy organizations",
+        "channel": "directory",
+        "head_to_head": true,
+        "title": "Top 7 Uphance Alternatives and Competitors in 2026",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://xorosoft.com/best-erp-software-for-apparel-manufacturers/",
+        "quote": "Aptean provides apparel-focused ERP solutions designed around fashion and apparel operations.",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best ERP Software for Apparel Manufacturers in 2026",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.getapp.com/operations-management-software/inventory-control/f/shipping-management/?page=9",
+        "quote": "Aptean Apparel ERP Exenta Edition is an ERP built for the fashion industry.",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Page 9 | Top Rated Inventory Control Software with Shipping ...",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.getapp.com/operations-management-software/inventory-control/f/shipping-management/?page=9",
+        "quote": "Aptean Apparel ERP Exenta Edition is an ERP built for the fashion industry.",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Page 9 | Top Rated Inventory Control Software with Shipping ...",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.getapp.com/operations-management-software/inventory-control/f/shipping-management/?page=9",
+        "quote": "Aptean Apparel ERP Exenta Edition is an ERP built for the fashion industry.",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Page 9 | Top Rated Inventory Control Software with Shipping ...",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.g2.com/products/uphance/competitors/alternatives",
+        "quote": "The best Uphance alternatives are Aptean Fashion & Apparel, ApparelMagic, and AIMS 360 Fashion ERP.",
+        "channel": "vs_page",
+        "head_to_head": true,
+        "title": "Top 10 Uphance Alternatives & Competitors in 2026",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.g2.com/products/uphance/competitors/alternatives",
+        "quote": "The best overall alternative to Uphance is [Aptean Fashion & Apparel](https://www.g2.com/products/aptean-aptean-fashion-apparel/reviews)",
+        "channel": "directory",
+        "head_to_head": false,
+        "title": "Top 10 Uphance Alternatives & Competitors in 2026",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.g2.com/products/uphance/competitors/alternatives",
+        "quote": "The best overall alternative to Uphance is [Aptean Fashion & Apparel](https://www.g2.com/products/aptean-aptean-fashion-apparel/reviews)",
+        "channel": "directory",
+        "head_to_head": false,
+        "title": "Top 10 Uphance Alternatives & Competitors in 2026",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.getapp.co.nz/alternatives/116067/stitchex",
+        "quote": "Streamline Apparel Operations with an Industry-Focused ERP.",
+        "channel": "directory",
+        "head_to_head": false,
+        "title": "Uphance Alternatives and Competitors | GetApp NZ 2026",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.getapp.com/operations-management-software/inventory-control/f/shipping-management/?page=9",
+        "quote": "Aptean Distribution ERP integrates supply chain management, warehousing, and financials, streamlining operations for consumer goods distributors.",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Page 9 | Top Rated Inventory Control Software with Shipping ...",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.g2.com/products/uphance/competitors/alternatives",
+        "quote": "Aptean Apparel ERP Exenta Edition is built for the fashion industry, available in the cloud or on-premise.",
+        "channel": "directory",
+        "head_to_head": false,
+        "title": "Top 10 Uphance Alternatives & Competitors in 2026",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.getapp.com/operations-management-software/inventory-control/f/shipping-management/?page=9",
+        "quote": "Aptean Apparel ERP Exenta Edition is an ERP built for the fashion industry. It streamlines production, inventory, and supply chain management with features",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Page 9 | Top Rated Inventory Control Software with Shipping ...",
+        "source": "firecrawl"
+      }
+    ]
+  },
+  {
+    "name": "ApparelMagic",
+    "domain": "apparelmagic.com",
+    "channels": [
+      "directory",
+      "roundup",
+      "vs_page"
+    ],
+    "head_to_head": true,
+    "names": {
+      "ApparelMagic": 11,
+      "Apparel Magic": 1
+    },
+    "resolved_by": "stated",
+    "mentions": [
+      {
+        "url": "https://apparelmagic.com/alternative-to-uphance/",
+        "quote": "ApparelMagic vs. Uphance ; Competitive Price Point.",
+        "channel": "vs_page",
+        "head_to_head": true,
+        "title": "Comparison - Alternative to Uphance",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://sourceforge.net/software/compare/ApparelMagic-vs-Uphance/",
+        "quote": "ApparelMagic vs. Uphance Comparison",
+        "channel": "vs_page",
+        "head_to_head": true,
+        "title": "ApparelMagic vs. Uphance Comparison",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.g2.com/products/uphance/competitors/alternatives",
+        "quote": "The best Uphance alternatives are Aptean Fashion & Apparel, ApparelMagic, and AIMS 360 Fashion ERP.",
+        "channel": "vs_page",
+        "head_to_head": true,
+        "title": "Top 10 Uphance Alternatives & Competitors in 2026",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.g2.com/products/uphance/competitors/alternatives",
+        "quote": "- [ApparelMagic](https://www.g2.com/products/apparelmagic/reviews) – known for ease of use and functionality",
+        "channel": "directory",
+        "head_to_head": false,
+        "title": "Top 10 Uphance Alternatives & Competitors in 2026",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.g2.com/products/uphance/competitors/alternatives",
+        "quote": "- [ApparelMagic](https://www.g2.com/products/apparelmagic/reviews) – known for ease of use and functionality",
+        "channel": "directory",
+        "head_to_head": false,
+        "title": "Top 10 Uphance Alternatives & Competitors in 2026",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.getapp.co.nz/alternatives/116067/stitchex",
+        "quote": "ApparelMagic is an enterprise resource planning (ERP) & product lifecycle management (PLM) platform for apparel companies.",
+        "channel": "directory",
+        "head_to_head": false,
+        "title": "Uphance Alternatives and Competitors | GetApp NZ 2026",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://wizcommerce.com/blog/erp-software-for-apparel-industry/",
+        "quote": "Best ERP for fashion brands selling DTC and wholesale: Uphance and ApparelMagic.",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "14 Best ERP Software for Apparel Industry in 2026",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://a2000software.com/blog/apparel-erp-guide",
+        "quote": "How do eight ERP vendors compare for apparel and fashion?",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best Apparel ERP Software in 2026: The Complete Guide ...",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.doss.com/resources/trends/top-7-apparel-inventory-management-software-platforms-in-2026",
+        "quote": "Small to mid-size fashion wholesale",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Top 7 Apparel Inventory Management Software Platforms in ...",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.doss.com/resources/trends/top-7-apparel-inventory-management-software-platforms-in-2026",
+        "quote": "ApparelMagic is an apparel management platform covering sales, inventory, purchasing, and production",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Top 7 Apparel Inventory Management Software Platforms in ...",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.doss.com/resources/trends/top-7-apparel-inventory-management-software-platforms-in-2026",
+        "quote": "Small to mid-size fashion wholesale",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Top 7 Apparel Inventory Management Software Platforms in ...",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.getapp.com/retail-consumer-services-software/apparel-management/org/large-enterprises/",
+        "quote": "ApparelMagic is an enterprise resource planning (ERP) & product lifecycle management (PLM) platform for apparel companies.",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Top Rated Apparel Management Software with Large ...",
+        "source": "firecrawl"
+      }
+    ]
+  },
+  {
+    "name": "NetSuite",
+    "domain": "netsuite.com",
+    "channels": [
+      "directory",
+      "roundup",
+      "vs_page"
+    ],
+    "head_to_head": true,
+    "names": {
+      "NetSuite": 9,
+      "Oracle NetSuite": 2
+    },
+    "resolved_by": "stated",
+    "mentions": [
+      {
+        "url": "https://www.capterra.com/p/172692/Uphance/alternatives/",
+        "quote": "The best Uphance alternatives are Geelus (best overall), MRPeasy (best budget option), and NetSuite (most reviewed).",
+        "channel": "vs_page",
+        "head_to_head": true,
+        "title": "Best Uphance Alternatives 2026",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.getapp.co.nz/alternatives/116067/stitchex",
+        "quote": "NetSuite is an AI-powered cloud-based business management suite.",
+        "channel": "directory",
+        "head_to_head": false,
+        "title": "Uphance Alternatives and Competitors | GetApp NZ 2026",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://a2000software.com/blog/apparel-erp-guide",
+        "quote": "How do eight ERP vendors compare for apparel and fashion?",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best Apparel ERP Software in 2026: The Complete Guide ...",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://xorosoft.com/best-erp-software-for-apparel-manufacturers/",
+        "quote": "NetSuite is frequently evaluated by organizations looking for a broad cloud ERP platform",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best ERP Software for Apparel Manufacturers in 2026",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.doss.com/resources/trends/top-7-apparel-inventory-management-software-platforms-in-2026",
+        "quote": "Oracle NetSuite is a comprehensive cloud ERP with robust inventory management capabilities",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Top 7 Apparel Inventory Management Software Platforms in ...",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.doss.com/resources/trends/top-7-apparel-inventory-management-software-platforms-in-2026",
+        "quote": "NetSuite is a full ERP, and you pay for that scope whether you need every module or not.",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Top 7 Apparel Inventory Management Software Platforms in ...",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.doss.com/resources/trends/top-7-apparel-inventory-management-software-platforms-in-2026",
+        "quote": "NetSuite is a full ERP, and you pay for that scope whether you need every module or not.",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Top 7 Apparel Inventory Management Software Platforms in ...",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.doss.com/resources/trends/top-7-apparel-inventory-management-software-platforms-in-2026",
+        "quote": "Oracle NetSuite is a comprehensive cloud ERP with robust inventory management capabilities",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Top 7 Apparel Inventory Management Software Platforms in ...",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.getapp.com/retail-consumer-services-software/apparel-management/org/large-enterprises/",
+        "quote": "NetSuite is an AI-powered cloud-based business management suite.",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Top Rated Apparel Management Software with Large ...",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.onbrandplm.com/blog/uphance-alternatives",
+        "quote": "Top 7 Uphance Alternatives and Competitors in 2026: 1. Onbrand 2. Oracle NetSuite 3. Aptean 4. WFX 5. Backbone PLM 6. Centric PLM 7.",
+        "channel": "vs_page",
+        "head_to_head": true,
+        "title": "Top 7 Uphance Alternatives and Competitors in 2026 - Onbrand Blog",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.onbrandplm.com/blog/uphance-alternatives",
+        "quote": "For brands currently using Uphance, NetSuite often represents a move toward more complex reporting structures",
+        "channel": "directory",
+        "head_to_head": true,
+        "title": "Top 7 Uphance Alternatives and Competitors in 2026",
+        "source": "firecrawl"
+      }
+    ]
+  },
+  {
+    "name": "BlueCherry",
+    "domain": "bluecherry.com",
+    "channels": [
+      "directory",
+      "roundup",
+      "vs_page"
+    ],
+    "head_to_head": true,
+    "names": {
+      "BlueCherry": 2,
+      "BlueCherry ERP": 1,
+      "BlueCherry Suite": 2,
+      "BlueCherry Fashion ERP": 1
+    },
+    "resolved_by": "stated",
+    "mentions": [
+      {
+        "url": "https://www.onbrandplm.com/blog/uphance-alternatives",
+        "quote": "Brands evaluating alternatives to Uphance often look at BlueCherry when operational depth at the manufacturing or warehouse level becomes a priority.",
+        "channel": "directory",
+        "head_to_head": true,
+        "title": "Top 7 Uphance Alternatives and Competitors in 2026",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://a2000software.com/blog/apparel-erp-guide",
+        "quote": "How do eight ERP vendors compare for apparel and fashion?",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best Apparel ERP Software in 2026: The Complete Guide ...",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.crowdreviews.com/uphance--apparel-management-software/alternatives",
+        "quote": "Compare Uphance - Apparel Management Software to BlueCherry ERP",
+        "channel": "vs_page",
+        "head_to_head": true,
+        "title": "Uphance - Apparel Management Software Alternatives & Competitors",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.g2.com/products/uphance/competitors/alternatives",
+        "quote": "- [BlueCherry Suite](https://www.g2.com/products/bluecherry-suite/reviews) – best suited for teams that need reliability and integrations",
+        "channel": "directory",
+        "head_to_head": false,
+        "title": "Top 10 Uphance Alternatives & Competitors in 2026",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.g2.com/products/uphance/competitors/alternatives",
+        "quote": "- [BlueCherry Suite](https://www.g2.com/products/bluecherry-suite/reviews) – best suited for teams that need reliability and integrations",
+        "channel": "directory",
+        "head_to_head": false,
+        "title": "Top 10 Uphance Alternatives & Competitors in 2026",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://xorosoft.com/best-erp-software-for-apparel-manufacturers/",
+        "quote": "BlueCherry is another platform oriented toward apparel and fashion companies.",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best ERP Software for Apparel Manufacturers in 2026",
+        "source": "firecrawl"
+      }
+    ]
+  },
+  {
+    "name": "MRPeasy",
+    "domain": "mrpeasy.com",
+    "channels": [
+      "directory",
+      "roundup",
+      "vs_page"
+    ],
+    "head_to_head": true,
+    "names": {
+      "MRPeasy": 3
+    },
+    "resolved_by": "model_guess_confirmed",
+    "mentions": [
+      {
+        "url": "https://www.capterra.com/p/172692/Uphance/alternatives/",
+        "quote": "The best Uphance alternatives are Geelus (best overall), MRPeasy (best budget option), and NetSuite (most reviewed).",
+        "channel": "vs_page",
+        "head_to_head": true,
+        "title": "Best Uphance Alternatives 2026",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.getapp.co.nz/alternatives/116067/stitchex",
+        "quote": "Cloud ERP system for growing manufacturers and distributors",
+        "channel": "directory",
+        "head_to_head": false,
+        "title": "Uphance Alternatives and Competitors | GetApp NZ 2026",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.capterra.com/p/124789/AIMS-Apparel-Software/",
+        "quote": "MRPeasy logo",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "AIMS360 Software Pricing, Alternatives & More 2026",
+        "source": "firecrawl"
+      }
+    ]
+  },
+  {
+    "name": "WFX",
+    "domain": "worldfashionexchange.com",
+    "channels": [
+      "directory",
+      "roundup",
+      "vs_page"
+    ],
+    "head_to_head": true,
+    "names": {
+      "WFX": 3
+    },
+    "resolved_by": "stated",
+    "mentions": [
+      {
+        "url": "https://www.onbrandplm.com/blog/uphance-alternatives",
+        "quote": "Top 7 Uphance Alternatives and Competitors in 2026: 1. Onbrand 2. Oracle NetSuite 3. Aptean 4. WFX 5. Backbone PLM 6. Centric PLM 7.",
+        "channel": "vs_page",
+        "head_to_head": true,
+        "title": "Top 7 Uphance Alternatives and Competitors in 2026 - Onbrand Blog",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.onbrandplm.com/blog/uphance-alternatives",
+        "quote": "WFX places greater emphasis on integrated product lifecycle control than ERP-first platforms like Uphance.",
+        "channel": "directory",
+        "head_to_head": true,
+        "title": "Top 7 Uphance Alternatives and Competitors in 2026",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://a2000software.com/blog/apparel-erp-guide",
+        "quote": "How do eight ERP vendors compare for apparel and fashion?",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best Apparel ERP Software in 2026: The Complete Guide ...",
+        "source": "firecrawl"
+      }
+    ]
+  },
+  {
+    "name": "Sync",
+    "domain": "isyncsolutions.com",
+    "channels": [
+      "directory",
+      "roundup"
+    ],
+    "head_to_head": false,
+    "names": {
+      "Sync": 6
+    },
+    "resolved_by": "search_lookup",
+    "mentions": [
+      {
+        "url": "https://www.g2.com/products/uphance/competitors/alternatives",
+        "quote": "Sync includes a B2B module for sales agents + integrates with over 25 other systems including Shipstation, Shopify, Magento, QuickBooks, Xero, Sage & MS Dynamics.",
+        "channel": "directory",
+        "head_to_head": false,
+        "title": "Top 10 Uphance Alternatives & Competitors in 2026",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.g2.com/products/uphance/competitors/alternatives",
+        "quote": "Sync includes a B2B module for sales agents + integrates with over 25 other systems including Shipstation, Shopify, Magento, QuickBooks, Xero, Sage & MS Dynamics.",
+        "channel": "directory",
+        "head_to_head": false,
+        "title": "Top 10 Uphance Alternatives & Competitors in 2026",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.capterra.com/p/192104/PriceIt-Software/",
+        "quote": "Sync\n\n[4.8 (23)](https://www.capterra.com/p/152127/Sync/reviews/)",
+        "channel": "directory",
+        "head_to_head": false,
+        "title": "Pricelt Software Pricing, Alternatives & More 2026",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.getapp.co.nz/alternatives/116067/stitchex",
+        "quote": "The ERP built only for apparel & footwear brands",
+        "channel": "directory",
+        "head_to_head": false,
+        "title": "Uphance Alternatives and Competitors | GetApp NZ 2026",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.getapp.co.nz/alternatives/116067/stitchex",
+        "quote": "Run design, sourcing, inventory, wholesale, eCommerce and fulfillment on one cloud system",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Uphance Alternatives and Competitors | GetApp NZ 2026",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.getapp.com/retail-consumer-services-software/apparel-management/org/large-enterprises/",
+        "quote": "The ERP built only for apparel & footwear brands",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Top Rated Apparel Management Software with Large ...",
+        "source": "firecrawl"
+      }
+    ]
+  },
+  {
+    "name": "Ai2000",
+    "domain": "a2000software.com",
+    "channels": [
+      "directory",
+      "roundup"
+    ],
+    "head_to_head": false,
+    "names": {
+      "Ai2000": 3,
+      "A2000 Software": 2
+    },
+    "resolved_by": "stated",
+    "mentions": [
+      {
+        "url": "https://a2000software.com/blog/apparel-erp-guide",
+        "quote": "Ai2000 (formerly A2000 Software) is purpose-built for this market, offering PLM, orders, EDI, warehouse, and financials in a single platform.",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best Apparel ERP Software in 2026: The Complete Guide ...",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://a2000software.com/blog/apparel-erp-guide",
+        "quote": "Ai2000 (formerly A2000 Software) is purpose-built for this market, offering PLM, orders, EDI, warehouse, and financials in a single platform.",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best Apparel ERP Software in 2026: The Complete Guide ...",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.getapp.com/retail-consumer-services-software/apparel-management/org/large-enterprises/",
+        "quote": "Ai2000 is an ORACLE ERP SaaS platform designed for the Apparel, Fashion Footwear, Accessories and Consumer Products industries.",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Top Rated Apparel Management Software with Large ...",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.g2.com/products/uphance/competitors/alternatives",
+        "quote": "A2000 Software is a software solution for the apparel, footwear, home furnishings and accessories industries.",
+        "channel": "directory",
+        "head_to_head": false,
+        "title": "Top 10 Uphance Alternatives & Competitors in 2026",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.g2.com/products/uphance/competitors/alternatives",
+        "quote": "A2000 Software is a software solution for the apparel, footwear, home furnishings and accessories industries.",
+        "channel": "directory",
+        "head_to_head": false,
+        "title": "Top 10 Uphance Alternatives & Competitors in 2026",
+        "source": "firecrawl"
+      }
+    ]
+  },
+  {
+    "name": "Onbrand",
+    "domain": "onbrandplm.com",
+    "channels": [
+      "directory",
+      "vs_page"
+    ],
+    "head_to_head": true,
+    "names": {
+      "Onbrand": 4
+    },
+    "resolved_by": "stated",
+    "mentions": [
+      {
+        "url": "https://www.onbrandplm.com/blog/uphance-alternatives",
+        "quote": "Top 7 Uphance Alternatives and Competitors in 2026: 1. Onbrand 2. Oracle NetSuite 3. Aptean 4. WFX 5. Backbone PLM 6. Centric PLM 7.",
+        "channel": "vs_page",
+        "head_to_head": true,
+        "title": "Top 7 Uphance Alternatives and Competitors in 2026 - Onbrand Blog",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.onbrandplm.com/blog/uphance-alternatives",
+        "quote": "Onbrand is built for fashion brands that need stronger control of product development before styles move into inventory.",
+        "channel": "directory",
+        "head_to_head": true,
+        "title": "Top 7 Uphance Alternatives and Competitors in 2026",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.onbrandplm.com/blog/uphance-alternatives",
+        "quote": "Choose Onbrand as Your Uphance Alternative",
+        "channel": "directory",
+        "head_to_head": true,
+        "title": "Top 7 Uphance Alternatives and Competitors in 2026",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.onbrandplm.com/blog/uphance-alternatives",
+        "quote": "Onbrand focuses on that development layer.",
+        "channel": "directory",
+        "head_to_head": false,
+        "title": "Top 7 Uphance Alternatives and Competitors in 2026",
+        "source": "firecrawl"
+      }
+    ]
+  },
+  {
+    "name": "Acumatica",
+    "domain": "acumatica.com",
+    "channels": [
+      "directory",
+      "roundup"
+    ],
+    "head_to_head": false,
+    "names": {
+      "Acumatica": 2,
+      "Acumatica Cloud ERP": 1
+    },
+    "resolved_by": "model_guess_confirmed",
+    "mentions": [
+      {
+        "url": "https://a2000software.com/blog/apparel-erp-guide",
+        "quote": "How do eight ERP vendors compare for apparel and fashion?",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best Apparel ERP Software in 2026: The Complete Guide ...",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://xorosoft.com/best-erp-software-for-apparel-manufacturers/",
+        "quote": "Acumatica serves manufacturing, distribution, retail, and other inventory-driven businesses.",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best ERP Software for Apparel Manufacturers in 2026",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.getapp.co.nz/alternatives/116067/stitchex",
+        "quote": "Acumatica is a cloud-based ERP system for midmarket companies seeking comprehensive business management.",
+        "channel": "directory",
+        "head_to_head": false,
+        "title": "Uphance Alternatives and Competitors | GetApp NZ 2026",
+        "source": "firecrawl"
+      }
+    ]
+  },
+  {
+    "name": "Geelus",
+    "domain": "geelus.com",
+    "channels": [
+      "directory",
+      "vs_page"
+    ],
+    "head_to_head": true,
+    "names": {
+      "Geelus": 3
+    },
+    "resolved_by": "search_lookup",
+    "mentions": [
+      {
+        "url": "https://www.capterra.com/p/172692/Uphance/alternatives/",
+        "quote": "The best Uphance alternatives are Geelus (best overall), MRPeasy (best budget option), and NetSuite (most reviewed).",
+        "channel": "vs_page",
+        "head_to_head": true,
+        "title": "Best Uphance Alternatives 2026",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.capterra.com/p/192104/PriceIt-Software/",
+        "quote": "Compare with a popular alternative",
+        "channel": "directory",
+        "head_to_head": false,
+        "title": "Pricelt Software Pricing, Alternatives & More 2026",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.getapp.co.nz/alternatives/116067/stitchex",
+        "quote": "Cloud Software POS for Dry Cleaners, Tailors and Alterations",
+        "channel": "directory",
+        "head_to_head": false,
+        "title": "Uphance Alternatives and Competitors | GetApp NZ 2026",
+        "source": "firecrawl"
+      }
+    ]
+  },
+  {
+    "name": "Centric PLM",
+    "domain": "centricsoftware.com",
+    "channels": [
+      "directory",
+      "vs_page"
+    ],
+    "head_to_head": true,
+    "names": {
+      "Centric PLM": 2
+    },
+    "resolved_by": "stated",
+    "mentions": [
+      {
+        "url": "https://www.onbrandplm.com/blog/uphance-alternatives",
+        "quote": "Top 7 Uphance Alternatives and Competitors in 2026: 1. Onbrand 2. Oracle NetSuite 3. Aptean 4. WFX 5. Backbone PLM 6. Centric PLM 7.",
+        "channel": "vs_page",
+        "head_to_head": true,
+        "title": "Top 7 Uphance Alternatives and Competitors in 2026 - Onbrand Blog",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.onbrandplm.com/blog/uphance-alternatives",
+        "quote": "For brands coming from Uphance, Centric usually enters the conversation when ERP coverage is not the issue.",
+        "channel": "directory",
+        "head_to_head": true,
+        "title": "Top 7 Uphance Alternatives and Competitors in 2026",
+        "source": "firecrawl"
+      }
+    ]
+  },
+  {
+    "name": "Itsperfect",
+    "domain": "godaddy.com",
+    "channels": [
+      "directory",
+      "roundup"
+    ],
+    "head_to_head": false,
+    "names": {
+      "Itsperfect": 2
+    },
+    "resolved_by": "model_guess_confirmed",
+    "mentions": [
+      {
+        "url": "https://www.getapp.co.nz/alternatives/116067/stitchex",
+        "quote": "Itsperfect is the smartest software solution for fashion brands.",
+        "channel": "directory",
+        "head_to_head": false,
+        "title": "Uphance Alternatives and Competitors | GetApp NZ 2026",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.getapp.co.nz/alternatives/116067/stitchex",
+        "quote": "In one fully integrated cloud system.",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Uphance Alternatives and Competitors | GetApp NZ 2026",
+        "source": "firecrawl"
+      }
+    ]
+  },
+  {
+    "name": "Kōbō",
+    "domain": "kobolabs.io",
+    "channels": [
+      "roundup",
+      "vs_page"
+    ],
+    "head_to_head": true,
+    "names": {
+      "Kōbō": 2
+    },
+    "resolved_by": "stated",
+    "mentions": [
+      {
+        "url": "https://www.kobolabs.io/comparisons/kobo-vs-uphance",
+        "quote": "Kōbō is a full PLM covering design through delivery.",
+        "channel": "vs_page",
+        "head_to_head": true,
+        "title": "Uphance vs Kōbō: Pricing & PLM Alternative",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.kobolabs.io/blog/tech/best-fashion-erp-software",
+        "quote": "it covers a lot of the same ground as Kōbō, approached from the operations side.",
+        "channel": "roundup",
+        "head_to_head": true,
+        "title": "Best Fashion & Apparel ERP Software 2026 | Kōbō",
+        "source": "firecrawl"
+      }
+    ]
+  },
+  {
+    "name": "DOSS",
+    "domain": "doss.com",
+    "channels": [
+      "roundup"
+    ],
+    "head_to_head": false,
+    "names": {
+      "DOSS": 4
+    },
+    "resolved_by": "stated",
+    "mentions": [
+      {
+        "url": "https://www.doss.com/resources/trends/top-7-apparel-inventory-management-software-platforms-in-2026",
+        "quote": "DOSS is a unified operations platform where apparel inventory management runs on the same real-time data layer",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Top 7 Apparel Inventory Management Software Platforms in ...",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.doss.com/resources/trends/top-7-apparel-inventory-management-software-platforms-in-2026",
+        "quote": "DOSS is a unified operations platform where apparel inventory management runs on the same real-time data layer",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Top 7 Apparel Inventory Management Software Platforms in ...",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.doss.com/resources/trends/top-7-apparel-inventory-management-software-platforms-in-2026",
+        "quote": "DOSS stands out as the best apparel inventory management software in 2026.",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Top 7 Apparel Inventory Management Software Platforms in ...",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.doss.com/resources/trends/top-7-apparel-inventory-management-software-platforms-in-2026",
+        "quote": "DOSS is a unified operations platform where apparel",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Top 7 Apparel Inventory Management Software Platforms in ...",
+        "source": "firecrawl"
+      }
+    ]
+  },
+  {
+    "name": "Xorosoft",
+    "domain": "xorosoft.com",
+    "channels": [
+      "roundup"
+    ],
+    "head_to_head": false,
+    "names": {
+      "Xorosoft": 4
+    },
+    "resolved_by": "stated",
+    "mentions": [
+      {
+        "url": "https://xorosoft.com/best-erp-software-for-apparel-manufacturers/",
+        "quote": "Xorosoft is designed for inventory-driven businesses that need inventory, purchasing, accounting, warehouse management",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best ERP Software for Apparel Manufacturers in 2026",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://xorosoft.com/best-erp-software-for-apparel-manufacturers/",
+        "quote": "Xorosoft is designed for inventory-driven businesses that need inventory, purchasing, accounting, warehouse management",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best ERP Software for Apparel Manufacturers in 2026",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://xorosoft.com/best-erp-software-for-apparel-manufacturers/",
+        "quote": "Xorosoft is designed for inventory-driven businesses that need inventory, purchasing, accounting, warehouse management",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best ERP Software for Apparel Manufacturers in 2026",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://xorosoft.com/best-erp-software-for-apparel-manufacturers/",
+        "quote": "Xorosoft is designed for inventory-driven businesses that need inventory, purchasing, accounting, warehouse management",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best ERP Software for Apparel Manufacturers in 2026",
+        "source": "firecrawl"
+      }
+    ]
+  },
+  {
+    "name": "Audaces 360",
+    "domain": "audaces.com",
+    "channels": [
+      "roundup"
+    ],
+    "head_to_head": false,
+    "names": {
+      "Audaces 360": 2
+    },
+    "resolved_by": "model_guess_confirmed",
+    "mentions": [
+      {
+        "url": "https://www.getapp.com/retail-consumer-services-software/apparel-management/org/large-enterprises/",
+        "quote": "Fashion is: planning, design, development and production.",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Top Rated Apparel Management Software with Large ...",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.getapp.com/retail-consumer-services-software/apparel-management/org/large-enterprises/",
+        "quote": "Audaces 360 is a complete solution for fashion design, development & production made of 7 softwares.",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Top Rated Apparel Management Software with Large ...",
+        "source": "firecrawl"
+      }
+    ]
+  },
+  {
+    "name": "Cin7 Core",
+    "domain": "cin7.com",
+    "channels": [
+      "roundup"
+    ],
+    "head_to_head": false,
+    "names": {
+      "Cin7 Core": 2
+    },
+    "resolved_by": "model_guess_confirmed",
+    "mentions": [
+      {
+        "url": "https://www.doss.com/resources/trends/top-7-apparel-inventory-management-software-platforms-in-2026",
+        "quote": "Cin7 Core (formerly DEAR Inventory) is a cloud-based inventory management platform",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Top 7 Apparel Inventory Management Software Platforms in ...",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.getapp.com/operations-management-software/inventory-control/f/shipping-management/?page=9",
+        "quote": "Cin7 Core is a cloud-based, inventory and order management application for SMBs",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Page 9 | Top Rated Inventory Control Software with Shipping ...",
+        "source": "firecrawl"
+      }
+    ]
+  },
+  {
+    "name": "deconetwork",
+    "domain": "deconetwork.com",
+    "channels": [
+      "directory"
+    ],
+    "head_to_head": false,
+    "names": {
+      "deconetwork": 2
+    },
+    "resolved_by": "model_guess_confirmed",
+    "mentions": [
+      {
+        "url": "https://www.g2.com/products/uphance/competitors/alternatives",
+        "quote": "- deconetwork",
+        "channel": "directory",
+        "head_to_head": false,
+        "title": "Top 10 Uphance Alternatives & Competitors in 2026",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.g2.com/products/uphance/competitors/alternatives",
+        "quote": "- deconetwork",
+        "channel": "directory",
+        "head_to_head": false,
+        "title": "Top 10 Uphance Alternatives & Competitors in 2026",
+        "source": "firecrawl"
+      }
+    ]
+  },
+  {
+    "name": "Printavo",
+    "domain": "printavo.com",
+    "channels": [
+      "directory"
+    ],
+    "head_to_head": false,
+    "names": {
+      "Printavo": 2
+    },
+    "resolved_by": "model_guess_confirmed",
+    "mentions": [
+      {
+        "url": "https://www.g2.com/products/uphance/competitors/alternatives",
+        "quote": "Printavo is a cloud-based shop management software tailored for screen printers, embroiderers, sign manufacturers, and promotional product companies.",
+        "channel": "directory",
+        "head_to_head": false,
+        "title": "Top 10 Uphance Alternatives & Competitors in 2026",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.g2.com/products/uphance/competitors/alternatives",
+        "quote": "Printavo is a cloud-based shop management software tailored for screen printers, embroiderers, sign manufacturers, and promotional product companies.",
+        "channel": "directory",
+        "head_to_head": false,
+        "title": "Top 10 Uphance Alternatives & Competitors in 2026",
+        "source": "firecrawl"
+      }
+    ]
+  },
+  {
+    "name": "Acterys",
+    "domain": "acterys.com",
+    "channels": [
+      "vs_page"
+    ],
+    "head_to_head": true,
+    "names": {
+      "Acterys": 1
+    },
+    "resolved_by": "model_guess_confirmed",
+    "mentions": [
+      {
+        "url": "https://getlatka.com/companies/uphance.com/competitors",
+        "quote": "The closest alternatives to Uphance are Leverage AI, Total ETO and Acterys | Plan to Succeed.",
+        "channel": "vs_page",
+        "head_to_head": true,
+        "title": "Uphance Alternatives & Competitors (2026)",
+        "source": "firecrawl"
+      }
+    ]
+  },
+  {
+    "name": "Airship Syndicate",
+    "domain": "airshipsyndicate.com",
+    "channels": [
+      "directory"
+    ],
+    "head_to_head": false,
+    "names": {
+      "Airship Syndicate": 1
+    },
+    "resolved_by": "model_guess_confirmed",
+    "mentions": [
+      {
+        "url": "https://growjo.com/company/Uphance",
+        "quote": "| #2<br>[Airship Syndica...](https://growjo.com/company/Airship_Syndicate) | $16.3M | 102 | 29% | N/A | N/A |",
+        "channel": "directory",
+        "head_to_head": false,
+        "title": "Uphance: Revenue, Competitors, Alternatives",
+        "source": "firecrawl"
+      }
+    ]
+  },
+  {
+    "name": "ADS Solutions",
+    "domain": "adssolutions.com",
+    "channels": [
+      "directory"
+    ],
+    "head_to_head": false,
+    "names": {
+      "ADS Solutions": 1
+    },
+    "resolved_by": "search_lookup",
+    "mentions": [
+      {
+        "url": "https://www.zoominfo.com/c/stitchex-llc/450015426",
+        "quote": "Stitchex top competitors include: OrderCircle, My Office Apps, ADS Solutions, Proceed ERP Software",
+        "channel": "directory",
+        "head_to_head": false,
+        "title": "Stitchex - Overview, News & Similar companies",
+        "source": "firecrawl"
+      }
+    ]
+  },
+  {
+    "name": "Ari",
+    "domain": "arirms.com",
+    "channels": [
+      "vs_page"
+    ],
+    "head_to_head": false,
+    "names": {
+      "Ari": 1
+    },
+    "resolved_by": "search_lookup",
+    "mentions": [
+      {
+        "url": "https://crozdesk.com/software/uphance/alternatives",
+        "quote": "The best alternative solutions to Uphance are: PIRO Fusion; JewelSteps; PIRO Retail; Ari; Synergics; GemCloud Gemstone Management; Sunfacets.",
+        "channel": "vs_page",
+        "head_to_head": false,
+        "title": "Uphance Alternatives",
+        "source": "firecrawl"
+      }
+    ]
+  }
+]
