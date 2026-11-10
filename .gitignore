@@ -1,0 +1,12 @@
+.env
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+runs/
+out/
+output/
+*.egg-info/
+.DS_Store
+Recur_CaseProject_kit.zip
+docs/Recur_agent_briefs.zip

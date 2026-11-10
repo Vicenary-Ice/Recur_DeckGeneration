@@ -1,0 +1,86 @@
+{
+  "company": {
+    "display_name": "Lighthouse Veterinary Practice Cloud",
+    "domain": "example.com",
+    "aliases": []
+  },
+  "thesis": [
+    {
+      "headline": "Veterinary groups are rapidly consolidating and need to leverage modern cloud platforms",
+      "subline": "Independent clinics are being acquired — and their legacy on-premise systems are a huge integration headache for buyers.",
+      "evidence_ids": []
+    },
+    {
+      "headline": "Lighthouse is set to win",
+      "subline": "Clinics run scheduling, records and billing on it",
+      "evidence_ids": []
+    },
+    {
+      "headline": "Help Lighthouse grow with outbound sales and AI",
+      "subline": "We add outbound sales and build AI into the product",
+      "evidence_ids": []
+    }
+  ],
+  "market": {
+    "subtitle": "Veterinary clinics and multi-site groups need one system for records, scheduling, billing, inventory and client communication",
+    "x_axis": {
+      "title": "Product scope",
+      "low_label": "Practice management only",
+      "high_label": "Full clinic platform"
+    },
+    "y_axis": {
+      "title": "Customer size",
+      "low_label": "Single clinics",
+      "high_label": "Multi-site hospital\nand enterprise groups"
+    },
+    "competitors": [
+      {
+        "name": "ezyVet",
+        "domain": "ezyvet.com",
+        "x": "right",
+        "y": "top",
+        "rationale": "x",
+        "evidence_ids": []
+      },
+      {
+        "name": "Cornerstone",
+        "domain": "idexx.com",
+        "x": "left",
+        "y": "top",
+        "rationale": "x",
+        "evidence_ids": []
+      },
+      {
+        "name": "Shepherd",
+        "domain": "shepherd.vet",
+        "x": "right",
+        "y": "bottom",
+        "rationale": "x",
+        "evidence_ids": []
+      },
+      {
+        "name": "Digitail",
+        "domain": "digitail.com",
+        "x": "right",
+        "y": "bottom",
+        "rationale": "x",
+        "evidence_ids": []
+      },
+      {
+        "name": "Covetrus Pulse",
+        "domain": "covetrus.com",
+        "x": "left",
+        "y": "bottom",
+        "rationale": "x",
+        "evidence_ids": []
+      }
+    ],
+    "our_take": {
+      "headline": "It is not just a practice management system but a seamless end-to-end platform that empowers multi-site veterinary groups to unlock growth",
+      "points": [
+        "Single-clinic tools can't handle the reporting and inventory complexity of multi-site groups at all",
+        "Legacy servers."
+      ]
+    }
+  }
+}

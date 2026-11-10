@@ -1,0 +1,65 @@
+{
+  "company": "Lighthouse Veterinary Practice Cloud",
+  "pptx": "out/stress/Recur_x_Lighthouse-Veterinary-Practice-Cloud.pptx",
+  "seconds_build": 1.29,
+  "logos": {
+    "Lighthouse Veterinary Practice Cloud": {
+      "source": "typeset",
+      "ok": true,
+      "aspect": 5.407,
+      "ink_coverage": 0.227,
+      "problems": []
+    },
+    "ezyVet": {
+      "source": "typeset",
+      "ok": true,
+      "aspect": 3.42,
+      "ink_coverage": 0.293,
+      "problems": []
+    },
+    "Cornerstone": {
+      "source": "typeset",
+      "ok": true,
+      "aspect": 8.2,
+      "ink_coverage": 0.356,
+      "problems": []
+    },
+    "Shepherd": {
+      "source": "typeset",
+      "ok": true,
+      "aspect": 4.785,
+      "ink_coverage": 0.313,
+      "problems": []
+    },
+    "Digitail": {
+      "source": "typeset",
+      "ok": true,
+      "aspect": 3.333,
+      "ink_coverage": 0.332,
+      "problems": []
+    },
+    "Covetrus Pulse": {
+      "source": "typeset",
+      "ok": true,
+      "aspect": 2.239,
+      "ink_coverage": 0.22,
+      "problems": []
+    }
+  }
+}
+[ERROR] slide 2 thesis[0].headline: 'Veterinary groups are rapidly consolidating and need to leverage modern cloud platforms' is 8.48in wide; limit 6.20in -> rewrite_shorter
+[ERROR] slide 2 thesis[0].headline: stock AI / sales word: 'Veterinary groups are rapidly consolidating and need to leverage modern cloud platforms' -> rewrite_copy
+[ERROR] slide 2 thesis[0].subline: 'Independent clinics are being acquired — and their legacy on-premise systems are a huge integration headache for buyers.' is 8.57in wide; limit 6.20in -> rewrite_shorter
+[ERROR] slide 2 thesis[0].subline: dash used as punctuation (use a comma or a new sentence): 'Independent clinics are being acquired — and their legacy on-premise systems are a huge integration headache for buyers.' -> rewrite_copy
+[ERROR] slide 2 thesis[0].subline: ends with a full stop (slide lines don't): 'Independent clinics are being acquired — and their legacy on-premise systems are a huge integration headache for buyers.' -> rewrite_copy
+[ERROR] slide 3 market.subtitle: 'Veterinary clinics and multi-site groups need one system for records, scheduling, billing, inventory and client communication' is 9.38in wide; limit 8.50in -> rewrite_shorter
+[ERROR] slide 3 market.y_axis.high_label: 'Multi-site hospital' is 1.52in wide; limit 1.43in -> rewrite_shorter
+[ERROR] slide 3 market.y_axis.high_label: 'and enterprise groups' is 1.85in wide; limit 1.43in -> rewrite_shorter
+[ERROR] slide 3 market.x_axis.low_label: 'Practice management only' is 2.24in wide; limit 1.80in -> rewrite_shorter
+[ERROR] slide 3 market.our_take.headline: headline wraps to 6 lines (max 4) -> rewrite_shorter
+[ERROR] slide 3 market.our_take.points[0]: point wraps to 4 lines (max 2) -> rewrite_shorter
+[ERROR] slide 3 market.our_take.headline: 'our take' block is 2.43in tall; limit 1.95in -> rewrite_shorter
+[ERROR] slide 3 market.our_take.headline: 'not just X but Y' construction: 'It is not just a practice management system but a seamless end-to-end platform that empowers multi-site veterinary groups to unlock growth' -> rewrite_copy
+[ERROR] slide 3 market.our_take.headline: stock AI / sales word: 'It is not just a practice management system but a seamless end-to-end platform that empowers multi-site veterinary groups to unlock growth' -> rewrite_copy
+[ERROR] slide 3 market.our_take.points[1]: ends with a full stop (slide lines don't): 'Legacy servers.' -> rewrite_copy
+[WARN] slide 3 market.our_take.headline: headline should open with the company name, as in the reference -> rewrite_copy

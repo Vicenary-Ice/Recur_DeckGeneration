@@ -1,0 +1,356 @@
+{
+ "_note": "Copied from runs/ai2000-20261109-163637/logo_metrics.json (live run, needs_review): the vision verdicts for each raw candidate. AIMS360's c1 lockup was rejected by the old fuzzy-ratio rule.",
+ "companies": {
+  "AIMS360": {
+   "name": "AIMS360",
+   "domain": "aims360.com",
+   "source_in_run": "typeset",
+   "tried": [
+    {
+     "id": "c1",
+     "source": "jsonld",
+     "url": "https://cdn.prod.website-files.com/654ac9a0076282426996388b/656658937d20c7c7d8b9ccba_aims360-logo1.png",
+     "raw": "logos/_raw/aims360/1_jsonld.png",
+     "white_as_ink": false,
+     "aspect": 4.367,
+     "ink_coverage": 0.126,
+     "source_kind": "raster-alpha",
+     "knocked_out_white": false,
+     "ok": true,
+     "problems": [],
+     "verdict": {
+      "candidate_id": "c1",
+      "is_logo": true,
+      "text_read": "AIMS360 FASHION TECHNOLOGY",
+      "matches_company": true,
+      "kind": "lockup",
+      "legible_on_navy": true,
+      "confidence": 0.9
+     }
+    },
+    {
+     "id": "c2",
+     "source": "header_svg",
+     "url": null,
+     "raw": "logos/_raw/aims360/2_header_svg.svg",
+     "white_as_ink": false,
+     "aspect": 1.0,
+     "ink_coverage": 0.286,
+     "source_kind": "svg",
+     "knocked_out_white": false,
+     "ok": true,
+     "problems": [],
+     "verdict": {
+      "candidate_id": "c2",
+      "is_logo": false,
+      "text_read": "",
+      "matches_company": false,
+      "kind": "generic_icon",
+      "legible_on_navy": true,
+      "confidence": 0.97
+     }
+    },
+    {
+     "id": "c3",
+     "source": "header_img",
+     "url": "https://cdn.prod.website-files.com/654ac9a0076282426996388b/6a46ee6e1af3446ecd107c16_4010caedd3122928d55613d9a19e50d5_AIMS360%20Consumer%20Brands%20ERP%20Logo%20-%20White.png",
+     "raw": "logos/_raw/aims360/3_header_img.png",
+     "white_as_ink": false,
+     "aspect": 4.601,
+     "ink_coverage": 0.128,
+     "source_kind": "raster-alpha",
+     "knocked_out_white": false,
+     "ok": true,
+     "problems": [],
+     "verdict": {
+      "candidate_id": "c3",
+      "is_logo": true,
+      "text_read": "AIMS360 CONSUMER BRANDS ERP",
+      "matches_company": true,
+      "kind": "lockup",
+      "legible_on_navy": true,
+      "confidence": 0.92
+     }
+    },
+    {
+     "id": "c4",
+     "source": "header_img",
+     "url": "https://cdn.prod.website-files.com/654ac9a0076282426996388b/682d6ae7ee9ddf22dbda04cc_Apparel%20ERP%20Software.png",
+     "raw": "logos/_raw/aims360/4_header_img.png",
+     "white_as_ink": false,
+     "aspect": 1.186,
+     "ink_coverage": 0.253,
+     "source_kind": "raster-opaque",
+     "knocked_out_white": true,
+     "ok": true,
+     "problems": [],
+     "verdict": {
+      "candidate_id": "c4",
+      "is_logo": false,
+      "text_read": "",
+      "matches_company": false,
+      "kind": "banner_or_photo",
+      "legible_on_navy": false,
+      "confidence": 0.96
+     }
+    },
+    {
+     "id": "c5",
+     "source": "og_image",
+     "url": "https://cdn.prod.website-files.com/654ac9a0076282426996388b/681d23359dfa71e60c433ef8_Screenshot%202025-05-08%20at%202.31.44%E2%80%AFPM.png",
+     "raw": "logos/_raw/aims360/5_og_image.png",
+     "white_as_ink": false,
+     "aspect": 1.796,
+     "ink_coverage": 0.242,
+     "source_kind": "raster-opaque",
+     "knocked_out_white": true,
+     "ok": true,
+     "problems": [],
+     "verdict": {
+      "candidate_id": "c5",
+      "is_logo": false,
+      "text_read": "Say hello to AIMS360 your day-to-day fashion business operations software.",
+      "matches_company": false,
+      "kind": "banner_or_photo",
+      "legible_on_navy": false,
+      "confidence": 0.97
+     }
+    }
+   ]
+  },
+  "BlueCherry": {
+   "name": "BlueCherry",
+   "domain": "bluecherry.com",
+   "source_in_run": "jsonld",
+   "tried": [
+    {
+     "id": "c1",
+     "source": "jsonld",
+     "url": "https://bluecherry.com/assets/images/logo.png",
+     "raw": "logos/_raw/bluecherry/1_jsonld.png",
+     "white_as_ink": false,
+     "aspect": 3.0,
+     "ink_coverage": 0.193,
+     "source_kind": "raster-alpha",
+     "knocked_out_white": false,
+     "ok": true,
+     "problems": [],
+     "verdict": {
+      "candidate_id": "c1",
+      "is_logo": true,
+      "text_read": "BlueCherry by CGS",
+      "matches_company": true,
+      "kind": "lockup",
+      "legible_on_navy": true,
+      "confidence": 0.95
+     }
+    },
+    {
+     "id": "c2",
+     "source": "header_svg",
+     "url": null,
+     "raw": "logos/_raw/bluecherry/2_header_svg.svg",
+     "white_as_ink": false,
+     "aspect": 0.569,
+     "ink_coverage": 0.315,
+     "source_kind": "svg",
+     "knocked_out_white": false,
+     "ok": true,
+     "problems": [],
+     "verdict": {
+      "candidate_id": "c2",
+      "is_logo": false,
+      "text_read": "",
+      "matches_company": false,
+      "kind": "generic_icon",
+      "legible_on_navy": true,
+      "confidence": 0.97
+     }
+    },
+    {
+     "id": "c3",
+     "source": "header_svg",
+     "url": null,
+     "raw": "logos/_raw/bluecherry/3_header_svg.svg",
+     "white_as_ink": false,
+     "aspect": 1.0,
+     "ink_coverage": 0.276,
+     "source_kind": "svg",
+     "knocked_out_white": false,
+     "ok": true,
+     "problems": [],
+     "verdict": {
+      "candidate_id": "c3",
+      "is_logo": false,
+      "text_read": "",
+      "matches_company": false,
+      "kind": "generic_icon",
+      "legible_on_navy": true,
+      "confidence": 0.97
+     }
+    },
+    {
+     "id": "c4",
+     "source": "header_img",
+     "url": "https://bluecherry.com/assets/images/logo.svg",
+     "raw": "logos/_raw/bluecherry/4_header_img.svg",
+     "white_as_ink": false,
+     "aspect": 3.0,
+     "ink_coverage": 0.203,
+     "source_kind": "svg",
+     "knocked_out_white": false,
+     "ok": true,
+     "problems": [],
+     "verdict": {
+      "candidate_id": "c4",
+      "is_logo": true,
+      "text_read": "BlueCherry by CGS",
+      "matches_company": true,
+      "kind": "lockup",
+      "legible_on_navy": true,
+      "confidence": 0.95
+     }
+    },
+    {
+     "id": "c5",
+     "source": "header_img",
+     "url": "https://bluecherry.com/storage/uploads/c9a38275-4b98-4241-9771-9396afde6909/bc-logo-white.svg",
+     "raw": "logos/_raw/bluecherry/5_header_img.svg",
+     "white_as_ink": false,
+     "aspect": 2.967,
+     "ink_coverage": 0.203,
+     "source_kind": "svg",
+     "knocked_out_white": false,
+     "ok": true,
+     "problems": [],
+     "verdict": {
+      "candidate_id": "c5",
+      "is_logo": true,
+      "text_read": "BlueCherry by CGS",
+      "matches_company": true,
+      "kind": "lockup",
+      "legible_on_navy": true,
+      "confidence": 0.95
+     }
+    },
+    {
+     "id": "c6",
+     "source": "icon_svg",
+     "url": "https://bluecherry.com/assets/images/favicons/favicon.svg",
+     "raw": "logos/_raw/bluecherry/6_icon_svg.svg",
+     "white_as_ink": false,
+     "aspect": 0.692,
+     "ink_coverage": 0.606,
+     "source_kind": "svg",
+     "knocked_out_white": false,
+     "ok": true,
+     "problems": [],
+     "verdict": {
+      "candidate_id": "c6",
+      "is_logo": true,
+      "text_read": "",
+      "matches_company": true,
+      "kind": "symbol_only",
+      "legible_on_navy": true,
+      "confidence": 0.85
+     }
+    }
+   ]
+  },
+  "InStyle Apparel Software": {
+   "name": "InStyle Apparel Software",
+   "domain": "instylesoft.com",
+   "source_in_run": "header_img",
+   "tried": [
+    {
+     "id": "c1",
+     "source": "header_img",
+     "url": "https://www.instylesoft.com/wp-content/uploads/2013/09/000000000200000119411.png",
+     "raw": "logos/_raw/instyle-apparel-software/1_header_img.png",
+     "white_as_ink": false,
+     "aspect": 5.648,
+     "ink_coverage": 0.156,
+     "source_kind": "raster-alpha",
+     "knocked_out_white": false,
+     "ok": true,
+     "problems": [],
+     "verdict": {
+      "candidate_id": "c1",
+      "is_logo": true,
+      "text_read": "InStyle! In-Style Software",
+      "matches_company": true,
+      "kind": "lockup",
+      "legible_on_navy": true,
+      "confidence": 0.85
+     }
+    }
+   ]
+  },
+  "Aptean": {
+   "name": "Aptean",
+   "domain": "aptean.com",
+   "source_in_run": "jsonld",
+   "tried": [
+    {
+     "id": "c1",
+     "source": "jsonld",
+     "url": "https://images.ctfassets.net/grb5fvwhwnyo/1UzPXNAZHMRDcSPIAyJXD9/3d3a7775e30ed5b3ae9c5123c75c932e/Logo.svg",
+     "raw": "logos/_raw/aptean/1_jsonld.svg",
+     "white_as_ink": false,
+     "aspect": 3.2,
+     "ink_coverage": 0.334,
+     "source_kind": "svg",
+     "knocked_out_white": false,
+     "ok": true,
+     "problems": [],
+     "verdict": {
+      "candidate_id": "c1",
+      "is_logo": true,
+      "text_read": "aptean",
+      "matches_company": true,
+      "kind": "wordmark",
+      "legible_on_navy": true,
+      "confidence": 0.97
+     }
+    },
+    {
+     "id": "c2",
+     "source": "header_svg",
+     "url": null,
+     "raw": "logos/_raw/aptean/2_header_svg.svg",
+     "white_as_ink": false,
+     "aspect": 1.223,
+     "ink_coverage": 0.0,
+     "source_kind": "svg",
+     "knocked_out_white": false,
+     "ok": false,
+     "problems": [
+      "blank_after_whitening"
+     ]
+    },
+    {
+     "id": "c3",
+     "source": "og_image",
+     "url": "https://images.ctfassets.net/grb5fvwhwnyo/6dl4ftg2p3o3438k9XcowL/feecf05daaad11081daa4b57173423a8/Default-og-image.webp",
+     "raw": "logos/_raw/aptean/3_og_image.webp",
+     "white_as_ink": false,
+     "aspect": 3.221,
+     "ink_coverage": 0.345,
+     "source_kind": "raster-opaque",
+     "knocked_out_white": true,
+     "ok": true,
+     "problems": [],
+     "verdict": {
+      "candidate_id": "c3",
+      "is_logo": true,
+      "text_read": "aptean",
+      "matches_company": true,
+      "kind": "wordmark",
+      "legible_on_navy": true,
+      "confidence": 0.6
+     }
+    }
+   ]
+  }
+ }
+}

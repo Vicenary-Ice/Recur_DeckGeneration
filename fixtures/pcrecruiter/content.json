@@ -1,0 +1,23 @@
+{
+  "company": {"display_name": "PCRecruiter", "domain": "pcrecruiter.net", "aliases": ["Main Sequence Technology"]},
+  "thesis": [
+    {"headline": "Staffing firms want fewer tools and more placements", "subline": "Agencies juggle an ATS, a CRM and sourcing tools that don't share data", "evidence_ids": []},
+    {"headline": "PCRecruiter keeps agencies in one system for years", "subline": "Candidates, clients and placements live together, so firms rarely leave", "evidence_ids": []},
+    {"headline": "Help PCRecruiter win new agencies with AI", "subline": "We add outbound sales and build AI sourcing into the product", "evidence_ids": []}
+  ],
+  "market": {
+    "subtitle": "Recruiting agencies need one system for candidates, clients and placements",
+    "x_axis": {"title": "Product scope", "low_label": "ATS only", "high_label": "ATS + CRM"},
+    "y_axis": {"title": "Agency size", "low_label": "Boutique\nagencies", "high_label": "Mid & large\nagencies"},
+    "competitors": [
+      {"name": "Bullhorn", "domain": "bullhorn.com", "x": "right", "y": "top", "rationale": "ATS and CRM for large staffing firms", "evidence_ids": []},
+      {"name": "JobAdder", "domain": "jobadder.com", "x": "right", "y": "bottom", "rationale": "ATS plus CRM for small and mid agencies", "evidence_ids": []},
+      {"name": "Crelate", "domain": "crelate.com", "x": "right", "y": "bottom", "rationale": "Combined ATS and CRM for search firms", "evidence_ids": []},
+      {"name": "Loxo", "domain": "loxo.co", "x": "left", "y": "bottom", "rationale": "Sourcing-led ATS for boutique recruiters", "evidence_ids": []},
+      {"name": "Recruit CRM", "domain": "recruitcrm.io", "x": "left", "y": "bottom", "rationale": "Lightweight ATS for small agencies", "evidence_ids": []},
+      {"name": "Zoho Recruit", "domain": "zoho.com", "x": "left", "y": "bottom", "rationale": "Low-cost ATS inside a broad suite", "evidence_ids": []}
+    ],
+    "our_take": {"headline": "PCRecruiter gives growing agencies ATS and CRM in one place",
+                 "points": ["Point tools leave agencies stitching data together", "Enterprise suites cost more than most agencies need"]}
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "company": "Ai2000",
+  "pptx": "out/ai2000/Recur_x_Ai2000.pptx",
+  "seconds_build": 2.7,
+  "logos": {
+    "Ai2000": {
+      "source": "1_brandfetch.png",
+      "ok": true,
+      "aspect": 2.199,
+      "ink_coverage": 0.208,
+      "problems": []
+    },
+    "BlueCherry": {
+      "source": "1_site.jpg",
+      "ok": true,
+      "aspect": 2.992,
+      "ink_coverage": 0.211,
+      "problems": []
+    },
+    "Aptean": {
+      "source": "1_brandfetch.png",
+      "ok": true,
+      "aspect": 3.2,
+      "ink_coverage": 0.334,
+      "problems": []
+    },
+    "NetSuite": {
+      "source": "1_site.jpg",
+      "ok": true,
+      "aspect": 2.73,
+      "ink_coverage": 0.304,
+      "problems": []
+    },
+    "FDM4": {
+      "source": "1_brandfetch.png",
+      "ok": true,
+      "aspect": 4.18,
+      "ink_coverage": 0.467,
+      "problems": []
+    },
+    "AIMS360": {
+      "source": "1_site.png",
+      "ok": true,
+      "aspect": 4.035,
+      "ink_coverage": 0.114,
+      "problems": []
+    },
+    "ApparelMagic": {
+      "source": "2_site.jpg",
+      "ok": true,
+      "aspect": 5.926,
+      "ink_coverage": 0.215,
+      "problems": []
+    },
+    "Uphance": {
+      "source": "1_site.png",
+      "ok": true,
+      "aspect": 5.342,
+      "ink_coverage": 0.315,
+      "problems": []
+    }
+  },
+  "issues": [],
+  "pdf": "out/ai2000/Recur_x_Ai2000.pdf",
+  "pngs": [
+    "out/ai2000/png/slide1.png",
+    "out/ai2000/png/slide2.png",
+    "out/ai2000/png/slide3.png"
+  ],
+  "seconds_render": 6.1
+}

@@ -1,0 +1,24 @@
+{
+  "company": {"display_name": "Ai2000", "domain": "a2000software.com", "aliases": ["A2000", "GCS Software"]},
+  "thesis": [
+    {"headline": "Apparel brands are moving off legacy ERPs", "subline": "Many still run product, orders and books in separate systems", "evidence_ids": []},
+    {"headline": "Ai2000 has the depth larger brands need", "subline": "Retail EDI, warehouse and financials sit in one platform, so it sticks", "evidence_ids": []},
+    {"headline": "Help Ai2000 grow with outbound sales and AI", "subline": "We add an outbound engine and build AI into daily workflows", "evidence_ids": []}
+  ],
+  "market": {
+    "subtitle": "Apparel and home goods brands want one system for product, retail orders and books",
+    "x_axis": {"title": "Product scope", "low_label": "Ops only", "high_label": "Ops + financials"},
+    "y_axis": {"title": "Customer size", "low_label": "Small &\nmid brands", "high_label": "Large brands"},
+    "competitors": [
+      {"name": "BlueCherry", "domain": "cgsinc.com", "x": "left", "y": "top", "rationale": "Enterprise apparel suite, books often run elsewhere", "evidence_ids": []},
+      {"name": "Aptean", "domain": "aptean.com", "x": "right", "y": "top", "rationale": "Apparel ERP editions with accounting for large brands", "evidence_ids": []},
+      {"name": "NetSuite", "domain": "netsuite.com", "x": "right", "y": "bottom", "rationale": "Generic ERP configured for apparel by partners", "evidence_ids": []},
+      {"name": "FDM4", "domain": "fdm4.com", "x": "right", "y": "bottom", "rationale": "Apparel ERP with financials for mid-size brands", "evidence_ids": []},
+      {"name": "AIMS360", "domain": "aims360.com", "x": "left", "y": "bottom", "rationale": "Ops ERP that syncs to QuickBooks for the books", "evidence_ids": []},
+      {"name": "ApparelMagic", "domain": "apparelmagic.com", "x": "left", "y": "bottom", "rationale": "Ops platform for small brands, accounting via integration", "evidence_ids": []},
+      {"name": "Uphance", "domain": "uphance.com", "x": "left", "y": "bottom", "rationale": "Cloud ops tool for small fashion brands", "evidence_ids": []}
+    ],
+    "our_take": {"headline": "Ai2000 runs product, retail orders and financials for large brands in one system",
+                 "points": ["Small-brand tools lack the depth big retail programs need", "Ops-only suites push the books into a second system"]}
+  }
+}
