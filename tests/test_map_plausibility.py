@@ -234,8 +234,14 @@ def test_audit_batching(tmp_path):
     assert P.audit(ctx, content(d), ev) and claude.calls == ["placement_audit"]   # second time: from the cache
 
 
-def test_audit_hook_returns_problem_strings(tmp_path):
-    from recur_deck import hooks
-    ctx = Ctx.create(Settings(runs_dir=tmp_path), tmp_path / "h", claude_client=FakeClaude(World()))
-    assert P.audit_after_write in hooks.handlers("after_write")
-    assert P.audit_after_write(ctx, content(deck())) == []                  # nothing cited in an empty store
+def test_audit_runs_in_the_qa_loop_before_render(tmp_path, monkeypatch):
+    """Agent 6 moved the audit from after_write into the QA loop: after Layer A, before the render and vision."""
+    from recur_deck import hooks, pipeline
+    from tests.test_pipeline import fake_render, qa_state
+    fake_render(monkeypatch)
+    assert P.audit_after_write not in hooks.handlers("after_write")
+    claude = FakeClaude(World())
+    st = qa_state(tmp_path, claude)
+    out = pipeline.qa_loop(st, lambda s: None, deadline=1e12)
+    assert claude.calls.index("placement_audit") < claude.calls.index("vision_qa")
+    assert out["audit"] == [] and P.audit_after_write(st.ctx, st.content) == []   # problem strings, cached: no new call

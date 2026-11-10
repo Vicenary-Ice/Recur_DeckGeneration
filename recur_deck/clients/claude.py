@@ -57,6 +57,19 @@ def cost_of(model: str, usage: Any) -> float:
             + g("cache_creation_input_tokens") * pwrite) / 1e6
 
 
+EST_OUTPUT = {"low": 1500, "medium": 4000, "high": 8000}  # output + thinking tokens a call usually spends
+EST_IMAGE_TOKENS = 3000                                    # a slide render at <= 2576 px
+
+
+def estimate_cost(model: str, system: str, content: list[dict], max_tokens: int, effort: str) -> float:
+    """A deliberately generous estimate of one call's cost, for the budget guard (before the call is sent)."""
+    pin, pout, *_ = PRICES.get(model, PRICES["claude-opus-5-5"])
+    chars = len(system) + sum(len(c.get("text", "")) for c in content)
+    tokens_in = chars / 3.5 + EST_IMAGE_TOKENS * sum(1 for c in content if c.get("type") == "image")
+    tokens_out = min(max_tokens, EST_OUTPUT.get(effort, 4000))
+    return (tokens_in * pin + tokens_out * pout) / 1e6
+
+
 def image_block(png: bytes, media_type: str = "image/png") -> dict:
     """Base64 image block, downscaled to <= 2576 px on the long edge."""
     from PIL import Image
@@ -155,6 +168,8 @@ class Claude:
         if self.settings.offline:
             self.cache.record_miss("anthropic", f"{label or output_model.__name__} ({model})")
             raise OfflineMiss("anthropic", "offline", f"{label}: response not cached")
+        self.ledger.guard("anthropic", label or output_model.__name__,
+                          estimate_cost(model, system, content, max_tokens, effort))
         kwargs: dict = dict(
             model=model, max_tokens=max_tokens,
             system=[{"type": "text", "text": system, "cache_control": {"type": "ephemeral"}}],
@@ -207,6 +222,7 @@ class Claude:
         if self.settings.offline:
             self.cache.record_miss("anthropic", f"web_search {query!r} ({model})")
             raise OfflineMiss("anthropic", "offline", "web search not cached")
+        self.ledger.guard("anthropic", "web_search", 0.01 * max_uses + estimate_cost(model, "", [], 4000, "low"))
         t0 = time.monotonic()
         with self.client.messages.stream(
                 model=model, max_tokens=4000, output_config={"effort": "low"},

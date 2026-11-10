@@ -12,7 +12,6 @@ from typing import Literal
 
 from pydantic import BaseModel
 
-from .. import hooks
 from ..axes import AXIS_KINDS
 from ..models import DeckContent
 from ..qa import Issue
@@ -99,7 +98,7 @@ def audit(ctx: Ctx, content: DeckContent, evidence=None) -> list[Issue]:
     return issues
 
 
-@hooks.on("after_write")
 def audit_after_write(ctx: Ctx, content: DeckContent) -> list[str]:
-    """Problem strings for the QA loop (Agent 6 routes them to regenerate_market)."""
+    """Problem strings for a caller that wants them as text. The QA loop calls `audit` itself, after Layer A and
+    before rendering (pipeline.run_audit), so this is no longer registered on after_write."""
     return [f"{i.field}: {i.message}" for i in audit(ctx, content)]

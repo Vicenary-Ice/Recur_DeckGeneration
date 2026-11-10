@@ -207,3 +207,13 @@ def test_layer_a_logo_print_check_on_the_uphance_run():
     by = {(i.code, i.field): i for i in issues}
     assert ("logo_low_res", "logo:Uphance") in by and by[("logo_low_res", "logo:Uphance")].severity == "error"
     assert ("logo_tagline_microtext", "logo:AIMS360") in by
+
+
+def test_corner_specks_are_not_bands():
+    """A lockup on a rounded box: whitening leaves the box's corners as specks above and below the mark. They are not
+    lines of text, so the real tagline ("CONSUMER BRANDS ERP") is still found and can be cropped."""
+    from tests.fake_world import FIX
+    img, _ = L.process_logo((FIX / "ai2000/logos/aims360/1_site.png").read_bytes())
+    tb = L.tagline_band(img)
+    assert tb is not None and tb["croppable"] and len(tb["bands"]) == 2
+    assert L.tagline_band(L.crop_tagline(img)) is None

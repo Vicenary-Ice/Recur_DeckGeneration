@@ -7,6 +7,56 @@ The seven briefs in `docs/agents/` were carried out one after another by a singl
 own branch merged into `main` before the next (order 0, 2, 3, 1, 4, 5, 6). Where a brief did not match the
 code, the brief's intent was followed and the adaptation is listed here, per phase.
 
+### Phase 6: integration, fix routing, cost cap
+- **Merging was sequential.** Each phase was merged into `main` before the next started (order 0, 2, 3, 1, 4,
+  5), so phase 6's merge step became a check that `main` has every branch.
+- **Round order.** Each round runs Layer A and its fixes, then the placement audit (moved from the
+  `after_write` hook into the loop, as the brief's order requires) and its market rewrite, then render +
+  vision, then the critic once vision passes. A round that changes the deck is checked in the next round.
+  After the last round, one verification pass (audit, render, vision, and the critic within its 2-call cap)
+  judges the final deck. The phase 3 test of the `after_write` wiring was re-pointed at the loop: it now
+  asserts the audit runs before the visual check.
+- **Section rewrites.** `write_deck(..., section="thesis" | "market", current=...)` sends the current deck and
+  "rewrite only …"; code then merges only that section back, so the frozen section is byte-identical whatever
+  the model returns. Limit: 2 per section per deck. A whole-section rewrite supersedes single-line rewrites of
+  that section's fields in the same round. Lever, durability and why-now problems rewrite the thesis; copied
+  or repeated lines rewrite one field.
+- **Logo fixes.**
+  - `logo_tagline_microtext`: crop (one cached vision check), else the next alternative, else typeset.
+  - `logo_low_res`: only a sharper alternative (more native pixels, or vector), else typeset.
+  - The target's own cover logo at 200-300 dpi is a warning, so no fix runs (Phase 4).
+- **`add_competitor`.** Only a company that this run found as a candidate (`candidates.json`) and that is
+  named in the critic's reason is verified (cached if verified before). If it passes, it gets a logo and goes
+  onto the map through the market rewrite. Once per deck. The critic's memory never adds a company.
+- **Status.**
+  - `pass` needs no Layer-A error, a clean placement audit, vision passed, and the critic's verdict on the
+    final deck with no major finding.
+  - If the critic's last verdict had major findings and the deck changed afterwards (the cap left the fix
+    unreviewed), those findings still count as unresolved: `needs_review`, with "a fix was tried; the critic
+    did not see the result".
+  - A deck the critic never saw (`--no-vision`, a failed call) is at best `pass_with_warnings`.
+- **Cost cap.**
+  - `CostLedger.guard` runs before every uncached Claude call (`clients/claude.py`) and every uncached
+    Firecrawl call (`clients/firecrawl.py`). It uses a generous estimate: input characters / 3.5,
+    3,000 tokens per image, output 1,500 / 4,000 / 8,000 tokens by effort.
+  - Refused calls are recorded, because fallback layers swallow exceptions. Research stages stop through the
+    same gate as offline misses: status `budget_exceeded`, exit 2. The QA stage stops fixing, rebuilds the
+    deck from the current state and delivers it as `needs_review: budget reached`.
+  - Firecrawl credits count only when `FIRECRAWL_USD_PER_CREDIT` is set; the default is 0, as the brief says.
+  - These guard calls live in `clients/claude.py`, `clients/firecrawl.py` and `stages/base.py`, outside the
+    brief's file list, as one-line hooks.
+- **`recur-deck check`** (`recur_deck/check_run.py`) runs the built-in text and layout checks plus every
+  registered check on saved files.
+  - It adds `check_integrity` when the `.pptx` is there.
+  - The graph is the shared graph plus every other run on the command line, and the thesis history is the
+    run folder's history plus those runs.
+  - `--critic` needs `--yes`.
+  - `--scorecard` prints the live test plan's table.
+- **Logo bands:** a band that inks under 2% of every row (the rounded corners of a removed background box) is
+  not a line of text. The fake world's AIMS360 lockup on a teal box showed it: the specks made a croppable
+  tagline look like 4 bands.
+- `docs/LIVE_TEST_PLAN.md` ingests `runs/ai2000-20261109-163637`, not the briefs' `-212951` (no deck there).
+
 ### Phase 5: founder-eyes critic
 - **`slide_grades` is an object with fixed keys (`slide2`, `slide3`)**, not the brief's `dict[str, grade]`: the
   SDK's `transform_schema` turns a free-form dict into an object with no allowed keys
