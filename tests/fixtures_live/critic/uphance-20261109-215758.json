@@ -1,0 +1,54 @@
+{
+  "findings": [
+    {
+      "persona": "founder",
+      "slide": 2,
+      "target": "thesis[1].headline",
+      "category": "copied_language",
+      "severity": "major",
+      "explanation": "'Uphance is set to win as brands drop disconnected tools' reuses the reference deck's 'is set to win as' line.",
+      "suggested_fix": "rewrite_copy"
+    },
+    {
+      "persona": "partner",
+      "slide": 3,
+      "target": "market.y_axis",
+      "category": "axis_not_ordinal",
+      "severity": "major",
+      "explanation": "'Core buyer' runs from 'Enterprise and makers' to 'Wholesale + DTC brands': a list of buyer types, not a scale, and it reads upside down.",
+      "suggested_fix": "regenerate_market"
+    },
+    {
+      "persona": "founder",
+      "slide": 3,
+      "target": "logo:Sync (iSync Solutions)",
+      "category": "illegible_logo",
+      "severity": "major",
+      "explanation": "The typeset 'Sync (iSync Solutions)' wraps onto two tiny lines and can't be read on paper.",
+      "suggested_fix": "swap_logo"
+    },
+    {
+      "persona": "founder",
+      "slide": 3,
+      "target": "logo:AIMS360",
+      "category": "illegible_logo",
+      "severity": "minor",
+      "explanation": "AIMS360's 'CONSUMER BRANDS ERP' tagline prints too small to read.",
+      "suggested_fix": "swap_logo"
+    },
+    {
+      "persona": "partner",
+      "slide": 2,
+      "target": "thesis[2].headline",
+      "category": "generic_thesis",
+      "severity": "major",
+      "explanation": "Point 03 repeats the outbound-and-AI promise with no gap from Uphance's evidence.",
+      "suggested_fix": "rewrite_copy"
+    }
+  ],
+  "slide_grades": {
+    "slide2": "B-",
+    "slide3": "C+"
+  },
+  "mail_ready": false
+}
