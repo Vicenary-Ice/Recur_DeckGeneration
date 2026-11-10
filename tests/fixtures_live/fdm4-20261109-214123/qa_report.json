@@ -1,0 +1,493 @@
+{
+  "input": {
+    "name": "FDM4",
+    "domain": null,
+    "hint": null
+  },
+  "run_dir": "/Users/rishi_r/Recur_CaseProject/runs/fdm4-20261109-214123",
+  "settings": {
+    "keys": {
+      "anthropic": true,
+      "firecrawl": true
+    },
+    "models": {
+      "writer": "claude-opus-5-5",
+      "judge": "claude-sonnet-5-5",
+      "fast": "claude-haiku-5-5",
+      "vision": "claude-sonnet-5-5"
+    },
+    "max_qa_rounds": 3,
+    "firecrawl_rpm": 10,
+    "fetch_mode": "direct-first",
+    "offline": false,
+    "use_cache": true,
+    "vision_qa": true
+  },
+  "started": "2026-11-09T21:41:23",
+  "status": "pass_with_warnings",
+  "company": "FDM4",
+  "domain": "fdm4.com",
+  "timings": {
+    "entity": 12.4,
+    "profile": 24.9,
+    "competitors": 368.4,
+    "logos": 11.3,
+    "write": 35.1,
+    "qa": 73.7
+  },
+  "deliverables": {
+    "pptx": "/Users/rishi_r/Recur_CaseProject/runs/fdm4-20261109-214123/Recur_x_FDM4.pptx",
+    "pdf": "/Users/rishi_r/Recur_CaseProject/runs/fdm4-20261109-214123/Recur_x_FDM4.pdf",
+    "sources": "/Users/rishi_r/Recur_CaseProject/runs/fdm4-20261109-214123/sources.md"
+  },
+  "identity": {
+    "display_name": "FDM4",
+    "domain": "fdm4.com",
+    "aliases": [
+      "FDM4 America",
+      "FDM4 International",
+      "FDM4 America, Inc",
+      "Cutsey Business Systems"
+    ],
+    "confidence": 0.99,
+    "margin": 0.96,
+    "domain_supplied": false,
+    "low_confidence_identity": false,
+    "rebrand_detected": true
+  },
+  "competitors": [
+    {
+      "name": "Aptean",
+      "domain": "aptean.com",
+      "cell": "top-left",
+      "independent_sources": 5,
+      "channels": [
+        "roundup",
+        "vs_page"
+      ]
+    },
+    {
+      "name": "NetSuite",
+      "domain": "netsuite.com",
+      "cell": "top-left",
+      "independent_sources": 8,
+      "channels": [
+        "directory",
+        "roundup",
+        "vs_page"
+      ]
+    },
+    {
+      "name": "Acumatica",
+      "domain": "acumatica.com",
+      "cell": "bottom-left",
+      "independent_sources": 6,
+      "channels": [
+        "directory",
+        "roundup",
+        "vs_page"
+      ]
+    },
+    {
+      "name": "AIMS360",
+      "domain": "aims360.com",
+      "cell": "bottom-right",
+      "independent_sources": 5,
+      "channels": [
+        "roundup",
+        "vs_page"
+      ]
+    }
+  ],
+  "logos": {
+    "FDM4": {
+      "source": "jsonld",
+      "typeset": false,
+      "aspect": 3.203
+    },
+    "AIMS360": {
+      "source": "typeset",
+      "typeset": true,
+      "aspect": 5.661
+    },
+    "NetSuite": {
+      "source": "jsonld",
+      "typeset": false,
+      "aspect": 2.966
+    },
+    "Aptean": {
+      "source": "jsonld",
+      "typeset": false,
+      "aspect": 3.2
+    },
+    "Acumatica": {
+      "source": "header_img",
+      "typeset": false,
+      "aspect": 4.192
+    }
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "layer_a_before": [
+        {
+          "code": "our_take_lines",
+          "severity": "error",
+          "slide": 3,
+          "field": "market.our_take.points[1]",
+          "message": "point wraps to 3 lines (max 2)",
+          "fix": "rewrite_shorter",
+          "measured": 3,
+          "allowed": 2
+        },
+        {
+          "code": "our_take_height",
+          "severity": "error",
+          "slide": 3,
+          "field": "market.our_take.headline",
+          "message": "'our take' block is 2.08in tall; limit 1.95in",
+          "fix": "rewrite_shorter",
+          "measured": 2.085,
+          "allowed": 1.95
+        }
+      ],
+      "fixes_layer_a": [
+        {
+          "fix": "rewrite",
+          "applied": true,
+          "field": "market.our_take.points[1]",
+          "from": "Brand-focused apparel tools skip decorators and promo distributors",
+          "to": "Brand apparel tools skip decorators and promo firms",
+          "calls": 1,
+          "tried": [
+            {
+              "text": "Apparel brand tools ignore decorators and promo distributors",
+              "errors": [
+                "point wraps to 3 lines (max 2)"
+              ]
+            },
+            {
+              "text": "Brand apparel tools skip decorators and promo firms",
+              "errors": []
+            }
+          ]
+        },
+        {
+          "fix": "rewrite",
+          "applied": true,
+          "field": "market.our_take.headline",
+          "from": "FDM4 runs decorated apparel orders, the warehouse, group stores and the books together",
+          "to": "FDM4 runs decorated orders, the warehouse, group stores and the books together",
+          "calls": 1,
+          "tried": [
+            {
+              "text": "FDM4 runs decorated orders, the warehouse, group stores and the books together",
+              "errors": []
+            }
+          ]
+        }
+      ],
+      "layer_a_after": [],
+      "vision": {
+        "passed": false,
+        "defects": [
+          {
+            "slide": 3,
+            "element_id": "target_logo",
+            "type": "logo_too_small",
+            "severity": "major",
+            "description": "The FDM4 target logo is much smaller than its neighbour Aptean and than the baseline target logo. The 'ERP WMS ECOM DECO' tagline is tiny and hard to read on paper. The logo looks lost inside its glow, which is oversized for it.",
+            "suggested_fix": "relayout"
+          },
+          {
+            "slide": 3,
+            "element_id": "logo:AIMS360",
+            "type": "logo_illegible",
+            "severity": "major",
+            "description": "The AIMS360 logo is thin and low-contrast, and its 'FASHION TECHNOLOGY' tagline is unreadable. It looks fainter and weaker than the other logos.",
+            "suggested_fix": "swap_logo"
+          },
+          {
+            "slide": 3,
+            "element_id": "logo:Acumatica",
+            "type": "logo_too_small",
+            "severity": "minor",
+            "description": "The Acumatica logo is small and its 'The Cloud ERP' tagline is tiny. It is still legible overall.",
+            "suggested_fix": "relayout"
+          },
+          {
+            "slide": 3,
+            "element_id": "logo:Aptean",
+            "type": "visual_imbalance",
+            "severity": "minor",
+            "description": "The Aptean logo is much larger than the FDM4 logo beside it in the same cell. The logos in the left column are noticeably smaller than Aptean, so sizes are inconsistent across the quadrant.",
+            "suggested_fix": "relayout"
+          },
+          {
+            "slide": 1,
+            "element_id": "cover_logo",
+            "type": "visual_imbalance",
+            "severity": "minor",
+            "description": "The FDM4 cover logo is wide and sits slightly higher than the RECUR wordmark and divider. It is acceptable but not perfectly vertically centred.",
+            "suggested_fix": "relayout"
+          }
+        ],
+        "summary": "Slides 1 and 2 are clean. On slide 3 the FDM4 target logo is far smaller than Aptean and its tagline is illegible. The AIMS360 logo is faint and unreadable. These are major logo sizing and legibility issues."
+      },
+      "fixes_vision": [
+        {
+          "fix": "swap_logo",
+          "applied": true,
+          "company": "AIMS360",
+          "from": "jsonld",
+          "to": "header_img"
+        }
+      ]
+    },
+    {
+      "round": 2,
+      "layer_a_before": [],
+      "vision": {
+        "passed": false,
+        "defects": [
+          {
+            "slide": 3,
+            "element_id": "logo:AIMS360",
+            "type": "logo_illegible",
+            "severity": "major",
+            "description": "The AIMS360 logo is drawn in very thin, dim strokes on the dark background. Its 'CONSUMER BRANDS ERP' tagline is unreadable. It looks much fainter than the other logos and, in the baseline, is larger.",
+            "suggested_fix": "swap_logo"
+          },
+          {
+            "slide": 3,
+            "element_id": "logo:Aptean",
+            "type": "logo_misaligned",
+            "severity": "major",
+            "description": "The Aptean logo sits very close to the FDM4 glow and logo in the top-right cell, with only a small gap. The pair looks crowded, and the glow box reaches almost to the aptean wordmark.",
+            "suggested_fix": "relayout"
+          },
+          {
+            "slide": 3,
+            "element_id": "target_logo",
+            "type": "logo_too_small",
+            "severity": "major",
+            "description": "The FDM4 target logo is much smaller than the target logo in the baseline. Its 'ERP WMS ECOM DECO' tagline is tiny and hard to read at print size.",
+            "suggested_fix": "relayout"
+          },
+          {
+            "slide": 3,
+            "element_id": "logo:Acumatica",
+            "type": "logo_too_small",
+            "severity": "minor",
+            "description": "The Acumatica tagline 'The Cloud ERP' is very small and barely legible. The logo is also somewhat small relative to the Aptean wordmark.",
+            "suggested_fix": "relayout"
+          },
+          {
+            "slide": 3,
+            "element_id": "logo:NetSuite",
+            "type": "visual_imbalance",
+            "severity": "minor",
+            "description": "The NetSuite and Acumatica logos are small compared with the Aptean logo. The two bottom quadrants look sparse and the logos are uneven in size.",
+            "suggested_fix": "relayout"
+          },
+          {
+            "slide": 1,
+            "element_id": "cover_logo",
+            "type": "visual_imbalance",
+            "severity": "minor",
+            "description": "The FDM4 cover logo is wide and its tagline sits close to the bottom edge of the divider. Its visual weight differs slightly from the baseline, though it is legible.",
+            "suggested_fix": "none"
+          }
+        ],
+        "summary": "Slides 1 and 2 look clean. On slide 3, the AIMS360 logo is too faint to read and the FDM4 target logo is much smaller than in the baseline, with a tiny tagline. The Aptean/FDM4 pair also sits tight in the top-right cell. These are major logo defects, so the deck does not pass."
+      },
+      "fixes_vision": [
+        {
+          "fix": "swap_logo",
+          "applied": true,
+          "company": "AIMS360",
+          "from": "header_img",
+          "to": "typeset"
+        },
+        {
+          "fix": "relayout",
+          "applied": true,
+          "moved": "Aptean",
+          "from": [
+            "right",
+            "top"
+          ],
+          "to": [
+            "left",
+            "top"
+          ]
+        }
+      ]
+    },
+    {
+      "round": 3,
+      "layer_a_before": [],
+      "vision": {
+        "passed": true,
+        "defects": [
+          {
+            "slide": 3,
+            "element_id": "logo:AIMS360",
+            "type": "visual_imbalance",
+            "severity": "minor",
+            "description": "The AIMS360 logo is a plain text wordmark, simpler than the other logos. Its weight and size roughly match its neighbours, but it looks a bit plain.",
+            "suggested_fix": "none"
+          },
+          {
+            "slide": 3,
+            "element_id": "logo:Acumatica",
+            "type": "logo_too_small",
+            "severity": "minor",
+            "description": "The Acumatica logo's 'The Cloud ERP' tagline is very small and hard to read in print. The main wordmark is legible.",
+            "suggested_fix": "none"
+          },
+          {
+            "slide": 3,
+            "element_id": "target_logo",
+            "type": "logo_too_small",
+            "severity": "minor",
+            "description": "The FDM4 logo is smaller on slide 3 than the baseline target logo. Its 'ERP WMS ECOM DECO' tagline is tiny. The main FDM4 mark is legible and the glow is smooth.",
+            "suggested_fix": "none"
+          },
+          {
+            "slide": 3,
+            "element_id": "market.our_take",
+            "type": "visual_imbalance",
+            "severity": "minor",
+            "description": "The right-hand text column is fairly dense and reaches close to the right edge of the slide. It fits and has no overlap.",
+            "suggested_fix": "none"
+          }
+        ],
+        "summary": "No major defects. Text fits in all boxes, logos are correct, legible and non-overlapping, and FDM4 is spelt correctly throughout. The minor issues are the tiny tagline text in the FDM4 and Acumatica logos and the plain AIMS360 wordmark."
+      }
+    }
+  ],
+  "final_layer_a_errors": [],
+  "final_layer_a_warnings": [
+    {
+      "code": "text_long",
+      "severity": "warn",
+      "slide": 2,
+      "field": "thesis[0].headline",
+      "message": "'Decorators and promo distributors are weighing generic ERPs' is 5.87in; reference style sits under 5.70in",
+      "fix": "rewrite_shorter",
+      "measured": 5.868,
+      "allowed": 5.7
+    },
+    {
+      "code": "text_long",
+      "severity": "warn",
+      "slide": 2,
+      "field": "thesis[0].subline",
+      "message": "'Generic cloud ERPs need custom work to handle decorated orders and group stores' is 5.84in; reference style sits under 5.60in",
+      "fix": "rewrite_shorter",
+      "measured": 5.841,
+      "allowed": 5.6
+    },
+    {
+      "code": "text_long",
+      "severity": "warn",
+      "slide": 2,
+      "field": "thesis[1].subline",
+      "message": "'Decorated orders, the warehouse and the books run on FDM4, so switching is hard' is 5.75in; reference style sits under 5.60in",
+      "fix": "rewrite_shorter",
+      "measured": 5.751,
+      "allowed": 5.6
+    },
+    {
+      "code": "text_long",
+      "severity": "warn",
+      "slide": 2,
+      "field": "thesis[2].subline",
+      "message": "'We add outbound sales to what already works and build AI into decorated orders' is 5.62in; reference style sits under 5.60in",
+      "fix": "rewrite_shorter",
+      "measured": 5.619,
+      "allowed": 5.6
+    }
+  ],
+  "final_vision": {
+    "passed": true,
+    "defects": [
+      {
+        "slide": 3,
+        "element_id": "logo:AIMS360",
+        "type": "visual_imbalance",
+        "severity": "minor",
+        "description": "The AIMS360 logo is a plain text wordmark, simpler than the other logos. Its weight and size roughly match its neighbours, but it looks a bit plain.",
+        "suggested_fix": "none"
+      },
+      {
+        "slide": 3,
+        "element_id": "logo:Acumatica",
+        "type": "logo_too_small",
+        "severity": "minor",
+        "description": "The Acumatica logo's 'The Cloud ERP' tagline is very small and hard to read in print. The main wordmark is legible.",
+        "suggested_fix": "none"
+      },
+      {
+        "slide": 3,
+        "element_id": "target_logo",
+        "type": "logo_too_small",
+        "severity": "minor",
+        "description": "The FDM4 logo is smaller on slide 3 than the baseline target logo. Its 'ERP WMS ECOM DECO' tagline is tiny. The main FDM4 mark is legible and the glow is smooth.",
+        "suggested_fix": "none"
+      },
+      {
+        "slide": 3,
+        "element_id": "market.our_take",
+        "type": "visual_imbalance",
+        "severity": "minor",
+        "description": "The right-hand text column is fairly dense and reaches close to the right edge of the slide. It fits and has no overlap.",
+        "suggested_fix": "none"
+      }
+    ],
+    "summary": "No major defects. Text fits in all boxes, logos are correct, legible and non-overlapping, and FDM4 is spelt correctly throughout. The minor issues are the tiny tagline text in the FDM4 and Acumatica logos and the plain AIMS360 wordmark."
+  },
+  "needs_review": [],
+  "seconds_total": 525.8,
+  "cost_usd": 0.7162,
+  "cost_by_service": {
+    "firecrawl": {
+      "calls": 37,
+      "cached": 1,
+      "errors": 5,
+      "cost_usd": 0.0,
+      "credits": 68.0
+    },
+    "download": {
+      "calls": 46,
+      "cached": 13,
+      "errors": 0,
+      "cost_usd": 0.0,
+      "credits": 0.0
+    },
+    "anthropic": {
+      "calls": 37,
+      "cached": 2,
+      "errors": 0,
+      "cost_usd": 0.716229,
+      "credits": 0.0
+    }
+  },
+  "fallbacks": [],
+  "flags": {
+    "thin_market": true,
+    "typeset_logos": [
+      "AIMS360"
+    ]
+  },
+  "warnings": [
+    "thin market: only 4 competitors passed the relaxed rule (strict rule needs >= 5 with 2+ channels or a head-to-head page, and 2+ independent sources)"
+  ],
+  "delivered_to": [
+    "output/Recur_x_FDM4.pptx",
+    "output/Recur_x_FDM4.pdf",
+    "output/Recur_x_FDM4_sources.md",
+    "output/Recur_x_FDM4_qa_report.json"
+  ]
+}

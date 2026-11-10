@@ -276,6 +276,8 @@ def check_integrity(out_pptx: Path, content: DeckContent, template: Path = TEMPL
 
 
 def run_all(out_pptx: Path, content: DeckContent, manifest: dict, logo_metrics: dict[str, dict],
-            extra_protected: list[str] | None = None) -> list[Issue]:
+            extra_protected: list[str] | None = None, extra: dict | None = None) -> list[Issue]:
+    """Built-in checks, then every check registered in recur_deck/checks/ (see checks.register)."""
+    from . import checks
     return (check_text(content, extra_protected) + check_layout(manifest, logo_metrics)
-            + check_integrity(out_pptx, content))
+            + check_integrity(out_pptx, content) + checks.run_registered(content, manifest, logo_metrics, extra or {}))

@@ -1,0 +1,48 @@
+{
+  "display_name": "FDM4",
+  "legal_name": "FDM4 International Inc.",
+  "domain": "fdm4.com",
+  "homepage": "https://www.fdm4.com/",
+  "aliases": [
+    "FDM4 America",
+    "FDM4 International",
+    "FDM4 America, Inc",
+    "Cutsey Business Systems"
+  ],
+  "vertical": "Apparel, promotional products and distribution ERP software",
+  "one_liner": "Cloud-based ERP, WMS, e-commerce and CRM software for decorators, manufacturers and distributors in apparel, promotional products, uniforms and consumer goods.",
+  "confidence": 0.99,
+  "margin": 0.96,
+  "domain_supplied": false,
+  "low_confidence_identity": false,
+  "rebrand_detected": true,
+  "alternatives": [
+    {
+      "domain": "aims360.com",
+      "score": 0.03,
+      "display_name": "AIMS360",
+      "why_rejected": "AIMS360 is a competitor that mentions FDM4 in a comparison article. It is a different company."
+    },
+    {
+      "domain": "progress.com",
+      "score": 0.03,
+      "display_name": "Progress Software",
+      "why_rejected": "Progress is a technology vendor that lists FDM4 as a customer. It is not FDM4."
+    },
+    {
+      "domain": "cuspera.com",
+      "score": 0.01,
+      "display_name": "Cuspera",
+      "why_rejected": "Cuspera is a software comparison site that only lists FDM4 products. It is not FDM4."
+    }
+  ],
+  "evidence_ids": [
+    "e1",
+    "e2",
+    "e3",
+    "e4"
+  ],
+  "notes": "fdm4.com is clearly the company meant. Its history page says Cutsey Business Systems, founded in 1978, was later renamed after its FDM4 product. FDM4 America and FDM4 International appear to be regional or legal entity names for the same company.",
+  "typed_name": "FDM4",
+  "hint": null
+}

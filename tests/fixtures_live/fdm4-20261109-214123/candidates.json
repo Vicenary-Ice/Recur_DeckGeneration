@@ -1,0 +1,1483 @@
+[
+  {
+    "name": "NetSuite",
+    "domain": "netsuite.com",
+    "channels": [
+      "directory",
+      "roundup",
+      "vs_page"
+    ],
+    "head_to_head": true,
+    "names": {
+      "NetSuite": 13,
+      "NetSuite ERP": 4
+    },
+    "resolved_by": "stated",
+    "mentions": [
+      {
+        "url": "https://www.capterra.com/p/20900/FDM4/",
+        "quote": "FDM4 alternatives ; NetSuite logo. NetSuite. 4.2 (2,081) · Contact vendor for pricing",
+        "channel": "vs_page",
+        "head_to_head": true,
+        "title": "FDM4 Software Pricing, Alternatives & More 2026",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.g2.com/products/fdm4-erp/competitors/alternatives",
+        "quote": "The best FDM4 ERP alternatives are NetSuite, Acumatica, and SAP Cloud ERP (SAP S/4HANA Cloud).",
+        "channel": "vs_page",
+        "head_to_head": false,
+        "title": "Top 10 FDM4 ERP Alternatives & Competitors in 2026",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.g2.com/products/fdm4-erp/competitors/alternatives",
+        "quote": "- NetSuite",
+        "channel": "directory",
+        "head_to_head": false,
+        "title": "Top 10 FDM4 ERP Alternatives & Competitors in 2026",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.g2.com/products/fdm4-erp/competitors/alternatives",
+        "quote": "The best FDM4 ERP alternatives are NetSuite, Acumatica, and SAP Cloud ERP (SAP S/4HANA Cloud).",
+        "channel": "directory",
+        "head_to_head": false,
+        "title": "Top 10 FDM4 ERP Alternatives & Competitors in 2026",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.g2.com/products/fdm4-wms/competitors/alternatives",
+        "quote": "The best overall alternative to FDM4 WMS is [NetSuite](https://www.g2.com/products/oracle-netsuite/reviews)",
+        "channel": "directory",
+        "head_to_head": false,
+        "title": "Top 10 FDM4 WMS Alternatives & Competitors in 2026",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.g2.com/products/fdm4-wms/competitors/alternatives",
+        "quote": "The best FDM4 WMS alternatives are NetSuite, Cin7 Core, and Magaya Supply Chain.",
+        "channel": "directory",
+        "head_to_head": false,
+        "title": "Top 10 FDM4 WMS Alternatives & Competitors in 2026",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.aims360.com/fashion-business-resources/best-fashion-erp-software-in-2026-why-aims360-leads-apparel-operations",
+        "quote": "NetSuite is strong at multi-entity financial consolidation",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best Apparel & Fashion ERP Software 2026: 10 Compared",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.sellerscommerce.com/blog/best-erp-software-for-promotional-products-industry/",
+        "quote": "[NetSuite](https://www.netsuite.com/portal/products/erp.shtml) stands out for promotional products businesses that need to connect sales, operations, and financial processes",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "12 Best ERP Software For Promotional Products Industry",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.aims360.com/fashion-business-resources/best-fashion-erp-software-in-2026-why-aims360-leads-apparel-operations",
+        "quote": "Multi-entity groups where financial consolidation is the hard part",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best Apparel & Fashion ERP Software 2026: 10 Compared",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.aims360.com/fashion-business-resources/best-fashion-erp-software-in-2026-why-aims360-leads-apparel-operations",
+        "quote": "NetSuite (SuiteSuccess for apparel, footwear and accessories)",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best Apparel & Fashion ERP Software 2026: 10 Compared",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://xorosoft.com/best-erp-software-for-apparel-manufacturers/",
+        "quote": "NetSuite is frequently evaluated by organizations looking for a broad cloud ERP platform",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best ERP Software for Apparel Manufacturers in 2026",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.getapp.com/retail-consumer-services-software/apparel-management/f/accounting/",
+        "quote": "NetSuite is an AI-powered cloud-based business management suite.",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Top Rated Apparel Management Software with Accounting",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.getapp.com/retail-consumer-services-software/apparel-management/org/small-business/",
+        "quote": "NetSuite is an AI-powered cloud-based business management suite",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Top Rated Apparel Management Software with Small business",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://erpnews.com/evaluating-the-best-erp-software-for-a-promotional-products-business/",
+        "quote": "| NetSuite ERP | Unified cloud suite | Mid-market distributors |",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best ERP Software for Promotional Product Businesses",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://erpnews.com/evaluating-the-best-erp-software-for-a-promotional-products-business/",
+        "quote": "[NetSuite ERP](https://www.netsuite.com/) is widely recognized as a leading cloud ERP for mid-market businesses.",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best ERP Software for Promotional Product Businesses",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://erpnews.com/evaluating-the-best-erp-software-for-a-promotional-products-business/",
+        "quote": "| NetSuite ERP | Unified cloud suite | Mid-market distributors |",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best ERP Software for Promotional Product Businesses",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://erpnews.com/evaluating-the-best-erp-software-for-a-promotional-products-business/",
+        "quote": "| NetSuite ERP | Unified cloud suite | Mid-market distributors |",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best ERP Software for Promotional Product Businesses",
+        "source": "firecrawl"
+      }
+    ]
+  },
+  {
+    "name": "Acumatica",
+    "domain": "acumatica.com",
+    "channels": [
+      "directory",
+      "roundup",
+      "vs_page"
+    ],
+    "head_to_head": true,
+    "names": {
+      "Acumatica": 15,
+      "Acumatica Cloud ERP": 1
+    },
+    "resolved_by": "own_page",
+    "mentions": [
+      {
+        "url": "https://www.g2.com/products/fdm4-erp/competitors/alternatives",
+        "quote": "The best FDM4 ERP alternatives are NetSuite, Acumatica, and SAP Cloud ERP (SAP S/4HANA Cloud).",
+        "channel": "vs_page",
+        "head_to_head": false,
+        "title": "Top 10 FDM4 ERP Alternatives & Competitors in 2026",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.g2.com/products/fdm4-erp/competitors/alternatives",
+        "quote": "- Acumatica",
+        "channel": "directory",
+        "head_to_head": false,
+        "title": "Top 10 FDM4 ERP Alternatives & Competitors in 2026",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.g2.com/products/fdm4-erp/competitors/alternatives",
+        "quote": "The best FDM4 ERP alternatives are NetSuite, Acumatica, and SAP Cloud ERP (SAP S/4HANA Cloud).",
+        "channel": "directory",
+        "head_to_head": false,
+        "title": "Top 10 FDM4 ERP Alternatives & Competitors in 2026",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.acumatica.com/media/2021/11/Fashion_Footwear_Apparel-ID-DST_RET-20240327.pdf",
+        "quote": "Fashion, apparel, and footwear retailers and distributors prosper with Acumatica Cloud ERP.",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Distribution, Retail, and Commerce: Fashion, Footwear, ...",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.sellerscommerce.com/blog/best-erp-software-for-promotional-products-industry/",
+        "quote": "### **6. Acumatica**",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "12 Best ERP Software For Promotional Products Industry",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.sellerscommerce.com/blog/best-erp-software-for-promotional-products-industry/",
+        "quote": "[Acumatica](https://www.acumatica.com/industries/wholesale-distribution/) stands out as a flexible ERP option for promotional products businesses that need more customization",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "12 Best ERP Software For Promotional Products Industry",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.sellerscommerce.com/blog/best-erp-software-for-promotional-products-industry/",
+        "quote": "Growing promotional products distributors and suppliers that need a flexible cloud ERP with strong customization options",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "12 Best ERP Software For Promotional Products Industry",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://erpnews.com/evaluating-the-best-erp-software-for-a-promotional-products-business/",
+        "quote": "Its manufacturing and distribution editions are particularly relevant for this industry as these offer strong inventory control",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best ERP Software for Promotional Product Businesses",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://erpnews.com/evaluating-the-best-erp-software-for-a-promotional-products-business/",
+        "quote": "[Acumatica](https://www.acumatica.com/) is known for its modern cloud architecture and user-friendly interface.",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best ERP Software for Promotional Product Businesses",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://erpnews.com/evaluating-the-best-erp-software-for-a-promotional-products-business/",
+        "quote": "Its manufacturing and distribution editions are particularly relevant for this industry as these offer strong inventory control",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best ERP Software for Promotional Product Businesses",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://erpnews.com/evaluating-the-best-erp-software-for-a-promotional-products-business/",
+        "quote": "Its manufacturing and distribution editions are particularly relevant for this industry as these offer strong inventory control",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best ERP Software for Promotional Product Businesses",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://xorosoft.com/best-erp-software-for-apparel-manufacturers/",
+        "quote": "Acumatica serves manufacturing, distribution, retail, and other inventory-driven businesses.",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best ERP Software for Apparel Manufacturers in 2026",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://xorosoft.com/best-erp-software-for-apparel-manufacturers/",
+        "quote": "Acumatica serves manufacturing, distribution, retail, and other inventory-driven businesses.",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best ERP Software for Apparel Manufacturers in 2026",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://xorosoft.com/best-erp-software-for-apparel-manufacturers/",
+        "quote": "Acumatica serves manufacturing, distribution, retail, and other inventory-driven businesses.",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best ERP Software for Apparel Manufacturers in 2026",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://xorosoft.com/best-erp-software-for-apparel-manufacturers/",
+        "quote": "Acumatica serves manufacturing, distribution, retail, and other inventory-driven businesses.",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best ERP Software for Apparel Manufacturers in 2026",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.capterra.com/p/20900/FDM4/",
+        "quote": "Acumatica Cloud ERP logo. Acumatica Cloud ERP. 4.4 (243).",
+        "channel": "vs_page",
+        "head_to_head": true,
+        "title": "FDM4 Software Pricing, Alternatives & More 2026",
+        "source": "firecrawl"
+      }
+    ]
+  },
+  {
+    "name": "AIMS360",
+    "domain": "aims360.com",
+    "channels": [
+      "roundup",
+      "vs_page"
+    ],
+    "head_to_head": true,
+    "names": {
+      "AIMS360": 9
+    },
+    "resolved_by": "stated",
+    "mentions": [
+      {
+        "url": "https://www.aims360.com/compare/aims360-vs-fdm4-apparel-erp",
+        "quote": "AIMS360 vs FDM4: apparel ERP comparison for 2026",
+        "channel": "vs_page",
+        "head_to_head": true,
+        "title": "AIMS360 vs FDM4: apparel ERP comparison for 2026",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.aims360.com/fashion-business-resources/best-fashion-erp-software-in-2026-why-aims360-leads-apparel-operations",
+        "quote": "AIMS360 | Brands from about $1M to $400M+ selling on Shopify, wholesale and marketplaces",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best Apparel & Fashion ERP Software 2026: 10 Compared",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.kobolabs.io/blog/tech/best-fashion-erp-software",
+        "quote": "AIMS360 has been making apparel software since 1984 and has built its reputation on one thing the others make you assemble: retail EDI that's built in.",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best Fashion & Apparel ERP Software 2026 | Kōbō",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.softwareadvice.com/retail/pos-software-for-apparel-retailers-comparison/?page=4",
+        "quote": "AIMS360 apparel software is a cloud-based enterprise resource planning (ERP) solution for the fashion industry, manufacturers, ...",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best Apparel Management Software of 2026 - Page 4",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.aims360.com/fashion-business-resources/best-fashion-erp-software-in-2026-why-aims360-leads-apparel-operations",
+        "quote": "AIMS360 fits consumer brands from about $1 million to $400 million+ in sales that sell on Shopify, wholesale and marketplaces",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best Apparel & Fashion ERP Software 2026: 10 Compared",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.aims360.com/fashion-business-resources/best-fashion-erp-software-in-2026-why-aims360-leads-apparel-operations",
+        "quote": "[AIMS360 vs Aptean](https://www.aims360.com/compare/aims360-vs-aptean-apparel-erp)",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best Apparel & Fashion ERP Software 2026: 10 Compared",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://xorosoft.com/best-erp-software-for-apparel-manufacturers/",
+        "quote": "AIMS360 focuses on fashion and apparel operations.",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best ERP Software for Apparel Manufacturers in 2026",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.getapp.com/retail-consumer-services-software/apparel-management/f/accounting/",
+        "quote": "AIMS360 runs an apparel brand in one system: styles in a native color and size grid",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Top Rated Apparel Management Software with Accounting",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.getapp.com/retail-consumer-services-software/apparel-management/org/small-business/",
+        "quote": "AIMS360 runs an apparel brand in one system: styles in a native color and size grid",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Top Rated Apparel Management Software with Small business",
+        "source": "firecrawl"
+      }
+    ]
+  },
+  {
+    "name": "Aptean",
+    "domain": "aptean.com",
+    "channels": [
+      "roundup",
+      "vs_page"
+    ],
+    "head_to_head": false,
+    "names": {
+      "Aptean": 5,
+      "Aptean Fashion & Apparel": 2
+    },
+    "resolved_by": "stated",
+    "mentions": [
+      {
+        "url": "https://www.cbinsights.com/company/fdm4-international/alternatives-competitors",
+        "quote": "FDM4 International's top competitors include Aptean, Rootstock Software, and Strategic Labor.",
+        "channel": "vs_page",
+        "head_to_head": false,
+        "title": "Top FDM4 International Alternatives, Competitors",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.aims360.com/fashion-business-resources/best-fashion-erp-software-in-2026-why-aims360-leads-apparel-operations",
+        "quote": "Aptean (RLM, Exenta, Full Circle, Momentis)",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best Apparel & Fashion ERP Software 2026: 10 Compared",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.aims360.com/fashion-business-resources/best-fashion-erp-software-in-2026-why-aims360-leads-apparel-operations",
+        "quote": "Established wholesalers and makers choosing among several apparel editions",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best Apparel & Fashion ERP Software 2026: 10 Compared",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.aims360.com/fashion-business-resources/best-fashion-erp-software-in-2026-why-aims360-leads-apparel-operations",
+        "quote": "Best for: established wholesalers and makers that want a large vendor with several apparel editions to choose from.",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best Apparel & Fashion ERP Software 2026: 10 Compared",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://xorosoft.com/best-erp-software-for-apparel-manufacturers/",
+        "quote": "Aptean provides apparel-focused ERP solutions designed around fashion and apparel operations.",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best ERP Software for Apparel Manufacturers in 2026",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.getapp.com/retail-consumer-services-software/apparel-management/f/accounting/",
+        "quote": "Aptean Fashion & Apparel is an ERP built for the fashion industry.",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Top Rated Apparel Management Software with Accounting",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.getapp.com/retail-consumer-services-software/apparel-management/f/order-management/?page=2",
+        "quote": "Aptean Fashion & Apparel is an ERP built for the fashion industry",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Page 2 | Top Rated Apparel Management Software with Order ...",
+        "source": "firecrawl"
+      }
+    ]
+  },
+  {
+    "name": "Cin7 Core",
+    "domain": "cin7.com",
+    "channels": [
+      "directory",
+      "roundup"
+    ],
+    "head_to_head": false,
+    "names": {
+      "Cin7": 1,
+      "Cin7 Core": 3
+    },
+    "resolved_by": "model_guess_confirmed",
+    "mentions": [
+      {
+        "url": "https://www.g2.com/products/fdm4-wms/competitors/alternatives",
+        "quote": "Cin7 enables the management of inventory in multiple channels, different markets, industries and legal entities.",
+        "channel": "directory",
+        "head_to_head": false,
+        "title": "Top 10 FDM4 WMS Alternatives & Competitors in 2026",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.g2.com/products/fdm4-wms/competitors/alternatives",
+        "quote": "- [Cin7 Core](https://www.g2.com/products/cin7-core/reviews) – known for inventory management and customer support",
+        "channel": "directory",
+        "head_to_head": false,
+        "title": "Top 10 FDM4 WMS Alternatives & Competitors in 2026",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.g2.com/products/fdm4-wms/competitors/alternatives",
+        "quote": "The best FDM4 WMS alternatives are NetSuite, Cin7 Core, and Magaya Supply Chain.",
+        "channel": "directory",
+        "head_to_head": false,
+        "title": "Top 10 FDM4 WMS Alternatives & Competitors in 2026",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.aims360.com/fashion-business-resources/best-fashion-erp-software-in-2026-why-aims360-leads-apparel-operations",
+        "quote": "ApparelMagic and Cin7 Core are common picks.",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best Apparel & Fashion ERP Software 2026: 10 Compared",
+        "source": "firecrawl"
+      }
+    ]
+  },
+  {
+    "name": "Ecwid",
+    "domain": "ecwid.com",
+    "channels": [
+      "directory",
+      "vs_page"
+    ],
+    "head_to_head": true,
+    "names": {
+      "Ecwid": 4
+    },
+    "resolved_by": "model_guess_confirmed",
+    "mentions": [
+      {
+        "url": "https://6sense.com/tech/mobile-commerce-platform/fdm4-market-share",
+        "quote": "The top three of FDM4's competitors in the Mobile Commerce Platform category are Ecwid with 89.68%, Volusion with 5.04%, Upstream with 2.51% market share.",
+        "channel": "vs_page",
+        "head_to_head": false,
+        "title": "FDM4 - Market Share, Competitor Insights in Mobile Commerce ...",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://6sense.com/tech/mobile-commerce-platform/fdm4-market-share",
+        "quote": "[Ecwid](https://technographics.6sense.com/mobile-commerce-platform/ecwid-market-share) | 63,069 | 89.68%",
+        "channel": "directory",
+        "head_to_head": false,
+        "title": "FDM4 - Market Share, Competitor Insights in Mobile Commerce ...",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://6sense.com/tech/mobile-commerce-platform/fdm4-market-share",
+        "quote": "FDM4 vs Ecwid",
+        "channel": "directory",
+        "head_to_head": true,
+        "title": "FDM4 - Market Share, Competitor Insights in Mobile Commerce ...",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://6sense.com/tech/mobile-commerce-platform/fdm4-market-share",
+        "quote": "FDM4 vs Ecwid",
+        "channel": "directory",
+        "head_to_head": true,
+        "title": "FDM4 - Market Share, Competitor Insights in Mobile Commerce ...",
+        "source": "firecrawl"
+      }
+    ]
+  },
+  {
+    "name": "Odoo",
+    "domain": "odoo.com",
+    "channels": [
+      "directory",
+      "roundup"
+    ],
+    "head_to_head": false,
+    "names": {
+      "Odoo": 3,
+      "Odoo ERP": 1
+    },
+    "resolved_by": "stated",
+    "mentions": [
+      {
+        "url": "https://www.sellerscommerce.com/blog/best-erp-software-for-promotional-products-industry/",
+        "quote": "[Odoo](https://www.odoo.com/) stands out because its modular ERP approach allows businesses to start with the applications they need",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "12 Best ERP Software For Promotional Products Industry",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://erpnews.com/evaluating-the-best-erp-software-for-a-promotional-products-business/",
+        "quote": "[Odoo](https://www.odoo.com/) presents a unique value proposition as a modular, open-source ERP that allows businesses to start",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best ERP Software for Promotional Product Businesses",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://erpnews.com/evaluating-the-best-erp-software-for-a-promotional-products-business/",
+        "quote": "[Odoo](https://erpnews.com/erp-vendors/odoo/)",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best ERP Software for Promotional Product Businesses",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.g2.com/products/fdm4-erp/competitors/alternatives",
+        "quote": "- Odoo ERP",
+        "channel": "directory",
+        "head_to_head": false,
+        "title": "Top 10 FDM4 ERP Alternatives & Competitors in 2026",
+        "source": "firecrawl"
+      }
+    ]
+  },
+  {
+    "name": "Volusion",
+    "domain": "volusion.com",
+    "channels": [
+      "directory",
+      "vs_page"
+    ],
+    "head_to_head": true,
+    "names": {
+      "Volusion": 4
+    },
+    "resolved_by": "model_guess_confirmed",
+    "mentions": [
+      {
+        "url": "https://6sense.com/tech/mobile-commerce-platform/fdm4-market-share",
+        "quote": "The top three of FDM4's competitors in the Mobile Commerce Platform category are Ecwid with 89.68%, Volusion with 5.04%, Upstream with 2.51% market share.",
+        "channel": "vs_page",
+        "head_to_head": false,
+        "title": "FDM4 - Market Share, Competitor Insights in Mobile Commerce ...",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://6sense.com/tech/mobile-commerce-platform/fdm4-market-share",
+        "quote": "[Volusion](https://technographics.6sense.com/mobile-commerce-platform/volusion-market-share) | 3,541 | 5.04%",
+        "channel": "directory",
+        "head_to_head": false,
+        "title": "FDM4 - Market Share, Competitor Insights in Mobile Commerce ...",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://6sense.com/tech/mobile-commerce-platform/fdm4-market-share",
+        "quote": "FDM4 vs Volusion",
+        "channel": "directory",
+        "head_to_head": true,
+        "title": "FDM4 - Market Share, Competitor Insights in Mobile Commerce ...",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://6sense.com/tech/mobile-commerce-platform/fdm4-market-share",
+        "quote": "FDM4 vs Volusion",
+        "channel": "directory",
+        "head_to_head": true,
+        "title": "FDM4 - Market Share, Competitor Insights in Mobile Commerce ...",
+        "source": "firecrawl"
+      }
+    ]
+  },
+  {
+    "name": "Upstream",
+    "domain": "upstreamprinting.co.uk",
+    "channels": [
+      "directory",
+      "vs_page"
+    ],
+    "head_to_head": true,
+    "names": {
+      "Upstream": 4
+    },
+    "resolved_by": "search_lookup",
+    "mentions": [
+      {
+        "url": "https://6sense.com/tech/mobile-commerce-platform/fdm4-market-share",
+        "quote": "The top three of FDM4's competitors in the Mobile Commerce Platform category are Ecwid with 89.68%, Volusion with 5.04%, Upstream with 2.51% market share.",
+        "channel": "vs_page",
+        "head_to_head": false,
+        "title": "FDM4 - Market Share, Competitor Insights in Mobile Commerce ...",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://6sense.com/tech/mobile-commerce-platform/fdm4-market-share",
+        "quote": "[Upstream](https://technographics.6sense.com/mobile-commerce-platform/upstream-market-share) | 1,762 | 2.51%",
+        "channel": "directory",
+        "head_to_head": false,
+        "title": "FDM4 - Market Share, Competitor Insights in Mobile Commerce ...",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://6sense.com/tech/mobile-commerce-platform/fdm4-market-share",
+        "quote": "FDM4 vs Upstream",
+        "channel": "directory",
+        "head_to_head": true,
+        "title": "FDM4 - Market Share, Competitor Insights in Mobile Commerce ...",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://6sense.com/tech/mobile-commerce-platform/fdm4-market-share",
+        "quote": "FDM4 vs Upstream",
+        "channel": "directory",
+        "head_to_head": true,
+        "title": "FDM4 - Market Share, Competitor Insights in Mobile Commerce ...",
+        "source": "firecrawl"
+      }
+    ]
+  },
+  {
+    "name": "Microsoft Dynamics 365",
+    "domain": "msdynamicsworld.com",
+    "channels": [
+      "directory",
+      "roundup"
+    ],
+    "head_to_head": false,
+    "names": {
+      "Microsoft Dynamics 365": 2,
+      "Microsoft Dynamics 365 Business Central": 1
+    },
+    "resolved_by": "search_lookup",
+    "mentions": [
+      {
+        "url": "https://www.sellerscommerce.com/blog/best-erp-software-for-promotional-products-industry/",
+        "quote": "### **9. Microsoft Dynamics 365**",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "12 Best ERP Software For Promotional Products Industry",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.sellerscommerce.com/blog/best-erp-software-for-promotional-products-industry/",
+        "quote": "In our research, Microsoft Dynamics appeared across both distributor and supplier environments.",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "12 Best ERP Software For Promotional Products Industry",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.g2.com/products/fdm4-erp/competitors/alternatives",
+        "quote": "- Microsoft Dynamics 365 Business Central",
+        "channel": "directory",
+        "head_to_head": false,
+        "title": "Top 10 FDM4 ERP Alternatives & Competitors in 2026",
+        "source": "firecrawl"
+      }
+    ]
+  },
+  {
+    "name": "ApparelMagic",
+    "domain": "apparelmagic.com",
+    "channels": [
+      "roundup"
+    ],
+    "head_to_head": false,
+    "names": {
+      "ApparelMagic": 11
+    },
+    "resolved_by": "stated",
+    "mentions": [
+      {
+        "url": "https://www.aims360.com/fashion-business-resources/best-fashion-erp-software-in-2026-why-aims360-leads-apparel-operations",
+        "quote": "ApparelMagic",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best Apparel & Fashion ERP Software 2026: 10 Compared",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.kobolabs.io/blog/tech/best-fashion-erp-software",
+        "quote": "**ApparelMagic** - ERP, PLM, CRM, accounting and B2B e-commerce in one long-standing platform, with published pricing from $337 a month.",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best Fashion & Apparel ERP Software 2026 | Kōbō",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.aims360.com/fashion-business-resources/best-fashion-erp-software-in-2026-why-aims360-leads-apparel-operations",
+        "quote": "Small brands wanting published plan prices and built-in accounting",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best Apparel & Fashion ERP Software 2026: 10 Compared",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.aims360.com/fashion-business-resources/best-fashion-erp-software-in-2026-why-aims360-leads-apparel-operations",
+        "quote": "Small brands wanting published plan prices and built-in accounting",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best Apparel & Fashion ERP Software 2026: 10 Compared",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.aims360.com/fashion-business-resources/best-fashion-erp-software-in-2026-why-aims360-leads-apparel-operations",
+        "quote": "Small brands wanting published plan prices and built-in accounting",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best Apparel & Fashion ERP Software 2026: 10 Compared",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.aims360.com/fashion-business-resources/best-fashion-erp-software-in-2026-why-aims360-leads-apparel-operations",
+        "quote": "Small brands wanting published plan prices and built-in accounting",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best Apparel & Fashion ERP Software 2026: 10 Compared",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.getapp.com/retail-consumer-services-software/apparel-management/f/accounting/",
+        "quote": "ApparelMagic is an enterprise resource planning (ERP) & product lifecycle management (PLM) platform for apparel companies.",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Top Rated Apparel Management Software with Accounting",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.getapp.com/retail-consumer-services-software/apparel-management/org/small-business/",
+        "quote": "ApparelMagic is an enterprise resource planning (ERP) & product lifecycle management (PLM) platform for apparel companies.",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Top Rated Apparel Management Software with Small business",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.getapp.com/retail-consumer-services-software/apparel-management/org/small-business/",
+        "quote": "ApparelMagic is an enterprise resource planning (ERP) & product lifecycle management (PLM) platform for apparel companies.",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Top Rated Apparel Management Software with Small business",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.getapp.com/retail-consumer-services-software/apparel-management/org/small-business/",
+        "quote": "ApparelMagic is an enterprise resource planning (ERP) & product lifecycle management (PLM) platform for apparel companies.",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Top Rated Apparel Management Software with Small business",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.getapp.com/retail-consumer-services-software/apparel-management/org/small-business/",
+        "quote": "ApparelMagic is an enterprise resource planning (ERP) & product lifecycle management (PLM) platform for apparel companies.",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Top Rated Apparel Management Software with Small business",
+        "source": "firecrawl"
+      }
+    ]
+  },
+  {
+    "name": "DemandBridge",
+    "domain": "demandbridge.com",
+    "channels": [
+      "roundup"
+    ],
+    "head_to_head": false,
+    "names": {
+      "DemandBridge": 7
+    },
+    "resolved_by": "stated",
+    "mentions": [
+      {
+        "url": "https://www.sellerscommerce.com/blog/best-erp-software-for-promotional-products-industry/",
+        "quote": "[DemandBridge](https://www.demandbridge.com/erp/) fits promotional products distributors that need their operational system to understand how the industry actually works.",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "12 Best ERP Software For Promotional Products Industry",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.sellerscommerce.com/blog/best-erp-software-for-promotional-products-industry/",
+        "quote": "[DemandBridge](https://www.demandbridge.com/erp/) fits promotional products distributors that need their operational system to understand how the industry actually works.",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "12 Best ERP Software For Promotional Products Industry",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.sellerscommerce.com/blog/best-erp-software-for-promotional-products-industry/",
+        "quote": "[DemandBridge](https://www.demandbridge.com/erp/) fits promotional products distributors that need their operational system to understand how the industry actually works.",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "12 Best ERP Software For Promotional Products Industry",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://erpnews.com/evaluating-the-best-erp-software-for-a-promotional-products-business/",
+        "quote": "Its platform lets distributors set up e-commerce storefronts for clients, helping maintain brand standards across all ordered materials.",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best ERP Software for Promotional Product Businesses",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://erpnews.com/evaluating-the-best-erp-software-for-a-promotional-products-business/",
+        "quote": "[DemandBridge](https://www.demandbridge.com/) excels in sourcing and procurement, offering tools that help users handle marketing collateral and promotional goods.",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best ERP Software for Promotional Product Businesses",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://erpnews.com/evaluating-the-best-erp-software-for-a-promotional-products-business/",
+        "quote": "Its platform lets distributors set up e-commerce storefronts for clients, helping maintain brand standards across all ordered materials.",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best ERP Software for Promotional Product Businesses",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://erpnews.com/evaluating-the-best-erp-software-for-a-promotional-products-business/",
+        "quote": "Its platform lets distributors set up e-commerce storefronts for clients, helping maintain brand standards across all ordered materials.",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best ERP Software for Promotional Product Businesses",
+        "source": "firecrawl"
+      }
+    ]
+  },
+  {
+    "name": "Uphance",
+    "domain": "uphance.com",
+    "channels": [
+      "roundup"
+    ],
+    "head_to_head": false,
+    "names": {
+      "Uphance": 7
+    },
+    "resolved_by": "stated",
+    "mentions": [
+      {
+        "url": "https://www.aims360.com/fashion-business-resources/best-fashion-erp-software-in-2026-why-aims360-leads-apparel-operations",
+        "quote": "Uphance",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best Apparel & Fashion ERP Software 2026: 10 Compared",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.kobolabs.io/blog/tech/best-fashion-erp-software",
+        "quote": "| Uphance | Growing wholesale and multichannel apparel brands | Contact for pricing | Apparel operations platform: PLM, B2B, EDI, WMS and accounting |",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best Fashion & Apparel ERP Software 2026 | Kōbō",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.aims360.com/fashion-business-resources/best-fashion-erp-software-in-2026-why-aims360-leads-apparel-operations",
+        "quote": "Brands in the $5M to $100M range wanting PLM through DTC in one system",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best Apparel & Fashion ERP Software 2026: 10 Compared",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.aims360.com/fashion-business-resources/best-fashion-erp-software-in-2026-why-aims360-leads-apparel-operations",
+        "quote": "Uphance is headquartered in Houston, Texas, and targets brands in the $5 million to $100 million revenue range.",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best Apparel & Fashion ERP Software 2026: 10 Compared",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.getapp.com/retail-consumer-services-software/apparel-management/f/accounting/",
+        "quote": "Uphance is an all-in-one apparel ERP platform that helps brands streamline product development, inventory",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Top Rated Apparel Management Software with Accounting",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.getapp.com/retail-consumer-services-software/apparel-management/f/accounting/",
+        "quote": "Uphance is an all-in-one apparel ERP platform that helps brands streamline product development",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Top Rated Apparel Management Software with Accounting",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.getapp.com/retail-consumer-services-software/apparel-management/org/small-business/",
+        "quote": "Uphance is an all-in-one apparel ERP platform that helps brands streamline product development",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Top Rated Apparel Management Software with Small business",
+        "source": "firecrawl"
+      }
+    ]
+  },
+  {
+    "name": "Oracle ERP Cloud",
+    "domain": "oracle.com",
+    "channels": [
+      "roundup"
+    ],
+    "head_to_head": false,
+    "names": {
+      "Oracle": 2,
+      "Oracle ERP Cloud": 4
+    },
+    "resolved_by": "stated",
+    "mentions": [
+      {
+        "url": "https://www.sellerscommerce.com/blog/best-erp-software-for-promotional-products-industry/",
+        "quote": "### **12. Oracle**",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "12 Best ERP Software For Promotional Products Industry",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.sellerscommerce.com/blog/best-erp-software-for-promotional-products-industry/",
+        "quote": "In our research, Oracle appeared across both distributor and supplier environments.",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "12 Best ERP Software For Promotional Products Industry",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://erpnews.com/evaluating-the-best-erp-software-for-a-promotional-products-business/",
+        "quote": "[Oracle ERP Cloud](https://www.oracle.com/) is built for large, enterprise-level distributors with complex global operations",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best ERP Software for Promotional Product Businesses",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://erpnews.com/evaluating-the-best-erp-software-for-a-promotional-products-business/",
+        "quote": "Its ability to scale is virtually unlimited, making it suitable for organizations that process massive volumes of data",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best ERP Software for Promotional Product Businesses",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://erpnews.com/evaluating-the-best-erp-software-for-a-promotional-products-business/",
+        "quote": "[Oracle ERP Cloud](https://www.oracle.com/) is built for large, enterprise-level distributors with complex global operations",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best ERP Software for Promotional Product Businesses",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://erpnews.com/evaluating-the-best-erp-software-for-a-promotional-products-business/",
+        "quote": "[Oracle ERP Cloud](https://www.oracle.com/) is built for large, enterprise-level distributors with complex global operations",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best ERP Software for Promotional Product Businesses",
+        "source": "firecrawl"
+      }
+    ]
+  },
+  {
+    "name": "Sync",
+    "domain": "isyncsolutions.com",
+    "channels": [
+      "roundup"
+    ],
+    "head_to_head": false,
+    "names": {
+      "Sync": 6
+    },
+    "resolved_by": "stated",
+    "mentions": [
+      {
+        "url": "https://www.aims360.com/fashion-business-resources/best-fashion-erp-software-in-2026-why-aims360-leads-apparel-operations",
+        "quote": "Sync",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best Apparel & Fashion ERP Software 2026: 10 Compared",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.aims360.com/fashion-business-resources/best-fashion-erp-software-in-2026-why-aims360-leads-apparel-operations",
+        "quote": "Apparel and footwear brands wanting PLM through accounting in one cloud",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best Apparel & Fashion ERP Software 2026: 10 Compared",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.aims360.com/fashion-business-resources/best-fashion-erp-software-in-2026-why-aims360-leads-apparel-operations",
+        "quote": "Apparel and footwear brands wanting PLM through accounting in one cloud",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best Apparel & Fashion ERP Software 2026: 10 Compared",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.aims360.com/fashion-business-resources/best-fashion-erp-software-in-2026-why-aims360-leads-apparel-operations",
+        "quote": "Apparel and footwear brands wanting PLM through accounting in one cloud",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best Apparel & Fashion ERP Software 2026: 10 Compared",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.aims360.com/fashion-business-resources/best-fashion-erp-software-in-2026-why-aims360-leads-apparel-operations",
+        "quote": "Apparel and footwear brands wanting PLM through accounting in one cloud",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best Apparel & Fashion ERP Software 2026: 10 Compared",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.getapp.com/retail-consumer-services-software/apparel-management/f/accounting/",
+        "quote": "Sync is an all-in-one ERP, PLM and B2B platform built exclusively for apparel and footwear.",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Top Rated Apparel Management Software with Accounting",
+        "source": "firecrawl"
+      }
+    ]
+  },
+  {
+    "name": "OnSite",
+    "domain": "qccustomtees.com",
+    "channels": [
+      "roundup"
+    ],
+    "head_to_head": false,
+    "names": {
+      "OnSite": 6
+    },
+    "resolved_by": "search_lookup",
+    "mentions": [
+      {
+        "url": "https://www.getapp.com/retail-consumer-services-software/apparel-management/f/accounting/",
+        "quote": "OnSite is an all-in-one business management software created specifically for apparel screen printing",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Top Rated Apparel Management Software with Accounting",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.getapp.com/retail-consumer-services-software/apparel-management/f/order-management/?page=2",
+        "quote": "OnSite is an all-in-one business management software created specifically for apparel screen printing",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Page 2 | Top Rated Apparel Management Software with Order ...",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.getapp.com/retail-consumer-services-software/apparel-management/org/small-business/",
+        "quote": "OnSite is an all-in-one business management software created specifically for apparel screen printing",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Top Rated Apparel Management Software with Small business",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.getapp.com/retail-consumer-services-software/apparel-management/org/small-business/",
+        "quote": "OnSite is an all-in-one business management software created specifically for apparel screen printing",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Top Rated Apparel Management Software with Small business",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.getapp.com/retail-consumer-services-software/apparel-management/org/small-business/",
+        "quote": "OnSite is an all-in-one business management software created specifically for apparel screen printing",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Top Rated Apparel Management Software with Small business",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.getapp.com/retail-consumer-services-software/apparel-management/org/small-business/",
+        "quote": "OnSite is an all-in-one business management software created specifically for apparel screen printing, embroidery, promotional product distributors and manufacturers",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Top Rated Apparel Management Software with Small business",
+        "source": "firecrawl"
+      }
+    ]
+  },
+  {
+    "name": "Ai2000",
+    "domain": "a2000software.com",
+    "channels": [
+      "roundup"
+    ],
+    "head_to_head": false,
+    "names": {
+      "Ai2000": 5
+    },
+    "resolved_by": "stated",
+    "mentions": [
+      {
+        "url": "https://www.aims360.com/fashion-business-resources/best-fashion-erp-software-in-2026-why-aims360-leads-apparel-operations",
+        "quote": "Ai2000 (formerly A2000)",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best Apparel & Fashion ERP Software 2026: 10 Compared",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.aims360.com/fashion-business-resources/best-fashion-erp-software-in-2026-why-aims360-leads-apparel-operations",
+        "quote": "Apparel, footwear and home goods companies wanting native financials",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best Apparel & Fashion ERP Software 2026: 10 Compared",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.aims360.com/fashion-business-resources/best-fashion-erp-software-in-2026-why-aims360-leads-apparel-operations",
+        "quote": "Ai2000, formerly A2000 Software, has 30+ years in apparel",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best Apparel & Fashion ERP Software 2026: 10 Compared",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.getapp.com/retail-consumer-services-software/apparel-management/f/accounting/",
+        "quote": "Ai2000 is an ORACLE ERP SaaS platform designed for the Apparel, Fashion Footwear, Accessories and Consumer Products industries.",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Top Rated Apparel Management Software with Accounting",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.getapp.com/retail-consumer-services-software/apparel-management/f/accounting/",
+        "quote": "[Read more about Ai2000](https://www.getapp.com/all-software/a/a2000-software/)",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Top Rated Apparel Management Software with Accounting",
+        "source": "firecrawl"
+      }
+    ]
+  },
+  {
+    "name": "Fulfil",
+    "domain": "fulfil.io",
+    "channels": [
+      "roundup"
+    ],
+    "head_to_head": false,
+    "names": {
+      "Fulfil": 4
+    },
+    "resolved_by": "stated",
+    "mentions": [
+      {
+        "url": "https://www.aims360.com/fashion-business-resources/best-fashion-erp-software-in-2026-why-aims360-leads-apparel-operations",
+        "quote": "Fulfil",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best Apparel & Fashion ERP Software 2026: 10 Compared",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.kobolabs.io/blog/tech/best-fashion-erp-software",
+        "quote": "**Shopify Plus DTC brands scaling retail ops:** **Fulfil** - real-time inventory with a native WMS and its own general ledger",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best Fashion & Apparel ERP Software 2026 | Kōbō",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.aims360.com/fashion-business-resources/best-fashion-erp-software-in-2026-why-aims360-leads-apparel-operations",
+        "quote": "Shopify Plus brands doing $15M to $1B",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best Apparel & Fashion ERP Software 2026: 10 Compared",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.aims360.com/fashion-business-resources/best-fashion-erp-software-in-2026-why-aims360-leads-apparel-operations",
+        "quote": "Fulfil has been around since 2015 and targets Shopify Plus brands doing $15 million to $1 billion",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best Apparel & Fashion ERP Software 2026: 10 Compared",
+        "source": "firecrawl"
+      }
+    ]
+  },
+  {
+    "name": "Infor",
+    "domain": "infor.com",
+    "channels": [
+      "roundup"
+    ],
+    "head_to_head": false,
+    "names": {
+      "Infor": 2,
+      "Infor CloudSuite Fashion": 2
+    },
+    "resolved_by": "stated",
+    "mentions": [
+      {
+        "url": "https://www.sellerscommerce.com/blog/best-erp-software-for-promotional-products-industry/",
+        "quote": "### **10. Infor**",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "12 Best ERP Software For Promotional Products Industry",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.sellerscommerce.com/blog/best-erp-software-for-promotional-products-industry/",
+        "quote": "In our research, Infor appeared in promotional products supplier environments, including SnugZ USA and Hit Promotional Products.",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "12 Best ERP Software For Promotional Products Industry",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.kobolabs.io/blog/tech/best-fashion-erp-software",
+        "quote": "**Infor CloudSuite Fashion or CGS BlueCherry** - enterprise depth for complex multi-region supply chains",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best Fashion & Apparel ERP Software 2026 | Kōbō",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://xorosoft.com/best-erp-software-for-apparel-manufacturers/",
+        "quote": "Infor takes a more fashion-focused enterprise approach.",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best ERP Software for Apparel Manufacturers in 2026",
+        "source": "firecrawl"
+      }
+    ]
+  },
+  {
+    "name": "Bambuser",
+    "domain": "bambuser.com",
+    "channels": [
+      "directory"
+    ],
+    "head_to_head": true,
+    "names": {
+      "Bambuser": 3
+    },
+    "resolved_by": "model_guess_confirmed",
+    "mentions": [
+      {
+        "url": "https://6sense.com/tech/mobile-commerce-platform/fdm4-market-share",
+        "quote": "[Bambuser](https://technographics.6sense.com/mobile-commerce-platform/bambuser-market-share) | 618 | 0.88%",
+        "channel": "directory",
+        "head_to_head": false,
+        "title": "FDM4 - Market Share, Competitor Insights in Mobile Commerce ...",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://6sense.com/tech/mobile-commerce-platform/fdm4-market-share",
+        "quote": "FDM4 vs Bambuser",
+        "channel": "directory",
+        "head_to_head": true,
+        "title": "FDM4 - Market Share, Competitor Insights in Mobile Commerce ...",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://6sense.com/tech/mobile-commerce-platform/fdm4-market-share",
+        "quote": "FDM4 vs Bambuser",
+        "channel": "directory",
+        "head_to_head": true,
+        "title": "FDM4 - Market Share, Competitor Insights in Mobile Commerce ...",
+        "source": "firecrawl"
+      }
+    ]
+  },
+  {
+    "name": "Boutir",
+    "domain": "boutir.com",
+    "channels": [
+      "directory"
+    ],
+    "head_to_head": true,
+    "names": {
+      "Boutir": 3
+    },
+    "resolved_by": "model_guess_confirmed",
+    "mentions": [
+      {
+        "url": "https://6sense.com/tech/mobile-commerce-platform/fdm4-market-share",
+        "quote": "[Boutir](https://technographics.6sense.com/mobile-commerce-platform/boutir-market-share) | 5 | 0.01%",
+        "channel": "directory",
+        "head_to_head": false,
+        "title": "FDM4 - Market Share, Competitor Insights in Mobile Commerce ...",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://6sense.com/tech/mobile-commerce-platform/fdm4-market-share",
+        "quote": "FDM4 vs Boutir",
+        "channel": "directory",
+        "head_to_head": true,
+        "title": "FDM4 - Market Share, Competitor Insights in Mobile Commerce ...",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://6sense.com/tech/mobile-commerce-platform/fdm4-market-share",
+        "quote": "FDM4 vs Boutir",
+        "channel": "directory",
+        "head_to_head": true,
+        "title": "FDM4 - Market Share, Competitor Insights in Mobile Commerce ...",
+        "source": "firecrawl"
+      }
+    ]
+  },
+  {
+    "name": "Itsperfect",
+    "domain": "itsperfect.io",
+    "channels": [
+      "roundup"
+    ],
+    "head_to_head": false,
+    "names": {
+      "Itsperfect": 3
+    },
+    "resolved_by": "stated",
+    "mentions": [
+      {
+        "url": "https://www.kobolabs.io/blog/tech/best-fashion-erp-software",
+        "quote": "Itsperfect is a Dutch cloud ERP, based in Baarn, built exclusively for fashion brands and used by more than 450 of them.",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best Fashion & Apparel ERP Software 2026 | Kōbō",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.getapp.com/retail-consumer-services-software/apparel-management/f/accounting/",
+        "quote": "Itsperfect is the smartest software solution for fashion brands.",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Top Rated Apparel Management Software with Accounting",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.getapp.com/retail-consumer-services-software/apparel-management/f/order-management/?page=2",
+        "quote": "Itsperfect is the smartest software solution for fashion brands",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Page 2 | Top Rated Apparel Management Software with Order ...",
+        "source": "firecrawl"
+      }
+    ]
+  },
+  {
+    "name": "Instylesoft",
+    "domain": "instylesoft.com",
+    "channels": [
+      "similar"
+    ],
+    "head_to_head": false,
+    "names": {
+      "Instylesoft": 1
+    },
+    "resolved_by": "similar",
+    "mentions": [
+      {
+        "url": "https://www.instylesoft.com/workwear-uniform-erp-software-instyle/",
+        "quote": "",
+        "channel": "similar"
+      }
+    ]
+  },
+  {
+    "name": "Virtocommerce",
+    "domain": "virtocommerce.com",
+    "channels": [
+      "similar"
+    ],
+    "head_to_head": false,
+    "names": {
+      "Virtocommerce": 1
+    },
+    "resolved_by": "similar",
+    "mentions": [
+      {
+        "url": "https://virtocommerce.com/industry/custom-printing-apparel",
+        "quote": "",
+        "channel": "similar"
+      }
+    ]
+  },
+  {
+    "name": "Silentinfotech",
+    "domain": "silentinfotech.com",
+    "channels": [
+      "similar"
+    ],
+    "head_to_head": false,
+    "names": {
+      "Silentinfotech": 1
+    },
+    "resolved_by": "similar",
+    "mentions": [
+      {
+        "url": "https://silentinfotech.com/ecommerce-web-to-print-designer",
+        "quote": "",
+        "channel": "similar"
+      }
+    ]
+  }
+]

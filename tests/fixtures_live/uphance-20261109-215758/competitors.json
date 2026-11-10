@@ -1,0 +1,310 @@
+{
+  "competitors": [
+    {
+      "name": "AIMS360",
+      "domain": "aims360.com",
+      "channels": [
+        "directory",
+        "roundup",
+        "vs_page"
+      ],
+      "same_vertical": true,
+      "operating": true,
+      "is_software_vendor": true,
+      "acquired_or_renamed": null,
+      "segment": "Apparel and consumer brands, about $1M to $400M+ in sales",
+      "scope": "Apparel ERP: production, inventory, wholesale, EDI, Shopify, WMS, accounting",
+      "head_to_head": true,
+      "relevance": 0.95,
+      "evidence_ids": [
+        "e33",
+        "e34",
+        "e35",
+        "e36",
+        "e37",
+        "e38",
+        "e39",
+        "e40",
+        "e41",
+        "e42",
+        "e43",
+        "e44",
+        "e45",
+        "e46",
+        "e47",
+        "e48",
+        "e49",
+        "e50"
+      ],
+      "independent_sources": 8,
+      "homepage": "https://www.aims360.com/",
+      "resolved_by": "stated",
+      "mentions": 25
+    },
+    {
+      "name": "ApparelMagic",
+      "domain": "apparelmagic.com",
+      "channels": [
+        "directory",
+        "roundup",
+        "vs_page"
+      ],
+      "same_vertical": true,
+      "operating": true,
+      "is_software_vendor": true,
+      "acquired_or_renamed": null,
+      "segment": "Fashion brands, manufacturers, and retailers; small to mid-size wholesale",
+      "scope": "Cloud apparel ERP, PLM, CRM, inventory, orders, B2B e-commerce, financials",
+      "head_to_head": true,
+      "relevance": 0.95,
+      "evidence_ids": [
+        "e63",
+        "e64",
+        "e65",
+        "e66",
+        "e67",
+        "e68",
+        "e69",
+        "e70",
+        "e71",
+        "e72",
+        "e73"
+      ],
+      "independent_sources": 8,
+      "homepage": "https://apparelmagic.com",
+      "resolved_by": "stated",
+      "mentions": 12
+    },
+    {
+      "name": "Sync (iSync Solutions)",
+      "domain": "isyncsolutions.com",
+      "channels": [
+        "directory",
+        "roundup"
+      ],
+      "same_vertical": true,
+      "operating": true,
+      "is_software_vendor": true,
+      "acquired_or_renamed": null,
+      "segment": "Apparel and footwear brands, wholesale and DTC, including multi-brand groups",
+      "scope": "Cloud apparel ERP: PLM, PIM, EDI, B2B portal, WMS, accounting",
+      "head_to_head": true,
+      "relevance": 0.93,
+      "evidence_ids": [
+        "e118",
+        "e119",
+        "e120",
+        "e121",
+        "e122",
+        "e123"
+      ],
+      "independent_sources": 5,
+      "homepage": "https://isyncsolutions.com",
+      "resolved_by": "search_lookup",
+      "mentions": 6
+    },
+    {
+      "name": "Ai2000",
+      "domain": "a2000software.com",
+      "channels": [
+        "directory",
+        "roundup"
+      ],
+      "same_vertical": true,
+      "operating": true,
+      "is_software_vendor": true,
+      "acquired_or_renamed": "Ai2000 (formerly A2000 Software)",
+      "segment": "Apparel, footwear and home goods brands, wholesalers, manufacturers, retailers",
+      "scope": "All-in-one apparel ERP: PLM, orders, EDI, warehouse, financials, AI tools",
+      "head_to_head": true,
+      "relevance": 0.85,
+      "evidence_ids": [
+        "e124",
+        "e125",
+        "e126",
+        "e127"
+      ],
+      "independent_sources": 3,
+      "homepage": "https://a2000software.com",
+      "resolved_by": "stated",
+      "mentions": 5
+    },
+    {
+      "name": "BlueCherry",
+      "domain": "bluecherry.com",
+      "channels": [
+        "directory",
+        "roundup",
+        "vs_page"
+      ],
+      "same_vertical": true,
+      "operating": true,
+      "is_software_vendor": true,
+      "acquired_or_renamed": null,
+      "segment": "Fashion brands, manufacturers, wholesalers, distributors and retailers; 500+ businesses, mid to enterprise",
+      "scope": "Fashion ERP/supply chain: PLM, planning, sourcing, B2B wholesale, WMS, EDI, AI",
+      "head_to_head": true,
+      "relevance": 0.82,
+      "evidence_ids": [
+        "e84",
+        "e85",
+        "e86",
+        "e87",
+        "e88",
+        "e89",
+        "e90"
+      ],
+      "independent_sources": 6,
+      "homepage": "https://bluecherry.com/en",
+      "resolved_by": "stated",
+      "mentions": 6
+    },
+    {
+      "name": "Aptean Apparel ERP",
+      "domain": "aptean.com",
+      "channels": [
+        "directory",
+        "roundup",
+        "vs_page"
+      ],
+      "same_vertical": true,
+      "operating": true,
+      "is_software_vendor": true,
+      "acquired_or_renamed": null,
+      "segment": "Mid-to-large apparel, footwear, accessories and workwear brands and manufacturers",
+      "scope": "Apparel ERP, PLM, supply chain, warehousing and financials for fashion",
+      "head_to_head": true,
+      "relevance": 0.78,
+      "evidence_ids": [
+        "e51",
+        "e52",
+        "e53",
+        "e54",
+        "e55",
+        "e56",
+        "e57",
+        "e58",
+        "e59",
+        "e60",
+        "e61",
+        "e62"
+      ],
+      "independent_sources": 6,
+      "homepage": "https://www.aptean.com/en-US",
+      "resolved_by": "stated",
+      "mentions": 14
+    },
+    {
+      "name": "WFX",
+      "domain": "worldfashionexchange.com",
+      "channels": [
+        "directory",
+        "roundup",
+        "vs_page"
+      ],
+      "same_vertical": true,
+      "operating": true,
+      "is_software_vendor": true,
+      "acquired_or_renamed": null,
+      "segment": "Fashion brands, apparel and textile manufacturers, mid-to-large enterprises globally",
+      "scope": "Cloud PLM, apparel ERP, MES, traceability, virtual showroom for fashion",
+      "head_to_head": true,
+      "relevance": 0.7,
+      "evidence_ids": [
+        "e95",
+        "e96",
+        "e97",
+        "e98",
+        "e99"
+      ],
+      "independent_sources": 3,
+      "homepage": "https://www.worldfashionexchange.com/",
+      "resolved_by": "stated",
+      "mentions": 3
+    }
+  ],
+  "thin_market": false,
+  "verified_count": 14,
+  "candidates": 25,
+  "rejected": [
+    {
+      "name": "NetSuite",
+      "domain": "netsuite.com",
+      "relevance": 0.45,
+      "same_vertical": false,
+      "operating": true,
+      "channels": [
+        "directory",
+        "roundup",
+        "vs_page"
+      ]
+    },
+    {
+      "name": "MRPeasy",
+      "domain": "mrpeasy.com",
+      "relevance": 0.3,
+      "same_vertical": false,
+      "operating": true,
+      "channels": [
+        "directory",
+        "roundup",
+        "vs_page"
+      ]
+    },
+    {
+      "name": "Onbrand",
+      "domain": "onbrandplm.com",
+      "relevance": 0.4,
+      "same_vertical": true,
+      "operating": true,
+      "channels": [
+        "directory",
+        "vs_page"
+      ]
+    },
+    {
+      "name": "Geelus",
+      "domain": "geelus.com",
+      "relevance": 0.1,
+      "same_vertical": false,
+      "operating": true,
+      "channels": [
+        "directory",
+        "vs_page"
+      ]
+    },
+    {
+      "name": "Centric Software (Centric PLM)",
+      "domain": "centricsoftware.com",
+      "relevance": 0.4,
+      "same_vertical": false,
+      "operating": true,
+      "channels": [
+        "directory",
+        "vs_page"
+      ]
+    },
+    {
+      "name": "Kōbō",
+      "domain": "kobolabs.io",
+      "relevance": 0.6,
+      "same_vertical": true,
+      "operating": true,
+      "channels": [
+        "roundup",
+        "vs_page"
+      ]
+    },
+    {
+      "name": "Acumatica",
+      "domain": "acumatica.com",
+      "relevance": 0.3,
+      "same_vertical": false,
+      "operating": true,
+      "channels": [
+        "directory",
+        "roundup"
+      ]
+    }
+  ]
+}

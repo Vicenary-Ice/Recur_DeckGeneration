@@ -1,0 +1,142 @@
+{
+  "pages": [
+    "https://www.uphance.com/",
+    "https://www.uphance.com/blog/features-b2b-fashion-platform/",
+    "https://www.uphance.com/apparel-brands-solution/",
+    "https://www.uphance.com/about/",
+    "https://www.uphance.com/b2b-platform/",
+    "https://www.uphance.com/blog/ai-in-fashion-industry/",
+    "https://www.uphance.com/blog/digital-wholesale-platform/",
+    "https://www.uphance.com/activewear-athleisure-erp-software/"
+  ],
+  "facts_total": 28,
+  "facts_kept": 28,
+  "modules": [
+    {
+      "text": "Uphance offers PLM for product development.",
+      "evidence_id": "e6"
+    },
+    {
+      "text": "Uphance offers PIM / Product Data module.",
+      "evidence_id": "e7"
+    },
+    {
+      "text": "Production module covers tech packs, BOMs, factory POs and incoming stock.",
+      "evidence_id": "e8"
+    },
+    {
+      "text": "Inventory, Order, and Warehouse Management modules are offered.",
+      "evidence_id": "e9"
+    },
+    {
+      "text": "Payments and Accounting modules cover invoicing, AR and AP, and financial reporting.",
+      "evidence_id": "e10"
+    },
+    {
+      "text": "Uphance B2B is a branded wholesale buyer portal plus a Mobile Sales App for reps on iOS and Android.",
+      "evidence_id": "e11"
+    },
+    {
+      "text": "Warehouse Management includes a mobile app tied to live order and inventory records.",
+      "evidence_id": "e12"
+    }
+  ],
+  "customer_segments": [
+    {
+      "text": "Built for apparel and fashion brands managing wholesale, DTC, or multi-channel operations.",
+      "evidence_id": "e13"
+    },
+    {
+      "text": "Targets brands running wholesale and DTC simultaneously with warehouse or 3PL complexity.",
+      "evidence_id": "e14"
+    },
+    {
+      "text": "Has a dedicated solution page for activewear and athleisure brands.",
+      "evidence_id": "e15"
+    },
+    {
+      "text": "Not for single-channel brands, businesses under $3M, or NetSuite/Dynamics/SAP users.",
+      "evidence_id": "e16"
+    }
+  ],
+  "customer_size_signals": [
+    {
+      "text": "Serves apparel brands in the $5M to $100M revenue range.",
+      "evidence_id": "e3"
+    },
+    {
+      "text": "A customer case reports 600+ retailer accounts ordering and 3 new brands plus 100+ new retailers in one year.",
+      "evidence_id": "e17"
+    },
+    {
+      "text": "Platform holds a 4.9 rating on Capterra.",
+      "evidence_id": "e18"
+    }
+  ],
+  "deployment": [
+    {
+      "text": "Described as a cloud-based platform with sales-led, no self-serve trial and no public pricing tiers.",
+      "evidence_id": "e19"
+    },
+    {
+      "text": "Implementation takes six to sixteen weeks.",
+      "evidence_id": "e20"
+    },
+    {
+      "text": "Onboarding steps: discovery, configuration, integrations and migration, UAT and training, go-live and hypercare.",
+      "evidence_id": "e21"
+    },
+    {
+      "text": "Headquartered in Houston, Texas.",
+      "evidence_id": "e22"
+    }
+  ],
+  "integrations": [
+    {
+      "text": "Includes EDI, POS, Uphance Payments, tax, and 100+ direct carrier connections.",
+      "evidence_id": "e23"
+    },
+    {
+      "text": "Shopify DTC orders draw from a shared inventory pool with wholesale and marketplace orders.",
+      "evidence_id": "e24"
+    },
+    {
+      "text": "Customers integrate with JOOR or NuOrder alongside Uphance B2B.",
+      "evidence_id": "e25"
+    }
+  ],
+  "differentiators": [
+    {
+      "text": "Positioned as replacing middleware, separate B2B portal, and standalone WMS.",
+      "evidence_id": "e26"
+    },
+    {
+      "text": "B2B orders write directly into inventory allocation, production demand, and warehouse execution.",
+      "evidence_id": "e27"
+    },
+    {
+      "text": "Compares itself against Cin7, NetSuite, Brightpearl and spreadsheets.",
+      "evidence_id": "e28"
+    }
+  ],
+  "recent_news": [
+    {
+      "text": "Magnolia Pearl used Uphance for warehouse, shipping, payments, taxes/duties and returns; Lufema, an Australian brand, unified multi-entity operations.",
+      "evidence_id": "e29"
+    },
+    {
+      "text": "Magnolia Pearl reportedly held oversell under 0.5 percent and compressed season planning by about 3 weeks.",
+      "evidence_id": "e30"
+    }
+  ],
+  "gaps_or_opportunities": [
+    {
+      "text": "Uphance B2B lacks a cross-brand marketplace for buyer discovery, which JOOR/NuOrder offer.",
+      "evidence_id": "e31"
+    },
+    {
+      "text": "No free trial or self-serve path.",
+      "evidence_id": "e32"
+    }
+  ]
+}

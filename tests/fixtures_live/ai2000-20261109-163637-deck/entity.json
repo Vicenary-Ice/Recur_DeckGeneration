@@ -1,0 +1,49 @@
+{
+  "display_name": "Ai2000",
+  "legal_name": "Ai2000 LLC (GCS Software, LLC)",
+  "domain": "a2000software.com",
+  "homepage": "https://a2000software.com",
+  "aliases": [
+    "A2000 Software",
+    "A2000",
+    "Ai2000 LLC",
+    "GCS Software",
+    "A2K"
+  ],
+  "vertical": "Apparel, footwear and home goods ERP software",
+  "one_liner": "AI-driven ERP for apparel, footwear and home goods companies, with native EDI, WMS, financials, PLM and analytics.",
+  "confidence": 0.98,
+  "margin": 0.93,
+  "domain_supplied": false,
+  "low_confidence_identity": false,
+  "rebrand_detected": true,
+  "alternatives": [
+    {
+      "domain": "topapparelerp.com",
+      "score": 0.05,
+      "display_name": "Top Apparel ERP",
+      "why_rejected": "This is a third-party review site that covers Ai2000. It is not the company itself."
+    },
+    {
+      "domain": "aims360.com",
+      "score": 0.03,
+      "display_name": "AIMS360",
+      "why_rejected": "AIMS360 is a competitor that publishes a comparison page against Ai2000. It is a different company."
+    },
+    {
+      "domain": "repspark.com",
+      "score": 0.02,
+      "display_name": "RepSpark",
+      "why_rejected": "RepSpark is a partner and integration vendor. It is a separate company from Ai2000."
+    }
+  ],
+  "evidence_ids": [
+    "e1",
+    "e2",
+    "e3",
+    "e4"
+  ],
+  "notes": "Ai2000 is the current brand of the company formerly called A2000 Software, which operates from a2000software.com. Several sources confirm this, including the company's own site and directory listings. The legal entity appears as Ai2000 LLC and GCS Software, LLC.",
+  "typed_name": "Ai2000",
+  "hint": null
+}

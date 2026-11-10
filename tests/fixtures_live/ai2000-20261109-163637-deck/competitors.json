@@ -1,0 +1,182 @@
+{
+  "competitors": [
+    {
+      "name": "AIMS360",
+      "domain": "aims360.com",
+      "channels": [
+        "directory",
+        "roundup",
+        "vs_page"
+      ],
+      "same_vertical": true,
+      "operating": true,
+      "is_software_vendor": true,
+      "acquired_or_renamed": null,
+      "segment": "Apparel and consumer brands, about $1M to $400M+ in sales",
+      "scope": "Apparel ERP: production, inventory, wholesale, built-in EDI, WMS, ecommerce, accounting",
+      "head_to_head": true,
+      "relevance": 0.95,
+      "evidence_ids": [
+        "e47",
+        "e48",
+        "e49",
+        "e50",
+        "e51",
+        "e52",
+        "e53",
+        "e54",
+        "e55",
+        "e56",
+        "e57",
+        "e58",
+        "e59",
+        "e60"
+      ],
+      "independent_sources": 4,
+      "homepage": "https://www.aims360.com/",
+      "resolved_by": "stated",
+      "mentions": 13
+    },
+    {
+      "name": "BlueCherry",
+      "domain": "bluecherry.com",
+      "channels": [
+        "roundup",
+        "vs_page"
+      ],
+      "same_vertical": true,
+      "operating": true,
+      "is_software_vendor": true,
+      "acquired_or_renamed": null,
+      "segment": "Fashion brands, manufacturers, wholesalers, distributors and retailers",
+      "scope": "Fashion ERP/supply chain: PLM, planning, sourcing, WMS, EDI, order management, AI",
+      "head_to_head": true,
+      "relevance": 0.9,
+      "evidence_ids": [
+        "e61",
+        "e62",
+        "e63",
+        "e64"
+      ],
+      "independent_sources": 2,
+      "homepage": "https://bluecherry.com/en",
+      "resolved_by": "search_lookup",
+      "mentions": 2
+    },
+    {
+      "name": "ApparelMagic",
+      "domain": "apparelmagic.com",
+      "channels": [
+        "directory",
+        "roundup",
+        "vs_page"
+      ],
+      "same_vertical": true,
+      "operating": true,
+      "is_software_vendor": true,
+      "acquired_or_renamed": null,
+      "segment": "Fashion brands, manufacturers, wholesalers and retailers; affordable, growth-stage apparel businesses",
+      "scope": "Cloud ERP, PLM, CRM, inventory, order management, B2B ecommerce, financials for apparel",
+      "head_to_head": true,
+      "relevance": 0.88,
+      "evidence_ids": [
+        "e39",
+        "e40",
+        "e41",
+        "e42",
+        "e43"
+      ],
+      "independent_sources": 4,
+      "homepage": "https://apparelmagic.com",
+      "resolved_by": "model_guess_confirmed",
+      "mentions": 4
+    },
+    {
+      "name": "Aptean",
+      "domain": "aptean.com",
+      "channels": [
+        "roundup"
+      ],
+      "same_vertical": true,
+      "operating": true,
+      "is_software_vendor": true,
+      "acquired_or_renamed": null,
+      "segment": "Mid-market and enterprise firms across many industries, including apparel and footwear",
+      "scope": "Industry-specific ERP, PLM, supply chain, logistics and asset management with AI",
+      "head_to_head": true,
+      "relevance": 0.78,
+      "evidence_ids": [
+        "e65",
+        "e66",
+        "e67",
+        "e68"
+      ],
+      "independent_sources": 2,
+      "homepage": "https://www.aptean.com/en-US",
+      "resolved_by": "model_guess_confirmed",
+      "mentions": 1
+    },
+    {
+      "name": "InStyle Apparel Software",
+      "domain": "instylesoft.com",
+      "channels": [
+        "similar"
+      ],
+      "same_vertical": true,
+      "operating": true,
+      "is_software_vendor": true,
+      "acquired_or_renamed": null,
+      "segment": "Apparel manufacturing and distribution companies",
+      "scope": "Apparel ERP, PLM, PDM, MRP, CRM, eCommerce and EDI",
+      "head_to_head": true,
+      "relevance": 0.8,
+      "evidence_ids": [
+        "e71",
+        "e72",
+        "e73"
+      ],
+      "independent_sources": 1,
+      "homepage": "https://www.instylesoft.com/",
+      "resolved_by": "similar",
+      "mentions": 1
+    }
+  ],
+  "thin_market": true,
+  "verified_count": 8,
+  "candidates": 8,
+  "rejected": [
+    {
+      "name": "Acumatica",
+      "domain": "acumatica.com",
+      "relevance": 0.3,
+      "same_vertical": false,
+      "operating": true,
+      "channels": [
+        "directory",
+        "roundup",
+        "vs_page"
+      ]
+    },
+    {
+      "name": "NetSuite",
+      "domain": "netsuite.com",
+      "relevance": 0.5,
+      "same_vertical": false,
+      "operating": true,
+      "channels": [
+        "directory",
+        "roundup"
+      ]
+    },
+    {
+      "name": "180 Systems",
+      "domain": "180systems.com",
+      "relevance": 0.03,
+      "same_vertical": false,
+      "operating": true,
+      "channels": [
+        "similar"
+      ]
+    }
+  ]
+}

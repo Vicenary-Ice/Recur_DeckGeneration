@@ -35,4 +35,4 @@ recur-deck = "recur_deck.cli:main"
 include = ["recur_deck*"]
 
 [tool.setuptools.package-data]
-recur_deck = ["prompts/*.md"]
+recur_deck = ["prompts/*.md", "prompts/style_examples/*.md"]

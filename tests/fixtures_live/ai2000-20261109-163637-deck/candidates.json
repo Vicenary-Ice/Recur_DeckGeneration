@@ -1,0 +1,344 @@
+[
+  {
+    "name": "AIMS360",
+    "domain": "aims360.com",
+    "channels": [
+      "directory",
+      "roundup",
+      "vs_page"
+    ],
+    "head_to_head": true,
+    "names": {
+      "AIMS360": 7,
+      "AIMS 360": 1,
+      "AIMS 360 Fashion ERP": 1,
+      "Sync": 4
+    },
+    "resolved_by": "stated",
+    "mentions": [
+      {
+        "url": "https://www.aims360.com/compare/aims360-vs-a2000-apparel-erp",
+        "quote": "A2000, now Ai2000, and AIMS360 are both apparel-native ERPs.",
+        "channel": "vs_page",
+        "head_to_head": true,
+        "title": "AIMS360 vs A2000 (Ai2000) - Apparel ERP comparison",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.aims360.com/compare/aims360-vs-a2000-apparel-erp",
+        "quote": "AIMS360 vs A2000 (Ai2000) - Apparel ERP comparison",
+        "channel": "vs_page",
+        "head_to_head": true,
+        "title": "AIMS360 vs A2000 (Ai2000) - Apparel ERP comparison",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.aims360.com/fashion-business-resources/best-fashion-erp-software-in-2026-why-aims360-leads-apparel-operations",
+        "quote": "[AIMS360 vs A2000](https://www.aims360.com/compare/aims360-vs-a2000-apparel-erp)",
+        "channel": "vs_page",
+        "head_to_head": true,
+        "title": "Best Apparel & Fashion ERP Software 2026: 10 Compared",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.aims360.com/fashion-business-resources/best-fashion-erp-software-in-2026-why-aims360-leads-apparel-operations",
+        "quote": "AIMS360 runs EDI natively and in-house, with 350+ supported retailers and no per-document fees.",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best Apparel & Fashion ERP Software 2026: 10 Compared",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.aims360.com/compare/aims360-vs-a2000-apparel-erp",
+        "quote": "AIMS360 vs A2000 (Ai2000) - Apparel ERP comparison",
+        "channel": "roundup",
+        "head_to_head": true,
+        "title": "AIMS360 vs A2000 (Ai2000) - Apparel ERP comparison",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://theretailexec.com/tools/best-apparel-management-software/",
+        "quote": "AIMS360 is an apparel ERP platform built around a native style-color-size matrix",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "10 Best Apparel Management Software in 2026",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.aims360.com/fashion-business-resources/best-fashion-erp-software-in-2026-why-aims360-leads-apparel-operations",
+        "quote": "It's built on apparel and also runs footwear, jewelry, beauty, home, pet and other consumer brands.",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best Apparel & Fashion ERP Software 2026: 10 Compared",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.guideflow.com/blog/apparel-erp-software",
+        "quote": "AIMS 360 - multichannel order management with EDI and PLM",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "9 Best apparel ERP software for 2026",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.g2.com/products/apparel-erp/competitors/alternatives",
+        "quote": "AIMS 360 Fashion ERP",
+        "channel": "directory",
+        "head_to_head": false,
+        "title": "Top 10 Apparel ERP Alternatives & Competitors in 2026",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.aims360.com/fashion-business-resources/best-fashion-erp-software-in-2026-why-aims360-leads-apparel-operations",
+        "quote": "Sync, BlueCherry, Aptean Exenta, ApparelMagic and Ai2000 sell PLM inside their own suites.",
+        "channel": "vs_page",
+        "head_to_head": false,
+        "title": "Best Apparel & Fashion ERP Software 2026: 10 Compared",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.g2.com/products/apparel-erp/competitors/alternatives",
+        "quote": "Sync is an all-in-one ERP, PLM, and B2B platform built exclusively for apparel and footwear brands.",
+        "channel": "directory",
+        "head_to_head": false,
+        "title": "Top 10 Apparel ERP Alternatives & Competitors in 2026",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.aims360.com/fashion-business-resources/best-fashion-erp-software-in-2026-why-aims360-leads-apparel-operations",
+        "quote": "Apparel and footwear brands wanting PLM through accounting in one cloud",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best Apparel & Fashion ERP Software 2026: 10 Compared",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.aims360.com/fashion-business-resources/best-fashion-erp-software-in-2026-why-aims360-leads-apparel-operations",
+        "quote": "Apparel and footwear brands wanting PLM through accounting in one cloud",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best Apparel & Fashion ERP Software 2026: 10 Compared",
+        "source": "firecrawl"
+      }
+    ]
+  },
+  {
+    "name": "ApparelMagic",
+    "domain": "apparelmagic.com",
+    "channels": [
+      "directory",
+      "roundup",
+      "vs_page"
+    ],
+    "head_to_head": false,
+    "names": {
+      "ApparelMagic": 4
+    },
+    "resolved_by": "model_guess_confirmed",
+    "mentions": [
+      {
+        "url": "https://www.aims360.com/fashion-business-resources/best-fashion-erp-software-in-2026-why-aims360-leads-apparel-operations",
+        "quote": "Sync, BlueCherry, Aptean Exenta, ApparelMagic and Ai2000 sell PLM inside their own suites.",
+        "channel": "vs_page",
+        "head_to_head": false,
+        "title": "Best Apparel & Fashion ERP Software 2026: 10 Compared",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.g2.com/products/apparel-erp/competitors/alternatives",
+        "quote": "ApparelMagic – best suited for teams that need scalability and ease of use",
+        "channel": "directory",
+        "head_to_head": false,
+        "title": "Top 10 Apparel ERP Alternatives & Competitors in 2026",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.aims360.com/fashion-business-resources/best-fashion-erp-software-in-2026-why-aims360-leads-apparel-operations",
+        "quote": "Sync, BlueCherry, Aptean Exenta, ApparelMagic and Ai2000 sell PLM inside their own suites.",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best Apparel & Fashion ERP Software 2026: 10 Compared",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.guideflow.com/blog/apparel-erp-software",
+        "quote": "ApparelMagic - ERP, PLM, CRM, inventory, and B2B ecommerce in one fashion-native platform",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "9 Best apparel ERP software for 2026",
+        "source": "firecrawl"
+      }
+    ]
+  },
+  {
+    "name": "Acumatica",
+    "domain": "acumatica.com",
+    "channels": [
+      "directory",
+      "roundup",
+      "vs_page"
+    ],
+    "head_to_head": false,
+    "names": {
+      "Acumatica": 2,
+      "Acumatica Cloud ERP": 1
+    },
+    "resolved_by": "stated",
+    "mentions": [
+      {
+        "url": "https://www.g2.com/products/emanage-erp/competitors/alternatives",
+        "quote": "Acumatica is a leading provider of Cloud ERP and Cloud Accounting software for mid-size businesses",
+        "channel": "directory",
+        "head_to_head": false,
+        "title": "Top 10 eManage ERP Alternatives & Competitors in 2026",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.acumatica.com/resources/articles/apparel-erp-software/",
+        "quote": "Discover how Acumatica's apparel ERP software helps fashion brands streamline inventory, production, and supply chain operations",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Apparel ERP: Optimize Operations from Design to Delivery",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.capterra.com/p/140356/A2000-Software/",
+        "quote": "Acumatica Cloud ERP logo. Acumatica Cloud ERP. 4.4",
+        "channel": "vs_page",
+        "head_to_head": false,
+        "title": "Ai2000 Software Pricing, Alternatives & More 2026",
+        "source": "firecrawl"
+      }
+    ]
+  },
+  {
+    "name": "NetSuite",
+    "domain": "netsuite.com",
+    "channels": [
+      "directory",
+      "roundup"
+    ],
+    "head_to_head": false,
+    "names": {
+      "NetSuite": 3
+    },
+    "resolved_by": "stated",
+    "mentions": [
+      {
+        "url": "https://www.g2.com/products/emanage-erp/competitors/alternatives",
+        "quote": "NetSuite is a cloud ERP solution, providing a suite of applications, from accounting and financial planning",
+        "channel": "directory",
+        "head_to_head": false,
+        "title": "Top 10 eManage ERP Alternatives & Competitors in 2026",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.aims360.com/fashion-business-resources/best-fashion-erp-software-in-2026-why-aims360-leads-apparel-operations",
+        "quote": "NetSuite sells a SuiteSuccess edition for apparel, footwear and accessories, built on practices from a professional services team",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best Apparel & Fashion ERP Software 2026: 10 Compared",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.guideflow.com/blog/apparel-erp-software",
+        "quote": "NetSuite - unified financials and operations for mid-market to enterprise scale",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "9 Best apparel ERP software for 2026",
+        "source": "firecrawl"
+      }
+    ]
+  },
+  {
+    "name": "BlueCherry",
+    "domain": "bluecherry.com",
+    "channels": [
+      "roundup",
+      "vs_page"
+    ],
+    "head_to_head": false,
+    "names": {
+      "BlueCherry": 2
+    },
+    "resolved_by": "search_lookup",
+    "mentions": [
+      {
+        "url": "https://www.aims360.com/fashion-business-resources/best-fashion-erp-software-in-2026-why-aims360-leads-apparel-operations",
+        "quote": "Sync, BlueCherry, Aptean Exenta, ApparelMagic and Ai2000 sell PLM inside their own suites.",
+        "channel": "vs_page",
+        "head_to_head": false,
+        "title": "Best Apparel & Fashion ERP Software 2026: 10 Compared",
+        "source": "firecrawl"
+      },
+      {
+        "url": "https://www.aims360.com/fashion-business-resources/best-fashion-erp-software-in-2026-why-aims360-leads-apparel-operations",
+        "quote": "BlueCherry and Aptean Exenta fit manufacturers that own production and want PLM and shop floor control inside the ERP.",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Best Apparel & Fashion ERP Software 2026: 10 Compared",
+        "source": "firecrawl"
+      }
+    ]
+  },
+  {
+    "name": "ERP for Apparel Industry",
+    "domain": "180systems.com",
+    "channels": [
+      "similar"
+    ],
+    "head_to_head": false,
+    "names": {
+      "ERP for Apparel Industry": 1
+    },
+    "resolved_by": "similar",
+    "mentions": [
+      {
+        "url": "https://www.180systems.com/test/",
+        "quote": "",
+        "channel": "similar"
+      }
+    ]
+  },
+  {
+    "name": "Blog",
+    "domain": "instylesoft.com",
+    "channels": [
+      "similar"
+    ],
+    "head_to_head": false,
+    "names": {
+      "Blog": 1
+    },
+    "resolved_by": "similar",
+    "mentions": [
+      {
+        "url": "https://www.instylesoft.com/blog-category/blog/",
+        "quote": "",
+        "channel": "similar"
+      }
+    ]
+  },
+  {
+    "name": "Aptean",
+    "domain": "aptean.com",
+    "channels": [
+      "roundup"
+    ],
+    "head_to_head": false,
+    "names": {
+      "Aptean": 1
+    },
+    "resolved_by": "model_guess_confirmed",
+    "mentions": [
+      {
+        "url": "https://www.linkedin.com/posts/apparel21_fashionerp-retailtechnology-fashionops-activity-7443130204656680960-Beey",
+        "quote": "Sourcing Journal recently interviewed Alain Tessier to explore how Aptean is bringing agentic AI into the daily rhythm of fashion and apparel operations",
+        "channel": "roundup",
+        "head_to_head": false,
+        "title": "Managing System Sprawl in Fashion with Integrated ERP",
+        "source": "firecrawl"
+      }
+    ]
+  }
+]

@@ -18,7 +18,7 @@ from pathlib import Path
 from typing import Callable
 
 from . import build as builder
-from . import qa
+from . import hooks, market_graph, qa
 from .clients.http import OfflineMiss
 from .config import Settings
 from .evidence import EvidenceStore
@@ -110,6 +110,7 @@ class QAState:
     rebuilt: bool = False
     review_notes: list[str] = field(default_factory=list)
     seen_hashes: set[str] = field(default_factory=set)
+    graph: object | None = None  # market_graph.MarketGraph shared across runs (checks read it through extra)
 
     @property
     def name(self) -> str:
@@ -126,6 +127,11 @@ class QAState:
     def logo_metrics(self) -> dict[str, dict]:
         names = [self.name, *(c.name for c in self.content.market.competitors)]
         return {n: {"ok": self.logos[n]["ok"], "problems": self.logos[n].get("problems", [])} for n in names if n in self.logos}
+
+    def check_extra(self) -> dict:
+        """Run context for the registered checks (recur_deck/checks): see checks/__init__.py."""
+        return {"evidence": self.ctx.evidence, "entity": self.entity, "graph": self.graph, "run_dir": self.ctx.run_dir,
+                "profile": self.profile, "comps": self.comps, "logos": self.logos}
 
 
 def extra_protected(entity: dict) -> list[str]:
@@ -144,7 +150,7 @@ def build_and_check(st: QAState, k: int) -> tuple[Path, dict, list[qa.Issue]]:
                                   typeset_h=heights)
     ctx.save_json(f"content.round{k}.json", c.model_dump())
     ctx.save_json("content.json", c.model_dump())
-    issues = qa.run_all(pptx, c, manifest, st.logo_metrics(), st.protected)
+    issues = qa.run_all(pptx, c, manifest, st.logo_metrics(), st.protected, extra=st.check_extra())
     return pptx, manifest, issues
 
 
@@ -410,6 +416,7 @@ def qa_loop(st: QAState, progress: Progress, deadline: float) -> dict:
             raise
         rec["vision"] = verdict.model_dump()
         if verdict.passed:
+            hooks.fire("after_vision", ctx=ctx, content=st.content, pngs=pngs, manifest=manifest)
             rounds.append(rec)
             break
         majors = [d for d in verdict.defects if d.severity == "major"]
@@ -588,6 +595,7 @@ def _qa_and_deliver(ctx: Ctx, st: QAState, report: dict, out_dir: Path | None, p
                 copied.append(str(out_dir / name))
     report["delivered_to"] = copied
     ctx.save_json("qa_report.json", report)
+    hooks.fire("after_run", ctx=ctx, report=report)
     code = {"pass": 0, "pass_with_warnings": 1, "needs_review": 1}.get(status, 2)
     return Result(code, ctx.run_dir, report, qa_out["pptx"], qa_out["pdf"])
 
@@ -637,6 +645,7 @@ def run(name: str, *, domain: str | None = None, hint: str | None = None, non_in
         ts = time.time()
         profile = s_profile.build(ctx, entity)
         offline_gate(ctx, stage)
+        hooks.fire("after_profile", ctx=ctx, entity=entity, profile=profile)
         timings["profile"] = round(time.time() - ts, 1)
         progress(f"Profile: {profile['facts_kept']} verified facts from {len(profile['pages'])} pages")
 
@@ -645,6 +654,7 @@ def run(name: str, *, domain: str | None = None, hint: str | None = None, non_in
         ts = time.time()
         comps = s_comp.discover(ctx, entity, profile)
         offline_gate(ctx, stage)
+        hooks.fire("after_competitors", ctx=ctx, entity=entity, comps_out=comps)
         timings["competitors"] = round(time.time() - ts, 1)
         progress(f"Competitors: {', '.join(c['name'] for c in comps['competitors'])}"
                  + (" (thin market)" if comps["thin_market"] else ""))
@@ -661,10 +671,12 @@ def run(name: str, *, domain: str | None = None, hint: str | None = None, non_in
         ts = time.time()
         content = s_write.write_deck(ctx, entity, profile, comps)
         offline_gate(ctx, stage)
+        hooks.fire("after_write", ctx=ctx, content=content)
         timings["write"] = round(time.time() - ts, 1)
 
         stage = "qa"
-        st = QAState(ctx, entity, profile, comps, content, logos, extra_protected(entity))
+        st = QAState(ctx, entity, profile, comps, content, logos, extra_protected(entity),
+                     graph=market_graph.load(settings))
         return _qa_and_deliver(ctx, st, report, out_dir, progress, t0, timings)
     except Exception as e:  # noqa: BLE001 - any stage failure: report it, exit 2
         if ctx.strict_offline and ctx.cache.misses:  # the real cause, even if a fallback hid the miss
@@ -713,7 +725,8 @@ def replay(src_dir: Path, *, out_dir: Path | None = None, settings: Settings | N
             for k in ("fallbacks", "warnings"):
                 ctx.report[k] += [x for x in orig.get(k) or [] if x not in ctx.report[k]]
         progress(f"Replaying {entity['display_name']} from {src_dir} (offline)")
-        st = QAState(ctx, entity, profile, comps, content, logos, extra_protected(entity))
+        st = QAState(ctx, entity, profile, comps, content, logos, extra_protected(entity),
+                     graph=market_graph.load(settings))
         return _qa_and_deliver(ctx, st, report, out_dir, progress, t0, {})
     except Exception as e:  # noqa: BLE001
         log.exception("replay failed")

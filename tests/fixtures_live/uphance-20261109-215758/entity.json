@@ -1,0 +1,48 @@
+{
+  "display_name": "Uphance",
+  "legal_name": "Uphance, LLC",
+  "domain": "uphance.com",
+  "homepage": "https://www.uphance.com/",
+  "aliases": [
+    "Stitchex",
+    "Uphance LLC",
+    "Uphance Apparel ERP"
+  ],
+  "vertical": "Apparel ERP / fashion operations software (PLM, inventory, order and warehouse management, EDI, accounting)",
+  "one_liner": "Uphance is a unified apparel operations platform (cloud-based apparel ERP) for wholesale and DTC brands.",
+  "confidence": 0.99,
+  "margin": 0.97,
+  "domain_supplied": false,
+  "low_confidence_identity": false,
+  "rebrand_detected": true,
+  "alternatives": [
+    {
+      "domain": "gappsy.com",
+      "score": 0.02,
+      "display_name": "Gappsy",
+      "why_rejected": "This is a third-party directory that only lists Uphance. It is not the company itself."
+    },
+    {
+      "domain": "aberdeen.com",
+      "score": 0.01,
+      "display_name": "Aberdeen",
+      "why_rejected": "It is a research vendor and is unrelated to Uphance."
+    },
+    {
+      "domain": "builtwith.com",
+      "score": 0.01,
+      "display_name": "BuiltWith",
+      "why_rejected": "It has no connection to Uphance beyond being a generic tool in the candidate list."
+    }
+  ],
+  "evidence_ids": [
+    "e1",
+    "e2",
+    "e3",
+    "e4",
+    "e5"
+  ],
+  "notes": "The alternativeto.net snippet says Uphance was formerly Stitchex, so the company has rebranded. uphance.com is the clear match for the typed name.",
+  "typed_name": "Uphance",
+  "hint": null
+}

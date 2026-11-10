@@ -1,0 +1,154 @@
+{
+  "pages": [
+    "https://a2000software.com",
+    "https://a2000software.com/blog/apparel-erp-features-inventory-production-omnichannel",
+    "https://a2000software.com/solutions/production-plm",
+    "https://a2000software.com/about",
+    "https://a2000software.com/about/faq",
+    "https://a2000software.com/about/reviews",
+    "https://a2000software.com/about/our-story",
+    "https://a2000software.com/industries/footwear"
+  ],
+  "facts_total": 31,
+  "facts_kept": 31,
+  "modules": [
+    {
+      "text": "The platform covers PLM, order and inventory management, native EDI, warehouse management, financials, and AI-powered analytics in one system.",
+      "evidence_id": "e5"
+    },
+    {
+      "text": "Module list includes Ecommerce Integrations and AI Support (Ai2000 University).",
+      "evidence_id": "e6"
+    },
+    {
+      "text": "PLM module covers design, tech pack (BOM + grading), sample (lab dips + fittings), costing, production (PO + factory tracking) and ship (QC + delivery), with a vendor portal.",
+      "evidence_id": "e7"
+    },
+    {
+      "text": "PLM supports category-specific attributes for apparel, footwear (size run matrices, widths, lasts, tooling) and home goods (multi-component assemblies, dimensions and cube, packaging and carton specs).",
+      "evidence_id": "e8"
+    },
+    {
+      "text": "Footwear page describes native warehouse operations including receiving, pick, pack, ship and cycle counts, and a B2B portal.",
+      "evidence_id": "e9"
+    },
+    {
+      "text": "The platform includes AI Upload tools, AI University, AI 24/7 Training & Support, AI-powered Business Analytics and an AI-Reporting tool.",
+      "evidence_id": "e10"
+    }
+  ],
+  "customer_segments": [
+    {
+      "text": "Purpose-built for mid-market apparel and fashion brands, wholesalers, and distributors.",
+      "evidence_id": "e11"
+    },
+    {
+      "text": "Serves three industries: apparel and fashion, footwear, and home goods.",
+      "evidence_id": "e12"
+    },
+    {
+      "text": "Built for designers, wholesalers, manufacturers, and retailers.",
+      "evidence_id": "e13"
+    },
+    {
+      "text": "Footwear business models listed include branded footwear, wholesale distribution, private label sourcing and DTC footwear.",
+      "evidence_id": "e14"
+    }
+  ],
+  "customer_size_signals": [
+    {
+      "text": "Customers range from growing wholesale brands to global fashion houses.",
+      "evidence_id": "e15"
+    },
+    {
+      "text": "Named brands include Michael Kors, Carolina Herrera, Oscar de la Renta, Tumi, BCBGMAXAZRIA, Anne Klein, London Fog, Nicole Miller.",
+      "evidence_id": "e16"
+    },
+    {
+      "text": "Reviews page cites 300+ companies as customers.",
+      "evidence_id": "e17"
+    },
+    {
+      "text": "Reviewers range from 11-50 to 1001-5000 employees.",
+      "evidence_id": "e18"
+    },
+    {
+      "text": "Reviewer segments include Wholesale (201-500 employees) and Home Textiles (11-50 employees).",
+      "evidence_id": "e19"
+    }
+  ],
+  "deployment": [
+    {
+      "text": "Offers a SaaS offering; described as having modern cloud architecture.",
+      "evidence_id": "e20"
+    },
+    {
+      "text": "Footwear page states deployment is cloud or hybrid, with scope confirmed in the project plan.",
+      "evidence_id": "e21"
+    },
+    {
+      "text": "Claims implementation targeted at one season, with full data migration and ongoing training.",
+      "evidence_id": "e22"
+    }
+  ],
+  "integrations": [
+    {
+      "text": "Plugs into Gemini, OpenAI and Claude AI models.",
+      "evidence_id": "e23"
+    },
+    {
+      "text": "Supports EDI and integration with 500+ trading partners.",
+      "evidence_id": "e24"
+    },
+    {
+      "text": "Ecommerce integrations include Shopify and Magento, per blog; FAQ asks about Shopify and Amazon.",
+      "evidence_id": "e25"
+    },
+    {
+      "text": "Supports EDI 850/856/810 documents, ASNs, labels and routing compliance.",
+      "evidence_id": "e26"
+    }
+  ],
+  "differentiators": [
+    {
+      "text": "Features are built natively with no third-party integrations or extra licenses; no middleware or per-transaction EDI fees.",
+      "evidence_id": "e27"
+    },
+    {
+      "text": "Company states it has been in apparel ERP since 1979 in a blog, while About page says founded 1996 (inconsistent).",
+      "evidence_id": "e28"
+    },
+    {
+      "text": "Founded in 1996 as A2000 Software.",
+      "evidence_id": "e29"
+    },
+    {
+      "text": "Wolfpack 6 case: hours of manual weekend reporting reduced to minutes within first two weeks.",
+      "evidence_id": "e30"
+    },
+    {
+      "text": "Compares itself against NetSuite, AIMS360 and Acumatica.",
+      "evidence_id": "e31"
+    }
+  ],
+  "recent_news": [
+    {
+      "text": "Company rebranded A2000 Software to Ai2000, rebuilt from the ground up with AI.",
+      "evidence_id": "e2"
+    },
+    {
+      "text": "Featured article (May 2026) from Founder & CEO on ERPs and AI.",
+      "evidence_id": "e32"
+    }
+  ],
+  "gaps_or_opportunities": [
+    {
+      "text": "About page notes some figures are unverified placeholders (brands served, countries).",
+      "evidence_id": "e33"
+    },
+    {
+      "text": "Reviewer ratings show Functionality as the lowest score (4.4) vs. Ease of Use 4.6.",
+      "evidence_id": "e34"
+    }
+  ]
+}
