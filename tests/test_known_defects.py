@@ -101,7 +101,6 @@ def test_d7_aptean_contradicts_earlier_run():
 
 
 # ---------------------------------------------------------------- Agent 2: recall
-@pytest.mark.xfail(strict=True, reason="D8 — owner Agent 2")
 def test_d8_fdm4_discovery_seeds_from_the_graph():
     from recur_deck import market_graph
     from recur_deck.stages.competitors import graph_seeds

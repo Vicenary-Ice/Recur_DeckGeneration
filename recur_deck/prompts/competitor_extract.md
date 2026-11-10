@@ -16,3 +16,7 @@ part fully.
 Skip the target itself (any of its names), directories and review sites, consultancies, resellers,
 implementation partners, and generic tools that are not sold to the same buyer for the same job. Never add a
 name that is not in the text. List each name once per document.
+Some documents are the target's own pages (comparison, "vs", "alternative to", "switch from", migration or
+integration pages). On those, list the products the target compares itself with or that customers switch or
+migrate from (head_to_head true on a comparison page). Do not list the tools it integrates with (accounting,
+ecommerce, shipping, payment or marketing tools) unless the page presents them as alternatives to the target.
