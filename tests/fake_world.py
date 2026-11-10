@@ -82,13 +82,39 @@ DEEP_TAIL = ("\n## More vendors to consider\nAlso worth a look: FDM4, Uphance, [
              "[InStyle](https://www.instylesoft.com) and [Apparel21](https://www.apparel21.com).\n")
 
 
+# Agent 2 (market memory): the target's own comparison page, a sub-segment's vendors, a vendor only the graph knows.
+COMPARE_COMPS = {
+    "brightpearl.com": ("Brightpearl", "Brightpearl is retail operations software for wholesale apparel brands.",
+                        ("left", "bottom"), "ai2000/logos/uphance/1_site.png"),
+}
+COMPARE_PAGES = {  # url -> (title, body)
+    "https://a2000software.com/compare/ai2000-vs-brightpearl": (
+        "Ai2000 vs Brightpearl | Ai2000",
+        "Ai2000 vs [Brightpearl](https://www.brightpearl.com): Brightpearl runs orders, while Ai2000 adds PLM, EDI and "
+        "financials for apparel brands. "),
+}
+SEGMENT_COMPS = {
+    "deconetwork.com": ("DecoNetwork", "DecoNetwork is business software for apparel decorators and print shops.",
+                        ("left", "bottom"), "ai2000/logos/aims360/1_site.png"),
+    "printavo.com": ("Printavo", "Printavo is shop management software for screen printers and apparel decorators.",
+                     ("left", "bottom"), "ai2000/logos/aims360/1_site.png"),
+}
+GRAPH_ONLY_COMPS = {"apparel21.com": DEEP_COMPS["apparel21.com"]}  # named by no search result in the default world
+
+
 class World:
-    def __init__(self, bad_target_logo: bool = False, deep: bool = False):
+    def __init__(self, bad_target_logo: bool = False, deep: bool = False, compare: bool = False,
+                 segments: bool = False, graph_only: bool = False):
         self.calls: list[tuple[str, str]] = []
         self.searches: list[dict] = []
         self.bad_target_logo = bad_target_logo
         self.deep = deep  # C3: long roundup, competitors page, Capterra category page, more vendors, name variants
+        self.compare = compare        # the target's site has a comparison page (self_compare channel)
+        self.segments = segments      # searches for apparel decorators find decorator software (segment channel)
         self.comps = {**COMPS, **DEEP_COMPS} if deep else COMPS
+        if compare or segments or graph_only:
+            self.comps = {**self.comps, **(COMPARE_COMPS if compare else {}), **(SEGMENT_COMPS if segments else {}),
+                          **(GRAPH_ONLY_COMPS if graph_only else {})}
         self.mention_names = [n for n, *_ in self.comps.values()] + (DEEP_VARIANTS if deep else [])
 
     # ---------------------------------------------------------------- HTTP
@@ -101,7 +127,8 @@ class World:
                 return httpx.Response(200, json={"success": True, "data": self.scrape(body["url"])})
             if path == "/v2/map":
                 return httpx.Response(200, json={"success": True, "links": [{"url": u} for u in PAGES] +
-                                                 [{"url": "https://a2000software.com/privacy"}]})
+                                                 [{"url": "https://a2000software.com/privacy"}] +
+                                                 ([{"url": u} for u in COMPARE_PAGES] if self.compare else [])})
             if path == "/v2/search":
                 self.searches.append(body)
                 src = body["sources"][0]["type"]
@@ -125,6 +152,9 @@ class World:
         return httpx.Response(404, text="not found")
 
     def site(self, dom: str, url: str) -> str | None:
+        if dom == TARGET["domain"] and self.compare and url.rstrip("/") in COMPARE_PAGES:
+            title, body = COMPARE_PAGES[url.rstrip("/")]
+            return site_html(dom, body, title, "Ai2000")
         if dom == TARGET["domain"]:
             body = PAGES.get(url.rstrip("/"), HOME)
             return site_html(dom, body, "Ai2000 ERP | Apparel ERP", "Ai2000")
@@ -140,6 +170,14 @@ class World:
         if body["sources"][0]["type"] == "news":
             return [{"title": "GCS Software renames A2000 to Ai2000", "url": "https://news.example.com/ai2000",
                      "snippet": "GCS Software has renamed its A2000 apparel ERP to Ai2000.", "date": "2026-02-01"}]
+        if self.segments and "decorator" in q.lower():  # segment channel: decorator software
+            if body.get("scrapeOptions"):
+                md = ("# Best software for apparel decorators\nShops compare [Printavo](https://www.printavo.com) and "
+                      "DecoNetwork for orders, art approval and production.")
+                return [{"url": "https://www.example-decorating.com/best-decorator-software",
+                         "title": "Best software for apparel decorators", "description": "", "markdown": md}]
+            return [{"url": "https://www.deconetwork.com/", "title": "DecoNetwork | Software for decorators",
+                     "description": SEGMENT_COMPS["deconetwork.com"][1]}]
         if self.deep and body.get("includeDomains") == ["capterra.com", "getapp.com"]:  # C3 category page
             md = ("# Apparel ERP software\nCompare apparel ERP vendors: [Fishbowl](https://www.fishbowlinventory.com), "
                   "[Acumatica](https://www.acumatica.com), Aptean Exenta, [Odoo](https://www.odoo.com) and "
@@ -285,6 +323,9 @@ class FakeClaude:
                     out.append({"doc_id": d["doc_id"], "name": n, "domain": link.group(1) if link else None,
                                 "quote": sentence_with(d["text"], n), "head_to_head": " vs " in d["title"]})
         return {"mentions": out}
+
+    def a_competitor_segments(self, user):
+        return {"segments": [s for s in (_block(user, "segment_facts") or [])][:2]}
 
     def a_domain_guess(self, user):
         known = {"BlueCherry": "cgsinc.com", "Uphance": "uphance.io", "Aptean": "aptean.com"}  # uphance.io is wrong

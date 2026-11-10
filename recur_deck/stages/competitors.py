@@ -9,6 +9,13 @@ Channels (parallel Firecrawl searches):
   similar    the target's one-liner, target domain excluded -> vendor homepages      (titles + descriptions)
   roundup    'best <vertical> software', target domain excluded                       (+ page markdown)
              '<vertical> software' category pages on capterra/getapp                  (+ page markdown)
+  segment    for up to 2 customer sub-segments the vertical does not already name ("apparel decorators"):
+             '<segment> software' (+ markdown, 2 results) and '<segment> ERP' / '<segment> management software'
+  self_compare  the target's own compare / vs / alternative / switch / migrate / integration pages
+             (from its site map or homepage links; direct fetches, no search)
+  graph      companies the market graph links to the target within 2 edges, or that earlier targets in the same
+             market competed with (runs/_market_graph.json). One channel, never independent evidence: every
+             seed is still verified on its live site
 Directory and roundup pages are read in full (in chunks), so every vendor they list becomes a mention.
 -> mentions (name, verbatim quote, head-to-head?) -> name variants merged ('Aptean Exenta' -> 'Aptean') ->
 name -> domain (confirmed on the live site) -> merged by registrable domain -> candidates.json (aim: >= 15)
@@ -24,7 +31,10 @@ from urllib.parse import urlsplit
 
 from pydantic import BaseModel
 
+from .. import market_graph
+from ..axes import AXIS_KINDS
 from ..clients.firecrawl import Page
+from ..clients.http import ServiceError
 from ..evidence import quote_in
 from .base import Ctx, StageError, is_company_domain, prompt, registrable
 
@@ -33,7 +43,12 @@ DIRECTORIES = ["capterra.com", "g2.com", "getapp.com", "softwareadvice.com"]
 CATEGORY_DIRECTORIES = ["capterra.com", "getapp.com"]  # their category pages list every vendor in a category
 LISTICLE = re.compile(r"\b(best|top \d+|top|alternatives?|vs\.?|versus|compare|comparison|reviews?|list of|guide|"
                       r"competitors?|ranked|rankings?)\b", re.I)
-MAX_VERIFY = 14
+MAX_VERIFY = 20          # candidates verified per run (strong ones first, then the best-mentioned weak ones)
+MAX_GRAPH_SEEDS = 12     # market-graph seeds per run (closest and most-verified first)
+MAX_SELF_COMPARE = 4     # pages of the target's own site read for comparisons
+MAX_SEGMENTS = 2         # customer sub-segments searched (2 searches each)
+SELF_COMPARE = [re.compile(r"compare|comparison|(?<![a-z])vs(?![a-z])|versus|alternative", re.I),
+                re.compile(r"switch|migrat|replac", re.I), re.compile(r"integrat|partner", re.I)]
 MAX_RESOLVE = 30          # mention groups resolved to a website (most confirmations are free direct fetches)
 MAX_SEARCH_LOOKUPS = 8    # Firecrawl name lookups for groups no cheaper route resolved (2 credits each)
 KEEP = 8
@@ -60,6 +75,10 @@ class DomainGuess(BaseModel):
 
 class DomainGuesses(BaseModel):
     guesses: list[DomainGuess]
+
+
+class SegmentTerms(BaseModel):
+    segments: list[str]  # short search phrases for customer sub-segments, most important first
 
 
 class CompetitorCheck(BaseModel):
@@ -130,6 +149,17 @@ class Doc:
     text: str
     channel: str
     source: str  # firecrawl | claude_web_search
+    segment: str = ""  # segment channel: the sub-segment whose search found this page
+
+
+@dataclass
+class Vendor:
+    """A vendor homepage that a search returned directly (similar and segment channels)."""
+    domain: str
+    name: str
+    url: str
+    channel: str = "similar"
+    segment: str = ""
 
 
 @dataclass
@@ -140,6 +170,8 @@ class Cand:
     head_to_head: bool = False
     mentions: list[dict] = field(default_factory=list)
     resolved_by: str = ""
+    segments: set[str] = field(default_factory=set)   # sub-segments whose searches found it
+    via: list[str] = field(default_factory=list)      # graph channel: the companies that link it to the target
 
     @property
     def name(self) -> str:
@@ -147,8 +179,35 @@ class Cand:
 
 
 # ------------------------------------------------------------------ channel collection
-def _collect(ctx: Ctx, entity: dict) -> tuple[list[Doc], list[tuple[str, str, str]]]:
-    """Documents to read for mentions, and (domain, name, url) vendor sites from the similar channel."""
+def segment_terms(ctx: Ctx, entity: dict, profile: dict | None) -> list[str]:
+    """Up to MAX_SEGMENTS customer sub-segments worth their own search ("apparel decorators"), from the profile's
+    segment facts. A sub-segment whose words the vertical already contains is skipped (the vertical searches
+    cover it). One Haiku call; no call when the profile names no segment."""
+    facts = [f.get("text") for f in (profile or {}).get("customer_segments", []) if f.get("text")][:8]
+    if not facts:
+        return []
+    try:
+        ans = ctx.claude.ask(ctx.settings.model_fast, prompt("competitor_segments"),
+                             [("company", {k: entity.get(k) for k in ("display_name", "vertical", "one_liner")}),
+                              ("segment_facts", facts)], SegmentTerms, effort="low", label="competitor_segments",
+                             fallbacks=[ctx.settings.model_judge])
+    except Exception as e:  # noqa: BLE001 - the other channels still run
+        log.info("segment extraction failed: %s", e)
+        return []
+    covered = {w[:6] for w in market_graph.market_tokens(f"{entity.get('vertical') or ''} {entity.get('one_liner') or ''}")}
+    out = []
+    for s in ans.segments:
+        s = re.sub(r"\s+", " ", s).strip(" .,'\"")
+        words = {w[:6] for w in market_graph.market_tokens(s)}
+        if not s or len(s) > 60 or not words or words <= covered or s.lower() in (o.lower() for o in out):
+            continue
+        out.append(s)
+    return out[:MAX_SEGMENTS]
+
+
+def _collect(ctx: Ctx, entity: dict, profile: dict | None = None) -> tuple[list[Doc], list[Vendor], dict[str, int]]:
+    """Documents to read for mentions, vendor homepages from the similar and segment channels, and the number
+    of searches per channel."""
     names = list(dict.fromkeys([entity["display_name"], *entity.get("aliases", [])]))[:2]
     vertical = entity.get("vertical") or entity.get("one_liner") or ""
     tdom = entity["domain"]
@@ -162,38 +221,114 @@ def _collect(ctx: Ctx, entity: dict) -> tuple[list[Doc], list[tuple[str, str, st
     jobs += [("roundup", f"best {vertical} software", {"exclude_domains": [tdom], "limit": 4, "with_markdown": True})]
     jobs += [("roundup", f"{category_phrase(vertical)} software", {"include_domains": CATEGORY_DIRECTORIES, "limit": 3,
                                                                    "with_markdown": True})]
+    noun = "ERP" if re.search(r"\berp\b", vertical, re.I) else "management software"
+    for seg in segment_terms(ctx, entity, profile):
+        jobs += [("segment", f"{seg} software", {"exclude_domains": [tdom], "limit": 2, "with_markdown": True, "segment": seg}),
+                 ("segment", f"{seg} {noun}", {"exclude_domains": [tdom], "limit": 8, "segment": seg})]
+    counts: dict[str, int] = {}
+    for ch, *_ in jobs:
+        counts[ch] = counts.get(ch, 0) + 1
 
     def run(job):
         ch, q, kw = job
-        return ch, ctx.web.search(q, limit=kw.pop("limit", 10), **kw)
+        seg = kw.pop("segment", "")
+        return ch, seg, ctx.web.search(q, limit=kw.pop("limit", 10), **kw)
 
     docs: list[Doc] = []
-    vendors: list[tuple[str, str, str]] = []
+    vendors: list[Vendor] = []
     seen: set[tuple[str, str, bool]] = set()  # one page found by two searches is read once per channel
     for res in ctx.pmap(run, [(c, q, dict(k)) for c, q, k in jobs]):
         if isinstance(res, Exception):
             ctx.warn(f"competitor search failed: {type(res).__name__}: {res}")
             continue
-        ch, items = res
+        ch, seg, items = res
         for r in items:
             dom = registrable(r["url"])
             if dom == tdom:
                 continue
             title, desc, md = r.get("title", ""), r.get("description", ""), r.get("markdown", "")
-            if ch == "similar":
+            if ch in ("similar", "segment"):
                 path = urlsplit(r["url"]).path.strip("/")
                 if is_company_domain(dom) and path.count("/") <= 1 and not LISTICLE.search(title):
-                    vendors.append((dom, name_from_title(title, dom), r["url"]))
+                    vendors.append(Vendor(dom, name_from_title(title, dom), r["url"], ch, seg))
                     continue
-                ch_doc = "roundup"  # a listicle that ranked for the category query
+                ch_doc = "roundup" if ch == "similar" else "segment"  # a listicle that ranked for the query
             else:
                 ch_doc = ch
             if (r["url"], ch_doc, bool(md)) in seen:
                 continue
             seen.add((r["url"], ch_doc, bool(md)))
             for chunk in page_chunks(title, desc, md):
-                docs.append(Doc(len(docs) + 1, r["url"], title, chunk, ch_doc, r.get("via", "firecrawl")))
-    return docs, vendors
+                docs.append(Doc(len(docs) + 1, r["url"], title, chunk, ch_doc, r.get("via", "firecrawl"), seg))
+    return docs, vendors, counts
+
+
+def self_compare_urls(urls: list[str], domain: str, limit: int = MAX_SELF_COMPARE) -> list[str]:
+    """The target's own pages that name rivals: compare / vs / alternative first, then switch / migrate / replace,
+    then integration / partner pages."""
+    picked: list[str] = []
+    for pat in SELF_COMPARE:
+        for u in dict.fromkeys(urls):
+            path = urlsplit(u).path.lower()
+            if registrable(u) == domain and path.strip("/") and pat.search(path) and u not in picked:
+                picked.append(u)
+    return picked[:limit]
+
+
+def _self_compare_docs(ctx: Ctx, entity: dict, profile: dict | None, start_id: int) -> list[Doc]:
+    tdom = entity["domain"]
+    urls = list((profile or {}).get("site_urls") or [])
+    if not urls and ctx.firecrawl.available:
+        try:  # the profile stage made this exact call, so it is served from the cache
+            urls = [l["url"] for l in ctx.firecrawl.map(f"https://{tdom}", limit=200)]
+        except ServiceError as e:
+            log.info("site map for self-compare pages failed: %s", e)
+    home = ctx.pages.get(tdom)
+    urls += list(home.links) if home is not None else []
+    docs: list[Doc] = []
+    picked = self_compare_urls(urls, tdom)
+    for u, page in zip(picked, ctx.pmap(lambda u: ctx.web.fetch(u, main_only=True), picked)):
+        if page is None or isinstance(page, Exception) or not page.markdown:
+            continue
+        for chunk in page_chunks(page.title, page.description, page.markdown):
+            docs.append(Doc(start_id + len(docs), page.final_url or u, page.title, chunk, "self_compare", page.source))
+    if picked:
+        log.info("self-compare pages read: %s", picked)
+    return docs
+
+
+def graph_seeds(graph, entity: dict, limit: int = MAX_GRAPH_SEEDS) -> list[Cand]:
+    """Candidates from the market graph (channel `graph`): competitors within 2 edges of the target, the target's
+    unverified candidates from earlier runs, and earlier targets of the same market (shared distinctive word in
+    the vertical) with their competitors. Companies an earlier run rejected for this same target are skipped.
+    Closest and most-verified first, at most `limit`."""
+    if graph is None:
+        return []
+    tdom = registrable(entity["domain"]) or entity["domain"]
+    tnames = {norm(n) for n in [entity.get("display_name", ""), *entity.get("aliases", [])]}
+    found: dict[str, dict] = {}
+
+    def add(dom: str, name: str, via: str, runs: list[str], depth: int) -> None:
+        if not dom or dom == tdom or not is_company_domain(dom) or norm(name) in tnames:
+            return
+        rec = found.setdefault(dom, {"name": name, "via": [], "runs": set(), "depth": depth})
+        rec["via"].append(via)
+        rec["runs"].update(runs)
+        rec["depth"] = min(rec["depth"], depth)
+
+    for n in graph.neighbors(tdom, depth=2):
+        add(n["domain"], n["name"], n["via"], n["runs"], n["depth"])
+    for n in graph.neighbors(tdom, depth=1, types=("candidate",)):
+        add(n["domain"], n["name"], n["via"], n["runs"], 2)
+    for t in graph.related_targets(entity):
+        c = graph.company(t) or {}
+        add(t, graph.name(t), f"market:{t}", c.get("targets_in_runs", []), 1)
+        for n in graph.neighbors(t, depth=1):
+            add(n["domain"], n["name"], f"market:{t}", n["runs"], 2)
+    rejected = {n["domain"] for n in graph.neighbors(tdom, depth=1, types=("rejected",))}
+    ranked = sorted((d for d in found if d not in rejected), key=lambda d: (found[d]["depth"], -len(found[d]["runs"]), d))
+    return [Cand(d, names={found[d]["name"]: 1}, channels={"graph"}, resolved_by="graph",
+                 via=list(dict.fromkeys(found[d]["via"]))) for d in ranked[:limit]]
 
 
 def category_phrase(vertical: str) -> str:
@@ -294,14 +429,16 @@ def _links_by_text(docs: list[Doc]) -> dict[str, set[str]]:
 
 
 def _resolve(ctx: Ctx, entity: dict, mentions: list[tuple[Mention, Doc]], docs: list[Doc],
-             vendors: list[tuple[str, str, str]]) -> dict[str, Cand]:
+             vendors: list[Vendor]) -> dict[str, Cand]:
     tdom = entity["domain"]
     cands: dict[str, Cand] = {}
-    for dom, name, url in vendors:  # similar-channel vendor sites: domain is known, name from the title
-        c = cands.setdefault(dom, Cand(dom, resolved_by="similar"))
-        c.names[name] = c.names.get(name, 0) + 1
-        c.channels.add("similar")
-        c.mentions.append({"url": url, "quote": "", "channel": "similar"})
+    for v in vendors:  # similar / segment vendor sites: domain is known, name from the title
+        c = cands.setdefault(v.domain, Cand(v.domain, resolved_by=v.channel))
+        c.names[v.name] = c.names.get(v.name, 0) + 1
+        c.channels.add(v.channel)
+        if v.segment:
+            c.segments.add(v.segment)
+        c.mentions.append({"url": v.url, "quote": "", "channel": v.channel})
 
     groups: dict[str, list[tuple[Mention, Doc]]] = {}
     for m, d in mentions:
@@ -309,7 +446,7 @@ def _resolve(ctx: Ctx, entity: dict, mentions: list[tuple[Mention, Doc]], docs: 
     groups = merge_variants(groups)
     order = sorted(groups, key=lambda k: (-len({d.channel for _, d in groups[k]}), -len(groups[k]), k))[:MAX_RESOLVE]
     links = _links_by_text(docs)
-    vendor_by_name = {norm(n): d for d, n, _ in vendors}
+    vendor_by_name = {norm(v.name): v.domain for v in vendors}
 
     def cheap_guesses(key: str) -> list[tuple[str, str]]:
         ms = groups[key]
@@ -323,7 +460,7 @@ def _resolve(ctx: Ctx, entity: dict, mentions: list[tuple[Mention, Doc]], docs: 
             if label_matches(name, d.url):
                 g.append((registrable(d.url), "own_page"))
         g += [(dom, "link") for dom in sorted(links.get(key, ()))]
-        g += [(dom, "name_match") for dom, n, _ in vendors if fuzzy(n, name) >= 0.9]
+        g += [(v.domain, "name_match") for v in vendors if fuzzy(v.name, name) >= 0.9]
         return [(dom, how) for dom, how in dict.fromkeys(g) if dom and dom != tdom and is_company_domain(dom)]
 
     guesses = {k: cheap_guesses(k) for k in order}
@@ -380,6 +517,8 @@ def _resolve(ctx: Ctx, entity: dict, mentions: list[tuple[Mention, Doc]], docs: 
         for m, d in groups[key]:
             c.names[m.name] = c.names.get(m.name, 0) + 1
             c.channels.add(d.channel)
+            if d.segment:
+                c.segments.add(d.segment)
             c.head_to_head |= m.head_to_head
             c.mentions.append({"url": d.url, "quote": m.quote, "channel": d.channel, "head_to_head": m.head_to_head,
                                "title": d.title, "source": d.source})
@@ -430,7 +569,8 @@ def _verify(ctx: Ctx, entity: dict, profile: dict, c: Cand) -> dict | None:
             "acquired_or_renamed": chk.acquired_or_renamed, "segment": chk.segment, "scope": chk.scope,
             "head_to_head": chk.head_to_head_with_target or c.head_to_head,
             "relevance": round(max(0.0, min(1.0, chk.relevance)), 3), "evidence_ids": [],
-            "independent_sources": 0, "homepage": url, "resolved_by": c.resolved_by, "mentions": len(c.mentions)}
+            "independent_sources": 0, "homepage": url, "resolved_by": c.resolved_by, "mentions": len(c.mentions),
+            "segments": sorted(c.segments), **({"graph_via": c.via} if c.via else {})}
 
 
 def record_evidence(ctx: Ctx, v: dict) -> dict:
@@ -475,21 +615,33 @@ def _dedupe(vs: list[dict]) -> list[dict]:
 
 
 def discover(ctx: Ctx, entity: dict, profile: dict) -> dict:
-    docs, vendors = _collect(ctx, entity)
-    mentions = _extract_mentions(ctx, entity, docs)
-    cands = _resolve(ctx, entity, mentions, docs, vendors)
+    graph = market_graph.for_run(ctx.settings)
+    docs, vendors, searches = _collect(ctx, entity, profile)
+    own = _self_compare_docs(ctx, entity, profile, len(docs) + 1)
+    mentions = _extract_mentions(ctx, entity, docs + own)
+    cands = _resolve(ctx, entity, mentions, docs + own, vendors)
+    seeds = graph_seeds(graph, entity)
+    for s in seeds:  # a seed already found by a search gains the graph channel; a new one is verified like any other
+        c = cands.setdefault(s.domain, Cand(s.domain, resolved_by="graph"))
+        for n, k in s.names.items():
+            c.names.setdefault(n, k)
+        c.channels.add("graph")
+        c.via = s.via
     tnames = {norm(n) for n in [entity["display_name"], *entity.get("aliases", [])]}
     cands = {d: c for d, c in cands.items() if d != entity["domain"] and norm(c.name) not in tnames}
+    log.info("competitor channels: searches %s, %d self-compare page chunks, %d graph seeds, %d candidates",
+             searches, len(own), len(seeds), len(cands))
     ctx.save_json("candidates.json", sorted(
         [{"name": c.name, "domain": d, "channels": sorted(c.channels), "head_to_head": c.head_to_head,
-          "names": c.names, "resolved_by": c.resolved_by, "mentions": c.mentions} for d, c in cands.items()],
+          "names": c.names, "resolved_by": c.resolved_by, "mentions": c.mentions, "segments": sorted(c.segments),
+          **({"graph_via": c.via} if c.via else {})} for d, c in cands.items()],
         key=lambda x: (-len(x["channels"]), -len(x["mentions"]))))
 
     key = lambda c: (-len(c.channels), -int(c.head_to_head), -len(c.mentions), c.domain)  # noqa: E731
     strong = sorted((c for c in cands.values() if len(c.channels) >= 2 or c.head_to_head), key=key)
     weak = sorted((c for c in cands.values() if not (len(c.channels) >= 2 or c.head_to_head)), key=key)
     to_verify = strong[:MAX_VERIFY]
-    to_verify += weak[:max(0, 12 - len(to_verify))]
+    to_verify += weak[:max(0, MAX_VERIFY - len(to_verify))]
     verified = []
     for c, r in zip(to_verify, ctx.pmap(lambda c: _verify(ctx, entity, profile, c), to_verify)):
         if isinstance(r, Exception):
@@ -507,7 +659,10 @@ def discover(ctx: Ctx, entity: dict, profile: dict) -> dict:
     weak_sources = [v["name"] for v in chosen if v["independent_sources"] < 2]
     if weak_sources:
         ctx.warn(f"competitors with fewer than 2 independent sources: {weak_sources}")
+    for v in chosen:  # earlier decks' placements of this company, for the map's consistency check
+        v["graph_placements"] = [p for p in graph.placements(v["domain"]) if p.get("axis_kind") in AXIS_KINDS]
     out = {"competitors": chosen, "thin_market": thin, "verified_count": len(verified), "candidates": len(cands),
+           "searches": searches, "self_compare_chunks": len(own), "graph_seeds": [s.domain for s in seeds],
            "rejected": [{"name": v["name"], "domain": v["domain"], "relevance": v["relevance"], "same_vertical": v["same_vertical"],
                          "operating": v["operating"], "channels": v["channels"]} for v in verified if v not in chosen]}
     ctx.save_json("competitors.json", out)

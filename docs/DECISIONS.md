@@ -7,6 +7,43 @@ The seven briefs in `docs/agents/` were carried out one after another by a singl
 own branch merged into `main` before the next (order 0, 2, 3, 1, 4, 5, 6). Where a brief did not match the
 code, the brief's intent was followed and the adaptation is listed here, per phase.
 
+### Phase 2: market memory and competitor recall
+- **Same-market links, not only edges (D8).** FDM4 is not a node in the Ai2000 or Uphance runs (not even a
+  candidate), so "neighbours within depth 2" of fdm4.com is empty. `graph.related_targets(entity)` links a new
+  target to earlier targets whose vertical shares a distinctive word ("apparel"; generic words such as ERP,
+  software, inventory, wholesale, distribution, home are ignored). Those targets (depth 1) and their competitors
+  (depth 2) become `graph` seeds, at most 12, closest and most-verified first; companies an earlier run
+  rejected for the same target are skipped. Every seed is still verified on its live site.
+- **Which runs the graph records.** The `after_run` hook adds only pass / pass_with_warnings runs (the brief).
+  `market_graph ingest` and `from_runs` also accept needs_review runs, because their competitor research was
+  verified even when the deck needed a person's look (two of the three runs the live test plan ingests are
+  needs_review). Placements whose rationale rests on missing evidence ("no financials cited", "without a
+  warehouse module") are never recorded as history. `add_run` skips needs_review unless told otherwise, as the
+  brief's test requires.
+- **Offline runs neither read nor write the graph** (`market_graph.for_run`): a cached run must replay the
+  same way, and a graph seed adds the `graph` channel, which changes the writer's input and its cache key.
+  `pipeline.py` uses `for_run` (one-line change in Agent 6's file).
+- **Derived placements.** Earlier decks rarely used the same axis kinds (Ai2000: product scope + customer size;
+  FDM4: industry depth + customer size). `placements(domain)` therefore also returns one *derived* reading per
+  (run, kind) for kinds that run's map did not use, read from its rationale and quotes with plain-word cues
+  (`recur_deck/axes.py`, kinds industry_depth, customer_size, deployment_modernity only). Example: the Ai2000
+  run's quotes "specially tailored solutions built for fast-moving apparel sectors" and "industry-specific ERP"
+  read as industry_depth = high, which is what FDM4's "General ERP" placement contradicts (D7).
+- **New shared module `recur_deck/axes.py`**: the fixed axis kinds with their directions, title -> kind
+  inference for decks written before axes had a kind, and the cue reader. Agent 3's checks use it too.
+- **Segment searches only for sub-segments the vertical does not already name.** One Haiku call
+  (`prompts/competitor_segments.md`) turns the profile's segment facts into up to 2 search phrases; a phrase
+  whose distinctive words are all in the vertical is skipped (FDM4: "apparel decorators" is searched,
+  "promotional products distributors" is not). Each segment costs 2 searches: `<segment> software` with
+  markdown (2 results, ~4 credits) and `<segment> ERP` (or `management software`) titles only (~2 credits).
+- **Self-compare pages** come from `profile["site_urls"]` when present, else the profile stage's `/v2/map`
+  call repeated (served from the cache, 0 credits), plus the homepage links; up to 4 pages, compare/vs first,
+  then switch/migrate, then integration/partner. The extractor prompt gained a closing paragraph (appended, so
+  its opening words, which the fake Claude keys on, are unchanged).
+- **Verification cap**: `MAX_VERIFY` 14 -> 20, and weak (one-channel) candidates now fill up to 20 instead of
+  12. FDM4's run had Ai2000, ApparelMagic, Uphance and Sync as one-channel candidates that the old cap never
+  verified.
+
 ### Phase 0: baseline and scaffolding
 - **The reviewed Ai2000 deck is `runs/ai2000-20261109-163637`, not `-212951`.** The briefs name
   `runs/ai2000-20261109-212951` as "the deck the user reviewed", but that folder is an `--offline` replay that

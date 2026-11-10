@@ -676,7 +676,7 @@ def run(name: str, *, domain: str | None = None, hint: str | None = None, non_in
 
         stage = "qa"
         st = QAState(ctx, entity, profile, comps, content, logos, extra_protected(entity),
-                     graph=market_graph.load(settings))
+                     graph=market_graph.for_run(settings))
         return _qa_and_deliver(ctx, st, report, out_dir, progress, t0, timings)
     except Exception as e:  # noqa: BLE001 - any stage failure: report it, exit 2
         if ctx.strict_offline and ctx.cache.misses:  # the real cause, even if a fallback hid the miss
@@ -726,7 +726,7 @@ def replay(src_dir: Path, *, out_dir: Path | None = None, settings: Settings | N
                 ctx.report[k] += [x for x in orig.get(k) or [] if x not in ctx.report[k]]
         progress(f"Replaying {entity['display_name']} from {src_dir} (offline)")
         st = QAState(ctx, entity, profile, comps, content, logos, extra_protected(entity),
-                     graph=market_graph.load(settings))
+                     graph=market_graph.for_run(settings))
         return _qa_and_deliver(ctx, st, report, out_dir, progress, t0, {})
     except Exception as e:  # noqa: BLE001
         log.exception("replay failed")
